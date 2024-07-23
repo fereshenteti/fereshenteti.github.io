@@ -1,0 +1,142 @@
+.my-categories{
+
+    width: 100%;
+    height: 100vh;
+    padding-top: 50px;
+    position: relative;
+    
+    .bg-overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        background-image: none;
+        // background-image: url('../assets/backgrounds/bg4.jpeg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .categories-header{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 3rem;
+      position: relative;
+      .categories-title{
+        width: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      strong{
+        background: linear-gradient(to right, rgb(194 110 103), rgb(139 108 204), rgb(97 150 184));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 58px;
+      }
+      h6{
+        background: #c1c1c1c2;
+        padding: 8px;
+        border-radius: 50px;
+      }
+    }
+  
+    .categories{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 80%;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        >div{
+            width: 200px;
+            height: 200px;
+            padding: 8px;
+        }
+        .category{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            background: lightgray;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+        .cat-overlay{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;
+            border-radius: 0 0 10px 10px;
+            background: linear-gradient(to top, #373737, rgba(87, 87, 87, 0));
+        }
+        .cat-icon{
+            width: 40px;
+            height: 40px;
+            color: white;
+            position: relative;
+        }
+        .cat-title{
+            color: white;
+            position: relative;
+            margin: 0;
+            &-ar{
+                margin-bottom: 8px;
+                max-height: 0;
+                opacity: 0;
+            }
+            &-fr{
+                max-height: 0;
+                opacity: 0;
+            }
+        }
+        .tr{
+            transition: all 0.2s ease-in-out;
+        }
+        .cat-photography{
+            background-image: url('../assets/backgrounds/photography.jpeg');
+        }
+        .cat-illustration{
+            background-image: url('../assets/backgrounds/me.jpeg');
+        }
+        .cat-voiceover{
+            background-image: url('../assets/backgrounds/me-podcast.jpg');
+        }
+        .cat-uiux{
+            background-image: url('../assets/backgrounds/uiux.png');
+        }
+        .cat-code{
+            background-image: url('../assets/backgrounds/code 2.jpeg');
+        }
+        .cat-tr{
+            background-image: url('../assets/backgrounds/hello.jpg');
+        }
+        .headphones-icon{
+            opacity: 0;
+            max-height: 0;
+            position: absolute;
+            top: -30px;
+            transform: translateY(-10px);
+            transition: all .1s ease-in-out;
+        }
+    }
+  
+}

@@ -1,0 +1,216 @@
+/* .App {
+  text-align: center;
+} */
+html{
+    overflow-x: hidden;
+}
+.header{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 9999;
+  }
+  
+  .dynamic-island{
+    background: black;
+    color: white;
+    width: 40vw;
+    height: 50px;
+    padding: 0 1rem;
+    margin-top: 1rem;
+    border-radius: 50px;
+    -webkit-transition: width 0.5s cubic-bezier(.42,.42,0,1), 
+      height 0.5s cubic-bezier(.42,.42,0,1),
+      border-radius 0.5s cubic-bezier(0,.82,.78,.78) ;
+    -moz-transition: width 0.5s cubic-bezier(.42,.42,0,1), 
+      height 0.5s cubic-bezier(.42,.42,0,1),
+      border-radius 0.5s cubic-bezier(0,.82,.78,.78) ;
+    -o-transition: width 0.5s cubic-bezier(.42,.42,0,1), 
+      height 0.5s cubic-bezier(.42,.42,0,1),
+      border-radius 0.5s cubic-bezier(0,.82,.78,.78) ;
+    transition: width 0.5s cubic-bezier(.42,.42,0,1), 
+      height 0.5s cubic-bezier(.42,.42,0,1),
+      border-radius 0.5s cubic-bezier(0,.82,.78,.78) ;
+  }
+  
+  .header-main{
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dynamic-island:hover{
+    width: 43vw;
+  }
+  
+  .left{
+    width: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .my-avatar{
+    height: 70%;
+    border-radius: 50%;
+    margin-left: -0.5rem;
+  }
+  
+  .right{
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .menu-item{
+    display: flex;
+    padding: 8px;
+    margin: 0 4px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.5s cubic-bezier(.42,.42,0,1);
+  }
+  
+  .menu-item:hover{
+    background: #464646;
+  }
+  
+  .menu-item-icon{
+    display: flex;
+    align-items: center;
+    margin: 0 4px;
+  }
+  
+  .menu-item-icon > svg{
+    transition: transform 0.5s cubic-bezier(.42,.42,0,1);
+  }
+  
+  .rotate-180{
+    transform: rotate(180deg);
+  }
+  
+  .selected{
+    background: #666666;
+  }
+  
+  .show-header-content{
+    display: block !important;
+  }
+  
+  .intro {
+  
+    position: absolute;
+    
+    section {
+      z-index: 1;
+      position: relative;
+      height: 100vh;
+      padding-left: 4rem;
+      .section-content{
+        padding: 1rem;
+      }
+    }
+    
+    h1 {
+      font-size: 2rem !important;
+      background: white;
+      display: inline-block;
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin: 0;
+      margin-bottom: 0 !important;
+    }
+    
+    p {
+      font-size: 1.2em;
+      color: white;
+      background: #00000065;
+      padding: 0.4rem;
+      border-radius: 0 0 6px 6px;
+    }
+    
+    .learn-more{
+      display: flex;
+      align-items: center;
+      color: #01ff40;
+    }
+    
+    .lottie-player{
+      width: 80px;
+      height: 100%;
+      path{
+        fill: #01ff40;
+      }
+    }
+    
+    .lf-player-container{
+      height: 30px;
+    }
+    
+    .section-content {
+      position: sticky;
+      position: -webkit-sticky;
+      width: fit-content;
+      top: 33.3%;
+    }
+    
+  }
+  
+.entered {
+    -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+  
+@-webkit-keyframes text-focus-in {
+      0% {
+          -webkit-filter: blur(12px);
+                  filter: blur(12px);
+          opacity: 0;
+      }
+      100% {
+          -webkit-filter: blur(0px);
+                  filter: blur(0px);
+          opacity: 1;
+      }
+}
+
+@keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+                filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-filter: blur(0px);
+                filter: blur(0px);
+        opacity: 1;
+    }
+}
+  
+  
+#v0 {
+    width: 100%;
+    height: 500vh;
+
+    canvas{
+        position: sticky;
+        position: sticky;
+        top: 0;
+        right: 0;
+    }
+  
+}
+  
+#images {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: top;
+    aspect-ratio: auto;
+}
+  
+  
+  

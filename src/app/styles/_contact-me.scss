@@ -1,0 +1,33 @@
+#contactUs{
+    display: none;
+    height: 380px;
+    padding: 1rem 0 0 0;
+}
+
+.show-contactUs{
+    height: 450px;
+    width: 50vw !important;
+    border-radius: 22px;
+}
+
+.formLabel{
+    margin-bottom: 4px;
+}
+
+.form-buttons{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-buttons button{
+    width: 200px;
+    background-color: #a920ff;
+    border-color: #a920ff;
+    /* background-color: #01FF40;
+    border-color: #01FF40; */
+}
+
+.form-buttons button:hover{
+    background-color: #830fcc;
+    border-color: #830fcc;
+}

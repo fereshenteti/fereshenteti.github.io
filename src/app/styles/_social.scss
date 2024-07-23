@@ -1,0 +1,35 @@
+#social{
+    display: none;
+    height: 180px;
+}
+
+.show-social{
+    height: 300px;
+    width: 45vw !important;
+    border-radius: 30px;
+}
+
+.social-container{
+    margin: 2rem 0 0 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.socialBox{
+    margin-top: 1rem;
+    padding: 0.1rem;
+    color: white;
+    text-decoration: none;
+    font-size: larger;
+}
+
+.socialBox:hover{
+    color: #01ff40;
+}
+
+.social-icon{
+    width: 30px;
+    height: 30px;
+    fill: white;
+    margin-right: 1rem;
+}
