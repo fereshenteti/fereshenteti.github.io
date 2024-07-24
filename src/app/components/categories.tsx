@@ -124,21 +124,40 @@ const MyCategories = () => {
             </div>
 
             <div className='categories'>
+
+                {/* Frontend */}
                 <div className='for-borders'>
-                    <div id="photoRef"
-                        ref={photoRef}
-                        onMouseEnter={() => photoHoverHandle(true)}
-                        onMouseLeave={() => photoHoverHandle(false)}
-                        className='category cat-photography'
+                    <div id="feRef"
+                        ref={feRef}
+                        onMouseEnter={() => feHoverHandle(true)}
+                        onMouseLeave={() => feHoverHandle(false)}
+                        className='category cat-code'
                         >
                         <div className='cat-overlay'></div>
-                        <CameraIcon className='cat-icon'/>
-                        <h4 className='cat-title'>Photography</h4>
-                        <h4 className='cat-title cat-title-fr tr'>Photographie</h4>
-                        <h4 className='cat-title cat-title-ar tr'>تصوير</h4>
+                        <CodeIcon className='cat-icon'/>
+                        <h4 className='cat-title'>Front-End dev.</h4>
+                        <h4 className='cat-title cat-title-fr tr'>dév. Front-End</h4>
+                        <h4 className='cat-title cat-title-ar tr'>برمجة الواجهات</h4>
                     </div>
                 </div>
 
+                {/* UI UX Design */}
+                <div className='for-borders'>
+                    <div id="uiuxRef"
+                        ref={uiuxRef}
+                        onMouseEnter={() => uiuxHoverHandle(true)}
+                        onMouseLeave={() => uiuxHoverHandle(false)}
+                        className='category cat-uiux'
+                        >
+                        <div className='cat-overlay'></div>
+                        <UIUXIcon className='cat-icon'/>
+                        <h4 className='cat-title'>UI / UX design</h4>
+                        <h4 className='cat-title cat-title-fr tr'>design UI / UX</h4>
+                        <h4 className='cat-title cat-title-ar tr'>تصميم</h4>
+                    </div>
+                </div>
+
+                {/* Illustration */}
                 <div className='for-borders'>
                     <div id="illRef"
                         ref={illRef}
@@ -154,6 +173,7 @@ const MyCategories = () => {
                     </div>
                 </div>
 
+                {/* Voice Over */}
                 <div className='for-borders'>
                     <div id="voRef"
                         ref={voRef}
@@ -170,37 +190,24 @@ const MyCategories = () => {
                     </div>
                 </div>
 
-                <div className='for-borders'>
-                    <div id="uiuxRef"
-                        ref={uiuxRef}
-                        onMouseEnter={() => uiuxHoverHandle(true)}
-                        onMouseLeave={() => uiuxHoverHandle(false)}
-                        className='category cat-uiux'
+                {/* Photography */}
+                {/* <div className='for-borders'>
+                    <div id="photoRef"
+                        ref={photoRef}
+                        onMouseEnter={() => photoHoverHandle(true)}
+                        onMouseLeave={() => photoHoverHandle(false)}
+                        className='category cat-photography'
                         >
                         <div className='cat-overlay'></div>
-                        <UIUXIcon className='cat-icon'/>
-                        <h4 className='cat-title'>UI / UX design</h4>
-                        <h4 className='cat-title cat-title-fr tr'>design UI / UX</h4>
-                        <h4 className='cat-title cat-title-ar tr'>تصميم</h4>
+                        <CameraIcon className='cat-icon'/>
+                        <h4 className='cat-title'>Photography</h4>
+                        <h4 className='cat-title cat-title-fr tr'>Photographie</h4>
+                        <h4 className='cat-title cat-title-ar tr'>تصوير</h4>
                     </div>
-                </div>
+                </div> */}
 
-                <div className='for-borders'>
-                    <div id="feRef"
-                        ref={feRef}
-                        onMouseEnter={() => feHoverHandle(true)}
-                        onMouseLeave={() => feHoverHandle(false)}
-                        className='category cat-code'
-                        >
-                        <div className='cat-overlay'></div>
-                        <CodeIcon className='cat-icon'/>
-                        <h4 className='cat-title'>Front-End dev.</h4>
-                        <h4 className='cat-title cat-title-fr tr'>dév. Front-End</h4>
-                        <h4 className='cat-title cat-title-ar tr'>برمجة الواجهات</h4>
-                    </div>
-                </div>
-
-                <div className='for-borders'>
+                {/* Translation */}
+                {/* <div className='for-borders'>
                     <div id="trRef"
                         ref={trRef}
                         onMouseEnter={() => trHoverHandle(true)}
@@ -213,7 +220,7 @@ const MyCategories = () => {
                         <h4 className='cat-title cat-title-fr tr'>Traductions</h4>
                         <h4 className='cat-title cat-title-ar tr'>ترجمة</h4>
                     </div>
-                </div>
+                </div> */}
 
             </div>
 

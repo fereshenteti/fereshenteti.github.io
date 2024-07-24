@@ -1,7 +1,7 @@
 .detailed-categories{
 
     .detailed-category{
-        height: 70vh;
+        min-height: 80vh;
         display: flex;
         margin-bottom: 3rem;
         >div{
@@ -29,6 +29,7 @@
 
     .detailed-category.frontend{
         background-color: #eeeeee;
+        height: 80vh;
     }
 
     .detailed-category.uiux{
@@ -60,6 +61,7 @@
                     width: 100%;
                     height: fit-content;
                     object-fit: contain;
+                    pointer-events: none;
                 }
                 .culture-tech-img{
                     max-width: 270px;

@@ -1,18 +1,21 @@
-#social{
-    display: none;
-    height: 180px;
+#social-media-container{
+    // display: none;
+    // height: 180px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
 }
 
 .show-social{
-    height: 300px;
+    height: 180px;
     width: 45vw !important;
     border-radius: 30px;
 }
 
 .social-container{
-    margin: 2rem 0 0 2rem;
+    // margin: 2rem 0 0 2rem;
     display: flex;
-    flex-direction: column;
 }
 
 .socialBox{
