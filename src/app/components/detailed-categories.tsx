@@ -188,7 +188,8 @@ const DetailedCategories = () => {
                 
                 <div className="section-info">
                     <h1>Voice Over</h1>
-                    <p>I am also passionate about documentaries and dubbing, thus I found my other hidden talent: the voice over! Besides, I discovered that I can even impersonate many characters and voice-styles with my original voice!</p>
+                    <p>I am also passionate about documentaries and dubbing, thus I found my other hidden talent: the voice over!</p>
+                    <p>Besides, I discovered that I can even impersonate many characters and voice-styles with my original voice!</p>
                     <div className="section-info-buttons">
 
                         <a href="https://www.youtube.com/@FeresVocalArts" target="_blank">

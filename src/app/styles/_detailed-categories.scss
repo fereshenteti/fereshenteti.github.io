@@ -328,12 +328,21 @@
         background-attachment: fixed;
         box-shadow: 0 0 140px 70px black inset;
         .section-info{
-            max-width: 900px;
+            max-width: 1000px;
             height: 540px;
             margin: auto;
             color: lightgray;
             flex: auto;
             align-items: center;
+            p{
+                margin: 0;
+                &:first-of-type{
+                    margin-top: 2rem;
+                }
+                &:last-of-type{
+                    margin-bottom: 2rem;
+                }
+            }
             .section-info-buttons{
                 .button-tiktok{
                     border-color: #EE1E52;
