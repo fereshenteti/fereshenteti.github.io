@@ -25,6 +25,7 @@ const ContactMe = (props: {boxRef: string}) => {
     const [messageError, setMessageError] = useState<string|undefined>();
 
     const [isSending, setIsSending]= useState(false);
+    const [sentSuccess, setSentSuccess] = useState(true);
 
     const isButtonDisabled = 
             name === undefined || name.trim() === ""
@@ -56,12 +57,11 @@ const ContactMe = (props: {boxRef: string}) => {
             })
             .then(
                 () => {
-                    console.log('SUCCESS!');
                     setIsSending(false);
-                    form.current.reset()
+                    setSentSuccess(true);
                 },
                 (error) => {
-                    console.log('FAILED...', error.text);
+                    console.error('sending FAILED!!', error.text);
                     setIsSending(false);
                 },
             );
@@ -81,6 +81,9 @@ const ContactMe = (props: {boxRef: string}) => {
     }
 
     return (
+        sentSuccess ?
+        <div className="success">Your request has been sent successfully! I will check it as soon as I can! Much appreciated :)</div>
+        :
         <Form ref={form}>
 
             <div className="name-email-wrapper">
