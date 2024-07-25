@@ -183,40 +183,54 @@ const DetailedCategories = () => {
                 </div>
             </div>
 
-
             {/* Voice Over */}
             <div className="detailed-category voice-over">
                 
-                <div className="left-side">
-                    <div className="section-info">
-                        <h1>Voice Over</h1>
-                        <p>I am also passionate about documentaries and dubbing, thus I found my other hidden talent: the voice over! Furthermore, I discovered that I can even impersonate many characters and voice-styles with my original voice!</p>
-                        <div className="section-info-buttons">
-                            <a href="https://www.tiktok.com/@fereshenteti" target="_blank">
-                                <MyCustomButton btnIcon="assets/icons/tiktok-logo.svg" btnText="Explore more on my TikTok channel" className="button-tiktok"/>
-                            </a>
-                        </div>
+                <div className="section-info">
+                    <h1>Voice Over</h1>
+                    <p>I am also passionate about documentaries and dubbing, thus I found my other hidden talent: the voice over!</p>
+                    <p>Besides, I discovered that I can even impersonate many characters and voice-styles with my original voice!</p>
+                    <div className="section-info-buttons">
+
+                        <a href="https://www.youtube.com/@FeresVocalArts" target="_blank">
+                            <MyCustomButton btnIcon="assets/icons/youtube-logo.svg" btnText="Explore more on my Youtube channel" className="button-youtube"/>
+                        </a>
+
+                        <a href="https://www.tiktok.com/@fereshenteti" target="_blank">
+                            <MyCustomButton btnIcon="assets/icons/tiktok-logo.svg" btnText="Explore more on my TikTok channel" className="button-tiktok"/>
+                        </a>
+
                     </div>
                 </div>
 
-                <div className="right-side">
+                {/* <div className="tiktok-samples">
 
-                    {/* <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@fereshenteti/video/7195640772954197254" data-video-id="7195640772954197254">
+                    <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@fereshenteti/video/7195640772954197254" data-video-id="7195640772954197254">
                         <section> <a target="_blank" title="@fereshenteti" href="https://www.tiktok.com/@fereshenteti?refer=embed">@fereshenteti</a> 7 voices, 1 person 🎙️ <a title="voice" target="_blank" href="https://www.tiktok.com/tag/voice?refer=embed">#voice</a> <a title="acting" target="_blank" href="https://www.tiktok.com/tag/acting?refer=embed">#acting</a> <a title="actor" target="_blank" href="https://www.tiktok.com/tag/actor?refer=embed">#actor</a> <a title="voiceacting" target="_blank" href="https://www.tiktok.com/tag/voiceacting?refer=embed">#VoiceActing</a> <a title="voiceactor" target="_blank" href="https://www.tiktok.com/tag/voiceactor?refer=embed">#VoiceActor</a> <a title="voiceover" target="_blank" href="https://www.tiktok.com/tag/voiceover?refer=embed">#VoiceOver</a> <a title="japanese" target="_blank" href="https://www.tiktok.com/tag/japanese?refer=embed">#japanese</a> <a title="anime" target="_blank" href="https://www.tiktok.com/tag/anime?refer=embed">#anime</a> <a title="hisoka" target="_blank" href="https://www.tiktok.com/tag/hisoka?refer=embed">#hisoka</a> <a title="hxh" target="_blank" href="https://www.tiktok.com/tag/hxh?refer=embed">#hxh</a> <a title="hunterxhunter" target="_blank" href="https://www.tiktok.com/tag/hunterxhunter?refer=embed">#hunterxhunter</a> <a title="onepiece" target="_blank" href="https://www.tiktok.com/tag/onepiece?refer=embed">#onepiece</a> <a title="zoro" target="_blank" href="https://www.tiktok.com/tag/zoro?refer=embed">#zoro</a> <a title="anya" target="_blank" href="https://www.tiktok.com/tag/anya?refer=embed">#anya</a> <a title="spyfamily" target="_blank" href="https://www.tiktok.com/tag/spyfamily?refer=embed">#spyfamily</a> <a title="spyxfamily" target="_blank" href="https://www.tiktok.com/tag/spyxfamily?refer=embed">#spyxfamily</a> <a title="zenozoldyck" target="_blank" href="https://www.tiktok.com/tag/zenozoldyck?refer=embed">#zenozoldyck</a> <a title="zoldyck" target="_blank" href="https://www.tiktok.com/tag/zoldyck?refer=embed">#zoldyck</a> <a title="pain" target="_blank" href="https://www.tiktok.com/tag/pain?refer=embed">#pain</a> <a title="naruto" target="_blank" href="https://www.tiktok.com/tag/naruto?refer=embed">#naruto</a> <a title="almightypush" target="_blank" href="https://www.tiktok.com/tag/almightypush?refer=embed">#almightypush</a> <a title="boruto" target="_blank" href="https://www.tiktok.com/tag/boruto?refer=embed">#boruto</a> <a title="jigen" target="_blank" href="https://www.tiktok.com/tag/jigen?refer=embed">#jigen</a> <a title="isshiki" target="_blank" href="https://www.tiktok.com/tag/isshiki?refer=embed">#isshiki</a> <a title="kawaki" target="_blank" href="https://www.tiktok.com/tag/kawaki?refer=embed">#kawaki</a> <a target="_blank" title="♬ original sound - Feres Henteti" href="https://www.tiktok.com/music/original-sound-7195640769142344453?refer=embed">♬ original sound - Feres Henteti</a> </section>
                         
-                    </blockquote> */}
+                    </blockquote>
 
                     <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@fereshenteti/video/7183101656488267014" data-video-id="7183101656488267014">
                         <section> <a target="_blank" title="@fereshenteti" href="https://www.tiktok.com/@fereshenteti?refer=embed">@fereshenteti</a> New <a title="voiceover" target="_blank" href="https://www.tiktok.com/tag/voiceover?refer=embed">#VoiceOver</a> for <a title="mercedes" target="_blank" href="https://www.tiktok.com/tag/mercedes?refer=embed">#Mercedes</a> <a title="benz" target="_blank" href="https://www.tiktok.com/tag/benz?refer=embed">#Benz</a> <a title="commercial" target="_blank" href="https://www.tiktok.com/tag/commercial?refer=embed">#Commercial</a> 🎙️ <a title="luxury" target="_blank" href="https://www.tiktok.com/tag/luxury?refer=embed">#Luxury</a> <a title="mercedesbenz" target="_blank" href="https://www.tiktok.com/tag/mercedesbenz?refer=embed">#MercedesBenz</a> <a title="amg" target="_blank" href="https://www.tiktok.com/tag/amg?refer=embed">#AMG</a> <a title="cars" target="_blank" href="https://www.tiktok.com/tag/cars?refer=embed">#Cars</a> <a title="brand" target="_blank" href="https://www.tiktok.com/tag/brand?refer=embed">#Brand</a> <a title="security" target="_blank" href="https://www.tiktok.com/tag/security?refer=embed">#Security</a>  @Mercedes-Benz @mercedesbenzusa <a target="_blank" title="♬ original sound - Feres Henteti" href="https://www.tiktok.com/music/original-sound-7183101665737132806?refer=embed">♬ original sound - Feres Henteti</a> </section>
                     </blockquote>
 
-                    {/* <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@fereshenteti/video/7199353941899939078" data-video-id="7199353941899939078">
+                    <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@fereshenteti/video/7199353941899939078" data-video-id="7199353941899939078">
                         <section> <a target="_blank" title="@fereshenteti" href="https://www.tiktok.com/@fereshenteti?refer=embed">@fereshenteti</a> Une <a title="fragrance" target="_blank" href="https://www.tiktok.com/tag/fragrance?refer=embed">#fragrance</a> magnifique pour donner du sens à vos <a title="valentines" target="_blank" href="https://www.tiktok.com/tag/valentines?refer=embed">#valentines</a> ✌️😁 Mon script, ma voix, vidéo par Chanel (NB : cette vidéo n’est pas sponsorisée par Chanel, je l’avais créée à volonté) <a title="chanel" target="_blank" href="https://www.tiktok.com/tag/chanel?refer=embed">#Chanel</a> <a title="saintvalentin" target="_blank" href="https://www.tiktok.com/tag/saintvalentin?refer=embed">#SaintValentin</a> <a title="valentines" target="_blank" href="https://www.tiktok.com/tag/valentines?refer=embed">#valentines</a> <a title="parfum" target="_blank" href="https://www.tiktok.com/tag/parfum?refer=embed">#Parfum</a> <a title="elegance" target="_blank" href="https://www.tiktok.com/tag/elegance?refer=embed">#elegance</a> <a title="fragrance" target="_blank" href="https://www.tiktok.com/tag/fragrance?refer=embed">#fragrance</a> <a title="couple" target="_blank" href="https://www.tiktok.com/tag/couple?refer=embed">#couple</a> <a title="couples" target="_blank" href="https://www.tiktok.com/tag/couples?refer=embed">#couples</a> <a title="lux" target="_blank" href="https://www.tiktok.com/tag/lux?refer=embed">#lux</a> <a title="luxury" target="_blank" href="https://www.tiktok.com/tag/luxury?refer=embed">#luxury</a> <a title="perfume" target="_blank" href="https://www.tiktok.com/tag/perfume?refer=embed">#perfume</a> <a title="paris" target="_blank" href="https://www.tiktok.com/tag/paris?refer=embed">#Paris</a> <a title="france" target="_blank" href="https://www.tiktok.com/tag/france?refer=embed">#France</a> <a title="dance" target="_blank" href="https://www.tiktok.com/tag/dance?refer=embed">#dance</a> <a title="lune" target="_blank" href="https://www.tiktok.com/tag/lune?refer=embed">#lune</a> <a title="reves" target="_blank" href="https://www.tiktok.com/tag/reves?refer=embed">#reves</a> <a title="moon" target="_blank" href="https://www.tiktok.com/tag/moon?refer=embed">#moon</a> <a title="dream" target="_blank" href="https://www.tiktok.com/tag/dream?refer=embed">#dream</a> <a title="dreams" target="_blank" href="https://www.tiktok.com/tag/dreams?refer=embed">#dreams</a> <a title="imagination" target="_blank" href="https://www.tiktok.com/tag/imagination?refer=embed">#imagination</a> <a title="futur" target="_blank" href="https://www.tiktok.com/tag/futur?refer=embed">#futur</a> <a title="future" target="_blank" href="https://www.tiktok.com/tag/future?refer=embed">#future</a> @Chanel <a target="_blank" title="♬ original sound - Feres Henteti" href="https://www.tiktok.com/music/original-sound-7199354042592873222?refer=embed">♬ original sound - Feres Henteti</a> </section>
-                        
-                    </blockquote> */}
+                    </blockquote>
 
                     
+                </div> */}
+
+                <div className="youtube-samples">
+
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/_RaOiJWVGDY?si=Bih9uIRhamS8DSwT" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/VRbcYSAIhqQ?si=uXWDJycbizB4AD4U" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/LqnknSnzb3g?si=fh9vFMduA6ZyEku5" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+
                 </div>
+
             </div>
 
 

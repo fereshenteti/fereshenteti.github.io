@@ -4,11 +4,12 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import MyCategories from "./components/categories";
 import ContactMe from "./components/contact-me";
 import Social from "./components/social";
 import DetailedCategories from './components/detailed-categories';
+import Footer from './components/footer';
 
 
 gsap.registerPlugin(useGSAP);
@@ -18,8 +19,22 @@ const Home = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState([false, false, false]);
   const imageSequenceContainerRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+  }, [])
+
+  useEffect(() => {
+    const boxes: any[] = gsap.utils.toArray('.boxRef');
+
+    boxes.forEach((box, i) => {
+        const anim = gsap.fromTo(box, {autoAlpha: 0, y: 50}, {duration: 0.5, delay: i/10, autoAlpha: 1, y: 0});
+        ScrollTrigger.create({
+          trigger: box,
+          animation: anim,
+          toggleActions: 'play none none none',
+          once: true,
+        });
+    });
 
     let canvas = document.getElementById('images') as HTMLCanvasElement;
     if(canvas) initCanvas(canvas);
@@ -157,11 +172,11 @@ const Home = () => {
           </div>
 
           <div id='contactUs' className={selectedMenuItem[1] ? 'show-header-content' : ''}>
-            {selectedMenuItem[1] && <ContactMe/>}
+            {selectedMenuItem[1] && <ContactMe boxRef="topMenuBoxRef"/>}
           </div>
 
-          <div id='social' className={selectedMenuItem[2] ? 'show-header-content' : ''}>
-            {selectedMenuItem[2] && <Social/>}
+          <div id='social-media-container' className={selectedMenuItem[2] ? 'show-header-content' : ''}>
+            {selectedMenuItem[2] && <Social boxRef="topMenuBoxRef"/>}
           </div>
 
         </div>
@@ -222,6 +237,8 @@ const Home = () => {
       <MyCategories/>
 
       <DetailedCategories/>
+
+      <Footer/>
 
     </div>
   )

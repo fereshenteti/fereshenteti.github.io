@@ -1,7 +1,7 @@
 .detailed-categories{
 
     .detailed-category{
-        height: 70vh;
+        min-height: 80vh;
         display: flex;
         margin-bottom: 3rem;
         >div{
@@ -29,6 +29,7 @@
 
     .detailed-category.frontend{
         background-color: #eeeeee;
+        height: 80vh;
     }
 
     .detailed-category.uiux{
@@ -60,6 +61,7 @@
                     width: 100%;
                     height: fit-content;
                     object-fit: contain;
+                    pointer-events: none;
                 }
                 .culture-tech-img{
                     max-width: 270px;
@@ -125,6 +127,7 @@
         max-width: 100vw;
         position: relative;
         background-color: #a4e4ff;
+        margin-bottom: 0;
         .section-info{
             width: 100%;
             display: flex;
@@ -314,20 +317,58 @@
     }
 
     .detailed-category.voice-over{
+        flex-direction: column;
+        background-color: #2b2c40;
+        position: relative;
+        background-image: url('/assets/backgrounds/MV7.webp');
+        background-size: 360px;
+        background-repeat: no-repeat;
+        background-position-y: top;
+        background-position-x: 100px;
+        background-attachment: fixed;
+        box-shadow: 0 0 140px 70px black inset;
         .section-info{
+            max-width: 1000px;
+            height: 540px;
+            margin: auto;
+            color: lightgray;
+            flex: auto;
+            align-items: center;
+            p{
+                margin: 0;
+                &:first-of-type{
+                    margin-top: 2rem;
+                }
+                &:last-of-type{
+                    margin-bottom: 2rem;
+                }
+            }
             .section-info-buttons{
                 .button-tiktok{
                     border-color: #EE1E52;
                     // color: #68C9D0;
-                    color: black;
+                    color: lightgray;
                     &:hover{
                         text-shadow: 1px 1px 0px #EE1E52, -1px -1px 0 #68C9D0;
                     }
                 }
+                .button-youtube{
+                    border-color: #FF0000;
+                    // color: #FF0000;
+                    color: lightgray;
+                }
             }
         }
-        .tiktok-embed{
-            max-width: 605px;
+        .youtube-samples{
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 6rem;
+            iframe{
+                max-width: 400px;
+                height: auto;
+                aspect-ratio: 16 / 9;
+            }
         }
     }
 }
