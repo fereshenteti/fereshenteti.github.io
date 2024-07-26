@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import emailjs from '@emailjs/browser';
 import CircularProgress from '@mui/material/CircularProgress';
+import { Player } from '@lottiefiles/react-lottie-player';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const SERVICE_ID = "service_qvbog4w";
 const TEMPLATE_ID = "template_9e0b50x";
@@ -25,7 +27,7 @@ const ContactMe = (props: {boxRef: string}) => {
     const [messageError, setMessageError] = useState<string|undefined>();
 
     const [isSending, setIsSending]= useState(false);
-    const [sentSuccess, setSentSuccess] = useState(true);
+    const [sentSuccess, setSentSuccess] = useState(false);
 
     const isButtonDisabled = 
             name === undefined || name.trim() === ""
@@ -82,7 +84,20 @@ const ContactMe = (props: {boxRef: string}) => {
 
     return (
         sentSuccess ?
-        <div className="success">Your request has been sent successfully! I will check it as soon as I can! Much appreciated :)</div>
+        <div className="contact-success">
+            <CheckCircleOutlineIcon/>
+            <p>
+                Your request has been sent successfully! I will check it as soon as I can! Thank you for contacting me :)
+            </p>
+
+            {/*<Player
+                src='https://lottie.host/6997700d-a130-4641-a2cd-cb5a9d949d9e/ZSXNEiUr0q.json'
+                className="lottie-player"
+                loop={false}
+                autoplay
+            />
+            */}
+        </div>
         :
         <Form ref={form}>
 

@@ -1,6 +1,7 @@
 .footer{
     min-height: 50vh;
     display: flex;
+    flex-wrap: wrap;
     .left-side, .right-side{
         flex: 1;
         padding: 4rem;
@@ -8,10 +9,14 @@
     .right-side{
         align-items: flex-start;
         flex-direction: column;
+        padding-left: 1rem;
         form{
             width: 100%;
             margin-top: 1rem;
         }
+    }
+    .left-side{
+        padding-right: 1rem;
     }
     .footer-content{
         width: 100%;
@@ -35,6 +40,22 @@
             flex-direction: row;
             .socialBox{
                 color: black;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .footer{
+        flex-direction: column-reverse;
+        .right-side{
+            padding-left: 4rem;
+        }
+        .left-side{
+            .footer-content{
+                h1{
+                    font-size: 68px;
+                }
             }
         }
     }
