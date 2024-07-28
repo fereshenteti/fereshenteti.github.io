@@ -25,42 +25,42 @@ const DetailedCategories = () => {
                         <div className="front-dev-images scroller_inner scroller_inner_1">
                             
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/sedeo 1.png" width={300} height={200} alt="Sedeo"/>
+                                <img src="assets/frontend_projects/sedeo 1.png" alt="Sedeo"/>
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/value 1.png" width={300} height={200} alt="Value Digital Services"/>
+                                <img src="assets/frontend_projects/value 1.png" alt="Value Digital Services"/>
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/embs 1.png" width={300} height={200} alt="eMBS"/>
+                                <img src="assets/frontend_projects/embs 1.png" alt="eMBS"/>
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/instaclear 1.png" width={300} height={200} alt="Instaclear"/>
+                                <img src="assets/frontend_projects/instaclear 1.png" alt="Instaclear"/>
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/kpeiz.png" width={300} height={200} alt="Kpeiz"/>
+                                <img src="assets/frontend_projects/kpeiz.png" alt="Kpeiz"/>
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/embs 2.png" width={300} height={200} alt="eMBS"/>
+                                <img src="assets/frontend_projects/embs 2.png" alt="eMBS"/>
                             </div>
                             
                             {/* DUPLICATES JUST FOR ANIMATION */}
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/sedeo 1.png" width={300} height={200} alt="Sedeo"/>
+                                <img src="assets/frontend_projects/sedeo 1.png" alt="Sedeo"/>
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/value 1.png" width={300} height={200} alt="Value Digital Services"/>
+                                <img src="assets/frontend_projects/value 1.png" alt="Value Digital Services"/>
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/embs 1.png" width={300} height={200} alt="eMBS"/>
+                                <img src="assets/frontend_projects/embs 1.png" alt="eMBS"/>
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/instaclear 1.png" width={300} height={200} alt="Instaclear"/>
+                                <img src="assets/frontend_projects/instaclear 1.png" alt="Instaclear"/>
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/kpeiz.png" width={300} height={200} alt="Kpeiz"/>
+                                <img src="assets/frontend_projects/kpeiz.png" alt="Kpeiz"/>
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/embs 2.png" width={300} height={200} alt="eMBS"/>
+                                <img src="assets/frontend_projects/embs 2.png" alt="eMBS"/>
                             </div>
 
                         </div>
@@ -71,42 +71,42 @@ const DetailedCategories = () => {
                         <div className="front-dev-images scroller_inner scroller_inner_2">
 
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/sedeo 2.png" width={300} height={200} alt="Sedeo"/>
+                                <img src="assets/frontend_projects/sedeo 2.png" alt="Sedeo"/>
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/sedeo 3.png" width={300} height={200} alt="Sedeo"/>
+                                <img src="assets/frontend_projects/sedeo 3.png" alt="Sedeo"/>
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/value 2.png" width={300} height={200} alt="Value Digital Services"/>
+                                <img src="assets/frontend_projects/value 2.png" alt="Value Digital Services"/>
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/instaclear 2.png" width={300} height={200} alt="Instaclear"/>
+                                <img src="assets/frontend_projects/instaclear 2.png" alt="Instaclear"/>
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/instaclear 3.png" width={300} height={200} alt="Instaclear"/>
+                                <img src="assets/frontend_projects/instaclear 3.png" alt="Instaclear"/>
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/embs 3.png" width={300} height={200} alt="eMBS"/>
+                                <img src="assets/frontend_projects/embs 3.png" alt="eMBS"/>
                             </div>
                             
                             {/* DUPLICATES JUST FOR ANIMATION */}
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/sedeo 2.png" width={300} height={200} alt="Sedeo"/>
+                                <img src="assets/frontend_projects/sedeo 2.png" alt="Sedeo"/>
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/sedeo 3.png" width={300} height={200} alt="Sedeo"/>
+                                <img src="assets/frontend_projects/sedeo 3.png" alt="Sedeo"/>
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/value 2.png" width={300} height={200} alt="Value Digital Services"/>
+                                <img src="assets/frontend_projects/value 2.png" alt="Value Digital Services"/>
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/instaclear 2.png" width={300} height={200} alt="Instaclear"/>
+                                <img src="assets/frontend_projects/instaclear 2.png" alt="Instaclear"/>
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/instaclear 3.png" width={300} height={200} alt="Instaclear"/>
+                                <img src="assets/frontend_projects/instaclear 3.png" alt="Instaclear"/>
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/embs 3.png" width={300} height={200} alt="eMBS"/>
+                                <img src="assets/frontend_projects/embs 3.png" alt="eMBS"/>
                             </div>
 
                         </div>

@@ -45,6 +45,8 @@
     }
 }
 
+
+
 @media only screen and (max-width: 900px) {
     .footer{
         flex-direction: column-reverse;
@@ -55,6 +57,28 @@
             .footer-content{
                 h1{
                     font-size: 68px;
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .footer{
+        .right-side, .left-side{
+            padding: 2rem 1rem;
+        }
+        .left-side{
+            padding-bottom: 4rem;
+        }
+        .left-side{
+            .footer-content{
+                h1{
+                    line-height: 0.9;
+                }
+                p{
+                    margin-top: 10px;
                 }
             }
         }

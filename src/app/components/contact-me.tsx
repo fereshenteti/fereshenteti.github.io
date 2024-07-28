@@ -12,7 +12,7 @@ const SERVICE_ID = "service_qvbog4w";
 const TEMPLATE_ID = "template_9e0b50x";
 const PUBLIC_KEY = "rcn90UAeivk5_64XM";
 
-const ContactMe = (props: {boxRef: string}) => {
+const ContactMe = (props: {boxRef?: string}) => {
 
     const {boxRef} = props;
     const form = useRef<any>();
@@ -36,17 +36,19 @@ const ContactMe = (props: {boxRef: string}) => {
             || message === undefined || message.trim() === ""
 
     useEffect(() => {
-        const boxes: any[] = gsap.utils.toArray(`.${boxRef}`);
-
-        boxes.forEach((box, i) => {
-            const anim = gsap.fromTo(box, {autoAlpha: 0, y: 50}, {duration: 0.5, delay: i/10, autoAlpha: 1, y: 0});
-            ScrollTrigger.create({
-              trigger: box,
-              animation: anim,
-              toggleActions: 'play none none none',
-              once: true,
+        if(boxRef){
+            const boxes: any[] = gsap.utils.toArray(`.${boxRef}`);
+    
+            boxes.forEach((box, i) => {
+                const anim = gsap.fromTo(box, {autoAlpha: 0, y: 50}, {duration: 0.5, delay: i/10, autoAlpha: 1, y: 0});
+                ScrollTrigger.create({
+                  trigger: box,
+                  animation: anim,
+                  toggleActions: 'play none none none',
+                  once: true,
+                });
             });
-        });
+        }
     }, []);
 
     const sendEmail = (e: any) => {

@@ -157,6 +157,9 @@
                 margin-right: auto;
                 max-width: 800px;
             }
+            .section-info-buttons>a, p{
+                backdrop-filter: blur(8px);
+            }
             .goku-img{
                 position: absolute;
                 height: 500px;
@@ -328,7 +331,7 @@
             max-width: 1000px;
             height: 540px;
             margin: auto;
-            color: lightgray;
+            color: white;
             flex: auto;
             align-items: center;
             h1, p{
@@ -336,6 +339,7 @@
             }
             p{
                 margin: 0;
+                backdrop-filter: blur(8px);
                 &:first-of-type{
                     margin-top: 2rem;
                 }
@@ -344,6 +348,7 @@
                 }
             }
             .section-info-buttons{
+                backdrop-filter: blur(8px);
                 .button-tiktok{
                     border-color: #EE1E52;
                     // color: #68C9D0;
@@ -410,6 +415,9 @@
             margin-block: 8px;
             box-shadow: 0px 0px 8px 0px #681db5;
             img{
+                width: 300px;
+                height: 200px;
+                aspect-ratio: 3 / 2;
                 object-fit: cover;
                 object-position: top center;
             }
@@ -513,8 +521,8 @@
                         font-size: 68px;
                     }
                     p{
-                        background-color: #ffffffda;
-                        box-shadow: 0px 0px 8px 5px white;
+                        background-color: #a4e4ffa3;
+                        box-shadow: 0px 0px 8px 5px #a4e4ffa3;
                         z-index: 2000;
                     }
                     .goku-img{
@@ -539,6 +547,87 @@
                             text-shadow: 3px 3px 3px #2a2b3e;
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .detailed-categories{
+        .detailed-category{
+            .section-info{
+                padding: 2rem 1rem;
+                h1{
+                    font-size: 2.4rem !important;
+                    margin: 0;
+                }
+                .section-info-buttons{
+                    flex-direction: column;
+                }
+            }
+
+            .front-dev-images-wrapper{
+                .front-dev-images{
+                    .front-dev-image{
+                        img{
+                            width: 160px;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+
+            &.illustrations{
+                .section-info{
+                    p{
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            &.uiux{
+                .right-side{
+                    .showcase-uiux{
+                        height: 60vh;
+                        &.culture-tech{
+                            img{
+                                max-width: 160px !important;
+                                width: 160px !important;
+                            }
+                            .culture-tech-img-2{
+                                left: 0;
+                            }
+                            .culture-tech-img-3{
+                                right: 0;
+                            }
+                        }
+                        &.guido{
+                            .guido-img{
+                                max-width: 160px !important;
+                                width: 160px !important;
+                            }
+                            .guido-img-2, .guido-img-3{
+                                max-width: 140px !important;
+                                width: 140px !important;
+                            }
+                            .guido-img-2{
+                                left: 10px;
+                            }
+                            .guido-img-3{
+                                right: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.voice-over{
+                background-size: 300px;
+                background-position-x: 40px;
+                .youtube-samples{
+                    padding: 0 1rem;
                 }
             }
         }

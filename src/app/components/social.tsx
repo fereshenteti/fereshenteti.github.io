@@ -2,22 +2,24 @@ import { gsap } from "gsap";
 import { useEffect } from 'react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const Social = (props: {boxRef: string}) => {
+const Social = (props: {boxRef?: string}) => {
 
     const {boxRef} = props;
 
     useEffect(() => {
-        const boxes: any[] = gsap.utils.toArray(`.${boxRef}`);
-
-        boxes.forEach((box, i) => {
-            const anim = gsap.fromTo(box, {autoAlpha: 0, y: 50}, {duration: 0.5, delay: i/10, autoAlpha: 1, y: 0});
-            ScrollTrigger.create({
-              trigger: box,
-              animation: anim,
-              toggleActions: 'play none none none',
-              once: true,
+        if(boxRef){
+            const boxes: any[] = gsap.utils.toArray(`.${boxRef}`);
+    
+            boxes.forEach((box, i) => {
+                const anim = gsap.fromTo(box, {autoAlpha: 0, y: 50}, {duration: 0.5, delay: i/10, autoAlpha: 1, y: 0});
+                ScrollTrigger.create({
+                  trigger: box,
+                  animation: anim,
+                  toggleActions: 'play none none none',
+                  once: true,
+                });
             });
-        });
+        }
     }, []);
 
     return (
