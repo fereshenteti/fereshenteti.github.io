@@ -15,7 +15,6 @@
         opacity: 0;
         transition: opacity 0.3s ease-in-out;
         background-image: none;
-        // background-image: url('../assets/backgrounds/bg4.jpeg');
         background-size: cover;
         background-position: center;
     }
@@ -59,6 +58,9 @@
             width: 300px;
             height: 300px;
             padding: 1rem;
+            a{
+                text-decoration: none;
+            }
         }
         .category{
             width: 100%;
@@ -112,22 +114,22 @@
             transition: all 0.2s ease-in-out;
         }
         .cat-photography{
-            background-image: url('../assets/backgrounds/photography.jpeg');
+            background-image: url('/assets/backgrounds/photography.jpeg');
         }
         .cat-illustration{
-            background-image: url('../assets/backgrounds/me.jpeg');
+            background-image: url('/assets/backgrounds/me.jpeg');
         }
         .cat-voiceover{
-            background-image: url('../assets/backgrounds/me-podcast.jpg');
+            background-image: url('/assets/backgrounds/me-podcast.jpg');
         }
         .cat-uiux{
-            background-image: url('../assets/backgrounds/uiux.png');
+            background-image: url('/assets/backgrounds/uiux.png');
         }
         .cat-code{
-            background-image: url('../assets/backgrounds/code 2.jpeg');
+            background-image: url('/assets/backgrounds/code 2.jpeg');
         }
         .cat-tr{
-            background-image: url('../assets/backgrounds/hello.jpg');
+            background-image: url('/assets/backgrounds/hello.jpg');
         }
         .headphones-icon{
             opacity: 0;
@@ -136,6 +138,7 @@
             top: -30px;
             transform: translateY(-10px);
             transition: all .1s ease-in-out;
+            pointer-events: none;
         }
     }
   

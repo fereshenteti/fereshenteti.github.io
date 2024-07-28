@@ -140,7 +140,7 @@ const Home = () => {
   }
 
   return (
-    <div className="App">
+    <div className="App" id="home">
 
       <div className='header for-borders'>
         <div id='dynamic-island' className='dynamic-island'>
@@ -151,9 +151,9 @@ const Home = () => {
             </div>
             <div className='right'>
 
-              <div className={'menu-item menu-item-home ' + (selectedMenuItem[0] ? 'selected' : '')} onClick={(e) => selectMenuItem(0)} >
+              <a className={'menu-item menu-item-home ' + (selectedMenuItem[0] ? 'selected' : '')} href='#home'  onClick={(e) => selectMenuItem(0)} >
                 Home
-              </div>
+              </a>
 
               <div className={'menu-item ' + (selectedMenuItem[1] ? 'selected' : '')} onClick={(e) => selectMenuItem(1)}>
                 Contact Me 

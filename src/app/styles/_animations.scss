@@ -3,3 +3,10 @@
         transform: translate(var(--translate-to-x), var(--translate-to-y));
     }
 }
+
+
+@keyframes scroll-width {
+    to {
+        width: var(--stretch-to-width);
+    }
+}
