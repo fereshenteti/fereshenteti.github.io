@@ -47,9 +47,9 @@ const Home = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    let frameCount = 120;
+    let frameCount = 111;
     const currentFrame = (index: number) => (
-      `/assets/my_image_sequence/IMG_1122_1${(index).toString().padStart(3, '0')}.jpg`
+      `/assets/my_image_sequence/${(index).toString().padStart(5, '0')}.png`
     );
 
     let images: HTMLImageElement[] = [];
@@ -57,7 +57,7 @@ const Home = () => {
       frame: 0
     };
     
-    for (let i = 0; i < frameCount; i++) {
+    for (let i = 1; i <= frameCount; i++) {
       let img = new Image();
       img.src = currentFrame(i);
       images.push(img);
@@ -230,6 +230,10 @@ const Home = () => {
 
       </div>
 
+      <div className="my-img-bg">
+        <img className='bg-me' src="assets/backgrounds/bg-me.png"/>
+      </div>
+      
       <div id="v0" ref={imageSequenceContainerRef}>
         <canvas id='images'></canvas>
       </div>

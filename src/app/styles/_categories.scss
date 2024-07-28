@@ -140,3 +140,16 @@
     }
   
 }
+
+
+@media only screen and (max-width: 900px) {
+    .my-categories{
+        .categories{
+            >div{
+                width: 230px;
+                height: 230px;
+                padding: 0.4rem;
+            }
+        }
+    }
+}
