@@ -170,7 +170,7 @@
                 height: 500px;
                 right: 0;
                 width: 260px;
-                --stretch-to-width: 65%;
+                --stretch-to-width: 58%;
                 animation: scroll-width linear forwards;
                 animation-timeline: view();
                 animation-range: contain 0 contain 80%;
@@ -368,16 +368,14 @@
                 backdrop-filter: blur(2px);
                 .button-tiktok{
                     border-color: #EE1E52;
-                    // color: #68C9D0;
-                    color: lightgray;
+                    color: white;
                     &:hover{
                         text-shadow: 1px 1px 0px #EE1E52, -1px -1px 0 #68C9D0;
                     }
                 }
                 .button-youtube{
                     border-color: #FF0000;
-                    // color: #FF0000;
-                    color: lightgray;
+                    color: white;
                 }
             }
         }
