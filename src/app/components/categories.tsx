@@ -127,7 +127,8 @@ const MyCategories = () => {
 
                 {/* Frontend */}
                 <div className='for-borders'>
-                    <div id="feRef"
+                    <a id="feRef"
+                        href="#frontend"
                         ref={feRef}
                         onMouseEnter={() => feHoverHandle(true)}
                         onMouseLeave={() => feHoverHandle(false)}
@@ -138,12 +139,13 @@ const MyCategories = () => {
                         <h4 className='cat-title'>Front-End dev.</h4>
                         <h4 className='cat-title cat-title-fr tr'>dév. Front-End</h4>
                         <h4 className='cat-title cat-title-ar tr'>برمجة الواجهات</h4>
-                    </div>
+                    </a>
                 </div>
 
                 {/* UI UX Design */}
                 <div className='for-borders'>
-                    <div id="uiuxRef"
+                    <a id="uiuxRef"
+                        href="#uiux"
                         ref={uiuxRef}
                         onMouseEnter={() => uiuxHoverHandle(true)}
                         onMouseLeave={() => uiuxHoverHandle(false)}
@@ -154,12 +156,13 @@ const MyCategories = () => {
                         <h4 className='cat-title'>UI / UX design</h4>
                         <h4 className='cat-title cat-title-fr tr'>design UI / UX</h4>
                         <h4 className='cat-title cat-title-ar tr'>تصميم</h4>
-                    </div>
+                    </a>
                 </div>
 
                 {/* Illustration */}
                 <div className='for-borders'>
-                    <div id="illRef"
+                    <a id="illRef"
+                        href="#illustration"
                         ref={illRef}
                         onMouseEnter={() => illHoverHandle(true)}
                         onMouseLeave={() => illHoverHandle(false)}
@@ -170,12 +173,13 @@ const MyCategories = () => {
                         <h4 className='cat-title'>Illustrations</h4>
                         <h4 className='cat-title cat-title-fr tr'>Illustrations</h4>
                         <h4 className='cat-title cat-title-ar tr'>رسم</h4>
-                    </div>
+                    </a>
                 </div>
 
                 {/* Voice Over */}
                 <div className='for-borders'>
-                    <div id="voRef"
+                    <a id="voRef"
+                        href="#voiceover"
                         ref={voRef}
                         onMouseEnter={() => voHoverHandle(true)}
                         onMouseLeave={() => voHoverHandle(false)}
@@ -187,7 +191,7 @@ const MyCategories = () => {
                         <h4 className='cat-title'>Voice Over</h4>
                         <h4 className='cat-title cat-title-fr tr'>Voix Off</h4>
                         <h4 className='cat-title cat-title-ar tr'>أداء صوتي</h4>
-                    </div>
+                    </a>
                 </div>
 
                 {/* Photography */}

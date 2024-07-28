@@ -1,8 +1,6 @@
-.App {
-  overflow: hidden;
-}
+
 html{
-    overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 .header{
     position: fixed;
@@ -72,6 +70,8 @@ html{
     padding: 8px;
     margin: 0 4px;
     border-radius: 50px;
+    text-decoration: none;
+    color: white;
     cursor: pointer;
     transition: background 0.5s cubic-bezier(.42,.42,0,1);
   }

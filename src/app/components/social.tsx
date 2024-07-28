@@ -45,6 +45,10 @@ const Social = (props: {boxRef?: string}) => {
                 <img src="assets/icons/tiktok-logo.svg" className='social-icon'/>
             </a>
 
+            <a className={`socialBox ${boxRef}`} href='https://www.youtube.com/@FeresVocalArts' target="blank">
+                <img src="assets/icons/youtube-logo.svg" className='social-icon'/>
+            </a>
+
         </div>
     );
 }

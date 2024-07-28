@@ -38,6 +38,7 @@
 
     .detailed-category.uiux{
         height: 200vh;
+        overflow: clip;
         .left-side{
             align-items: flex-start;
             padding-bottom: 400px;
@@ -132,6 +133,8 @@
         position: relative;
         background-color: #a4e4ff;
         margin-bottom: 0;
+        //overflow: hidden;
+        overflow: clip;
         .section-info{
             width: 100%;
             display: flex;
@@ -139,7 +142,7 @@
             text-align: justify;
             margin: auto;
             padding-top: 0;
-            overflow-x: hidden;
+            //overflow-x: hidden;
             z-index: 10;
             h1{
                 text-align: center;
@@ -160,17 +163,19 @@
             .section-info-buttons>a, p{
                 backdrop-filter: blur(8px);
             }
-            .goku-img{
+            .goku-container{
                 position: absolute;
                 height: 500px;
                 right: 0;
-                transform: translateX(100%);
-                --translate-to-y: 0;
-                --translate-to-x: 30%;
-                animation: scroll-parallax linear forwards;
+                width: 260px;
+                --stretch-to-width: 65%;
+                animation: scroll-width linear forwards;
                 animation-timeline: view();
                 animation-range: contain 0 contain 80%;
                 z-index: 200;
+                .goku-img{
+                    height: 100%;
+                }
             }
         }
 
@@ -184,6 +189,7 @@
             top: 0;
             z-index: 1;
             opacity: 0.6;
+            overflow: hidden;
         }
 
         /* KEYFRAMES */
