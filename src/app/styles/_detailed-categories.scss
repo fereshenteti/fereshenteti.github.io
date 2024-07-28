@@ -3,7 +3,9 @@
     .detailed-category{
         min-height: 80vh;
         display: flex;
-        margin-bottom: 3rem;
+        // margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        background-color: white;
         >div{
             flex: 1;
         }
@@ -325,15 +327,23 @@
 
     .detailed-category.voice-over{
         flex-direction: column;
-        background-color: #2b2c40;
+        background-color: #00054f99;
         position: relative;
-        background-image: url('/assets/backgrounds/MV7.webp');
-        background-size: 360px;
-        background-repeat: no-repeat;
-        background-position-y: top;
-        background-position-x: 100px;
-        background-attachment: fixed;
+        // background-color: #2b2c40;
+        // background-image: url('/assets/backgrounds/MV7.webp');
+        // background-size: 360px;
+        // background-repeat: no-repeat;
+        // background-position-y: top;
+        // background-position-x: 100px;
+        // background-attachment: fixed;
         box-shadow: 0 0 140px 70px black inset;
+        .microphone-bg{
+            width: 360px;
+            position: fixed;
+            top: 0;
+            left: 100px;
+            z-index: -2000;
+        }
         .section-info{
             max-width: 1000px;
             height: 540px;
@@ -635,6 +645,11 @@
             &.voice-over{
                 background-size: 300px;
                 background-position-x: 40px;
+                box-shadow: 0 0 70px 20px black inset;
+                .microphone-bg{
+                    width: 250px;
+                    left: 50px;
+                }
                 .youtube-samples{
                     padding: 0 1rem;
                 }
