@@ -81,3 +81,14 @@
     font-size: 12px;
     color: rgb(204, 66, 66);
 }
+
+
+@media only screen and (max-width: 600px) {
+    .show-contactUs{
+        height: 540px;
+    }
+    .name-email-wrapper{
+        flex-direction: column;
+        gap: 0;
+    }
+}

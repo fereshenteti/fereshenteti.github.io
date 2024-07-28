@@ -153,3 +153,19 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 600px) {
+    .my-categories{
+        .categories{
+            width: 90%;
+            >div{
+                width: 160px;
+                height: 160px;
+                .category{
+                    padding: 0.4rem;
+                }
+            }
+        }
+    }
+}

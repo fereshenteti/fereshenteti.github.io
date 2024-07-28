@@ -1,6 +1,6 @@
-/* .App {
-  text-align: center;
-} */
+.App {
+  overflow: hidden;
+}
 html{
     overflow-x: hidden;
 }
@@ -9,6 +9,7 @@ html{
     display: flex;
     justify-content: center;
     width: 100%;
+    max-width: 100vw;
     z-index: 9999;
   }
   
@@ -16,6 +17,7 @@ html{
     background: black;
     color: white;
     width: 500px;
+    max-width: 90%;
     height: 50px;
     padding: 0 1rem;
     margin-top: 1rem;
@@ -236,4 +238,18 @@ html{
 }
   
   
-  
+@media only screen and (max-width: 600px) {
+  .header{
+    .menu-item-home{
+      display: none;
+    }
+  }
+  .intro {
+    section{
+      padding-left: 1rem;
+      .section-content{
+        top: 50%;
+      }
+    }
+  }
+}

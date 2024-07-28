@@ -12,14 +12,14 @@ const Footer = () => {
                     <p>feres.henteti@gmail.com</p>
                     <div>
                         <h4>Connect with me!</h4>
-                        <Social boxRef="footerBoxRef"/>
+                        <Social/>
                     </div>
                 </div>
             </div>
 
             <div className="right-side">
                 <h3>At your service!</h3>
-                <ContactMe boxRef="footerBoxRef"/>
+                <ContactMe/>
             </div>
 
         </div>

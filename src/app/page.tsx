@@ -151,7 +151,7 @@ const Home = () => {
             </div>
             <div className='right'>
 
-              <div className={'menu-item ' + (selectedMenuItem[0] ? 'selected' : '')} onClick={(e) => selectMenuItem(0)} >
+              <div className={'menu-item menu-item-home ' + (selectedMenuItem[0] ? 'selected' : '')} onClick={(e) => selectMenuItem(0)} >
                 Home
               </div>
 
