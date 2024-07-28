@@ -600,6 +600,9 @@
 
             &.illustrations{
                 .section-info{
+                    .goku-container{
+                        --stretch-to-width: 80%;
+                    }
                     p{
                         font-weight: 500;
                     }
