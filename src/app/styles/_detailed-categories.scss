@@ -161,7 +161,7 @@
                 max-width: 800px;
             }
             .section-info-buttons>a, p{
-                backdrop-filter: blur(8px);
+                backdrop-filter: blur(2px);
             }
             .goku-container{
                 position: absolute;
@@ -345,7 +345,7 @@
             }
             p{
                 margin: 0;
-                backdrop-filter: blur(8px);
+                backdrop-filter: blur(2px);
                 &:first-of-type{
                     margin-top: 2rem;
                 }
@@ -354,7 +354,7 @@
                 }
             }
             .section-info-buttons{
-                backdrop-filter: blur(8px);
+                backdrop-filter: blur(2px);
                 .button-tiktok{
                     border-color: #EE1E52;
                     // color: #68C9D0;
@@ -531,10 +531,12 @@
                         box-shadow: 0px 0px 8px 5px #a4e4ffa3;
                         z-index: 2000;
                     }
-                    .goku-img{
-                        height: 440px;
-                        transform: translateX(70%);
-                        --translate-to-x: 40%;
+                    .goku-container{
+                        width: 260px;
+                        --stretch-to-width: 100%;
+                        .goku-img{
+                            height: 440px;
+                        }
                     }
                 }
             }
