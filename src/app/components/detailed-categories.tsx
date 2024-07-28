@@ -187,6 +187,8 @@ const DetailedCategories = () => {
 
             {/* Voice Over */}
             <div id="voiceover" className="detailed-category voice-over">
+
+                <img src="assets/backgrounds/MV7.webp" className="microphone-bg"/>
                 
                 <div className="section-info">
                     <h1>Voice Over</h1>
