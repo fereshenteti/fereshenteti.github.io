@@ -173,6 +173,7 @@
                 animation-timeline: view();
                 animation-range: contain 0 contain 80%;
                 z-index: 200;
+                pointer-events: none;
                 .goku-img{
                     height: 100%;
                 }
