@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700');
+
 .detailed-categories{
 
     .detailed-category{
@@ -325,6 +327,30 @@
         // ****************************
     }
 
+    .detailed-category.logo-animations{
+        width: 100vw;
+        height: auto;
+        flex-direction: column;
+        padding: 0;
+        .section-info{
+            align-items: center;
+            .animation-filter{
+                width: 0;
+                height: 0;
+            }
+            span{
+                font-family: 'Amatic SC', sans-serif;
+                font-size: 80px;
+                -webkit-animation: squiggly-anim 0.34s linear infinite;
+                animation: squiggly-anim 0.34s linear infinite;
+                margin-left: 8px;
+            }
+        }
+        .my-logo-animations{
+            width: 100%;
+        }
+    }
+
     .detailed-category.voice-over{
         flex-direction: column;
         background-color: #00054f99;
@@ -463,9 +489,35 @@
     }
 }
 
-@keyframes scroll-vertical {
-    to {
-        transform: translateY(-50%);
+
+.getintouch-container{
+    --gap: 4rem;
+    background-color: white;
+    .marquee {
+        overflow: hidden;
+        user-select: none;
+        display: flex;
+        gap: var(--gap);
+        transform: rotate(-4deg);
+        ul {
+            list-style: none;
+            flex-shrink: 0;
+            min-width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--gap);
+            animation: getintouch 8s linear infinite;
+        }
+        .text {
+            background: linear-gradient(to right, #a2a2a2, #d43b89, #212121);
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 400;
+            font-size: 25ch;
+        }
     }
 }
 
@@ -643,6 +695,18 @@
                 }
             }
 
+            &.logo-animations{
+                min-height: auto;
+                .section-info{
+                    flex: 0;
+                    h1{
+                        span{
+                            font-size: 50px;
+                        }
+                    }
+                }
+            }
+
             &.voice-over{
                 background-size: 300px;
                 background-position-x: 40px;
@@ -653,6 +717,15 @@
                 }
                 .youtube-samples{
                     padding: 0 1rem;
+                }
+            }
+
+        }
+        .getintouch-container{
+            padding: 4rem 0;
+            .marquee{
+                .text{
+                    font-size: 10ch;
                 }
             }
         }
