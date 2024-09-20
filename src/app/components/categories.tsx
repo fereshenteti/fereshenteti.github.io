@@ -119,7 +119,7 @@ const MyCategories = () => {
                     <h1>My <strong>Art</strong> fields</h1>
                 </div>
                 <div className='categories-title for-borders'>
-                    <h6>yes, I call it "Front-stack" !</h6>
+                    <h6>I call it "Front-stack" 😎</h6>
                 </div>
             </div>
 
