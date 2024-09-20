@@ -217,7 +217,7 @@ const DetailedCategories = () => {
                     </svg>
                 </div>
                 {/* <img src="assets/animations/my-logo-animations.avif" className="my-logo-animations"/> */}
-                <video autoPlay loop muted>
+                <video autoPlay playsInline loop muted>
                     <source src="assets/animations/my logo animations.mp4" type="video/mp4"/>
                     {/* <source src="assets/animations/my logo animations.ogg" type="video/ogg"/> */}
                 </video>
