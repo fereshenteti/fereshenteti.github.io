@@ -4,7 +4,7 @@
     min-height: 100vh;
     padding-block: 100px;
     position: relative;
-    background-color: white;
+    background-color: #1D1D1D;
     
     .bg-overlay{
         position: absolute;
@@ -18,6 +18,11 @@
         background-image: none;
         background-size: cover;
         background-position: center;
+        box-shadow: 0 0 140px 70px black inset
+    }
+
+    .for-borders{
+        color: white;
     }
 
     .categories-header{
@@ -32,6 +37,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        color: white;
       }
       strong{
         background: linear-gradient(to right, rgb(194 110 103), rgb(139 108 204), rgb(97 150 184));
@@ -41,7 +47,7 @@
         font-size: 58px;
       }
       h6{
-        background: #c1c1c1c2;
+        background: rgba(66, 66, 69, 0.7);
         padding: 8px;
         border-radius: 50px;
       }

@@ -37,7 +37,7 @@ const Home = () => {
     });
 
     let canvas = document.getElementById('images') as HTMLCanvasElement;
-    if(canvas) initCanvas(canvas);
+    // if(canvas) initCanvas(canvas);
 
   }, []);
 
@@ -186,7 +186,8 @@ const Home = () => {
         
         <section className="container">
           <div className="section-content">
-              <h1>Hi! I'm Fares Hentati</h1>
+              <h1>Hi! I'm</h1>
+              <h1 className='my-name'>Fares Hentati</h1>
               <p>Welcome to my portfolio!</p>
               <div className='learn-more'>
                 <div>Scroll to learn more about me</div>
@@ -201,29 +202,36 @@ const Home = () => {
         </section>
 
         <section className="container">
-            <div className="section-content">
-                <h1>I'm a Web development Engineer</h1>
-                <p>6+ years of expertise in Front-end technologies</p>
-            </div>
-        </section>
-
-        <section className="container">
           <div className="section-content">
-              <h1>& I'm also a UI / UX / Graphic Designer</h1>
-              <p>I adore tasty designs and turn them into code!</p>
+            <h1>I'm a</h1>
+            <h1 className='highlighted'>Web development</h1>
+            <h1>Engineer</h1>
+            <p>6+ years of expertise in Front-end technologies</p>
           </div>
         </section>
 
         <section className="container">
           <div className="section-content">
-              <h1>Aaaand I'm a Voice Over artist too!</h1>
-              <p>I might be one person, but I have many voices :D</p>
+            <h1>& I'm also a</h1>
+            <h1 className='highlighted'>UI / UX / Graphic</h1>
+            <h1>Designer</h1>
+            <p>I adore tasty designs and turn them into code!</p>
           </div>
         </section>
 
         <section className="container">
           <div className="section-content">
-              <h1>In the next sections<br/> you will discover my creations!</h1>
+            <h1>Aaaand I'm a</h1>
+            <h1 className='highlighted'>Voice Over</h1>
+            <h1>artist too!</h1>
+            <p>I might be one person, but I have many voices :D</p>
+          </div>
+        </section>
+
+        <section className="container">
+          <div className="section-content">
+              <h1>In the next sections<br/> you will discover</h1>
+              <h1 className='highlighted'>my creations!</h1>
               <p>Enjoying it? keep scrolling</p>
           </div>
         </section>
@@ -231,7 +239,7 @@ const Home = () => {
       </div>
 
       <div className="my-img-bg">
-        <img className='bg-me' src="assets/backgrounds/bg-me.png"/>
+        <img className='bg-me' src="assets/backgrounds/me-black.PNG"/>
       </div>
       
       <div id="v0" ref={imageSequenceContainerRef}>
