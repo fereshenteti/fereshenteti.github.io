@@ -239,7 +239,7 @@ const Home = () => {
       </div>
 
       <div className="my-img-bg">
-        <img className='bg-me' src="assets/backgrounds/me-black.PNG"/>
+        <img className='bg-me' src="assets/backgrounds/me-black.png"/>
       </div>
       
       <div id="v0" ref={imageSequenceContainerRef}>
