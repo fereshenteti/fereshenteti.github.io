@@ -327,6 +327,17 @@
         // ****************************
     }
 
+    .detailed-category.logo-creations{
+        width: 100vw;
+        height: auto;
+        flex-direction: column;
+        padding: 0;
+        .section-info{
+            align-items: center;
+            flex: 0;
+        }
+    }
+
     .detailed-category.logo-animations{
         width: 100vw;
         height: auto;
@@ -418,6 +429,19 @@
             }
         }
     }
+}
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  background: lightgray;
+  margin: 2rem;
 }
 
 .section-info-buttons{

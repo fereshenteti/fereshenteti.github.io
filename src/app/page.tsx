@@ -11,13 +11,13 @@ import Social from "./components/social";
 import DetailedCategories from './components/detailed-categories';
 import Footer from './components/footer';
 
-
 gsap.registerPlugin(useGSAP);
 
 const Home = () => {
 
   const [selectedMenuItem, setSelectedMenuItem] = useState([false, false, false]);
   const imageSequenceContainerRef = useRef(null);
+  const islandRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -35,66 +35,8 @@ const Home = () => {
           once: true,
         });
     });
-
-    let canvas = document.getElementById('images') as HTMLCanvasElement;
-    // if(canvas) initCanvas(canvas);
-
   }, []);
 
-  const initCanvas = (canvas: HTMLCanvasElement) => {
-      
-    let context = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let frameCount = 111;
-    const currentFrame = (index: number) => (
-      `/assets/my_image_sequence/${(index).toString().padStart(5, '0')}.png`
-    );
-
-    let images: HTMLImageElement[] = [];
-    let frames = {
-      frame: 0
-    };
-    
-    for (let i = 1; i <= frameCount; i++) {
-      let img = new Image();
-      img.src = currentFrame(i);
-      images.push(img);
-    }
-
-    const render = () => {
-      if(context){
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        let img = images[frames.frame];
-        var scale = Math.max(canvas.width / img.width, canvas.height / img.height);
-        // get the top left position of the image
-        var x = (canvas.width / 2) - (img.width / 2) * scale;
-        context.drawImage(img, x, 0, img.width * scale, img.height * scale);
-      }
-    }
-
-    gsap.timeline({
-      onUpdate: render,
-      scrollTrigger: {
-        trigger: imageSequenceContainerRef?.current,
-        pin: false,
-        scrub: 0.5,
-        start: "top",
-        markers: false
-      }
-    })
-    .to(frames, {
-      frame: frameCount - 1,
-      snap: "frame",
-      ease: "none",
-      duration: 1
-    }, 0);
-    
-    images[0].onload = render;
-
-  }
-  
   const selectMenuItem = (menuItemIndex: number) => {
     let selected = selectedMenuItem;
     if(!selectedMenuItem[menuItemIndex]){
@@ -143,11 +85,32 @@ const Home = () => {
     <div className="App" id="home">
 
       <div className='header for-borders'>
-        <div id='dynamic-island' className='dynamic-island'>
+        <div id='dynamic-island' ref={islandRef} className='dynamic-island'>
+
+          <div className='liquid-glass-effect'>
+            <svg id='liquid-glass-svg'>
+              <filter id="glass-distortion">
+                <feTurbulence
+                  type="fractalNoise"
+                  baseFrequency="0.001 0.005"
+                  numOctaves="10"
+                  seed="60"
+                  result="turb"
+                />
+                <feGaussianBlur in="noise"
+                  stdDeviation="10" result="softMap" />
+                <feDisplacementMap in="SourceGraphic"
+                  in2="turb"
+                  scale="50"
+                  xChannelSelector="R"
+                  yChannelSelector="G" />
+              </filter>
+            </svg>
+          </div>
 
           <div className='header-main'>
             <div className='left'>
-              <img src="./assets/me.jpg" alt='avatar' className='my-avatar'/>
+                <img src="./assets/me.jpg" alt='avatar' className='my-avatar'/>
             </div>
             <div className='right'>
 

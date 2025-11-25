@@ -15,7 +15,7 @@ const PUBLIC_KEY = "rcn90UAeivk5_64XM";
 const ContactMe = (props: {boxRef?: string}) => {
 
     const {boxRef} = props;
-    const form = useRef<any>();
+    const form = useRef<any>('');
 
     const [name, setName] = useState<string|undefined>();
     const [email, setEmail] = useState<string|undefined>();
@@ -106,7 +106,7 @@ const ContactMe = (props: {boxRef?: string}) => {
             <div className="name-email-wrapper">
                 <Form.Group className={`mb-3 input-name ${boxRef} ${nameError !== undefined ? 'input-error' : ''}`} controlId="formName">
                     <Form.Label className='formLabel'>Your name</Form.Label>
-                    <Form.Control type="text" placeholder="Mr. Elon Musk maybe?" name="name" value={name} onChange={(e) => setName(e.target.value)}/>
+                    <Form.Control type="text" placeholder="Sir, Madam?" name="name" value={name} onChange={(e) => setName(e.target.value)}/>
                     {nameError && <span className="input-error-message">{nameError}</span>}
                 </Form.Group>
 

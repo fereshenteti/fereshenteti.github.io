@@ -1,13 +1,14 @@
 import { MyCustomButton } from "./common-ui/custom-button";
-
+import EmblaCarousel from "./carousel/EmblaCarousel";
 
 const DetailedCategories = () => {
+    const SLIDES: any[] = ['sliiiiiiide 1', 'slide feres', 'sliiiide 3', '4th slide'];
 
     return (
         <section className="detailed-categories">
 
             {/* Frontend */}
-            <div id="frontend" className="detailed-category frontend">
+            <div id="frontend" className="section detailed-category frontend">
 
                 <div className="left-side">
                     <div className="section-info">
@@ -116,7 +117,7 @@ const DetailedCategories = () => {
             </div>
 
             {/* UI / UX */}
-            <div id="uiux" className="detailed-category uiux">
+            <div id="uiux" className="section detailed-category uiux">
                 <div className="left-side">
                     <div className="section-info">
                         <h1>UI / UX Design</h1>
@@ -141,10 +142,58 @@ const DetailedCategories = () => {
                         <img src="assets/uiux_design/guido 3.png" className="guido-img-3"/>
                     </div>
                 </div>
+
+            </div>
+
+            {/* Logo creations */}
+            <div id="logo-creations" className="section detailed-category logo-creations">
+                <div className="section-info">
+                    <h1>Logo creations</h1>
+                </div>
+                <EmblaCarousel slides={SLIDES}/>
+            </div>
+
+            {/* Logo animations */}
+            <div id="logo-animations" className="section detailed-category logo-animations">
+                <div className="section-info">
+                    <h1>Logo <span>Animations</span></h1>
+                    {/* this is just for animating the word "animations" */}
+                    <svg className="animation-filter" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <defs>
+                            <filter id="squiggly-0">
+                            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="0"/>
+                            <feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="6" />
+                            </filter>
+                            <filter id="squiggly-1">
+                            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="1"/>
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+                            </filter>
+                            
+                            <filter id="squiggly-2">
+                            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="2"/>
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+                            </filter>
+                            <filter id="squiggly-3">
+                            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="3"/>
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+                            </filter>
+                            
+                            <filter id="squiggly-4">
+                            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="4"/>
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+                            </filter>
+                        </defs> 
+                    </svg>
+                </div>
+                {/* <img src="assets/animations/my-logo-animations.avif" className="my-logo-animations"/> */}
+                <video autoPlay playsInline loop muted>
+                    <source src="assets/animations/my logo animations.mp4" type="video/mp4"/>
+                    {/* <source src="assets/animations/my logo animations.ogg" type="video/ogg"/> */}
+                </video>
             </div>
 
             {/* Illustrations */}
-            <div id="illustration" className="detailed-category illustrations">
+            <div id="illustration" className="section detailed-category illustrations">
 
                 <div id="background-wrap">
                     <div className="x1">
@@ -185,46 +234,8 @@ const DetailedCategories = () => {
                 </div>
             </div>
 
-            <div id="logo-animations" className="detailed-category logo-animations">
-                <div className="section-info">
-                    <h1>Logo <span>Animations</span></h1>
-                    {/* this is just for animating the word "animations" */}
-                    <svg className="animation-filter" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                        <defs>
-                            <filter id="squiggly-0">
-                            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="0"/>
-                            <feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="6" />
-                            </filter>
-                            <filter id="squiggly-1">
-                            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="1"/>
-                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
-                            </filter>
-                            
-                            <filter id="squiggly-2">
-                            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="2"/>
-                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
-                            </filter>
-                            <filter id="squiggly-3">
-                            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="3"/>
-                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
-                            </filter>
-                            
-                            <filter id="squiggly-4">
-                            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="4"/>
-                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
-                            </filter>
-                        </defs> 
-                    </svg>
-                </div>
-                {/* <img src="assets/animations/my-logo-animations.avif" className="my-logo-animations"/> */}
-                <video autoPlay playsInline loop muted>
-                    <source src="assets/animations/my logo animations.mp4" type="video/mp4"/>
-                    {/* <source src="assets/animations/my logo animations.ogg" type="video/ogg"/> */}
-                </video>
-            </div>
-
             {/* Voice Over */}
-            <div id="voiceover" className="detailed-category voice-over">
+            <div id="voiceover" className="section detailed-category voice-over">
 
                 <img src="assets/backgrounds/MV7.webp" className="microphone-bg"/>
                 
@@ -270,7 +281,7 @@ const DetailedCategories = () => {
             </div>
 
             {/* Get in touch animation */}
-            <div className="getintouch-container">
+            <div className="section getintouch-container">
                 <div className="marquee">
                     <ul>
                     <li><span className="text">Get in touch</span></li>

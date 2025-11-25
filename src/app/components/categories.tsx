@@ -9,15 +9,15 @@ import TranslationIcon from '../assets/icons/translation.svg';
 
 const MyCategories = () => {
 
-    const bgOverlayRef: any = useRef();
-    const headphoneRef: any = useRef();
-    const madeByMeRef: any = useRef();
-    const photoRef: any = useRef();
-    const illRef: any = useRef();
-    const voRef: any = useRef();
-    const uiuxRef: any = useRef();
-    const feRef: any = useRef();
-    const trRef: any = useRef();
+    const bgOverlayRef: any = useRef('');
+    const headphoneRef: any = useRef('');
+    const madeByMeRef: any = useRef('');
+    const photoRef: any = useRef('');
+    const illRef: any = useRef('');
+    const voRef: any = useRef('');
+    const uiuxRef: any = useRef('');
+    const feRef: any = useRef('');
+    const trRef: any = useRef('');
 
     const photoHoverHandle = (hover: boolean) => {
         const bgOverlay = bgOverlayRef.current;

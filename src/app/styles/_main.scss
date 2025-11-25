@@ -12,14 +12,14 @@ html{
   }
   
   .dynamic-island{
-    background: #151515;
+    background: #0000007a;
     color: white;
     width: 500px;
     max-width: 90%;
     height: 50px;
-    padding: 0 1rem;
     margin-top: 1rem;
     border-radius: 50px;
+    position: relative;
     -webkit-transition: width 0.5s cubic-bezier(.42,.42,0,1), 
       height 0.5s cubic-bezier(.42,.42,0,1),
       border-radius 0.5s cubic-bezier(0,.82,.78,.78) ;
@@ -33,12 +33,35 @@ html{
       height 0.5s cubic-bezier(.42,.42,0,1),
       border-radius 0.5s cubic-bezier(0,.82,.78,.78) ;
   }
-  
-  .header-main{
-    height: 50px;
+
+  .liquid-glass-effect {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(3px);
+    filter: url(#glass-distortion);
+    overflow: hidden;
+    border-radius: 50px;
+    z-index: -1;
+  }
+
+  .liquid-glass-content {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  #liquid-glass-svg {
+    width: 0;
+    height: 0;
+  }
+  
+  .header-main{
+    height: 50px;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
   }
   
   .dynamic-island:hover{
