@@ -1,8 +1,28 @@
+
 import { MyCustomButton } from "./common-ui/custom-button";
 import EmblaCarousel from "./carousel/EmblaCarousel";
+import { EmblaOptionsType } from 'embla-carousel';
+import { useEffect, useState } from "react";
 
 const DetailedCategories = () => {
-    const SLIDES: any[] = ['sliiiiiiide 1', 'slide feres', 'sliiiide 3', '4th slide'];
+    const OPTIONS: EmblaOptionsType = { loop: true }
+    const [slides, setSlides] = useState<string[]>([]);
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const response = await fetch('/api/images');
+                if (response.ok) {
+                    const data = await response.json();
+                    setSlides(data);
+                }
+            } catch (error) {
+                console.error('Failed to fetch images:', error);
+            }
+        };
+
+        fetchImages();
+    }, []);
 
     return (
         <section className="detailed-categories">
@@ -16,7 +36,7 @@ const DetailedCategories = () => {
                         <h1>web engineering</h1>
                         <p>Since 2018, I've been working as a frontend engineer, basically on Angular, React & NextJS (always latest versions) and their related technologies.</p>
                         <a href="https://www.linkedin.com/in/fareshentati/" target="_blank">
-                            <MyCustomButton btnIcon="assets/icons/linkedin-logo.svg" btnText="Explore more on my Linkedin"/>
+                            <MyCustomButton btnIcon="assets/icons/linkedin-logo.svg" btnText="Explore more on my Linkedin" />
                         </a>
                     </div>
                 </div>
@@ -24,44 +44,44 @@ const DetailedCategories = () => {
                 <div className="right-side">
                     <div className="front-dev-images-wrapper scroller_wrapper">
                         <div className="front-dev-images scroller_inner scroller_inner_1">
-                            
+
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/sedeo 1.png" alt="Sedeo"/>
+                                <img src="assets/frontend_projects/sedeo 1.png" alt="Sedeo" />
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/value 1.png" alt="Value Digital Services"/>
+                                <img src="assets/frontend_projects/value 1.png" alt="Value Digital Services" />
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/embs 1.png" alt="eMBS"/>
+                                <img src="assets/frontend_projects/embs 1.png" alt="eMBS" />
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/instaclear 1.png" alt="Instaclear"/>
+                                <img src="assets/frontend_projects/instaclear 1.png" alt="Instaclear" />
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/kpeiz.png" alt="Kpeiz"/>
+                                <img src="assets/frontend_projects/kpeiz.png" alt="Kpeiz" />
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/embs 2.png" alt="eMBS"/>
+                                <img src="assets/frontend_projects/embs 2.png" alt="eMBS" />
                             </div>
-                            
+
                             {/* DUPLICATES JUST FOR ANIMATION */}
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/sedeo 1.png" alt="Sedeo"/>
+                                <img src="assets/frontend_projects/sedeo 1.png" alt="Sedeo" />
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/value 1.png" alt="Value Digital Services"/>
+                                <img src="assets/frontend_projects/value 1.png" alt="Value Digital Services" />
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/embs 1.png" alt="eMBS"/>
+                                <img src="assets/frontend_projects/embs 1.png" alt="eMBS" />
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/instaclear 1.png" alt="Instaclear"/>
+                                <img src="assets/frontend_projects/instaclear 1.png" alt="Instaclear" />
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/kpeiz.png" alt="Kpeiz"/>
+                                <img src="assets/frontend_projects/kpeiz.png" alt="Kpeiz" />
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/embs 2.png" alt="eMBS"/>
+                                <img src="assets/frontend_projects/embs 2.png" alt="eMBS" />
                             </div>
 
                         </div>
@@ -72,42 +92,42 @@ const DetailedCategories = () => {
                         <div className="front-dev-images scroller_inner scroller_inner_2">
 
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/sedeo 2.png" alt="Sedeo"/>
+                                <img src="assets/frontend_projects/sedeo 2.png" alt="Sedeo" />
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/sedeo 3.png" alt="Sedeo"/>
+                                <img src="assets/frontend_projects/sedeo 3.png" alt="Sedeo" />
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/value 2.png" alt="Value Digital Services"/>
+                                <img src="assets/frontend_projects/value 2.png" alt="Value Digital Services" />
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/instaclear 2.png" alt="Instaclear"/>
+                                <img src="assets/frontend_projects/instaclear 2.png" alt="Instaclear" />
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/instaclear 3.png" alt="Instaclear"/>
+                                <img src="assets/frontend_projects/instaclear 3.png" alt="Instaclear" />
                             </div>
                             <div className="front-dev-image">
-                                <img src="assets/frontend_projects/embs 3.png" alt="eMBS"/>
+                                <img src="assets/frontend_projects/embs 3.png" alt="eMBS" />
                             </div>
-                            
+
                             {/* DUPLICATES JUST FOR ANIMATION */}
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/sedeo 2.png" alt="Sedeo"/>
+                                <img src="assets/frontend_projects/sedeo 2.png" alt="Sedeo" />
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/sedeo 3.png" alt="Sedeo"/>
+                                <img src="assets/frontend_projects/sedeo 3.png" alt="Sedeo" />
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/value 2.png" alt="Value Digital Services"/>
+                                <img src="assets/frontend_projects/value 2.png" alt="Value Digital Services" />
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/instaclear 2.png" alt="Instaclear"/>
+                                <img src="assets/frontend_projects/instaclear 2.png" alt="Instaclear" />
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/instaclear 3.png" alt="Instaclear"/>
+                                <img src="assets/frontend_projects/instaclear 3.png" alt="Instaclear" />
                             </div>
                             <div className="front-dev-image" aria-hidden={true}>
-                                <img src="assets/frontend_projects/embs 3.png" alt="eMBS"/>
+                                <img src="assets/frontend_projects/embs 3.png" alt="eMBS" />
                             </div>
 
                         </div>
@@ -124,22 +144,22 @@ const DetailedCategories = () => {
                         <p>I've been part of many design projects that really surprised the clients or the product owners. I always work with passion, and add my touch to the project like creating logo animations, easter eggs, etc..</p>
                         <div className="section-info-buttons">
                             <a href="https://dribbble.com/fereshenteti/collections" target="_blank">
-                                <MyCustomButton btnIcon="assets/icons/dribble-logo.svg" btnText="Explore more on my Dribbble" className="button-dribble"/>
+                                <MyCustomButton btnIcon="assets/icons/dribble-logo.svg" btnText="Explore more on my Dribbble" className="button-dribble" />
                             </a>
                         </div>
                     </div>
                 </div>
-                
+
                 <div className="right-side">
                     <div className="showcase-uiux culture-tech">
-                        <img src="assets/uiux_design/culture tech.png" className="culture-tech-img"/>
-                        <img src="assets/uiux_design/culture tech 2.png" className="culture-tech-img-2"/>
-                        <img src="assets/uiux_design/culture tech 3.png" className="culture-tech-img-3"/>
+                        <img src="assets/uiux_design/culture tech.png" className="culture-tech-img" />
+                        <img src="assets/uiux_design/culture tech 2.png" className="culture-tech-img-2" />
+                        <img src="assets/uiux_design/culture tech 3.png" className="culture-tech-img-3" />
                     </div>
                     <div className="showcase-uiux guido">
-                        <img src="assets/uiux_design/guido 2.png" className="guido-img"/>
-                        <img src="assets/uiux_design/guido 1.png" className="guido-img-2"/>
-                        <img src="assets/uiux_design/guido 3.png" className="guido-img-3"/>
+                        <img src="assets/uiux_design/guido 2.png" className="guido-img" />
+                        <img src="assets/uiux_design/guido 1.png" className="guido-img-2" />
+                        <img src="assets/uiux_design/guido 3.png" className="guido-img-3" />
                     </div>
                 </div>
 
@@ -148,9 +168,9 @@ const DetailedCategories = () => {
             {/* Logo creations */}
             <div id="logo-creations" className="section detailed-category logo-creations">
                 <div className="section-info">
-                    <h1>Logo creations</h1>
+                    <h1><img src="assets/Logo word.svg" className='logo-word-svg' /><span>creations</span></h1>
                 </div>
-                <EmblaCarousel slides={SLIDES}/>
+                {slides.length > 0 && <EmblaCarousel slides={slides} options={OPTIONS} />}
             </div>
 
             {/* Logo animations */}
@@ -161,36 +181,38 @@ const DetailedCategories = () => {
                     <svg className="animation-filter" xmlns="http://www.w3.org/2000/svg" version="1.1">
                         <defs>
                             <filter id="squiggly-0">
-                            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="0"/>
-                            <feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="6" />
+                                <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="0" />
+                                <feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="6" />
                             </filter>
                             <filter id="squiggly-1">
-                            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="1"/>
-                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+                                <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="1" />
+                                <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
                             </filter>
-                            
+
                             <filter id="squiggly-2">
-                            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="2"/>
-                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+                                <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="2" />
+                                <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
                             </filter>
                             <filter id="squiggly-3">
-                            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="3"/>
-                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+                                <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="3" />
+                                <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
                             </filter>
-                            
+
                             <filter id="squiggly-4">
-                            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="4"/>
-                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+                                <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="4" />
+                                <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
                             </filter>
-                        </defs> 
+                        </defs>
                     </svg>
                 </div>
                 {/* <img src="assets/animations/my-logo-animations.avif" className="my-logo-animations"/> */}
                 <video autoPlay playsInline loop muted>
-                    <source src="assets/animations/my logo animations.mp4" type="video/mp4"/>
+                    <source src="assets/animations/my logo animations.mp4" type="video/mp4" />
                     {/* <source src="assets/animations/my logo animations.ogg" type="video/ogg"/> */}
                 </video>
             </div>
+
+            <div className="section-spacer"></div>
 
             {/* Illustrations */}
             <div id="illustration" className="section detailed-category illustrations">
@@ -220,37 +242,39 @@ const DetailedCategories = () => {
                 <div className="section-info">
                     <h1>Illustrations / Graphic Design</h1>
                     <div className="goku-container">
-                        <img src="assets/my_illustrations/goku.PNG" className="goku-img"/>
+                        <img src="assets/my_illustrations/goku.PNG" className="goku-img" />
                     </div>
                     <p>As I love visual arts, I found myself scribbling and drawing on my iPad. Thus, I discovered that I had a talent I can use to create more awesome illustrations!</p>
                     <div className="section-info-buttons">
                         <a href="https://dribbble.com/fereshenteti/collections" target="_blank">
-                            <MyCustomButton btnIcon="assets/icons/dribble-logo.svg" btnText="Explore more on my Dribbble" className="button-dribble"/>
+                            <MyCustomButton btnIcon="assets/icons/dribble-logo.svg" btnText="Explore more on my Dribbble" className="button-dribble" />
                         </a>
                         <a href="https://www.pinterest.com/hentetiferes/_created" target="_blank">
-                            <MyCustomButton btnIcon="assets/icons/pinterest-logo.svg" btnText="Explore more on my Pinterest" className="button-pinterest"/>
+                            <MyCustomButton btnIcon="assets/icons/pinterest-logo.svg" btnText="Explore more on my Pinterest" className="button-pinterest" />
                         </a>
                     </div>
                 </div>
             </div>
 
+            <div className="section-spacer"></div>
+
             {/* Voice Over */}
             <div id="voiceover" className="section detailed-category voice-over">
 
-                <img src="assets/backgrounds/MV7.webp" className="microphone-bg"/>
-                
+                <img src="assets/backgrounds/MV7.webp" className="microphone-bg" />
+
                 <div className="section-info">
                     <h1>Voice Over</h1>
-                    <p>I am also passionate about documentaries and dubbing, thus I found my other hidden talent: the voice over!<br/>
-                    Besides, I discovered that I can even impersonate many characters and voice-styles with my original voice!</p>
+                    <p>I am also passionate about documentaries and dubbing, thus I found my other hidden talent: the voice over!<br />
+                        Besides, I discovered that I can even impersonate many characters and voice-styles with my original voice!</p>
                     <div className="section-info-buttons">
 
                         <a href="https://www.youtube.com/@FeresVocalArts" target="_blank">
-                            <MyCustomButton btnIcon="assets/icons/youtube-logo.svg" btnText="Explore more on my Youtube channel" className="button-youtube"/>
+                            <MyCustomButton btnIcon="assets/icons/youtube-logo.svg" btnText="Explore more on my Youtube channel" className="button-youtube" />
                         </a>
 
                         <a href="https://www.tiktok.com/@fereshenteti" target="_blank">
-                            <MyCustomButton btnIcon="assets/icons/tiktok-logo.svg" btnText="Explore more on my TikTok channel" className="button-tiktok"/>
+                            <MyCustomButton btnIcon="assets/icons/tiktok-logo.svg" btnText="Explore more on my TikTok channel" className="button-tiktok" />
                         </a>
 
                     </div>
@@ -284,12 +308,12 @@ const DetailedCategories = () => {
             <div className="section getintouch-container">
                 <div className="marquee">
                     <ul>
-                    <li><span className="text">Get in touch</span></li>
+                        <li><span className="text">Get in touch</span></li>
                     </ul>
                     <ul aria-hidden="true">
-                    <li>
-                        <span className="text">Get in touch</span>
-                    </li>
+                        <li>
+                            <span className="text">Get in touch</span>
+                        </li>
                     </ul>
 
                 </div>

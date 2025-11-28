@@ -5,47 +5,38 @@ import {
   EmblaOptionsType
 } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
+import { useAutoplayProgress } from './EmblaCarouselAutoplayProgress'
 import {
   NextButton,
   PrevButton,
   usePrevNextButtons
 } from './EmblaCarouselArrowButtons'
-import { DotButton, useDotButton } from './EmblaCarouselDotButton'
-import Autoplay from 'embla-carousel-autoplay'
 
 const TWEEN_FACTOR_BASE = 0.2
 
 type PropType = {
-  slides: number[]
+  slides: string[]
   options?: EmblaOptionsType
 }
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
   const { slides, options } = props
-  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()])
+  const progressNode = useRef<HTMLDivElement>(null)
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [
+    Autoplay({ playOnInit: true, delay: 3000, stopOnInteraction: false })
+  ])
   const tweenFactor = useRef(0)
   const tweenNodes = useRef<HTMLElement[]>([])
-
-  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi);
-
-  const onNavButtonClick = useCallback((emblaApi: any) => {
-    const autoplay = emblaApi?.plugins()?.autoplay
-    if (!autoplay) return
-
-    const resetOrStop =
-      autoplay.options.stopOnInteraction === false
-        ? autoplay.reset
-        : autoplay.stop
-
-    resetOrStop()
-  }, [])
 
   const {
     prevBtnDisabled,
     nextBtnDisabled,
     onPrevButtonClick,
     onNextButtonClick
-  } = usePrevNextButtons(emblaApi, onNavButtonClick)
+  } = usePrevNextButtons(emblaApi)
+
+  const { showAutoplayProgress } = useAutoplayProgress(emblaApi, progressNode)
 
   const setTweenNodes = useCallback((emblaApi: EmblaCarouselType): void => {
     tweenNodes.current = emblaApi.slideNodes().map((slideNode) => {
@@ -116,14 +107,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {slides.map((index) => (
+          {slides.map((imgSrc, index) => (
             <div className="embla__slide" key={index}>
               <div className="embla__parallax">
                 <div className="embla__parallax__layer">
                   <img
-                    className="embla__slide__img embla__parallax__img"
-                    src={`https://picsum.photos/600/350?v=${index}`}
-                    alt="Your alt text"
+                    className="embla__slide__img"
+                    src={imgSrc}
+                    alt={`Slide ${index + 1}`}
                   />
                 </div>
               </div>
@@ -134,20 +125,22 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 
       <div className="embla__controls">
         <div className="embla__buttons">
-          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+          <PrevButton
+            onClick={onPrevButtonClick}
+            disabled={prevBtnDisabled}
+          />
+          <NextButton
+            onClick={onNextButtonClick}
+            disabled={nextBtnDisabled}
+          />
         </div>
 
-        <div className="embla__dots">
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              onClick={() => onDotButtonClick(index)}
-              className={'embla__dot'.concat(
-                index === selectedIndex ? ' embla__dot--selected' : ''
-              )}
-            />
-          ))}
+        <div
+          className={`embla__progress`.concat(
+            showAutoplayProgress ? '' : ' embla__progress--hidden'
+          )}
+        >
+          <div className="embla__progress__bar" ref={progressNode} />
         </div>
       </div>
     </div>

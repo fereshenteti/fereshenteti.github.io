@@ -27,19 +27,19 @@ const Home = () => {
     const boxes: any[] = gsap.utils.toArray('.boxRef');
 
     boxes.forEach((box, i) => {
-        const anim = gsap.fromTo(box, {autoAlpha: 0, y: 50}, {duration: 0.5, delay: i/10, autoAlpha: 1, y: 0});
-        ScrollTrigger.create({
-          trigger: box,
-          animation: anim,
-          toggleActions: 'play none none none',
-          once: true,
-        });
+      const anim = gsap.fromTo(box, { autoAlpha: 0, y: 50 }, { duration: 0.5, delay: i / 10, autoAlpha: 1, y: 0 });
+      ScrollTrigger.create({
+        trigger: box,
+        animation: anim,
+        toggleActions: 'play none none none',
+        once: true,
+      });
     });
   }, []);
 
   const selectMenuItem = (menuItemIndex: number) => {
     let selected = selectedMenuItem;
-    if(!selectedMenuItem[menuItemIndex]){
+    if (!selectedMenuItem[menuItemIndex]) {
       selected.forEach((menuItem, index) => {
         if (menuItem === true) selected[index] = false
       })
@@ -47,35 +47,35 @@ const Home = () => {
 
       let dynamicIsland = document.getElementById('dynamic-island');
 
-      if(menuItemIndex === 1) {
-        if(dynamicIsland) {
+      if (menuItemIndex === 1) {
+        if (dynamicIsland) {
           dynamicIsland.classList.add('show-contactUs');
           dynamicIsland.classList.remove('show-social');
         }
       }
-      else if(menuItemIndex === 2) {
-        if(dynamicIsland) {
+      else if (menuItemIndex === 2) {
+        if (dynamicIsland) {
           dynamicIsland.classList.add('show-social');
           dynamicIsland.classList.remove('show-contactUs');
         }
       }
       else {
-        if(dynamicIsland) {
+        if (dynamicIsland) {
           dynamicIsland.classList.remove('show-social');
           dynamicIsland.classList.remove('show-contactUs');
         }
       }
-      
+
     }
-    else{
+    else {
       selected[menuItemIndex] = false;
-      if(menuItemIndex === 1) {
+      if (menuItemIndex === 1) {
         let dynamicIsland = document.getElementById('dynamic-island');
-        if(dynamicIsland) dynamicIsland.classList.remove('show-contactUs');
+        if (dynamicIsland) dynamicIsland.classList.remove('show-contactUs');
       }
-      if(menuItemIndex === 2) {
+      if (menuItemIndex === 2) {
         let dynamicIsland = document.getElementById('dynamic-island');
-        if(dynamicIsland) dynamicIsland.classList.remove('show-social');
+        if (dynamicIsland) dynamicIsland.classList.remove('show-social');
       }
     }
     setSelectedMenuItem([...selected]);
@@ -92,16 +92,16 @@ const Home = () => {
               <filter id="glass-distortion">
                 <feTurbulence
                   type="fractalNoise"
-                  baseFrequency="0.001 0.005"
-                  numOctaves="10"
-                  seed="60"
+                  baseFrequency="0.002"
+                  numOctaves="3"
+                  seed="5"
                   result="turb"
                 />
                 <feGaussianBlur in="noise"
-                  stdDeviation="10" result="softMap" />
+                  stdDeviation="20" result="softMap" />
                 <feDisplacementMap in="SourceGraphic"
                   in2="turb"
-                  scale="50"
+                  scale="60"
                   xChannelSelector="R"
                   yChannelSelector="G" />
               </filter>
@@ -110,57 +110,57 @@ const Home = () => {
 
           <div className='header-main'>
             <div className='left'>
-                <img src="./assets/me.jpg" alt='avatar' className='my-avatar'/>
+              <img src="./assets/me.jpg" alt='avatar' className='my-avatar' />
             </div>
             <div className='right'>
 
-              <a className={'menu-item menu-item-home ' + (selectedMenuItem[0] ? 'selected' : '')} href='#home'  onClick={(e) => selectMenuItem(0)} >
+              <a className={'menu-item menu-item-home ' + (selectedMenuItem[0] ? 'selected' : '')} href='#home' onClick={(e) => selectMenuItem(0)} >
                 Home
               </a>
 
               <div className={'menu-item ' + (selectedMenuItem[1] ? 'selected' : '')} onClick={(e) => selectMenuItem(1)}>
-                Contact Me 
+                Contact Me
                 <div className='menu-item-icon'>
-                  <ArrowDownwardIcon className={selectedMenuItem[1] ? 'rotate-180' : ''}/>
+                  <ArrowDownwardIcon className={selectedMenuItem[1] ? 'rotate-180' : ''} />
                 </div>
               </div>
 
               <div className={'menu-item ' + (selectedMenuItem[2] ? 'selected' : '')} onClick={(e) => selectMenuItem(2)}>
                 Social
                 <div className='menu-item-icon'>
-                  <ArrowDownwardIcon className={selectedMenuItem[2] ? 'rotate-180' : ''}/>
+                  <ArrowDownwardIcon className={selectedMenuItem[2] ? 'rotate-180' : ''} />
                 </div>
               </div>
             </div>
           </div>
 
           <div id='contactUs' className={selectedMenuItem[1] ? 'show-header-content' : ''}>
-            {selectedMenuItem[1] && <ContactMe boxRef="topMenuBoxRef"/>}
+            {selectedMenuItem[1] && <ContactMe boxRef="topMenuBoxRef" />}
           </div>
 
           <div id='social-media-container' className={selectedMenuItem[2] ? 'show-header-content' : ''}>
-            {selectedMenuItem[2] && <Social boxRef="topMenuBoxRef"/>}
+            {selectedMenuItem[2] && <Social boxRef="topMenuBoxRef" />}
           </div>
 
         </div>
       </div>
 
       <div className='intro'>
-        
+
         <section className="container">
           <div className="section-content">
-              <h1>Hi! I'm</h1>
-              <h1 className='my-name'>Fares Hentati</h1>
-              <p>Welcome to my portfolio!</p>
-              <div className='learn-more'>
-                <div>Scroll to learn more about me</div>
-                <Player
-                  src='https://assets9.lottiefiles.com/packages/lf20_p4eki2q3.json'
-                  className="lottie-player"
-                  loop
-                  autoplay
-                />
-              </div>
+            <h1>Hi! I'm</h1>
+            <h1 className='my-name'>Fares Hentati</h1>
+            <p>Welcome to my portfolio!</p>
+            <div className='learn-more'>
+              <div>Scroll to learn more about me</div>
+              <Player
+                src='https://assets9.lottiefiles.com/packages/lf20_p4eki2q3.json'
+                className="lottie-player"
+                loop
+                autoplay
+              />
+            </div>
           </div>
         </section>
 
@@ -193,27 +193,27 @@ const Home = () => {
 
         <section className="container">
           <div className="section-content">
-              <h1>In the next sections<br/> you will discover</h1>
-              <h1 className='highlighted'>my creations!</h1>
-              <p>Enjoying it? keep scrolling</p>
+            <h1>In the next sections<br /> you will discover</h1>
+            <h1 className='highlighted'>my creations!</h1>
+            <p>Enjoying it? keep scrolling</p>
           </div>
         </section>
 
       </div>
 
       <div className="my-img-bg">
-        <img className='bg-me' src="assets/backgrounds/me-black.png"/>
+        <img className='bg-me' src="assets/backgrounds/me-black.png" />
       </div>
-      
+
       <div id="v0" ref={imageSequenceContainerRef}>
         <canvas id='images'></canvas>
       </div>
 
-      <MyCategories/>
+      <MyCategories />
 
-      <DetailedCategories/>
+      <DetailedCategories />
 
-      <Footer/>
+      <Footer />
 
     </div>
   )
