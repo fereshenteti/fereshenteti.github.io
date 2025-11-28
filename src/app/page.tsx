@@ -110,7 +110,7 @@ const Home = () => {
 
           <div className='header-main'>
             <div className='left'>
-              <img src="./assets/me.jpg" alt='avatar' className='my-avatar' />
+              <img src="./assets/me.png" alt='avatar' className='my-avatar' />
             </div>
             <div className='right'>
 

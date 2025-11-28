@@ -28,6 +28,7 @@ $slide-size: 80%;
   border-radius: 1.8rem;
   height: 100%;
   overflow: hidden;
+  position: relative;
 }
 
 .embla__parallax__layer {
@@ -174,22 +175,50 @@ $slide-size: 80%;
 
 .embla__slide__link {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  text-decoration: none;
+}
+
+.embla__slide__link__content {
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   background: rgba(0, 0, 0, 0.7);
   color: white;
-  text-align: center;
-  text-decoration: none;
   font-weight: bold;
   transform: translateY(100%);
   transition: transform 0.3s ease-in-out;
-  z-index: 10;
   backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.embla__slide:hover .embla__slide__link {
+.embla__slide__link__text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  margin-right: 1rem;
+  font-size: 0.9rem;
+}
+
+.embla__slide__link__icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex-shrink: 0;
+}
+
+.embla__slide:hover .embla__slide__link__content {
   transform: translateY(0);
 }
 

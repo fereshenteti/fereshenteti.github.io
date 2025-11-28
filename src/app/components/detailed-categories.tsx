@@ -2,30 +2,19 @@ import { MyCustomButton } from "./common-ui/custom-button";
 import EmblaCarousel from "./carousel/EmblaCarousel";
 import { EmblaOptionsType } from 'embla-carousel';
 import { useEffect, useState } from "react";
-
-export type SlideData = {
-    src: string;
-    link: string | null;
-};
+import { fetchSlides, SlideData } from "@/services/slides";
 
 const DetailedCategories = () => {
     const OPTIONS: EmblaOptionsType = { loop: true }
     const [slides, setSlides] = useState<SlideData[]>([]);
 
     useEffect(() => {
-        const fetchImages = async () => {
-            try {
-                const response = await fetch('/api/images');
-                if (response.ok) {
-                    const data = await response.json();
-                    setSlides(data);
-                }
-            } catch (error) {
-                console.error('Failed to fetch images:', error);
-            }
+        const loadSlides = async () => {
+            const data = await fetchSlides();
+            setSlides(data);
         };
 
-        fetchImages();
+        loadSlides();
     }, []);
 
     return (

@@ -12,7 +12,7 @@ import {
   PrevButton,
   usePrevNextButtons
 } from './EmblaCarouselArrowButtons'
-import { SlideData } from '../detailed-categories'
+import { SlideData } from '@/services/slides'
 
 const TWEEN_FACTOR_BASE = 0.2
 
@@ -122,7 +122,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                 </div>
                 {slide.link && (
                   <a href={slide.link} target="_blank" rel="noopener noreferrer" className="embla__slide__link">
-                    Visit Project
+                    <div className="embla__slide__link__content">
+                      <span className="embla__slide__link__text">{slide.link.replace(/^https?:\/\//, '')}</span>
+                      <svg className="embla__slide__link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
+                      </svg>
+                    </div>
                   </a>
                 )}
               </div>
