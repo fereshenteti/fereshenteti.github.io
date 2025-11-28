@@ -1,12 +1,16 @@
-
 import { MyCustomButton } from "./common-ui/custom-button";
 import EmblaCarousel from "./carousel/EmblaCarousel";
 import { EmblaOptionsType } from 'embla-carousel';
 import { useEffect, useState } from "react";
 
+export type SlideData = {
+    src: string;
+    link: string | null;
+};
+
 const DetailedCategories = () => {
     const OPTIONS: EmblaOptionsType = { loop: true }
-    const [slides, setSlides] = useState<string[]>([]);
+    const [slides, setSlides] = useState<SlideData[]>([]);
 
     useEffect(() => {
         const fetchImages = async () => {

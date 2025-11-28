@@ -12,11 +12,12 @@ import {
   PrevButton,
   usePrevNextButtons
 } from './EmblaCarouselArrowButtons'
+import { SlideData } from '../detailed-categories'
 
 const TWEEN_FACTOR_BASE = 0.2
 
 type PropType = {
-  slides: string[]
+  slides: SlideData[]
   options?: EmblaOptionsType
 }
 
@@ -26,8 +27,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
     Autoplay({ playOnInit: true, delay: 3000, stopOnInteraction: false })
   ])
-  const tweenFactor = useRef(0)
-  const tweenNodes = useRef<HTMLElement[]>([])
+  const [tweenFactor, setTweenFactor] = React.useState(0)
+  const [tweenNodes, setTweenNodes] = React.useState<HTMLElement[]>([])
 
   const {
     prevBtnDisabled,
@@ -38,14 +39,12 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 
   const { showAutoplayProgress } = useAutoplayProgress(emblaApi, progressNode)
 
-  const setTweenNodes = useCallback((emblaApi: EmblaCarouselType): void => {
-    tweenNodes.current = emblaApi.slideNodes().map((slideNode) => {
-      return slideNode.querySelector('.embla__parallax__layer') as HTMLElement
-    })
+  const setTweenNodesFunc = useCallback((emblaApi: EmblaCarouselType): void => {
+    setTweenNodes(emblaApi.slideNodes())
   }, [])
 
-  const setTweenFactor = useCallback((emblaApi: EmblaCarouselType) => {
-    tweenFactor.current = TWEEN_FACTOR_BASE * emblaApi.scrollSnapList().length
+  const setTweenFactorFunc = useCallback((emblaApi: EmblaCarouselType) => {
+    setTweenFactor(TWEEN_FACTOR_BASE * emblaApi.scrollSnapList().length)
   }, [])
 
   const tweenParallax = useCallback(
@@ -79,25 +78,29 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
             })
           }
 
-          const translate = diffToTarget * (-1 * tweenFactor.current) * 100
-          const tweenNode = tweenNodes.current[slideIndex]
-          tweenNode.style.transform = `translateX(${translate}%)`
+          const translate = diffToTarget * (-1 * tweenFactor) * 100
+          const tweenNode = tweenNodes[slideIndex]
+            ?.querySelector('.embla__parallax__layer') as HTMLElement
+
+          if (tweenNode) {
+            tweenNode.style.transform = `translateX(${translate}%)`
+          }
         })
       })
     },
-    []
+    [tweenFactor, tweenNodes]
   )
 
   useEffect(() => {
     if (!emblaApi) return
 
-    setTweenNodes(emblaApi)
-    setTweenFactor(emblaApi)
+    setTweenNodesFunc(emblaApi)
+    setTweenFactorFunc(emblaApi)
     tweenParallax(emblaApi)
 
     emblaApi
-      .on('reInit', setTweenNodes)
-      .on('reInit', setTweenFactor)
+      .on('reInit', setTweenNodesFunc)
+      .on('reInit', setTweenFactorFunc)
       .on('reInit', tweenParallax)
       .on('scroll', tweenParallax)
       .on('slideFocus', tweenParallax)
@@ -107,16 +110,21 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {slides.map((imgSrc, index) => (
+          {slides.map((slide, index) => (
             <div className="embla__slide" key={index}>
               <div className="embla__parallax">
                 <div className="embla__parallax__layer">
                   <img
-                    className="embla__slide__img"
-                    src={imgSrc}
-                    alt={`Slide ${index + 1}`}
+                    className="embla__slide__img embla__parallax__img"
+                    src={slide.src}
+                    alt="Your alt text"
                   />
                 </div>
+                {slide.link && (
+                  <a href={slide.link} target="_blank" rel="noopener noreferrer" className="embla__slide__link">
+                    Visit Project
+                  </a>
+                )}
               </div>
             </div>
           ))}
