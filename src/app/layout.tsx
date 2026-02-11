@@ -1,4 +1,5 @@
 import "./styles/app.scss";
+import './styles/stats-section.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import Script from "next/script"

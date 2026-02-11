@@ -10,6 +10,7 @@ import ContactMe from "./components/contact-me";
 import Social from "./components/social";
 import DetailedCategories from './components/detailed-categories';
 import Footer from './components/footer';
+import StatsSection from './components/stats-section';
 
 gsap.registerPlugin(useGSAP);
 
@@ -166,19 +167,19 @@ const Home = () => {
 
         <section className="container">
           <div className="section-content">
-            <h1>I'm a</h1>
-            <h1 className='highlighted'>Web development</h1>
-            <h1>Engineer</h1>
-            <p>6+ years of expertise in Front-end technologies</p>
+            <h1>I'm a Senior</h1>
+            <h1 className='highlighted'>UI / UX / Graphic</h1>
+            <h1>Designer</h1>
+            <p>8+ years of expertise crafting beautiful user experiences</p>
           </div>
         </section>
 
         <section className="container">
           <div className="section-content">
             <h1>& I'm also a</h1>
-            <h1 className='highlighted'>UI / UX / Graphic</h1>
-            <h1>Designer</h1>
-            <p>I adore tasty designs and turn them into code!</p>
+            <h1 className='highlighted'>Web Development</h1>
+            <h1>Engineer</h1>
+            <p>6+ years turning designs into elegant code!</p>
           </div>
         </section>
 
@@ -210,6 +211,8 @@ const Home = () => {
       </div>
 
       <MyCategories />
+
+      <StatsSection />
 
       <DetailedCategories />
 
