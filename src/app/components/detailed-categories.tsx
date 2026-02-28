@@ -3,6 +3,8 @@ import EmblaCarousel from "./carousel/EmblaCarousel";
 import { EmblaOptionsType } from 'embla-carousel';
 import { useEffect, useState } from "react";
 import { fetchSlides, SlideData } from "@/services/slides";
+import AboutMyWork from './about-my-work';
+
 
 const DetailedCategories = () => {
     const OPTIONS: EmblaOptionsType = { loop: true }
@@ -206,6 +208,9 @@ const DetailedCategories = () => {
             </div>
 
             <div className="section-spacer"></div>
+
+            {/* About My Work Section */}
+            <AboutMyWork boxRef="topMenuBoxRef" />
 
             {/* Illustrations */}
             <div id="illustration" className="section detailed-category illustrations">

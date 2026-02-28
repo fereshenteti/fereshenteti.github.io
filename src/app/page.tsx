@@ -8,9 +8,11 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import MyCategories from "./components/categories";
 import ContactMe from "./components/contact-me";
 import Social from "./components/social";
+import BentoBox from './components/bento-box';
 import DetailedCategories from './components/detailed-categories';
 import Footer from './components/footer';
 import StatsSection from './components/stats-section';
+import Header_v1 from './components/header/header_v1';
 
 gsap.registerPlugin(useGSAP);
 
@@ -85,66 +87,11 @@ const Home = () => {
   return (
     <div className="App" id="home">
 
-      <div className='header for-borders'>
-        <div id='dynamic-island' ref={islandRef} className='dynamic-island'>
+      <Header_v1 />
 
-          <div className='liquid-glass-effect'>
-            <svg id='liquid-glass-svg'>
-              <filter id="glass-distortion">
-                <feTurbulence
-                  type="fractalNoise"
-                  baseFrequency="0.002"
-                  numOctaves="3"
-                  seed="5"
-                  result="turb"
-                />
-                <feGaussianBlur in="noise"
-                  stdDeviation="20" result="softMap" />
-                <feDisplacementMap in="SourceGraphic"
-                  in2="turb"
-                  scale="60"
-                  xChannelSelector="R"
-                  yChannelSelector="G" />
-              </filter>
-            </svg>
-          </div>
+      {/* <Header /> */}
 
-          <div className='header-main'>
-            <div className='left'>
-              <img src="./assets/me.png" alt='avatar' className='my-avatar' />
-            </div>
-            <div className='right'>
-
-              <a className={'menu-item menu-item-home ' + (selectedMenuItem[0] ? 'selected' : '')} href='#home' onClick={(e) => selectMenuItem(0)} >
-                Home
-              </a>
-
-              <div className={'menu-item ' + (selectedMenuItem[1] ? 'selected' : '')} onClick={(e) => selectMenuItem(1)}>
-                Contact Me
-                <div className='menu-item-icon'>
-                  <ArrowDownwardIcon className={selectedMenuItem[1] ? 'rotate-180' : ''} />
-                </div>
-              </div>
-
-              <div className={'menu-item ' + (selectedMenuItem[2] ? 'selected' : '')} onClick={(e) => selectMenuItem(2)}>
-                Social
-                <div className='menu-item-icon'>
-                  <ArrowDownwardIcon className={selectedMenuItem[2] ? 'rotate-180' : ''} />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div id='contactUs' className={selectedMenuItem[1] ? 'show-header-content' : ''}>
-            {selectedMenuItem[1] && <ContactMe boxRef="topMenuBoxRef" />}
-          </div>
-
-          <div id='social-media-container' className={selectedMenuItem[2] ? 'show-header-content' : ''}>
-            {selectedMenuItem[2] && <Social boxRef="topMenuBoxRef" />}
-          </div>
-
-        </div>
-      </div>
+      <BentoBox />
 
       <div className='intro'>
 

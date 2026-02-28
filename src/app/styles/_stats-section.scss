@@ -1,0 +1,225 @@
+// Stats Section Styling - Impact in Numbers
+
+.stats-section {
+    position: relative;
+    width: 100%;
+    padding: clamp(3rem, 6vw, 5rem) 2rem;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+            radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(0, 191, 255, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .stats-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    .stats-header {
+        text-align: center;
+        margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .stats-title {
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        font-weight: 800;
+        margin-bottom: clamp(0.5rem, 1vw, 1rem);
+        color: #ffffff;
+        line-height: 1.2;
+    }
+
+    .gradient-text {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradientShift 3s ease infinite;
+    }
+
+    @keyframes gradientShift {
+        0%,
+        100% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+    }
+
+    .stats-subtitle {
+        font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+        color: rgba(255, 255, 255, 0.7);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: clamp(1.5rem, 3vw, 2.5rem);
+        perspective: 1000px;
+    }
+
+    .stat-card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        padding: clamp(2rem, 4vw, 3rem);
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+        opacity: 0;
+
+        &:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(219, 166, 34, 0.5);
+            box-shadow:
+                0 20px 60px rgba(219, 166, 34, 0.3),
+                0 0 40px rgba(219, 166, 34, 0.2);
+        }
+
+        &:hover .stat-glow {
+            opacity: 1;
+        }
+    }
+
+    .stat-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(219, 166, 34, 0.4) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+        filter: blur(30px);
+    }
+
+    .stat-icon {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .stat-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .stat-number-wrapper {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        margin-bottom: clamp(0.75rem, 1.5vw, 1.2rem);
+        gap: clamp(0.25rem, 0.5vw, 0.5rem);
+    }
+
+    .stat-number {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 900;
+        background: linear-gradient(135deg, #ffffff 0%, #a8dadc 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .stat-suffix {
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
+        font-weight: 700;
+        color: #667eea;
+        line-height: 1;
+    }
+
+    .stat-label {
+        font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.8);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin: 0;
+    }
+}
+
+// Responsive Design
+
+@media (max-width: 768px) {
+    .stats-section {
+        padding: clamp(2rem, 4vw, 3rem);
+
+        .stats-header {
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .stats-grid {
+            gap: clamp(1.2rem, 2.5vw, 1.8rem);
+        }
+
+        .stat-card {
+            padding: clamp(1.5rem, 3vw, 2.2rem);
+        }
+
+        .stat-icon {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+        }
+
+        .stat-label {
+            font-size: clamp(0.75rem, 1vw, 0.95rem);
+            letter-spacing: 1.5px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-section {
+        padding: clamp(1.5rem, 3vw, 2rem);
+
+        .stat-card {
+            padding: clamp(1.2rem, 2.5vw, 1.8rem);
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+// Theme-aware animations
+@media (prefers-reduced-motion: reduce) {
+    .stat-card,
+    .stat-icon,
+    .gradient-text {
+        animation: none !important;
+        transition: none !important;
+    }
+}

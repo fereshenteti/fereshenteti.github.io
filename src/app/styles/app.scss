@@ -1,5 +1,8 @@
+// @import "tailwindcss";
 @import 'animations';
 @import 'globals';
+// @import 'GlassSurface';
+@import 'header';
 @import 'custom-button';
 @import 'carousel';
 @import 'main';
@@ -7,5 +10,8 @@
 @import 'contact-me';
 @import 'made-by-me';
 @import 'social';
+@import 'bento-box';
+@import 'about-my-work';
+@import 'stats-section';
 @import 'detailed-categories';
 @import 'footer';
