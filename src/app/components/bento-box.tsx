@@ -3,6 +3,11 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import CountUp from '../animations/CountUp/CountUp';
+import GradientText from '../animations/GradientText/GradientText';
+import CustomBentoCard from './custom-bento-card';
+import Magnet from '../animations/Magnet/Magnet';
+import { Button } from '@mui/material';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -137,6 +142,7 @@ const ExperienceChart = () => {
 };
 
 const BentoBox = () => {
+
     useEffect(() => {
         const cards = gsap.utils.toArray('.bento-card');
 
@@ -154,37 +160,6 @@ const BentoBox = () => {
                 once: true,
             });
         });
-
-        // Counter animations for stat cards
-        const setupCounterAnimation = (cardId: string, endValue: number) => {
-            const card = document.getElementById(cardId);
-            if (card) {
-                const titleElement = card.querySelector('.bento-title');
-                if (titleElement) {
-                    ScrollTrigger.create({
-                        trigger: card,
-                        onEnter: () => {
-                            gsap.to(
-                                { value: 0 },
-                                {
-                                    value: endValue,
-                                    duration: 2,
-                                    ease: 'power2.out',
-                                    onUpdate: function() {
-                                        titleElement.textContent = Math.ceil(this.targets()[0].value) + '+';
-                                    },
-                                }
-                            );
-                        },
-                        once: true,
-                    });
-                }
-            }
-        };
-
-        setupCounterAnimation('years-of-experience-card', 7);
-        setupCounterAnimation('happy-clients-card', 10);
-        setupCounterAnimation('projects-delivered-card', 16);
     }, []);
 
     return (
@@ -192,84 +167,101 @@ const BentoBox = () => {
             <div className="bento-container">
                 <div className="bento-grid">
                     
-                    <div id="my-name-card" className="bento-card col-span-2">
-                        <div className="bento-card-inner">
-                            <p className="bento-description">Hi 👋 I'm</p>
-                            <h3 className="bento-title">Fares Hentati</h3>
-                        </div>
-                    </div>
+                    <CustomBentoCard id="my-name-card" colSpan={2}>
+                        <p className="bento-description">Hi 👋 I'm</p>
+                        <h3 className="bento-title">
+                            Fares Hentati
+                        </h3>
+                    </CustomBentoCard>
 
-                    <div className="bento-card col-span-2 row-span-2">
-                        <div className="bento-card-inner">
-                            {/* <div className="bento-icon">🎨</div>
-                            <h3 className="bento-title">Design Systems</h3>
-                            <p className="bento-description">Scalable & Accessible</p> */}
-                            <img src="/assets/images/my_avatar.png" alt="Design Systems" className="bento-image" />
-                        </div>
-                    </div>
+                    <CustomBentoCard id="my-avatar-card" colSpan={2} rowSpan={2}>
+                        <img src="/assets/images/my_avatar.png" alt="Design Systems" className="bento-image" />
+                    </CustomBentoCard>
 
-                    <div className="bento-card row-span-2">
-                        <div className="bento-card-inner">
-                            <div className="bento-icon">🧭</div>
-                            <h3 className="bento-title">User Experience</h3>
-                            <p className="bento-description">Research-driven design</p>
-                        </div>
-                    </div>
+                    <CustomBentoCard id="my-experience-card" rowSpan={2}>
+                        <div className="bento-icon">🧭</div>
+                        <h3 className="bento-title">User Experience</h3>
+                        <p className="bento-description">Research-driven design</p>
+                    </CustomBentoCard>
 
-                    <div id="ui-ux-card" className="bento-card">
-                        <div className="bento-card-inner">
-                            <div className="bento-icon">✨</div>
-                            <h3 className="bento-title">UI / UX Designer</h3>
-                            {/* <p className="bento-description">Logo & Visual Systems</p> */}
-                        </div>
-                    </div>
+                    <CustomBentoCard id="ui-ux-card">
+                        <div className="bento-icon">✨</div>
+                        <h3 className="bento-title">UI / UX Designer</h3>
+                    </CustomBentoCard>
 
-                    <div id="frontend-card" className="bento-card">
-                        <div className="bento-card-inner">
-                            <div className="bento-icon">🧑🏼‍💻</div>
-                            <h3 className="bento-title">Frontend expert</h3>
-                            {/* <p className="bento-description">Founder of Hentees</p> */}
-                        </div>
-                    </div>
+                    <CustomBentoCard id="frontend-card">
+                        <div className="bento-icon">🧑🏼‍💻</div>
+                        <h3 className="bento-title">Frontend expert</h3>
+                    </CustomBentoCard>
 
-                    <div id="years-of-experience-card" className="bento-card col-span-2">
-                        <div className="bento-card-inner">
-                            <div className="left-side">
-                                {/* <div className="bento-icon">🚀</div> */}
-                                <h3 className="bento-title">7+</h3>
-                                <p className="bento-description">Years of experience</p>
-                            </div>
-                            <div className="right-side">
-                                <div className="chart-container">
-                                    <ExperienceChart />
-                                </div>
+                    <CustomBentoCard id="years-of-experience-card" colSpan={2}>
+                        <div className="left-side">
+                        <GradientText
+                        colors={["#5227FF","#FF9FFC","#B19EEF"]}
+                        animationSpeed={0}
+                        showBorder={false}
+                        >
+                            <CountUp
+                                from={0}
+                                to={7}
+                                direction="up"
+                                duration={1}
+                                className="count-up-text"
+                            />
+                            +
+                        </GradientText>
+                            <p className="bento-description">Years of experience</p>
+                        </div>
+                        <div className="right-side">
+                            <div className="chart-container">
+                                <ExperienceChart />
                             </div>
                         </div>
-                    </div>
+                    </CustomBentoCard>
 
-                    <div id="happy-clients-card" className="bento-card">
-                        <div className="bento-card-inner">
-                            {/* <div className="bento-icon">🤝</div> */}
-                            <h3 className="bento-title">10+</h3>
-                            <p className="bento-description">Happy clients</p>
-                        </div>
-                    </div>
+                    <CustomBentoCard id="happy-clients-card">
+                        <GradientText
+                            colors={["#5227FF","#FF9FFC","#B19EEF"]}
+                            animationSpeed={0}
+                            showBorder={false}
+                            >
+                                <CountUp
+                                    from={0}
+                                    to={10}
+                                    direction="up"
+                                    duration={1}
+                                    className="count-up-text"
+                                />
+                                +
+                        </GradientText>
+                        <p className="bento-description">Happy clients</p>
+                    </CustomBentoCard>
 
-                    <div id="projects-delivered-card" className="bento-card">
-                        <div className="bento-card-inner">
-                            {/* <div className="bento-icon">🚀</div> */}
-                            <h3 className="bento-title">16+</h3>
-                            <p className="bento-description">Projects delivered</p>
-                        </div>
-                    </div>
+                    <CustomBentoCard id="projects-delivered-card">
+                        <GradientText
+                            colors={["#5227FF","#FF9FFC","#B19EEF"]}
+                            animationSpeed={0}
+                            showBorder={false}
+                            >
+                                <CountUp
+                                    from={0}
+                                    to={16}
+                                    direction="up"
+                                    duration={1}
+                                    className="count-up-text"
+                                />
+                                +
+                        </GradientText>
+                        <p className="bento-description">Projects delivered</p>
+                    </CustomBentoCard>
 
-                    <div className="bento-card">
-                        <div className="bento-card-inner">
-                            <div className="bento-icon">⚙️</div>
-                            <h3 className="bento-title">Performance First</h3>
-                            <p className="bento-description">Optimized for speed</p>
-                        </div>
-                    </div>
+                    <CustomBentoCard id="contact-cta-bento-card">
+                        <Magnet padding={50} disabled={false} magnetStrength={5}>
+                            <Button className='contact-button-card' variant="outlined">
+                                <span>Let's get in touch!</span>
+                            </Button>
+                        </Magnet>
+                    </CustomBentoCard>
 
                 </div>
             </div>
