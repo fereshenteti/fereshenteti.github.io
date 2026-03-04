@@ -18,7 +18,7 @@ const CustomBentoCard = ({
   rowSpan,
   onClick,
 }: CustomBentoCardProps) => {
-    const spotlightColor = 'rgba(140, 77, 182, 0.4)';
+    const spotlightColor = 'rgba(239, 175, 91, 0.4)';
 
     const baseClass = 'bento-card';
     const colSpanClass = colSpan ? `col-span-${colSpan}` : '';

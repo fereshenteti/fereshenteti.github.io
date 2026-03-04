@@ -8,6 +8,7 @@ import GradientText from '../animations/GradientText/GradientText';
 import CustomBentoCard from './custom-bento-card';
 import Magnet from '../animations/Magnet/Magnet';
 import { Button } from '@mui/material';
+import { MyCustomButton } from './common-ui/custom-button';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -186,18 +187,18 @@ const BentoBox = () => {
 
                     <CustomBentoCard id="ui-ux-card">
                         <div className="bento-icon">✨</div>
-                        <h3 className="bento-title">UI / UX Designer</h3>
+                        <h3 className="bento-title">UI / UX Design Expert</h3>
                     </CustomBentoCard>
 
                     <CustomBentoCard id="frontend-card">
                         <div className="bento-icon">🧑🏼‍💻</div>
-                        <h3 className="bento-title">Frontend expert</h3>
+                        <h3 className="bento-title">Frontend Engineer</h3>
                     </CustomBentoCard>
 
                     <CustomBentoCard id="years-of-experience-card" colSpan={2}>
                         <div className="left-side">
+                        {/* colors={["#5227FF","#FF9FFC","#B19EEF"]} */}
                         <GradientText
-                        colors={["#5227FF","#FF9FFC","#B19EEF"]}
                         animationSpeed={0}
                         showBorder={false}
                         >
@@ -221,7 +222,6 @@ const BentoBox = () => {
 
                     <CustomBentoCard id="happy-clients-card">
                         <GradientText
-                            colors={["#5227FF","#FF9FFC","#B19EEF"]}
                             animationSpeed={0}
                             showBorder={false}
                             >
@@ -239,7 +239,6 @@ const BentoBox = () => {
 
                     <CustomBentoCard id="projects-delivered-card">
                         <GradientText
-                            colors={["#5227FF","#FF9FFC","#B19EEF"]}
                             animationSpeed={0}
                             showBorder={false}
                             >
@@ -257,9 +256,10 @@ const BentoBox = () => {
 
                     <CustomBentoCard id="contact-cta-bento-card">
                         <Magnet padding={50} disabled={false} magnetStrength={5}>
-                            <Button className='contact-button-card' variant="outlined">
+                            {/* <Button className='contact-button-card' variant="outlined">
                                 <span>Let's get in touch!</span>
-                            </Button>
+                            </Button> */}
+                            <MyCustomButton btnIcon="assets/icons/mail.svg" btnText="Let's get in touch!" className="contact-button-card" />
                         </Magnet>
                     </CustomBentoCard>
 
