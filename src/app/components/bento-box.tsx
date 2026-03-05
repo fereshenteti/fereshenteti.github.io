@@ -7,7 +7,7 @@ import CountUp from '../animations/CountUp/CountUp';
 import GradientText from '../animations/GradientText/GradientText';
 import CustomBentoCard from './custom-bento-card';
 import Magnet from '../animations/Magnet/Magnet';
-import { Button } from '@mui/material';
+import { ClashDisplay, Satoshi, GeneralSans } from '../../fonts/fonts';
 import { MyCustomButton } from './common-ui/custom-button';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -166,11 +166,11 @@ const BentoBox = () => {
     return (
         <section className="bento-section">
             <div className="bento-container">
-                <div className="bento-grid">
+                <div className={"bento-grid " + ClashDisplay.className}>
                     
                     <CustomBentoCard id="my-name-card" colSpan={2}>
                         <p className="bento-description">Hi 👋 I'm</p>
-                        <h3 className="bento-title">
+                        <h3 className={'bento-title '}>
                             Fares Hentati
                         </h3>
                     </CustomBentoCard>
@@ -180,9 +180,9 @@ const BentoBox = () => {
                     </CustomBentoCard>
 
                     <CustomBentoCard id="my-experience-card" rowSpan={2}>
-                        <div className="bento-icon">🧭</div>
-                        <h3 className="bento-title">User Experience</h3>
-                        <p className="bento-description">Research-driven design</p>
+                        <p className={"bento-description " + Satoshi.className}>I design modern, intuitive, and user-centered interfaces, combining technical excellence  with high aesthetic standards.</p>
+                        <br/>
+                        <p className={"bento-description " + Satoshi.className}><strong>My goal</strong>: to transform complex business needs into seamless, high-performing, and accessible digital experiences.</p>
                     </CustomBentoCard>
 
                     <CustomBentoCard id="ui-ux-card">
@@ -256,9 +256,6 @@ const BentoBox = () => {
 
                     <CustomBentoCard id="contact-cta-bento-card">
                         <Magnet padding={50} disabled={false} magnetStrength={5}>
-                            {/* <Button className='contact-button-card' variant="outlined">
-                                <span>Let's get in touch!</span>
-                            </Button> */}
                             <MyCustomButton btnIcon="assets/icons/mail.svg" btnText="Let's get in touch!" className="contact-button-card" />
                         </Magnet>
                     </CustomBentoCard>

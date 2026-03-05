@@ -80,11 +80,10 @@
 
         .bento-title {
             font-size: clamp(1rem, 1.8vw, 1.2rem);
-            font-weight: 800;
+            font-weight: 600;
             color: #000;
             margin: 0;
             line-height: 1.3;
-            letter-spacing: -0.3px;
         }
 
         .bento-description {
@@ -94,22 +93,33 @@
             line-height: 1.5;
         }
 
+        .custom-spotlight-card{
+            padding: 2rem 1.25rem;
+        }
     }
 
     #my-name-card {
         .bento-title {
-            font-size: 3rem;
+            font-size: 3.4rem;
         }
         .bento-description {
             font-size: 1.6rem;
         }
     }
 
+    #my-experience-card .custom-spotlight-card{
+        padding: 1.5rem 1rem;
+        .bento-description{
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+    
     #ui-ux-card, #frontend-card {
         .bento-title {
             font-size: 1.6rem;
             margin-top: 1rem;
-            line-height: 1.1;
+            line-height: 1.2;
         }
     }
 
@@ -128,8 +138,8 @@
             font-size: 3.4rem;
         }
         .bento-description {
-            font-size: 1.4rem;
-            line-height: 0.8;
+            font-size: 20px;
+            line-height: 1.2;
         }
     }
 
@@ -163,7 +173,7 @@
         .bento-description {
             font-size: 1.2rem;
             margin: 0;
-            line-height: 0.8;
+            line-height: 1.2;
         }
 
         .chart-container {
@@ -189,6 +199,14 @@
             align-items: center;
             justify-content: center;
         }
+        .my-custom-button{
+            &:hover{
+                padding-right: 16px !important;
+                .custom-button-text{
+                    margin-left: 0;
+                }
+            }
+        }
     }
 
     .contact-button-card{
@@ -201,6 +219,9 @@
         cursor: pointer;
         .custom-button-icon path{
             stroke: white;
+        }
+        .custom-button-text {
+            font-size: 22px;
         }
     }
 }

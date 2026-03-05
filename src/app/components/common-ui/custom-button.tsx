@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import { FC } from "react";
 import { ReactSVG } from 'react-svg';
+import { ClashDisplay } from "../../../fonts/fonts";
 
 interface MyCustomButtonProps{
     btnIcon: any;
@@ -16,7 +17,7 @@ export const MyCustomButton: FC<MyCustomButtonProps> = (props) => {
     return (
         <Button variant="outlined" className={`my-custom-button ${className}`} onClick={onClick}>
             <ReactSVG src={btnIcon} className="custom-button-icon"/>
-            <span className="custom-button-text">{btnText}</span>
+            <span className={"custom-button-text " + ClashDisplay.className}>{btnText}</span>
         </Button>
     )
 }
