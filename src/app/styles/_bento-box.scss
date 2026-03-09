@@ -217,8 +217,19 @@
         border: 2px solid white;
         color: white;
         cursor: pointer;
-        .custom-button-icon path{
-            stroke: white;
+        .custom-button-icon {
+            svg {
+                transform: rotate(45deg) scale(1);
+                transition: all 0.2s ease-in-out;
+            }
+            path{
+                stroke: white;
+            }
+        }
+        &:hover {
+            .custom-button-icon svg {
+                transform: rotate(90deg) scale(1.4);
+            }
         }
         .custom-button-text {
             font-size: 22px;

@@ -1,14 +1,15 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from 'react';
+import { ClashDisplay, Satoshi } from '../../fonts/fonts';
 import CountUp from '../animations/CountUp/CountUp';
 import GradientText from '../animations/GradientText/GradientText';
-import CustomBentoCard from './custom-bento-card';
 import Magnet from '../animations/Magnet/Magnet';
-import { ClashDisplay, Satoshi, GeneralSans } from '../../fonts/fonts';
 import { MyCustomButton } from './common-ui/custom-button';
+import CustomBentoCard from './custom-bento-card';
+import StarBorder from '../animations/StarBorder/StarBorder';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -144,6 +145,10 @@ const ExperienceChart = () => {
 
 const BentoBox = () => {
 
+    const test = () => {
+        console.log('Button clicked!');
+    }
+
     useEffect(() => {
         const cards = gsap.utils.toArray('.bento-card');
 
@@ -256,7 +261,16 @@ const BentoBox = () => {
 
                     <CustomBentoCard id="contact-cta-bento-card">
                         <Magnet padding={50} disabled={false} magnetStrength={5}>
-                            <MyCustomButton btnIcon="assets/icons/mail.svg" btnText="Let's get in touch!" className="contact-button-card" />
+                            {/* <StarBorder
+                                as="button"
+                                className="custom-class"
+                                color="magenta"
+                                speed="5s"
+                                >
+                                    Let's get in touch!
+                            </StarBorder> */}
+                            <MyCustomButton btnIcon="assets/icons/send.svg" btnText="Let's get in touch!" className="contact-button-card"
+                            onClick={() => test()} />
                         </Magnet>
                     </CustomBentoCard>
 
