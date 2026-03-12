@@ -232,7 +232,7 @@ const BentoBox = () => {
                             >
                                 <CountUp
                                     from={0}
-                                    to={10}
+                                    to={12}
                                     direction="up"
                                     duration={1}
                                     className="count-up-text"
@@ -249,7 +249,7 @@ const BentoBox = () => {
                             >
                                 <CountUp
                                     from={0}
-                                    to={16}
+                                    to={17}
                                     direction="up"
                                     duration={1}
                                     className="count-up-text"

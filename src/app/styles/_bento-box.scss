@@ -98,6 +98,11 @@
         }
     }
 
+    #my-avatar-card{
+        border: none;
+        background: radial-gradient(circle, #ffab1b 0%, #FF791B 75%);
+    }
+
     #my-name-card {
         .bento-title {
             font-size: 3.4rem;
@@ -191,9 +196,10 @@
     }
 
     #contact-cta-bento-card{
-        background-image: url('/assets/backgrounds/bg_orange.JPG');
+        // background-image: url('/assets/backgrounds/bg_orange.JPG');
         background-size: cover;
         background-repeat: no-repeat;
+        position: relative;
         .card-spotlight{
             display: flex;
             align-items: center;
@@ -208,14 +214,15 @@
             }
         }
     }
-
+    
     .contact-button-card{
         text-align: center;
         font-weight: 600;
         // background: linear-gradient(to right, #FF791B, #e18071) border-box;
         border-radius: 14px;
-        border: 2px solid white;
-        color: white;
+        border: 2px solid #FF791B;
+        color: #FF791B;
+        background-color: white;
         cursor: pointer;
         .custom-button-icon {
             svg {
@@ -223,7 +230,7 @@
                 transition: all 0.2s ease-in-out;
             }
             path{
-                stroke: white;
+                stroke: #FF791B;
             }
         }
         &:hover {
@@ -233,6 +240,15 @@
         }
         .custom-button-text {
             font-size: 22px;
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: #FF791B;
+            transform: translate(7px, 10px);
+            z-index: -1;
         }
     }
 }
