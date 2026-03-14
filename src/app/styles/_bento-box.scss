@@ -2,10 +2,9 @@
 
 .bento-section {
     width: 100%;
-    height: 100vh;
     min-height: 100vh;
     background: white;
-    padding: clamp(3rem, 6vw, 5rem) 0;
+    padding: 6rem 0;
     position: relative;
 
     .bento-container {
@@ -18,14 +17,14 @@
     .bento-grid {
         height: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(5, minmax(180px, 1fr));
         gap: 12px;
     }
 
     .bento-card {
         background: #f5f5f7;
         border-radius: 18px;
-        // padding: clamp(1.5rem, 3vw, 2rem);
+        min-height: 160px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -35,20 +34,6 @@
         border: 1px solid rgba(0, 0, 0, 0.05);
         transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-
-        // Size variations
-        &.col-span-2 {
-            grid-column: span 2;
-        }
-
-        &.row-span-2 {
-            grid-row: span 2;
-        }
-
-        &.col-span-2.row-span-2 {
-            grid-column: span 2;
-            grid-row: span 2;
-        }
 
         &:hover {
             transform: translateY(-8px);
@@ -93,19 +78,34 @@
             line-height: 1.5;
         }
 
-        .custom-spotlight-card{
+        .custom-spotlight-card {
             padding: 2rem 1.25rem;
+        }
+
+        .count-up-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #FF791B;
         }
     }
 
     #my-avatar-card{
         border: none;
         background: radial-gradient(circle, #ffab1b 0%, #FF791B 75%);
+        .custom-spotlight-card {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 0;
+            img {
+                max-width: 330px;
+            }
+        }
     }
 
     #my-name-card {
         .bento-title {
-            font-size: 3.4rem;
+            font-size: 3rem;
         }
         .bento-description {
             font-size: 1.6rem;
@@ -164,6 +164,12 @@
             flex-direction: row;
             justify-content: space-between;
             gap: 1rem;
+        }
+
+        .left-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .right-side {
@@ -254,196 +260,56 @@
 }
 
 // Responsive adjustments
-@media only screen and (max-width: 1199px) {
+@media only screen and (max-width: 1024px) {
     .bento-section {
         .bento-grid {
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        }
-
-        .bento-card {
-            &.col-span-2 {
-                grid-column: span 1;
-            }
-
-            &.row-span-2 {
-                grid-row: span 1;
-            }
-
-            &.col-span-2.row-span-2 {
-                grid-column: span 1;
-                grid-row: span 1;
+            grid-template-columns: repeat(4, minmax(170px, 1fr));
+            .bento-card .custom-spotlight-card {
+                padding: 1rem;
             }
         }
-    }
-}
 
-@media only screen and (max-width: 899px) {
-    .bento-section {
-        padding: clamp(2.5rem, 4vw, 3.5rem) 0;
-
-        .bento-grid {
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: clamp(0.8rem, 2vw, 1.2rem);
+        #my-name-card .bento-title {
+            font-size: 2.6rem;
         }
 
-        .bento-card {
-            padding: clamp(1.2rem, 2.5vw, 1.5rem);
+        #ui-ux-card .bento-title, #frontend-card .bento-title {
+            font-size: 1.4rem;
+            margin-top: 0.5rem;
+        }
 
-            .bento-icon {
-                font-size: clamp(1.5rem, 3vw, 2rem);
+        #years-of-experience-card .custom-spotlight-card {
+            padding: 1rem;
+            .bento-card-inner {
+                .left-side {
+                    justify-content: center;
+                    text-align: center;
+                }
             }
+        }
 
-            .bento-title {
-                font-size: clamp(0.9rem, 1.6vw, 1rem);
-            }
+        .bento-card .count-up-number {
+            line-height: 1.2;
+        }
 
-            .bento-description {
-                font-size: clamp(0.75rem, 1vw, 0.85rem);
-            }
+        .contact-button-card .custom-button-text {
+            font-size: 1rem;
         }
     }
 }
 
 @media only screen and (max-width: 767px) {
     .bento-section {
-        padding: clamp(2rem, 3.5vw, 2.5rem) 0;
-
-        .bento-container {
-            padding: 0 clamp(1rem, 2vw, 1.2rem);
-        }
-
-        .bento-header {
-            margin-bottom: clamp(1.8rem, 3.5vw, 2.5rem);
-
-            h2 {
-                font-size: clamp(1.5rem, 3vw, 2rem);
-            }
-
-            p {
-                font-size: clamp(0.8rem, 1.3vw, 0.9rem);
-            }
-        }
-
         .bento-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: clamp(0.75rem, 1.5vw, 1rem);
-        }
-
-        .bento-card {
-            padding: clamp(1rem, 2vw, 1.3rem);
-
-            .bento-icon {
-                font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            grid-template-columns: repeat(3, minmax(140px, 1fr));
+            .bento-card .custom-spotlight-card {
+                padding: 1rem;
             }
-
-            .bento-title {
-                font-size: clamp(0.8rem, 1.5vw, 0.9rem);
-            }
-
-            .bento-description {
-                font-size: clamp(0.7rem, 0.9vw, 0.8rem);
-                line-height: 1.4;
-            }
-        }
-
-        &.contact-cta-inner {
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .cta-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            padding: 1rem 1.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: rgba(255, 255, 255, 0.2);
-                transition: left 0.3s ease;
-                z-index: 0;
-            }
-
-            .cta-text,
-            .cta-icon {
-                position: relative;
-                z-index: 1;
-            }
-
-            .cta-icon {
-                font-size: 1.2rem;
-                transition: transform 0.3s ease;
-            }
-
-            &:hover {
-                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-                transform: translateY(-2px);
-
-                &::before {
-                    left: 100%;
-                }
-
-                .cta-icon {
-                    transform: scale(1.2) rotate(10deg);
-                }
-            }
-
-            &:active {
-                transform: translateY(0);
-            }
-        }
-
-        .cta-subtitle {
-            font-size: 0.85rem;
-            color: #666;
-            text-align: center;
-            margin-top: 0.5rem;
         }
     }
 }
-
+    
 @media only screen and (max-width: 599px) {
     .bento-section {
-        padding: clamp(1.5rem, 3vw, 2rem) 0;
-
-        .bento-grid {
-            grid-template-columns: 1fr;
-            gap: clamp(0.7rem, 1.5vw, 1rem);
-        }
-
-        .bento-card {
-            padding: clamp(1rem, 1.5vw, 1.2rem);
-
-            .bento-icon {
-                font-size: clamp(1.2rem, 2vw, 1.5rem);
-            }
-
-            .bento-title {
-                font-size: clamp(0.75rem, 1.3vw, 0.85rem);
-            }
-
-            .bento-description {
-                font-size: clamp(0.65rem, 0.85vw, 0.75rem);
-            }
-        }
     }
 }

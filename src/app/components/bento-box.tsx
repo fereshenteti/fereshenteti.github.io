@@ -5,11 +5,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef } from 'react';
 import { ClashDisplay, Satoshi } from '../../fonts/fonts';
 import CountUp from '../animations/CountUp/CountUp';
-import GradientText from '../animations/GradientText/GradientText';
 import Magnet from '../animations/Magnet/Magnet';
 import { MyCustomButton } from './common-ui/custom-button';
 import CustomBentoCard from './custom-bento-card';
-import StarBorder from '../animations/StarBorder/StarBorder';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -149,126 +147,89 @@ const BentoBox = () => {
         console.log('Button clicked!');
     }
 
-    useEffect(() => {
-        const cards = gsap.utils.toArray('.bento-card');
-
-        cards.forEach((card: any, i: number) => {
-            const anim = gsap.fromTo(
-                card,
-                { autoAlpha: 0, y: 40 },
-                { duration: 0.6, delay: i / 12, autoAlpha: 1, y: 0 }
-            );
-
-            ScrollTrigger.create({
-                trigger: card,
-                animation: anim,
-                toggleActions: 'play none none none',
-                once: true,
-            });
-        });
-    }, []);
-
     return (
         <section className="bento-section">
             <div className="bento-container">
                 <div className={"bento-grid " + ClashDisplay.className}>
                     
-                    <CustomBentoCard id="my-name-card" colSpan={2}>
+                    <CustomBentoCard id="my-name-card" customClasses='xs:order-[1] md:col-span-2 xs:col-span-3'>
                         <p className="bento-description">Hi 👋 I'm</p>
                         <h3 className={'bento-title '}>
                             Fares Hentati
                         </h3>
                     </CustomBentoCard>
 
-                    <CustomBentoCard id="my-avatar-card" colSpan={2} rowSpan={2}>
+                    <CustomBentoCard id="my-avatar-card" customClasses="md:order-[2] col-span-2 row-span-2 xs:order-[6]">
                         <img src="/assets/images/my_avatar.png" alt="Design Systems" className="bento-image" />
                     </CustomBentoCard>
 
-                    <CustomBentoCard id="my-experience-card" rowSpan={2}>
+                    <CustomBentoCard id="my-experience-card" customClasses="lg:order-[3] md:order-[5] xs:order-[5] row-span-2 xs:col-span-3 lg:col-span-1 md:col-span-2">
                         <p className={"bento-description " + Satoshi.className}>I design modern, intuitive, and user-centered interfaces, combining technical excellence  with high aesthetic standards.</p>
                         <br/>
                         <p className={"bento-description " + Satoshi.className}><strong>My goal</strong>: to transform complex business needs into seamless, high-performing, and accessible digital experiences.</p>
                     </CustomBentoCard>
 
-                    <CustomBentoCard id="ui-ux-card">
+                    <CustomBentoCard id="ui-ux-card" customClasses="lg:order-[4] xs:order-[2]">
                         <div className="bento-icon">✨</div>
                         <h3 className="bento-title">UI / UX Design Expert</h3>
                     </CustomBentoCard>
 
-                    <CustomBentoCard id="frontend-card">
+                    <CustomBentoCard id="frontend-card" customClasses="lg:order-[5] xs:order-[3]">
                         <div className="bento-icon">🧑🏼‍💻</div>
                         <h3 className="bento-title">Frontend Engineer</h3>
                     </CustomBentoCard>
 
-                    <CustomBentoCard id="years-of-experience-card" colSpan={2}>
+                    <CustomBentoCard id="years-of-experience-card" customClasses="md:order-[6] lg:col-span-2 md:col-span-1 xs:order-[4]">
                         <div className="left-side">
-                        {/* colors={["#5227FF","#FF9FFC","#B19EEF"]} */}
-                        <GradientText
-                        animationSpeed={0}
-                        showBorder={false}
-                        >
-                            <CountUp
-                                from={0}
-                                to={7}
-                                direction="up"
-                                duration={1}
-                                className="count-up-text"
-                            />
-                            +
-                        </GradientText>
+                            <span className='count-up-number'>
+                                <CountUp
+                                    from={0}
+                                    to={7}
+                                    direction="up"
+                                    duration={0.5}
+                                    className="count-up-text"
+                                />
+                                +
+                            </span>
                             <p className="bento-description">Years of experience</p>
                         </div>
-                        <div className="right-side">
+                        <div className="!hidden lg:!block  right-side">
                             <div className="chart-container">
                                 <ExperienceChart />
                             </div>
                         </div>
                     </CustomBentoCard>
 
-                    <CustomBentoCard id="happy-clients-card">
-                        <GradientText
-                            animationSpeed={0}
-                            showBorder={false}
-                            >
-                                <CountUp
-                                    from={0}
-                                    to={12}
-                                    direction="up"
-                                    duration={1}
-                                    className="count-up-text"
-                                />
-                                +
-                        </GradientText>
+                    <CustomBentoCard id="happy-clients-card" customClasses="xs:order-[7]">
+                        <span className='count-up-number'>
+                            <CountUp
+                                from={0}
+                                to={12}
+                                direction="up"
+                                duration={1}
+                                className="count-up-text"
+                            />
+                            +
+                        </span>
                         <p className="bento-description">Happy clients</p>
                     </CustomBentoCard>
 
-                    <CustomBentoCard id="projects-delivered-card">
-                        <GradientText
-                            animationSpeed={0}
-                            showBorder={false}
-                            >
-                                <CountUp
-                                    from={0}
-                                    to={17}
-                                    direction="up"
-                                    duration={1}
-                                    className="count-up-text"
-                                />
-                                +
-                        </GradientText>
+                    <CustomBentoCard id="projects-delivered-card" customClasses="xs:order-[8]">
+                        <span className='count-up-number'>
+                            <CountUp
+                                from={0}
+                                to={17}
+                                direction="up"
+                                duration={1}
+                                className="count-up-text"
+                            />
+                            +
+                        </span>
                         <p className="bento-description">Projects delivered</p>
                     </CustomBentoCard>
 
-                    <CustomBentoCard id="contact-cta-bento-card">
+                    <CustomBentoCard id="contact-cta-bento-card" customClasses="xs:order-[9] xs:col-span-3 md:col-span-1">
                         <Magnet padding={50} disabled={false} magnetStrength={5}>
-                            {/* <StarBorder
-                                as="button"
-                                className="custom-class"
-                                color="magenta"
-                                speed="5s"
-                                >
-                                    Let's get in touch!
-                            </StarBorder> */}
                             <MyCustomButton btnIcon="assets/icons/send.svg" btnText="Let's get in touch!" className="contact-button-card"
                             onClick={() => test()} />
                         </Magnet>

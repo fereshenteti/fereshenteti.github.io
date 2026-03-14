@@ -4,31 +4,35 @@ import SpotlightCard from '../animations/SpotlightCard/SpotlightCard';
 export interface CustomBentoCardProps {
   id?: string;
   children: ReactNode;
-  className?: string;
-  colSpan?: number;
-  rowSpan?: number;
+  customClasses?: string;
+  // colSpan?: number;
+  // rowSpan?: number;
+  // order: number;
   onClick?: () => void;
 }
 
 const CustomBentoCard = ({
   id,
   children,
-  className = '',
-  colSpan,
-  rowSpan,
+  customClasses = '',
+  // colSpan,
+  // rowSpan,
+  // order,
   onClick,
 }: CustomBentoCardProps) => {
     const spotlightColor = 'rgba(239, 175, 91, 0.4)';
 
     const baseClass = 'bento-card';
-    const colSpanClass = colSpan ? `col-span-${colSpan}` : '';
-    const rowSpanClass = rowSpan ? `row-span-${rowSpan}` : '';
+    // const colSpanClass = colSpan ? `col-span-${colSpan}` : '';
+    // const rowSpanClass = rowSpan ? `row-span-${rowSpan}` : '';
+    // const gridOrder = `order-[${order}]`;
 
     const combinedClassName = [
         baseClass,
-        colSpanClass,
-        rowSpanClass,
-        className,
+        // colSpanClass,
+        // rowSpanClass,
+        // gridOrder,
+        customClasses,
     ]
     .filter(Boolean)
     .join(' ');

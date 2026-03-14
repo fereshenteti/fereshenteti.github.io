@@ -60,7 +60,7 @@ const DetailedCategories = () => {
                         <h1>web engineering</h1>
                         <p>Since 2018, I've been working as a frontend engineer, basically on Angular, React & NextJS (always latest versions) and their related technologies.</p>
                         <a href="https://www.linkedin.com/in/fareshentati/" target="_blank">
-                            <MyCustomButton btnIcon="assets/icons/linkedin-logo.svg" btnText="Explore more on my Linkedin" />
+                            <MyCustomButton btnIcon="assets/icons/linkedin-logo.svg" btnText="Explore more on my Linkedin" className="button-linkedin"/>
                         </a>
                     </div>
                 </div>
@@ -210,7 +210,7 @@ const DetailedCategories = () => {
             <div className="section-spacer"></div>
 
             {/* About My Work Section */}
-            <AboutMyWork boxRef="topMenuBoxRef" />
+            {/* <AboutMyWork boxRef="topMenuBoxRef" /> */}
 
             {/* Illustrations */}
             <div id="illustration" className="section detailed-category illustrations">
@@ -257,7 +257,7 @@ const DetailedCategories = () => {
             <div className="section-spacer"></div>
 
             {/* Voice Over */}
-            <div id="voiceover" className="section detailed-category voice-over">
+            {/* <div id="voiceover" className="section detailed-category voice-over">
 
                 <img src="assets/backgrounds/MV7.webp" className="microphone-bg" />
 
@@ -300,7 +300,7 @@ const DetailedCategories = () => {
 
                 </div>
 
-            </div>
+            </div> */}
 
             {/* Get in touch animation */}
             <div className="section getintouch-container">

@@ -40,9 +40,29 @@
         background-color: #eeeeee;
         min-height: 80vh;
         flex-wrap: wrap;
+        position: relative;
+        z-index: 0;
 
         .right-side {
             max-height: 80vh;
+        }
+        .left-side {
+            .section-info {
+                .button-linkedin {
+                    //linkedin color
+                    border-color: #1976d2;
+                    color: #1976d2;
+                    background-color: white;
+
+                    &:hover {
+                        border-color: #1976d2;
+                    }
+                    &::before {
+                        background: #1976d2;
+                        z-index: -1;
+                    }
+                }
+            }
         }
     }
 
@@ -919,9 +939,13 @@
         //dribble color
         border-color: #d43b89;
         color: #d43b89;
+        background-color: white;
 
         &:hover {
             border-color: #d43b89;
+        }
+        &::before {
+            background: #d43b89;
         }
     }
 
@@ -929,9 +953,13 @@
         //pinterest color
         border-color: #cc2127;
         color: #cc2127;
+        background-color: white;
 
         &:hover {
             border-color: #cc2127;
+        }
+        &::before {
+            background: #cc2127;
         }
     }
 }
@@ -982,7 +1010,6 @@
         --_animation-direction: reverse;
     }
 }
-
 
 .getintouch-container {
     --gap: 4rem;
