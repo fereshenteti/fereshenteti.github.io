@@ -21,14 +21,14 @@ const ExperienceChart = () => {
             const dashValue = 1000; // Large enough to cover any path
             polylineRef.current.style.strokeDasharray = `${dashValue}`;
             polylineRef.current.style.strokeDashoffset = `${dashValue}`;
-            
+
             // Animate both line and fill together
             gsap.to([polylineRef.current, polygonRef.current], {
                 strokeDashoffset: 0,
                 duration: 2.5,
                 ease: 'power2.inOut',
             });
-            
+
             // Also fade in the polygon
             if (polygonRef.current) {
                 gsap.to(polygonRef.current, {
@@ -66,15 +66,15 @@ const ExperienceChart = () => {
     return (
         <svg className="experience-chart" viewBox={`0 0 ${width} ${height}`} width={width} height={height}>
             {/* Y-axis - hidden */}
-            <line 
-                x1={padding} 
-                y1={padding} 
-                x2={padding} 
-                y2={height - padding - 10} 
-                stroke="transparent" 
-                strokeWidth="1.2" 
+            <line
+                x1={padding}
+                y1={padding}
+                x2={padding}
+                y2={height - padding - 10}
+                stroke="transparent"
+                strokeWidth="1.2"
             />
-            
+
             {/* X-axis - hidden */}
             <line
                 x1={padding}
@@ -84,22 +84,22 @@ const ExperienceChart = () => {
                 stroke="transparent"
                 strokeWidth="1.2"
             />            {/* Year labels on X-axis */}
-            <text 
-                x={firstX} 
-                y={height - 2} 
-                fontSize="8" 
+            <text
+                x={firstX}
+                y={height - 2}
+                fontSize="8"
                 fontWeight="600"
-                fill="#999" 
+                fill="#999"
                 textAnchor="middle"
             >
                 2018
             </text>
-            <text 
-                x={lastX} 
-                y={height - 2} 
-                fontSize="8" 
+            <text
+                x={lastX}
+                y={height - 2}
+                fontSize="8"
                 fontWeight="600"
-                fill="#999" 
+                fill="#999"
                 textAnchor="middle"
             >
                 2026
@@ -144,14 +144,15 @@ const ExperienceChart = () => {
 const BentoBox = () => {
 
     const test = () => {
-        console.log('Button clicked!');
+        window.dispatchEvent(new CustomEvent('openContactMenu'));
+        // window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     return (
         <section className="bento-section">
             <div className="bento-container">
                 <div className={"bento-grid " + ClashDisplay.className}>
-                    
+
                     <CustomBentoCard id="my-name-card" customClasses='xs:order-[1] md:col-span-2 xs:col-span-3'>
                         <p className="bento-description">Hi 👋 I'm</p>
                         <h3 className={'bento-title '}>
@@ -165,7 +166,7 @@ const BentoBox = () => {
 
                     <CustomBentoCard id="my-experience-card" customClasses="lg:order-[3] md:order-[5] xs:order-[5] row-span-2 xs:col-span-3 lg:col-span-1 md:col-span-2">
                         <p className={"bento-description " + Satoshi.className}>I design modern, intuitive, and user-centered interfaces, combining technical excellence  with high aesthetic standards.</p>
-                        <br/>
+                        <br />
                         <p className={"bento-description " + Satoshi.className}><strong>My goal</strong>: to transform complex business needs into seamless, high-performing, and accessible digital experiences.</p>
                     </CustomBentoCard>
 
@@ -231,7 +232,7 @@ const BentoBox = () => {
                     <CustomBentoCard id="contact-cta-bento-card" customClasses="xs:order-[9] xs:col-span-3 md:col-span-1">
                         <Magnet padding={50} disabled={false} magnetStrength={5}>
                             <MyCustomButton btnIcon="assets/icons/send.svg" btnText="Let's get in touch!" className="contact-button-card"
-                            onClick={() => test()} />
+                                onClick={() => test()} />
                         </Magnet>
                     </CustomBentoCard>
 

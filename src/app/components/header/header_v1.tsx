@@ -1,5 +1,5 @@
 'use client';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ContactMe from '@/app/components/contact-me';
 import Social from '@/app/components/social';
@@ -8,7 +8,7 @@ const Header_v1 = () => {
     const islandRef = useRef<HTMLDivElement>(null);
     const [selectedMenuItem, setSelectedMenuItem] = useState([false, false, false]);
     const selectMenuItem = (menuItemIndex: number) => {
-        let selected = selectedMenuItem;
+        let selected = [...selectedMenuItem];
         if (!selectedMenuItem[menuItemIndex]) {
             selected.forEach((menuItem, index) => {
                 if (menuItem === true) selected[index] = false
@@ -46,6 +46,17 @@ const Header_v1 = () => {
         
         setSelectedMenuItem([...selected]);
     }
+
+    useEffect(() => {
+        const handleOpenContact = () => {
+            if (!selectedMenuItem[1]) {
+                selectMenuItem(1);
+            }
+        };
+        window.addEventListener('openContactMenu', handleOpenContact);
+        return () => window.removeEventListener('openContactMenu', handleOpenContact);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedMenuItem]);
 
     return (
         <div className='header for-borders'>
