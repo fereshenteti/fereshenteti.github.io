@@ -8,6 +8,15 @@ import Footer from './components/footer';
 import Header_v1 from './components/header/header_v1';
 import HeroSection from './components/hero-section';
 
+// New Portfolio Narrative Sections
+import ToolsCloud from './components/portfolio-sections/ToolsCloud';
+import ProcessSection from './components/portfolio-sections/ProcessSection';
+import SelectedWork from './components/portfolio-sections/SelectedWork';
+import LogoShowcase from './components/portfolio-sections/LogoShowcase';
+import FrontendProjects from './components/portfolio-sections/FrontendProjects';
+import TestimonialsSection from './components/portfolio-sections/Testimonials';
+import FinalCTA from './components/portfolio-sections/FinalCTA';
+
 gsap.registerPlugin(useGSAP);
 
 const Home = () => {
@@ -19,25 +28,32 @@ const Home = () => {
 
       <Header_v1 />
 
-      {/* <Header /> */}
-
       <BentoBox />
 
-      <HeroSection/>
+      {/* Narrative Portfolio Expansion sequence starts here */}
+      <ToolsCloud />
+      <ProcessSection />
+      <SelectedWork />
+      <LogoShowcase />
+      <FrontendProjects />
+      <TestimonialsSection />
+      <FinalCTA />
 
-      <div className="my-img-bg">
+      {/* <HeroSection/> */}
+
+      {/* <div className="my-img-bg">
         <img className='bg-me' src="assets/backgrounds/me-black.png" />
-      </div>
+      </div> */}
 
-      <div id="v0" ref={imageSequenceContainerRef}>
+      {/* <div id="v0" ref={imageSequenceContainerRef}>
         <canvas id='images'></canvas>
-      </div>
+      </div> */}
 
       {/* <MyCategories /> */}
 
       {/* <StatsSection /> */}
 
-      <DetailedCategories />
+      {/* <DetailedCategories /> */}
 
       <Footer />
 
