@@ -10,44 +10,40 @@ const Header_v1 = () => {
     const selectMenuItem = (menuItemIndex: number) => {
         let selected = selectedMenuItem;
         if (!selectedMenuItem[menuItemIndex]) {
-        selected.forEach((menuItem, index) => {
-            if (menuItem === true) selected[index] = false
-        })
-        selected[menuItemIndex] = true;
+            selected.forEach((menuItem, index) => {
+                if (menuItem === true) selected[index] = false
+            })
+            selected[menuItemIndex] = true;
 
-        let dynamicIsland = document.getElementById('dynamic-island');
+            let dynamicIsland = document.getElementById('dynamic-island');
 
-        if (menuItemIndex === 1) {
-            if (dynamicIsland) {
-            dynamicIsland.classList.add('show-contactUs');
-            dynamicIsland.classList.remove('show-social');
-            }
-        }
-        else if (menuItemIndex === 2) {
-            if (dynamicIsland) {
-            dynamicIsland.classList.add('show-social');
-            dynamicIsland.classList.remove('show-contactUs');
+            if (dynamicIsland) { 
+                if (menuItemIndex === 1) {
+                    dynamicIsland.classList.add('show-contactUs');
+                    dynamicIsland.classList.remove('show-social');
+                }
+                else if (menuItemIndex === 2) {
+                    dynamicIsland.classList.add('show-social');
+                    dynamicIsland.classList.remove('show-contactUs');
+                }
+                else {
+                    dynamicIsland.classList.remove('show-social');
+                    dynamicIsland.classList.remove('show-contactUs');
+                }
             }
         }
         else {
-            if (dynamicIsland) {
-            dynamicIsland.classList.remove('show-social');
-            dynamicIsland.classList.remove('show-contactUs');
+            selected[menuItemIndex] = false;
+            if (menuItemIndex === 1) {
+                let dynamicIsland = document.getElementById('dynamic-island');
+                if (dynamicIsland) dynamicIsland.classList.remove('show-contactUs');
+            }
+            if (menuItemIndex === 2) {
+                let dynamicIsland = document.getElementById('dynamic-island');
+                if (dynamicIsland) dynamicIsland.classList.remove('show-social');
             }
         }
-
-        }
-        else {
-        selected[menuItemIndex] = false;
-        if (menuItemIndex === 1) {
-            let dynamicIsland = document.getElementById('dynamic-island');
-            if (dynamicIsland) dynamicIsland.classList.remove('show-contactUs');
-        }
-        if (menuItemIndex === 2) {
-            let dynamicIsland = document.getElementById('dynamic-island');
-            if (dynamicIsland) dynamicIsland.classList.remove('show-social');
-        }
-        }
+        
         setSelectedMenuItem([...selected]);
     }
 
