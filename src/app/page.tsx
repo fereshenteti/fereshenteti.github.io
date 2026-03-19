@@ -31,11 +31,11 @@ const Home = () => {
       <BentoBox />
 
       {/* Narrative Portfolio Expansion sequence starts here */}
+      <LogoShowcase />
+      <SelectedWork />
+      <FrontendProjects />
       <ToolsCloud />
       <ProcessSection />
-      <SelectedWork />
-      <LogoShowcase />
-      <FrontendProjects />
       <TestimonialsSection />
       <FinalCTA />
 

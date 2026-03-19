@@ -38,14 +38,14 @@ const FinalCTA = () => {
       <div className="portfolio-container">
         
         <div className="cta-content" ref={contentRef}>
-            <span className={`section-eyebrow ${Satoshi.className}`}>Let’s Work Together</span>
+            <span className={`section-eyebrow ${Satoshi.className}`}>Let's Work Together</span>
             
             <h2 className={`cta-title ${ClashDisplay.className}`}>
-                Designing and building digital experiences that people enjoy using
+                Have a project in mind? Let's make it happen
             </h2>
             
             <p className={`cta-subtitle ${Satoshi.className}`}>
-                Whether you need a product designed, a frontend system built, or both, I’m open to creating thoughtful, high-impact digital work.
+                I'm always open to new opportunities — whether it's a full product design, a frontend build, or a creative collaboration.
             </p>
 
             <div className="cta-actions">

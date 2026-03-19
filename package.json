@@ -22,6 +22,7 @@
     "@mui/material": "^7.3.4",
     "@mui/material-nextjs": "^7.3.3",
     "@tailwindcss/postcss": "^4.2.1",
+    "animejs": "^4.3.6",
     "bootstrap": "^5.3.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

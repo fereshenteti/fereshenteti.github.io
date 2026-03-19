@@ -75,12 +75,12 @@ const TestimonialsSection = () => {
       <div className="portfolio-container">
         
         <div className="section-header" ref={headerRef}>
-            <span className={`section-eyebrow ${Satoshi.className}`}>Trust</span>
+            <span className={`section-eyebrow ${Satoshi.className}`}>What They Say</span>
             <h2 className={`section-title ${ClashDisplay.className}`}>
-                A collaborative approach, backed by results
+                Don't just take my word for it
             </h2>
             <p className={`section-subtitle ${Satoshi.className}`}>
-                I care about thoughtful design, strong communication, and high-quality execution from concept to delivery.
+                Here's what colleagues and clients have said about working with me.
             </p>
         </div>
 

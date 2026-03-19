@@ -87,10 +87,10 @@ const SelectedWork = () => {
         <div className="section-header" ref={headerRef}>
             <span className={`section-eyebrow ${Satoshi.className}`}>Selected Work</span>
             <h2 className={`section-title ${ClashDisplay.className}`}>
-                Case studies shaped by strategy, design, and real product thinking
+                Real products, real problems, real impact
             </h2>
             <p className={`section-subtitle ${Satoshi.className}`}>
-                A curated selection of interfaces and digital experiences designed to solve real user and business problems.
+                Here's a closer look at some of the products I've designed — from early concepts to polished, production-ready interfaces.
             </p>
         </div>
 

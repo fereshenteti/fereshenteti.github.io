@@ -153,7 +153,7 @@ const BentoBox = () => {
             <div className="bento-container">
                 <div className={"bento-grid " + ClashDisplay.className}>
 
-                    <CustomBentoCard id="my-name-card" customClasses='xs:order-[1] md:col-span-2 xs:col-span-3'>
+                    <CustomBentoCard id="my-name-card" customClasses='xs:order-[1] md:col-span-2 xs:col-span-3 col-span-2'>
                         <p className="bento-description">Hi 👋 I'm</p>
                         <h3 className={'bento-title '}>
                             Fares Hentati
@@ -164,23 +164,23 @@ const BentoBox = () => {
                         <img src="/assets/images/my_avatar.png" alt="Design Systems" className="bento-image" />
                     </CustomBentoCard>
 
-                    <CustomBentoCard id="my-experience-card" customClasses="lg:order-[3] md:order-[5] xs:order-[5] row-span-2 xs:col-span-3 lg:col-span-1 md:col-span-2">
+                    <CustomBentoCard id="my-experience-card" customClasses="lg:order-[3] md:order-[5] order-[5] row-span-2 xs:col-span-3 lg:col-span-1 md:col-span-2 col-span-2">
                         <p className={"bento-description " + Satoshi.className}>I design modern, intuitive, and user-centered interfaces, combining technical excellence  with high aesthetic standards.</p>
                         <br />
                         <p className={"bento-description " + Satoshi.className}><strong>My goal</strong>: to transform complex business needs into seamless, high-performing, and accessible digital experiences.</p>
                     </CustomBentoCard>
 
-                    <CustomBentoCard id="ui-ux-card" customClasses="lg:order-[4] xs:order-[2]">
+                    <CustomBentoCard id="ui-ux-card" customClasses="lg:order-[4] xs:order-[2] order-[3]">
                         <div className="bento-icon">✨</div>
                         <h3 className="bento-title">UI / UX Design Expert</h3>
                     </CustomBentoCard>
 
-                    <CustomBentoCard id="frontend-card" customClasses="lg:order-[5] xs:order-[3]">
+                    <CustomBentoCard id="frontend-card" customClasses="lg:order-[5] xs:order-[3] order-[4]">
                         <div className="bento-icon">🧑🏼‍💻</div>
                         <h3 className="bento-title">Frontend Engineer</h3>
                     </CustomBentoCard>
 
-                    <CustomBentoCard id="years-of-experience-card" customClasses="md:order-[6] lg:col-span-2 md:col-span-1 xs:order-[4]">
+                    <CustomBentoCard id="years-of-experience-card" customClasses="md:order-[6] lg:col-span-2 md:col-span-1 xs:order-[4] order-[6]">
                         <div className="left-side">
                             <span className='count-up-number'>
                                 <CountUp
@@ -201,7 +201,7 @@ const BentoBox = () => {
                         </div>
                     </CustomBentoCard>
 
-                    <CustomBentoCard id="happy-clients-card" customClasses="xs:order-[7]">
+                    <CustomBentoCard id="happy-clients-card" customClasses="order-[7]">
                         <span className='count-up-number'>
                             <CountUp
                                 from={0}
@@ -215,7 +215,7 @@ const BentoBox = () => {
                         <p className="bento-description">Happy clients</p>
                     </CustomBentoCard>
 
-                    <CustomBentoCard id="projects-delivered-card" customClasses="xs:order-[8]">
+                    <CustomBentoCard id="projects-delivered-card" customClasses="order-[8]">
                         <span className='count-up-number'>
                             <CountUp
                                 from={0}
@@ -229,7 +229,7 @@ const BentoBox = () => {
                         <p className="bento-description">Projects delivered</p>
                     </CustomBentoCard>
 
-                    <CustomBentoCard id="contact-cta-bento-card" customClasses="xs:order-[9] xs:col-span-3 md:col-span-1">
+                    <CustomBentoCard id="contact-cta-bento-card" customClasses="order-[9] xs:col-span-3 md:col-span-1">
                         <Magnet padding={50} disabled={false} magnetStrength={5}>
                             <MyCustomButton btnIcon="assets/icons/send.svg" btnText="Let's get in touch!" className="contact-button-card"
                                 onClick={() => test()} />

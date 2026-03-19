@@ -79,10 +79,10 @@ const FrontendProjects = () => {
         <div className="section-header" ref={headerRef}>
             <span className={`section-eyebrow ${Satoshi.className}`}>Frontend Engineering</span>
             <h2 className={`section-title ${ClashDisplay.className}`}>
-                Interfaces designed with intention, built with precision
+                I don't just design it — I build it too
             </h2>
             <p className={`section-subtitle ${Satoshi.className}`}>
-                I turn product ideas and design systems into fast, scalable, accessible, and production-ready frontend experiences.
+                Beyond design, I bring interfaces to life with clean, scalable, and production-ready frontend code.
             </p>
         </div>
 

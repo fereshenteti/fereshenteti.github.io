@@ -278,11 +278,11 @@ const ToolsCloud = () => {
           <div ref={titleRef}>
             <span className={`section-eyebrow ${Satoshi.className}`}>Tools & Craft</span>
             <h2 className={`section-title ${ClashDisplay.className}`}>
-              The tools behind the experiences I design and build
+                The toolkit behind every project
             </h2>
           </div>
           <p ref={textRef} className={`section-subtitle ${Satoshi.className}`}>
-            From product design to production-ready interfaces, I use a carefully selected toolkit to create modern, intuitive, and scalable digital experiences.
+            Every project you just saw was built with a carefully chosen set of design and development tools — here's what powers my workflow.
           </p>
         </div>
 
