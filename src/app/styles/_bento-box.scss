@@ -241,6 +241,8 @@
         position: relative;
         // Allow box-shadow and absolute button to overflow the card layers
         overflow: visible;
+        // Prevent hover transform — would make position:fixed children non-viewport-relative
+        &:hover { transform: none; }
 
         .card-spotlight,
         .bento-card-inner {

@@ -6,8 +6,6 @@ import { ClashDisplay, Satoshi } from '../../fonts/fonts';
 import CountUp from '../animations/CountUp/CountUp';
 import { MyCustomButton } from './common-ui/custom-button';
 import CustomBentoCard from './custom-bento-card';
-import Magnet from '../animations/Magnet/Magnet';
-
 
 const ExperienceChart = () => {
     const polylineRef = useRef<SVGPolylineElement>(null);
@@ -157,6 +155,117 @@ const BentoBox = () => {
         avatarRevealRef.current?.style.setProperty('--cursor-y', '-200px');
     };
 
+    // Morph button from pill-in-card to fixed circle at bottom-right
+    useEffect(() => {
+        const section = bentoSectionRef.current;
+        const btn = floatingBtnRef.current;
+        const card = document.getElementById('contact-cta-bento-card');
+        if (!section || !btn || !card) return;
+
+        const textSpan = btn.querySelector('.custom-button-text') as HTMLElement;
+        const iconEl   = btn.querySelector('.custom-button-icon') as HTMLElement;
+
+        // Cache natural pill size (stable; CSS keeps it constant while in pill state)
+        const initRect = btn.getBoundingClientRect();
+        const pillW = initRect.width;
+        const pillH = initRect.height;
+
+        const CIRCLE = 56;
+        const OFFSET = 48;
+
+        let state: 'pill' | 'circle' = 'pill';
+        let tl: gsap.core.Timeline | null = null;
+
+        // The button's CSS uses translate(-50%,-50%) so top/left represent its CENTER.
+        // We always work in center coordinates to avoid fighting the CSS transform.
+        const getCardCenter = () => {
+            const c = card.getBoundingClientRect();
+            return { cx: c.left + c.width / 2, cy: c.top + c.height / 2 };
+        };
+
+        const morphToCircle = () => {
+            state = 'circle';
+            tl?.kill();
+
+            // Snapshot button center in viewport coords
+            const r = btn.getBoundingClientRect();
+            const cx = r.left + r.width  / 2;
+            const cy = r.top  + r.height / 2;
+
+            // Lift to fixed — keep translate(-50%,-50%) active, so top/left = center
+            btn.style.position  = 'fixed';
+            btn.style.top       = `${cy}px`;
+            btn.style.left      = `${cx}px`;
+            btn.style.width     = `${pillW}px`;
+            btn.style.height    = `${pillH}px`;
+            btn.style.margin    = '0';
+
+            // Target: circle centered at bottom-right corner
+            const targetCx = window.innerWidth  - OFFSET - CIRCLE / 2;
+            const targetCy = window.innerHeight - OFFSET - CIRCLE / 2;
+
+            tl = gsap.timeline({
+                onComplete: () => { tl = null; },
+            });
+            tl.to(textSpan, { opacity: 0, duration: 0.15 }, 0);
+            tl.to(iconEl,   { filter: 'brightness(0) invert(1)', duration: 0.2 }, 0.05);
+            tl.to(btn, {
+                top: targetCy, left: targetCx,
+                width: CIRCLE, height: CIRCLE,
+                borderRadius: '50%',
+                backgroundColor: '#FF791B',
+                borderColor: '#FF791B',
+                boxShadow: 'none',
+                duration: 0.55, ease: 'power3.inOut',
+            }, 0);
+        };
+
+        const morphToPill = () => {
+            state = 'pill';
+            tl?.kill();
+
+            // Snapshot current center (GSAP may have animated top/left)
+            const r   = btn.getBoundingClientRect();
+            const cx  = r.left + r.width  / 2;
+            const cy  = r.top  + r.height / 2;
+
+            // Ensure fixed + top/left in center coords
+            btn.style.position = 'fixed';
+            gsap.set(btn, { top: cy, left: cx, width: r.width, height: r.height });
+
+            const { cx: targetCx, cy: targetCy } = getCardCenter();
+
+            tl = gsap.timeline({
+                onComplete: () => {
+                    // Clear all inline overrides → CSS restores absolute + translate(-50%,-50%)
+                    btn.style.cssText = '';
+                    tl = null;
+                },
+            });
+            tl.to(iconEl,   { filter: 'none', duration: 0.2 }, 0);
+            tl.to(textSpan, { opacity: 1,     duration: 0.2 }, 0.1);
+            tl.to(btn, {
+                top: targetCy, left: targetCx,
+                width: pillW,  height: pillH,
+                borderRadius: '60px',
+                backgroundColor: 'white',
+                borderColor: '#FF791B',
+                boxShadow: '7px 10px 0 0 #FF791B',
+                duration: 0.5, ease: 'power3.inOut',
+            }, 0);
+        };
+
+        const onTick = () => {
+            const s = section.getBoundingClientRect();
+            const halfOut = s.top + s.height / 2 < 0;
+            if (halfOut  && state === 'pill')   morphToCircle();
+            if (!halfOut && state === 'circle') morphToPill();
+        };
+
+        gsap.ticker.add(onTick);
+        return () => { gsap.ticker.remove(onTick); tl?.kill(); };
+    }, []);
+
     const openContact = () => {
         window.dispatchEvent(new CustomEvent('openContactMenu'));
     }
@@ -251,16 +360,14 @@ const BentoBox = () => {
                     </CustomBentoCard>
 
                     <CustomBentoCard id="contact-cta-bento-card" customClasses="order-[9] xs:col-span-3 md:col-span-1">
-                        <Magnet className="magnet-container" padding={50} disabled={false} magnetStrength={5}>
-                            <MyCustomButton
-                                id="floating-contact-btn"
-                                ref={floatingBtnRef}
-                                btnIcon="assets/icons/send.svg"
-                                btnText="Let's get in touch!"
-                                className="contact-button-card"
-                                onClick={openContact}
-                            />
-                        </Magnet>
+                        <MyCustomButton
+                            id="floating-contact-btn"
+                            ref={floatingBtnRef}
+                            btnIcon="assets/icons/send.svg"
+                            btnText="Let's get in touch!"
+                            className="contact-button-card"
+                            onClick={openContact}
+                        />
                     </CustomBentoCard>
 
                 </div>
