@@ -48,6 +48,8 @@
         .bento-card-inner {
             display: flex;
             flex-direction: column;
+            width: 100%;
+            height: 100%;
             // gap: clamp(0.8rem, 2vw, 1.2rem);
             position: relative;
             z-index: 1;
@@ -89,17 +91,49 @@
         }
     }
 
-    #my-avatar-card{
-        border: none;
-        background: radial-gradient(circle, #ffab1b 0%, #FF791B 75%);
+    #my-avatar-card {
         .custom-spotlight-card {
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            padding-bottom: 0;
-            img {
-                max-width: 330px;
-            }
+            padding: 0;
+        }
+
+        .avatar-reveal-container {
+            --cursor-x: -200px;
+            --cursor-y: -200px;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            cursor: url("/assets/icons/magic-wand.svg") 6 26, auto;
+        }
+
+        .avatar-back,
+        .avatar-front {
+            max-width: 330px;
+        }
+
+        .avatar-back {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .avatar-front {
+            position: relative;
+            z-index: 1;
+            -webkit-mask-image: radial-gradient(
+                circle 130px at var(--cursor-x) var(--cursor-y),
+                transparent 80%,
+                black 100%
+            );
+            mask-image: radial-gradient(
+                circle 130px at var(--cursor-x) var(--cursor-y),
+                transparent 80%,
+                black 100%
+            );
         }
     }
 
@@ -202,16 +236,33 @@
     }
 
     #contact-cta-bento-card{
-        // background-image: url('/assets/backgrounds/bg_orange.JPG');
         background-size: cover;
         background-repeat: no-repeat;
         position: relative;
-        .card-spotlight{
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        // Allow box-shadow and absolute button to overflow the card layers
+        overflow: visible;
+
+        .card-spotlight,
+        .bento-card-inner {
+            overflow: visible;
         }
+
+        .magnet-container{
+            width: 100%;
+            height: 100%;
+            >div{
+                width: 100%;
+                height: 100%;
+            }
+        }
+
         .my-custom-button{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+
             &:hover{
                 padding-right: 16px !important;
                 .custom-button-text{
@@ -220,7 +271,7 @@
             }
         }
     }
-    
+
     .contact-button-card{
         text-align: center;
         font-weight: 600;
@@ -246,15 +297,6 @@
         }
         .custom-button-text {
             font-size: 22px;
-        }
-        &::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            background: #FF791B;
-            transform: translate(7px, 10px);
-            z-index: -1;
         }
     }
 }

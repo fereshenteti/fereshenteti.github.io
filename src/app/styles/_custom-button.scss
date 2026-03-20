@@ -8,7 +8,8 @@
     line-height: 1.4 !important;
     transition: all 0.2s $FLUID;
     background-color: white;
-    // z-index: 1;
+    position: relative;
+    box-shadow: 7px 10px 0 0 #FF791B;
     .custom-button-icon{
         max-width: 25px;
         max-height: 25px;
@@ -34,14 +35,5 @@
         .custom-button-text{
             margin-left: 1rem;
         }
-    }
-    &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background: #FF791B;
-        transform: translate(7px, 10px);
-        z-index: -1;
     }
 }

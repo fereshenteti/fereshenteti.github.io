@@ -3,7 +3,7 @@ import SpotlightCard from '../animations/SpotlightCard/SpotlightCard';
 
 export interface CustomBentoCardProps {
   id?: string;
-  children: ReactNode;
+  children?: ReactNode;
   customClasses?: string;
   // colSpan?: number;
   // rowSpan?: number;

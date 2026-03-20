@@ -1,15 +1,13 @@
 'use client';
 
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef } from 'react';
 import { ClashDisplay, Satoshi } from '../../fonts/fonts';
 import CountUp from '../animations/CountUp/CountUp';
-import Magnet from '../animations/Magnet/Magnet';
 import { MyCustomButton } from './common-ui/custom-button';
 import CustomBentoCard from './custom-bento-card';
+import Magnet from '../animations/Magnet/Magnet';
 
-gsap.registerPlugin(ScrollTrigger);
 
 const ExperienceChart = () => {
     const polylineRef = useRef<SVGPolylineElement>(null);
@@ -142,14 +140,29 @@ const ExperienceChart = () => {
 };
 
 const BentoBox = () => {
+    const bentoSectionRef = useRef<HTMLElement>(null);
+    const avatarRevealRef = useRef<HTMLDivElement>(null);
+    const floatingBtnRef = useRef<HTMLButtonElement | null>(null);
 
-    const test = () => {
+    const handleAvatarMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const el = avatarRevealRef.current;
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        el.style.setProperty('--cursor-x', `${e.clientX - rect.left}px`);
+        el.style.setProperty('--cursor-y', `${e.clientY - rect.top}px`);
+    };
+
+    const handleAvatarMouseLeave = () => {
+        avatarRevealRef.current?.style.setProperty('--cursor-x', '-200px');
+        avatarRevealRef.current?.style.setProperty('--cursor-y', '-200px');
+    };
+
+    const openContact = () => {
         window.dispatchEvent(new CustomEvent('openContactMenu'));
-        // window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     return (
-        <section className="bento-section">
+        <section className="bento-section" ref={bentoSectionRef}>
             <div className="bento-container">
                 <div className={"bento-grid " + ClashDisplay.className}>
 
@@ -161,7 +174,15 @@ const BentoBox = () => {
                     </CustomBentoCard>
 
                     <CustomBentoCard id="my-avatar-card" customClasses="md:order-[2] col-span-2 row-span-2 xs:order-[6]">
-                        <img src="/assets/images/my_avatar.png" alt="Design Systems" className="bento-image" />
+                        <div
+                            className="avatar-reveal-container"
+                            ref={avatarRevealRef}
+                            onMouseMove={handleAvatarMouseMove}
+                            onMouseLeave={handleAvatarMouseLeave}
+                        >
+                            <img src="/assets/images/my_avatar_sketch.png" alt="My Avatar Sketch" className="bento-image avatar-back" />
+                            <img src="/assets/images/my_Apple_avatar.png" alt="My Avatar" className="bento-image avatar-front" />
+                        </div>
                     </CustomBentoCard>
 
                     <CustomBentoCard id="my-experience-card" customClasses="lg:order-[3] md:order-[5] order-[5] row-span-2 xs:col-span-3 lg:col-span-1 md:col-span-2 col-span-2">
@@ -230,9 +251,15 @@ const BentoBox = () => {
                     </CustomBentoCard>
 
                     <CustomBentoCard id="contact-cta-bento-card" customClasses="order-[9] xs:col-span-3 md:col-span-1">
-                        <Magnet padding={50} disabled={false} magnetStrength={5}>
-                            <MyCustomButton btnIcon="assets/icons/send.svg" btnText="Let's get in touch!" className="contact-button-card"
-                                onClick={() => test()} />
+                        <Magnet className="magnet-container" padding={50} disabled={false} magnetStrength={5}>
+                            <MyCustomButton
+                                id="floating-contact-btn"
+                                ref={floatingBtnRef}
+                                btnIcon="assets/icons/send.svg"
+                                btnText="Let's get in touch!"
+                                className="contact-button-card"
+                                onClick={openContact}
+                            />
                         </Magnet>
                     </CustomBentoCard>
 
