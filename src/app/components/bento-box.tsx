@@ -1,8 +1,10 @@
 'use client';
 
 import gsap from 'gsap';
+import Lottie from 'lottie-react';
 import { useEffect, useRef } from 'react';
 import { ClashDisplay, Satoshi } from '../../fonts/fonts';
+import waveAnimation from '../../../public/assets/animations/wave-hi-animation.json';
 import CountUp from '../animations/CountUp/CountUp';
 import { MyCustomButton } from './common-ui/custom-button';
 import CustomBentoCard from './custom-bento-card';
@@ -278,7 +280,9 @@ const BentoBox = () => {
                 <div className={"bento-grid " + ClashDisplay.className}>
 
                     <CustomBentoCard id="my-name-card" customClasses='xs:order-[1] md:col-span-2 xs:col-span-3 col-span-2'>
-                        <p className="bento-description">Hi 👋 I'm</p>
+                        <div className="bento-description">
+                            Hi <Lottie animationData={waveAnimation} loop={true} className="wave-lottie" /> I'm
+                        </div>
                         <h3 className={'bento-title '}>
                             Fares Hentati
                         </h3>

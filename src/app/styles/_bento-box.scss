@@ -143,6 +143,14 @@
         }
         .bento-description {
             font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .wave-lottie {
+            width: 2rem;
+            height: 2rem;
+            display: inline-flex;
         }
     }
 
