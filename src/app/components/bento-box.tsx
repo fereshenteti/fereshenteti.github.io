@@ -176,8 +176,6 @@ const BentoBox = () => {
         let state: 'pill' | 'circle' = 'pill';
         let tl: gsap.core.Timeline | null = null;
 
-        // The button's CSS uses translate(-50%,-50%) so top/left represent its CENTER.
-        // We always work in center coordinates to avoid fighting the CSS transform.
         const getCardCenter = () => {
             const c = card.getBoundingClientRect();
             return { cx: c.left + c.width / 2, cy: c.top + c.height / 2 };
@@ -186,6 +184,7 @@ const BentoBox = () => {
         const morphToCircle = () => {
             state = 'circle';
             tl?.kill();
+            btn.classList.add('is-circle');
 
             // Snapshot button center in viewport coords
             const r = btn.getBoundingClientRect();
@@ -208,6 +207,7 @@ const BentoBox = () => {
                 onComplete: () => { tl = null; },
             });
             tl.to(textSpan, { opacity: 0, duration: 0.15 }, 0);
+            tl.set(textSpan, { display: 'none' }, 0.15); // remove from layout so icon centers
             tl.to(iconEl,   { filter: 'brightness(0) invert(1)', duration: 0.2 }, 0.05);
             tl.to(btn, {
                 top: targetCy, left: targetCx,
@@ -223,6 +223,7 @@ const BentoBox = () => {
         const morphToPill = () => {
             state = 'pill';
             tl?.kill();
+            btn.classList.remove('is-circle');
 
             // Snapshot current center (GSAP may have animated top/left)
             const r   = btn.getBoundingClientRect();
@@ -243,7 +244,8 @@ const BentoBox = () => {
                 },
             });
             tl.to(iconEl,   { filter: 'none', duration: 0.2 }, 0);
-            tl.to(textSpan, { opacity: 1,     duration: 0.2 }, 0.1);
+            tl.set(textSpan, { display: '' }, 0.1);           // restore layout before fade-in
+            tl.to(textSpan, { opacity: 1,    duration: 0.2 }, 0.1);
             tl.to(btn, {
                 top: targetCy, left: targetCx,
                 width: pillW,  height: pillH,
