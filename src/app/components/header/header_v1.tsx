@@ -49,12 +49,10 @@ const Header_v1 = () => {
 
     useEffect(() => {
         const handleOpenContact = () => {
-            if (!selectedMenuItem[1]) {
-                selectMenuItem(1);
-            }
+            selectMenuItem(1);
         };
-        window.addEventListener('openContactMenu', handleOpenContact);
-        return () => window.removeEventListener('openContactMenu', handleOpenContact);
+        window.addEventListener('toggleContactMenu', handleOpenContact);
+        return () => window.removeEventListener('toggleContactMenu', handleOpenContact);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedMenuItem]);
 

@@ -272,8 +272,8 @@ const BentoBox = () => {
         return () => { gsap.ticker.remove(onTick); tl?.kill(); };
     }, []);
 
-    const openContact = () => {
-        window.dispatchEvent(new CustomEvent('openContactMenu'));
+    const toggleContactForm = () => {
+        window.dispatchEvent(new CustomEvent('toggleContactMenu'));
     }
 
     return (
@@ -374,7 +374,7 @@ const BentoBox = () => {
                             btnIcon="assets/icons/send.svg"
                             btnText="Let's get in touch!"
                             className="contact-button-card"
-                            onClick={openContact}
+                            onClick={toggleContactForm}
                         />
                     </CustomBentoCard>
 
