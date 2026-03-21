@@ -48,6 +48,7 @@
         .bento-card-inner {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             width: 100%;
             height: 100%;
             // gap: clamp(0.8rem, 2vw, 1.2rem);
@@ -106,9 +107,10 @@
             width: 100%;
             height: 100%;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: center;
-            cursor: url("/assets/icons/magic-wand.svg") 6 26, auto;
+            // cursor: url("/assets/icons/magic-wand.svg") 16 16, auto;
+            cursor: none;
         }
 
         .avatar-back,
@@ -118,7 +120,9 @@
 
         .avatar-back {
             position: absolute;
-            bottom: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .avatar-front {

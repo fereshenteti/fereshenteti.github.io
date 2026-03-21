@@ -148,8 +148,9 @@ const BentoBox = () => {
         const el = avatarRevealRef.current;
         if (!el) return;
         const rect = el.getBoundingClientRect();
-        el.style.setProperty('--cursor-x', `${e.clientX - rect.left}px`);
-        el.style.setProperty('--cursor-y', `${e.clientY - rect.top}px`);
+        // Offset by 16px (half of 32px cursor image) to center the reveal circle under the cursor
+        el.style.setProperty('--cursor-x', `${e.clientX - rect.left - 60}px`);
+        el.style.setProperty('--cursor-y', `${e.clientY - rect.top - 60}px`);
     };
 
     const handleAvatarMouseLeave = () => {
@@ -202,8 +203,9 @@ const BentoBox = () => {
             btn.style.margin    = '0';
 
             // Target: circle centered at bottom-right corner
-            const targetCx = window.innerWidth  - OFFSET - CIRCLE / 2;
-            const targetCy = window.innerHeight - OFFSET - CIRCLE / 2;
+            const offset = window.innerWidth <= 768 ? 32 : OFFSET;
+            const targetCx = window.innerWidth  - offset - CIRCLE / 2;
+            const targetCy = window.innerHeight - offset - CIRCLE / 2;
 
             tl = gsap.timeline({
                 onComplete: () => { tl = null; },
@@ -296,7 +298,7 @@ const BentoBox = () => {
                             onMouseLeave={handleAvatarMouseLeave}
                         >
                             <img src="/assets/images/my_avatar_sketch.png" alt="My Avatar Sketch" className="bento-image avatar-back" />
-                            <img src="/assets/images/my_Apple_avatar.png" alt="My Avatar" className="bento-image avatar-front" />
+                            <img src="/assets/images/my_Apple_avatar.PNG" alt="My Avatar" className="bento-image avatar-front" />
                         </div>
                     </CustomBentoCard>
 
