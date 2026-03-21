@@ -1,12 +1,8 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 // Abstract SVG illustrations for each step
 const DiscoveryIllustration = () => (
@@ -106,99 +102,83 @@ const processSteps = [
   },
 ];
 
-const ProcessSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
+const ProcessStepItem = ({ step, idx, illustration }: {
+  step: typeof processSteps[0];
+  idx: number;
+  illustration: React.ReactNode;
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [state, setState] = useState<'hidden' | 'active' | 'passed'>('hidden');
 
-  useGSAP(() => {
-    // Header animation
-    gsap.fromTo(
-      headerRef.current,
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: headerRef.current,
-          start: 'top 85%',
-        },
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const check = () => {
+      const { top, bottom } = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+
+      if (top > vh * 0.75) {
+        // Below the 75% mark — not yet in view
+        setState('hidden');
+      } else if (top > vh * 0.2 && bottom > 0) {
+        // Within the active zone
+        setState('active');
+      } else {
+        // Top is less than 20% above viewport — scrolled past
+        setState('passed');
       }
-    );
+    };
 
-    // Timeline steps animation
-    if (containerRef.current) {
-      const steps = gsap.utils.toArray('.process-step', containerRef.current);
-
-      steps.forEach((step: any, i) => {
-        // Fade in + slide up
-        gsap.fromTo(
-          step,
-          { y: 50, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.6,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: step,
-              start: 'top 85%',
-            }
-          }
-        );
-
-        // Three states: default → active (in viewport) → passed (scrolled past)
-        ScrollTrigger.create({
-          trigger: step,
-          start: 'top 70%',
-          end: 'bottom 30%',
-          onEnter: () => {
-            step.classList.add('is-active');
-            step.classList.remove('is-passed');
-          },
-          onLeave: () => {
-            step.classList.remove('is-active');
-            step.classList.add('is-passed');
-          },
-          onEnterBack: () => {
-            step.classList.add('is-active');
-            step.classList.remove('is-passed');
-          },
-          onLeaveBack: () => {
-            step.classList.remove('is-active');
-            step.classList.remove('is-passed');
-          },
-        });
-
-        // Animate the line connecting steps
-        const line = step.querySelector('.step-line');
-        if (line) {
-          gsap.fromTo(
-            line,
-            { scaleY: 0 },
-            {
-              scaleY: 1,
-              duration: 0.8,
-              ease: 'power2.inOut',
-              scrollTrigger: {
-                trigger: step,
-                start: 'top 60%',
-              }
-            }
-          );
-        }
-      });
-    }
-
-  }, { scope: sectionRef });
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+    return () => window.removeEventListener('scroll', check);
+  }, []);
 
   return (
-    <section className="process-section" ref={sectionRef}>
+    <motion.div
+      ref={ref}
+      className={`process-step${state === 'active' ? ' is-active' : state === 'passed' ? ' is-passed' : ''}`}
+      initial={{ opacity: 0.35 }}
+      animate={{ opacity: state === 'active' ? 1 : 0.35 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
+      <div className="step-indicator">
+        <div className="step-dot"></div>
+        {idx !== processSteps.length - 1 && (
+          <motion.div
+            className="step-line"
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: state !== 'hidden' ? 1 : 0 }}
+            transition={{ duration: 0.8, ease: 'easeInOut' }}
+          />
+        )}
+      </div>
+      <div className="step-content">
+        <div className={`step-number ${ClashDisplay.className}`}>{step.number}</div>
+        <h3 className={`step-title ${Satoshi.className}`}>{step.title}</h3>
+        <p className={`step-desc ${Satoshi.className}`}>{step.desc}</p>
+      </div>
+      <div className="step-illustration-wrapper">
+        {illustration}
+      </div>
+    </motion.div>
+  );
+};
+
+const ProcessSection = () => {
+
+  return (
+    <section className="process-section">
       <div className="portfolio-container">
 
-        <div className="section-header" ref={headerRef}>
+        <motion.div
+          className="section-header"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           <div>
             <span className={`section-eyebrow ${Satoshi.className}`}>The Process</span>
             <h2 className={`section-title ${ClashDisplay.className}`}>
@@ -208,26 +188,16 @@ const ProcessSection = () => {
           <p className={`section-subtitle ${Satoshi.className}`}>
             Behind every project is a structured, intentional design process — here's how I approach each one from start to finish.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="process-timeline" ref={containerRef}>
+        <div className="process-timeline">
           {processSteps.map((step, idx) => (
-            <div key={idx} className="process-step">
-              <div className="step-indicator">
-                <div className="step-dot"></div>
-                {idx !== processSteps.length - 1 && <div className="step-line"></div>}
-              </div>
-
-              <div className="step-content">
-                <div className={`step-number ${ClashDisplay.className}`}>{step.number}</div>
-                <h3 className={`step-title ${Satoshi.className}`}>{step.title}</h3>
-                <p className={`step-desc ${Satoshi.className}`}>{step.desc}</p>
-              </div>
-
-              <div className="step-illustration-wrapper">
-                {illustrations[idx]}
-              </div>
-            </div>
+            <ProcessStepItem
+              key={idx}
+              step={step}
+              idx={idx}
+              illustration={illustrations[idx]}
+            />
           ))}
         </div>
 
