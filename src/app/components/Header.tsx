@@ -57,7 +57,7 @@ const Header = () => {
 
                 <div className='header-main'>
                     <div className='left'>
-                    <img src="./assets/me-v2.png" alt='avatar' className='my-avatar' />
+                    <img src="./assets/me-v3.png" alt='avatar' className='my-avatar' />
                     </div>
                     <div className='right'>
 

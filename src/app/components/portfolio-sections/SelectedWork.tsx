@@ -11,12 +11,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 const caseStudies = [
   {
-    title: 'MealNest',
+    title: 'eMBS Website',
     category: 'Product Design / UX / Frontend',
-    summary: 'A neighborhood-based food sharing platform connecting home cooks with people looking for homemade meals nearby.',
-    focusAreas: ['User flows', 'Mobile-first UX', 'Trust', 'Accessibility', 'Community experience'],
-    imagePlaceholder: 'assets/images/placeholder-mealnest.jpg', // Placeholder comment: Replace with actual MealNest UI screenshot
-    layout: 'image-right',
+    summary: `eMBS (e-Mobility Business Solutions) helps companies and projects transition to electric mobility by combining strategy consulting, battery technology, and green energy solutions.
+    I collaborated closely with the client to understand their needs, gather insights, and clarify objectives through targeted questions. Based on the specifications and brainstorming sessions, I developed an initial prototype. After iterative refinements and approval, I built the website using Webflow, ensuring smooth transitions and a clean, polished aesthetic.
+    `,
+    focusAreas: ['User flows', 'Clean UX', 'Accessibility', 'UI friendly'],
+    imagePlaceholder: 'assets/frontend_projects/embs 1.png',
+    url: 'https://www.e-mobility-bs.com/',
+    layout: 'center-focus',
   },
   {
     title: 'Solar Energy Dashboard',
@@ -32,7 +35,7 @@ const caseStudies = [
     summary: 'A financial product experience designed to simplify complex information into clear, intuitive user actions.',
     focusAreas: ['Clarity', 'Data readability', 'Trust', 'Decision support'],
     imagePlaceholder: 'assets/images/placeholder-fintech.jpg', // Placeholder comment: Replace with actual Finance UI screenshot
-    layout: 'center-focus',
+    layout: 'image-right',
   },
 ];
 
@@ -85,7 +88,7 @@ const SelectedWork = () => {
       <div className="portfolio-container">
         
         <div className="section-header" ref={headerRef}>
-            <span className={`section-eyebrow ${Satoshi.className}`}>Selected Work</span>
+            <span className={`section-eyebrow ${Satoshi.className}`}>Selected Frontend Work</span>
             <h2 className={`section-title ${ClashDisplay.className}`}>
                 Real products, real problems, real impact
             </h2>
@@ -118,13 +121,7 @@ const SelectedWork = () => {
               </div>
 
               <div className="case-visual">
-                {/* 
-                  [CONTENT PLACEHOLDER]
-                  Replace this inner div with <img /> containing the actual project screenshot when ready.
-                */}
-                <div className="visual-placeholder">
-                    <span className={Satoshi.className}>Project Visual</span>
-                </div>
+                <img src={study.imagePlaceholder} alt={study.title}/>
               </div>
 
             </div>

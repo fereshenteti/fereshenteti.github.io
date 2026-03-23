@@ -29,7 +29,7 @@ The home page renders these sections top-to-bottom:
 1. **Header_v1** (`components/header/header_v1.tsx`) — Dynamic-island-style nav with liquid glass effect, expandable contact form & social links.
 2. **BentoBox** (`components/bento-box.tsx`) — Apple-inspired hero grid with SpotlightCard hover effects, CountUp stats, and Magnet CTA button.
 3. **LogoShowcase** (`components/portfolio-sections/LogoShowcase.tsx`) — Logo/brand design grid with SVG stroke-draw animations.
-4. **SelectedWork** (`components/portfolio-sections/SelectedWork.tsx`) — Case studies (MealNest, Solar Energy Dashboard, Finance/Fintech) with flexible layouts.
+4. **SelectedWork** (`components/portfolio-sections/SelectedWork.tsx`) — Case studies (eMBS, Solar Energy Dashboard, Finance/Fintech) with flexible layouts.
 5. **FrontendProjects** (`components/portfolio-sections/FrontendProjects.tsx`) — Featured frontend projects (Admin Dashboard, Product Website, Web App) with tech stack tags.
 6. **ToolsCloud** (`components/portfolio-sections/ToolsCloud.tsx`) — Interactive hexagonal tool grid (Apple Watch–inspired). Hover triggers category-organized layout with GSAP floating physics.
 7. **ProcessSection** (`components/portfolio-sections/ProcessSection.tsx`) — 5-step design workflow timeline (Discovery → Prototype) with scroll-based active states and custom SVG illustrations.
@@ -82,7 +82,7 @@ Legacy/commented-out sections in `page.tsx`: `HeroSection`, `DetailedCategories`
 - **SVG icons**: `src/app/assets/icons/` — social icons, UI icons, and `tools/` subfolder with 28 tech stack icons (Figma, React, TypeScript, Node.js, etc.).
 - **SVG-as-components**: `@svgr/webpack` is configured in `next.config.js` — import any `.svg` directly as a React component.
 - **Logo**: `src/app/assets/icons/logo-word.svg` — animated brand mark.
-- **Images**: `public/assets/` — profile photos (`me.png`, `me-v2.png`, `my_avatar.png`), `frontend_projects/` (9 project screenshots), `my_illustrations/`, `my_image_sequence/`.
+- **Images**: `public/assets/` — profile photos (`me.png`, `me-v2.png` `me-v3.png`, `my_avatar.png`), `frontend_projects/` (9 project screenshots), `my_illustrations/`, `my_image_sequence/`.
 
 # Build / dev / deploy
 
