@@ -16,26 +16,39 @@ const caseStudies = [
     summary: `eMBS (e-Mobility Business Solutions) helps companies and projects transition to electric mobility by combining strategy consulting, battery technology, and green energy solutions.
     I collaborated closely with the client to understand their needs, gather insights, and clarify objectives through targeted questions. Based on the specifications and brainstorming sessions, I developed an initial prototype. After iterative refinements and approval, I built the website using Webflow, ensuring smooth transitions and a clean, polished aesthetic.
     `,
-    focusAreas: ['User flows', 'Clean UX', 'Accessibility', 'UI friendly'],
+    focusAreas: ['Webflow', 'Clean UX', 'Accessibility', 'UI friendly'],
     imagePlaceholder: 'assets/frontend_projects/embs 1.png',
-    url: 'https://www.e-mobility-bs.com/',
+    url: 'https://www.e-mobility-bs.com',
     layout: 'center-focus',
   },
   {
-    title: 'Solar Energy Dashboard',
-    category: 'SaaS Dashboard / UI Design / Admin Experience',
-    summary: 'A clean, insight-driven dashboard for monitoring solar panels and batteries, with a focus on clarity, control, and data visualization.',
-    focusAreas: ['Information hierarchy', 'Admin UX', 'Data visualization', 'System control'],
-    imagePlaceholder: 'assets/images/placeholder-solar.jpg', // Placeholder comment: Replace with actual Solar Dashboard UI screenshot
+    title: 'Sedeo',
+    category: 'UI Design / UX expertise / Frontend',
+    summary: `Sedeo is a marketplace for tools renting for events organization. I upgraded the frontend marketplace, and focused on its per formance and SEO: I ensured that the loading and handling of the pages is really fast and smooth, while maintaining the best practices for the SEO. I also helped with the UI & UX where I contributed on design enhancements and solved User Experience problems`,
+    focusAreas: ['Next.js', 'UI UX', 'Performance', 'Accessibility'],
+    imagePlaceholder: 'assets/frontend_projects/sedeo.png',
     layout: 'image-left',
   },
   {
-    title: 'Finance / Fintech Experience',
-    category: 'Product Design / Dashboard / UX Strategy',
-    summary: 'A financial product experience designed to simplify complex information into clear, intuitive user actions.',
-    focusAreas: ['Clarity', 'Data readability', 'Trust', 'Decision support'],
-    imagePlaceholder: 'assets/images/placeholder-fintech.jpg', // Placeholder comment: Replace with actual Finance UI screenshot
+    title: 'Value Digital Services',
+    category: 'UI Design / Admin Dashboard / Frontend',
+    summary: 'Value Digital Services is a company that offers digital services for businesses, with which I worked on many projects, and designed and built its own website among other products.',
+    focusAreas: ['Clarity', 'UI smoothness', 'Trust', 'Business UI'],
+    imagePlaceholder: 'assets/frontend_projects/Value website 1.png',
+    url: 'https://value.com.tn',
     layout: 'image-right',
+  },
+  {
+    title: 'Formatic Academy',
+    category: 'Landing Page / Pricing Page / Frontend',
+    summary: `A landing page implementation for Formatic Academy, an online academy for learning various subjects.
+    The client wanted to implement his design in pixel perfect, smooth and responsive, in both English and Arabic languages (ltr and rtl).
+    I created it from scratch using Vue.js, and exceeded the client's expectations 🙌
+    `,
+    focusAreas: ['Vue.js', 'Landing page', 'Pricing page', 'Responsive UI'],
+    imagePlaceholder: 'assets/frontend_projects/formatik 1.png',
+    url: 'https://formaticacademy.com',
+    layout: 'image-left',
   },
 ];
 
@@ -83,17 +96,21 @@ const SelectedWork = () => {
     }
   }, { scope: sectionRef });
 
+  const openExternalLink = (url: string) => {
+    window.open(url, '_blank');
+  }
+
   return (
     <section className="selected-work-section" ref={sectionRef}>
       <div className="portfolio-container">
         
         <div className="section-header" ref={headerRef}>
-            <span className={`section-eyebrow ${Satoshi.className}`}>Selected Frontend Work</span>
+            <span className={`section-eyebrow ${Satoshi.className}`}>Selected Frontend Engineering Work</span>
             <h2 className={`section-title ${ClashDisplay.className}`}>
-                Real products, real problems, real impact
+              Real products, real problems, real impact
             </h2>
             <p className={`section-subtitle ${Satoshi.className}`}>
-                Here's a closer look at some of the products I've designed — from early concepts to polished, production-ready interfaces.
+              Beyond design, I bring interfaces to life with clean, scalable, and production-ready frontend code.
             </p>
         </div>
 
@@ -115,9 +132,9 @@ const SelectedWork = () => {
                     </ul>
                 </div>
 
-                <div className="case-cta mt-8">
-                     <MyCustomButton btnIcon="assets/icons/arrow-right.svg" btnText="View Case Study" className="secondary-cta" />
-                </div>
+                {study.url && <div className="case-cta mt-8">
+                  <MyCustomButton btnIcon="assets/icons/external-link.svg" btnText="Visit website" className="secondary-cta" onClick={() => openExternalLink(study.url)}/>
+                </div>}
               </div>
 
               <div className="case-visual">

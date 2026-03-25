@@ -33,7 +33,7 @@ const Home = () => {
       {/* Narrative Portfolio Expansion sequence starts here */}
       <LogoShowcase />
       <SelectedWork />
-      <FrontendProjects />
+      {/* <FrontendProjects /> */}
       <ToolsCloud />
       <ProcessSection />
       <TestimonialsSection />
