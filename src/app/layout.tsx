@@ -1,7 +1,9 @@
 import "./styles/app.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
-import Script from "next/script"
+import Script from "next/script";
+import Providers from './components/Providers';
+import ThemeToggle from './components/ThemeToggle';
 
 import { Metadata } from "next";
 
@@ -29,13 +31,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <Script type="text/javascript" id="hs-script-loader" async defer src="https://www.instagram.com/embed.js" />
-      <Script type="text/javascript" id="hs-script-loader" async defer src="https://www.tiktok.com/embed.js" />
-
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Hide page until theme-init.js sets data-theme, preventing flash of wrong theme */}
+        <style>{`html:not([data-theme]) { visibility: hidden; }`}</style>
+      </head>
       <body>
+        {/* Flash prevention: sets data-theme before React hydrates */}
+        <Script src="/theme-init.js" strategy="beforeInteractive" id="theme-init" />
         <AppRouterCacheProvider>
-          {children}
+          <Providers>
+            <ThemeToggle />
+            {children}
+          </Providers>
         </AppRouterCacheProvider>
       </body>
     </html>

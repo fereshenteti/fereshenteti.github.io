@@ -379,3 +379,28 @@
         }
     }
 }
+
+// ─── Dark Mode ───────────────────────────────────────────────────────────────
+[data-theme="dark"] {
+    .bento-section {
+        background: var(--color-bg);
+
+        .bento-card {
+            background: var(--color-bg-card);
+            border-color: var(--color-border);
+            box-shadow: var(--color-shadow-sm);
+
+            &:hover {
+                border-color: var(--color-border-strong);
+                box-shadow: var(--color-shadow-md);
+            }
+
+            .bento-title { color: var(--color-text); }
+            .bento-description { color: var(--color-text-secondary); }
+        }
+
+        .contact-button-card {
+            background-color: var(--color-bg-card);
+        }
+    }
+}

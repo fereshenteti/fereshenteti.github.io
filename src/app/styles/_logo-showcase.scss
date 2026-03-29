@@ -145,3 +145,26 @@
         justify-content: center;
     }
 }
+// ─── Dark Mode ───────────────────────────────────────────────────────────────
+[data-theme="dark"] {
+    .logo-showcase-section {
+        background-color: var(--color-bg-alt);
+
+        .section-header h1 {
+            color: var(--color-text);
+            &::before { color: var(--color-text-secondary); }
+        }
+
+        .section-subtitle { color: var(--color-text-secondary); }
+
+        .logo-grid-item {
+            background: var(--color-bg-card);
+            box-shadow: var(--color-shadow-sm);
+
+            &:hover {
+                box-shadow: var(--color-shadow-md);
+                border-color: var(--color-border-strong);
+            }
+        }
+    }
+}

@@ -85,3 +85,16 @@
         }
     }
 }
+// ─── Dark Mode ───────────────────────────────────────────────────────────────
+[data-theme="dark"] {
+    .footer {
+        background-color: var(--color-bg-alt);
+
+        .footer-content {
+            h1 { color: var(--color-text); }
+            p  { color: var(--color-text-secondary); }
+        }
+
+        .socialBox { color: var(--color-text) !important; }
+    }
+}

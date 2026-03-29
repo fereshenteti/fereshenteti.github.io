@@ -350,3 +350,16 @@
     0%, 100% { opacity: 0.6; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.3); }
 }
+// ─── Dark Mode ───────────────────────────────────────────────────────────────
+[data-theme="dark"] {
+    .process-section {
+        background-color: var(--color-bg-alt);
+        border-top-color: var(--color-border);
+
+        .step-number { color: rgba(255,255,255,0.15); }
+        .step-title  { color: var(--color-text); }
+        .step-desc   { color: var(--color-text-secondary); }
+
+        .process-step.is-passed .step-number { color: rgba(255,255,255,0.15); }
+    }
+}

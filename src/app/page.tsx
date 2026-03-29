@@ -16,6 +16,9 @@ import BrandShowcaseA from './components/portfolio-sections/BrandShowcaseA';
 import BrandShowcaseB from './components/portfolio-sections/BrandShowcaseB';
 import BrandShowcaseC from './components/portfolio-sections/BrandShowcaseC';
 import LogoShowcase from './components/portfolio-sections/LogoShowcase';
+import LogoShowcaseJ from './components/portfolio-sections/LogoShowcaseJ';
+import LogoShowcaseK from './components/portfolio-sections/LogoShowcaseK';
+import LogoShowcaseL from './components/portfolio-sections/LogoShowcaseL';
 import FrontendProjects from './components/portfolio-sections/FrontendProjects';
 import TestimonialsSection from './components/portfolio-sections/Testimonials';
 import FinalCTA from './components/portfolio-sections/FinalCTA';
@@ -35,6 +38,9 @@ const Home = () => {
 
       {/* Narrative Portfolio Expansion sequence starts here */}
       <LogoShowcase />
+      <LogoShowcaseJ />
+      <LogoShowcaseK />
+      <LogoShowcaseL />
       <BrandShowcaseA />
       <BrandShowcaseB />
       <BrandShowcaseC />

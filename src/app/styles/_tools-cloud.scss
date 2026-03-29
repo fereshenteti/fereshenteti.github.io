@@ -198,3 +198,18 @@
         }
     }
 }
+// ─── Dark Mode ───────────────────────────────────────────────────────────────
+[data-theme="dark"] {
+    .tools-cloud-section {
+        background-color: var(--color-bg);
+
+        .section-title  { color: var(--color-text); }
+        .section-subtitle { color: var(--color-text-secondary); }
+
+        .tool-category {
+            border-top-color: var(--color-border);
+        }
+
+        .category-title { color: var(--color-text); }
+    }
+}

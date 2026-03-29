@@ -106,3 +106,37 @@
         }
     }
 }
+
+// ─── Dark Mode ───────────────────────────────────────────────────────────────
+[data-theme="dark"] {
+    .testimonials-section {
+        background-color: var(--color-bg-alt);
+        border-top-color: var(--color-border);
+
+        .section-title  { color: var(--color-text); }
+        .section-subtitle { color: var(--color-text-secondary); }
+
+        .testimonial-card {
+            background: var(--color-bg-card);
+            border-color: var(--color-border);
+            box-shadow: var(--color-shadow-sm);
+
+            &:hover {
+                border-color: var(--color-border-strong);
+                box-shadow: var(--color-shadow-md);
+            }
+        }
+
+        .quote-icon { color: rgba(255,255,255,0.06); }
+
+        .testimonial-quote { color: var(--color-text); }
+
+        .testimonial-author {
+            border-top-color: var(--color-border);
+
+            .author-avatar { background: var(--color-bg-elevated); }
+            .author-name   { color: var(--color-text); }
+            .author-role   { color: var(--color-text-secondary); }
+        }
+    }
+}

@@ -1,5 +1,102 @@
 $FLUID: cubic-bezier(.42,.42,0,1);
 
+// ─── Theme Variables ────────────────────────────────────────────────────────
+
+:root {
+  // Backgrounds
+  --color-bg:          #ffffff;
+  --color-bg-alt:      #fafafa;
+  --color-bg-card:     #f5f5f7;
+  --color-bg-elevated: #ffffff;
+
+  // Text
+  --color-text:          #1a1a1a;
+  --color-text-secondary:#666666;
+  --color-text-muted:    #999999;
+
+  // Borders & shadows
+  --color-border:        rgba(0, 0, 0, 0.06);
+  --color-border-strong: rgba(0, 0, 0, 0.10);
+  --color-shadow-sm:     0 2px 8px rgba(0, 0, 0, 0.04);
+  --color-shadow-md:     0 8px 24px rgba(0, 0, 0, 0.08);
+  --color-shadow-lg:     0 16px 48px rgba(0, 0, 0, 0.12);
+
+  // Accent (unchanged in both modes)
+  --color-accent: #FF791B;
+
+  // Toggle button appearance
+  --toggle-bg:      rgba(0, 0, 0, 0.08);
+  --toggle-bg-hover:rgba(0, 0, 0, 0.14);
+  --toggle-color:   #1a1a1a;
+}
+
+[data-theme="dark"] {
+  --color-bg:          #0f0f0f;
+  --color-bg-alt:      #141414;
+  --color-bg-card:     #1c1c1e;
+  --color-bg-elevated: #2c2c2e;
+
+  --color-text:          #f5f5f7;
+  --color-text-secondary:#98989e;
+  --color-text-muted:    #636366;
+
+  --color-border:        rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+  --color-shadow-sm:     0 2px 8px rgba(0, 0, 0, 0.35);
+  --color-shadow-md:     0 8px 24px rgba(0, 0, 0, 0.55);
+  --color-shadow-lg:     0 16px 48px rgba(0, 0, 0, 0.75);
+
+  --color-accent: #FF791B;
+
+  --toggle-bg:      rgba(255, 255, 255, 0.10);
+  --toggle-bg-hover:rgba(255, 255, 255, 0.16);
+  --toggle-color:   #f5f5f7;
+}
+
+// ─── Toggle Button ───────────────────────────────────────────────────────────
+
+.theme-toggle-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1.25rem;
+  z-index: 10000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--toggle-bg);
+  color: var(--toggle-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease, color 0.25s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  &:hover {
+    background: var(--toggle-bg-hover);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  svg {
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 body{
     margin: 0;
