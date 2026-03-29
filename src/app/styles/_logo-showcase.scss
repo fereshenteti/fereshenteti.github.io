@@ -59,7 +59,7 @@
     .logo-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
+        gap: 0;
 
         @media screen and (max-width: 900px) {
             grid-template-columns: repeat(2, 1fr);
@@ -73,9 +73,9 @@
 
     .logo-grid-item {
         background: #ffffff;
-        border: 1px solid rgba(0, 0, 0, 0.04);
-        border-radius: 20px;
-        height: 280px;
+        //border: 1px solid rgba(0, 0, 0, 0.04);
+        //border-radius: 20px;
+        height: 330px;
         position: relative;
         overflow: hidden;
         display: flex;

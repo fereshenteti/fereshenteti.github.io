@@ -12,6 +12,9 @@ import HeroSection from './components/hero-section';
 import ToolsCloud from './components/portfolio-sections/ToolsCloud';
 import ProcessSection from './components/portfolio-sections/ProcessSection';
 import SelectedWork from './components/portfolio-sections/SelectedWork';
+import BrandShowcaseA from './components/portfolio-sections/BrandShowcaseA';
+import BrandShowcaseB from './components/portfolio-sections/BrandShowcaseB';
+import BrandShowcaseC from './components/portfolio-sections/BrandShowcaseC';
 import LogoShowcase from './components/portfolio-sections/LogoShowcase';
 import FrontendProjects from './components/portfolio-sections/FrontendProjects';
 import TestimonialsSection from './components/portfolio-sections/Testimonials';
@@ -32,6 +35,9 @@ const Home = () => {
 
       {/* Narrative Portfolio Expansion sequence starts here */}
       <LogoShowcase />
+      <BrandShowcaseA />
+      <BrandShowcaseB />
+      <BrandShowcaseC />
       <SelectedWork />
       {/* <FrontendProjects /> */}
       <ToolsCloud />

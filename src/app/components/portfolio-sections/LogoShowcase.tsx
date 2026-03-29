@@ -113,7 +113,6 @@ const LogoShowcase = () => {
 
   return (
     <section className="logo-showcase-section" ref={sectionRef}>
-      <div className="portfolio-container">
 
         <div className="section-header" ref={headerRef}>
           <div className="section-info">
@@ -158,7 +157,7 @@ const LogoShowcase = () => {
           })}
         </div>
 
-      </div>
+      
     </section>
   );
 };

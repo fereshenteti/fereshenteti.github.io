@@ -1,0 +1,223 @@
+// Brand Showcase A — Sticky Scroll Reveal (Apple-style)
+
+.brand-showcase-a {
+    position: relative;
+    background: #0a0a0a;
+    color: #fff;
+
+    .brand-a-scroll-space {
+        // Each brand gets ~100vh of scroll + intro
+        height: calc(100vh * 4);
+        position: relative;
+    }
+
+    .brand-a-sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .brand-a-header {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 clamp(1rem, 4vw, 3rem);
+        z-index: 2;
+
+        .section-title {
+            color: #fff;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+        }
+
+        .section-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 600px;
+        }
+    }
+
+    // Each brand slide is absolutely positioned, layered
+    .brand-a-slide {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 clamp(1.5rem, 4vw, 4rem);
+        z-index: 3;
+
+        @media (max-width: 768px) {
+            align-items: flex-start;
+            padding: 4rem 1.25rem 2rem;
+            overflow-y: auto;
+        }
+    }
+
+    .brand-a-slide-inner {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: clamp(2rem, 4vw, 4rem);
+        align-items: center;
+        max-width: 1200px;
+        width: 100%;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+
+    // Left: brand identity info
+    .brand-a-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+
+        @media (max-width: 768px) {
+            gap: 1.5rem;
+        }
+    }
+
+    .brand-a-logo {
+        .logo-placeholder {
+            width: 100%;
+            max-width: 220px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            span {
+                font-size: 1.4rem;
+                font-weight: 600;
+                color: #fff;
+            }
+        }
+    }
+
+    .brand-a-tagline {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 0.75rem;
+    }
+
+    .brand-a-label {
+        display: block;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #FF791B;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+    }
+
+    // Color swatches
+    .color-swatches {
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .color-swatch {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease;
+
+        @media (max-width: 768px) {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+        }
+
+        &:hover {
+            transform: scale(1.15);
+
+            .swatch-label {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .swatch-label {
+        position: absolute;
+        bottom: -22px;
+        left: 50%;
+        transform: translateX(-50%) translateY(4px);
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.5);
+        white-space: nowrap;
+        opacity: 0;
+        transition: all 0.2s ease;
+    }
+
+    // Typography
+    .type-samples {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .type-sample {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .type-role {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 0.08em;
+    }
+
+    .type-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    // Right: mockup
+    .brand-a-mockup {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media (max-width: 768px) {
+            max-height: 200px;
+        }
+    }
+
+    .mockup-placeholder {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        max-width: 560px;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            border-radius: 12px;
+            aspect-ratio: 16 / 9;
+        }
+    }
+}
