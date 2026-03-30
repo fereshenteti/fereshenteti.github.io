@@ -132,3 +132,11 @@
 .show-header-content {
   display: block !important;
 }
+
+// ─── Dark Mode ───────────────────────────────────────────────────────────────
+[data-theme="dark"] {
+  .liquid-glass-effect {
+    background: rgba(28, 28, 30, 0.75);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+}

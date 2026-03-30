@@ -36,8 +36,8 @@ const Home = () => {
       {/* Narrative Portfolio Expansion sequence starts here */}
       <LogoShowcase />
       <BrandShowcaseA />
-      <BrandShowcaseB />
-      <BrandShowcaseC />
+      {/* <BrandShowcaseB />
+      <BrandShowcaseC /> */}
       <SelectedWork />
       {/* <FrontendProjects /> */}
       <ToolsCloud />

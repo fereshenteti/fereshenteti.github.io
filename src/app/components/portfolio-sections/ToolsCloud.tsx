@@ -55,7 +55,7 @@ const toolsData = [
       { name: 'TypeScript', icon: <IconTs /> },
       { name: 'React', icon: <IconReact /> },
       { name: 'Vue', icon: <IconVue /> },
-      { name: 'Next.js', icon: <IconNextjs /> },
+      { name: 'Next.js', icon: <IconNextjs />, invertDark: true },
       { name: 'Nodejs', icon: <IconNodejs /> },
       { name: 'Angular', icon: <IconAngular /> },
       { name: 'Tailwind CSS', icon: <IconTailwind /> },
@@ -65,14 +65,14 @@ const toolsData = [
   {
     category: 'Workflow & Delivery',
     items: [
-      { name: 'Git / GitHub', icon: <IconGithub /> },
+      { name: 'Git / GitHub', icon: <IconGithub />, invertDark: true },
       { name: 'Git / Gitlab', icon: <IconGitlab /> },
       { name: 'Git / Bitbucket', icon: <IconBitbucket /> },
       { name: 'Storybook', icon: <IconStorybook /> },
-      { name: 'Vercel', icon: <IconVercel /> },
+      { name: 'Vercel', icon: <IconVercel />, invertDark: true },
       { name: 'Claude AI', icon: <IconClaude /> },
-      { name: 'ChatGPT', icon: <IconChatGPT /> },
-      { name: 'Notion', icon: <IconNotion /> },
+      { name: 'ChatGPT', icon: <IconChatGPT />, invertDark: true },
+      { name: 'Notion', icon: <IconNotion />, invertDark: true },
       { name: 'Docker', icon: <IconDocker /> },
     ],
   },
@@ -298,7 +298,7 @@ const ToolsCloud = () => {
               <div className="tools-list">
                 {group.items.map((tool, toolIdx) => (
                   <div key={toolIdx} className="tool-item">
-                    <span className="tool-icon">{tool.icon}</span>
+                    <span className={`tool-icon${tool.invertDark ? ' tool-icon--invert-dark' : ''}`}>{tool.icon}</span>
                     <span className={`tool-tooltip ${Satoshi.className}`}>{tool.name}</span>
                   </div>
                 ))}

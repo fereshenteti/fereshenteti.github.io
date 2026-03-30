@@ -211,5 +211,9 @@
         }
 
         .category-title { color: var(--color-text); }
+
+        .tool-icon--invert-dark svg {
+            filter: invert(1);
+        }
     }
 }

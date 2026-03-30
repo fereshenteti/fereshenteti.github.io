@@ -55,7 +55,7 @@
 
         @media (max-width: 768px) {
             align-items: flex-start;
-            padding: 4rem 1.25rem 2rem;
+            padding: 3.5rem 1.25rem 2rem;
             overflow-y: auto;
         }
     }
@@ -70,7 +70,8 @@
 
         @media (max-width: 768px) {
             grid-template-columns: 1fr;
-            gap: 2rem;
+            gap: 1.25rem;
+            align-items: start;
         }
     }
 
@@ -81,26 +82,37 @@
         gap: 2.5rem;
 
         @media (max-width: 768px) {
-            gap: 1.5rem;
+            gap: 1rem;
         }
     }
 
     .brand-a-logo {
         .logo-placeholder {
             width: 100%;
-            max-width: 220px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            max-width: 260px;
+            height: 200px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
 
-            span {
-                font-size: 1.4rem;
-                font-weight: 600;
-                color: #fff;
+            .brand-logo-img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+            }
+
+            @media (max-width: 768px) {
+                height: 60px;
+                max-width: 180px;
+            }
+        }
+
+        .brand-a-label {
+            margin-top: 0.75rem;
+            margin-bottom: 0;
+
+            @media (max-width: 768px) {
+                margin-top: 0.4rem;
             }
         }
     }
@@ -108,7 +120,10 @@
     .brand-a-tagline {
         font-size: 1.1rem;
         color: rgba(255, 255, 255, 0.6);
-        margin-top: 0.75rem;
+
+        @media (max-width: 768px) {
+            font-size: 0.9rem;
+        }
     }
 
     .brand-a-label {
@@ -119,12 +134,21 @@
         color: #FF791B;
         font-weight: 600;
         margin-bottom: 0.75rem;
+
+        @media (max-width: 768px) {
+            font-size: 0.65rem;
+            margin-bottom: 0.4rem;
+        }
     }
 
     // Color swatches
     .color-swatches {
         display: flex;
         gap: 0.75rem;
+
+        @media (max-width: 768px) {
+            gap: 0.5rem;
+        }
     }
 
     .color-swatch {
@@ -135,31 +159,16 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
         transition: transform 0.3s ease;
 
-        @media (max-width: 768px) {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-        }
-
         &:hover {
             transform: scale(1.15);
-
-            .swatch-label {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
     }
 
     .swatch-label {
-        position: absolute;
-        bottom: -22px;
-        left: 50%;
         transform: translateX(-50%) translateY(4px);
-        font-size: 0.6rem;
-        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.8rem;
+        color: white;
         white-space: nowrap;
-        opacity: 0;
         transition: all 0.2s ease;
     }
 
@@ -167,6 +176,11 @@
     .type-samples {
         display: flex;
         gap: 2rem;
+
+        @media (max-width: 768px) {
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
     }
 
     .type-sample {
@@ -186,6 +200,10 @@
         font-size: 1.2rem;
         font-weight: 600;
         color: #fff;
+
+        @media (max-width: 768px) {
+            font-size: 0.95rem;
+        }
     }
 
     // Right: mockup
@@ -195,29 +213,51 @@
         justify-content: center;
 
         @media (max-width: 768px) {
-            max-height: 200px;
+            margin: 0 -1.25rem;
+            width: calc(100% + 2.5rem);
         }
     }
 
-    .mockup-placeholder {
+    .mockup-image {
         width: 100%;
-        aspect-ratio: 4 / 3;
-        max-width: 560px;
-        background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 20px;
+        max-width: 580px;
+        max-height: 600px;
+        border-radius: 12px;
+        object-fit: contain;
+        display: block;
+    }
+
+    // ─── Mobile layout (replaces sticky scroll) ───────────────────────────────
+    .brand-a-mobile-list {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        flex-direction: column;
+        padding: 3rem 0 0;
+    }
 
-        span {
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 1.2rem;
-        }
+    .brand-a-header--mobile {
+        position: static;
+        text-align: left;
+        padding: 0 1.25rem 2.5rem;
+    }
 
-        @media (max-width: 768px) {
-            border-radius: 12px;
-            aspect-ratio: 16 / 9;
-        }
+    .brand-a-mobile-card {
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 0;
+    }
+
+    .brand-a-mobile-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 2rem 1.25rem;
+    }
+
+    .brand-a-mobile-image {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        height: auto;
     }
 }
