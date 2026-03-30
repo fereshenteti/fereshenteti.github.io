@@ -3,6 +3,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
+import { MyCustomButton } from '../common-ui/custom-button';
+
+const openExternalLink = (url: string) => window.open(url, '_blank');
 
 const brands = [
   {
@@ -20,6 +23,7 @@ const brands = [
     colors: ['#C51D1D', '#FFC300', '#1F1F1F', '#EFEFEF'],
     typography: { Font: 'Aclonica Regular' },
     mockup: '/assets/brandbooks/MioTocco brandbook showcase.png',
+    url: 'https://www.instagram.com/mio_tocco/',
   },
   {
     name: 'ZenOAin',
@@ -36,6 +40,7 @@ const brands = [
     colors: ['#002B4A', '#00B07A', '#555555', '#E3E3E3'],
     typography: { Logo: 'Audiowide', Text: 'Helvetica' },
     mockup: '/assets/brandbooks/XDrivo brandbook showcase.png',
+    url: 'https://xdrivo.com/en-UK',
   },
 ];
 
@@ -94,6 +99,17 @@ const MobileCard = ({ brand }: { brand: typeof brands[0] }) => {
             </div>
           </div>
         </ScrollFade>
+
+        {brand.url && (
+          <ScrollFade>
+            <MyCustomButton
+              btnIcon="assets/icons/external-link.svg"
+              btnText="Visit website"
+              className="secondary-cta"
+              onClick={() => openExternalLink(brand.url!)}
+            />
+          </ScrollFade>
+        )}
       </div>
 
       <ScrollFade>
@@ -263,6 +279,17 @@ const BrandSlideA = ({
               ))}
             </div>
           </motion.div>
+
+          {brand.url && (
+            <motion.div style={{ opacity: typeOpacity }}>
+              <MyCustomButton
+                btnIcon="assets/icons/external-link.svg"
+                btnText="Visit website"
+                className="secondary-cta"
+                onClick={() => openExternalLink(brand.url!)}
+              />
+            </motion.div>
+          )}
         </div>
 
         <motion.div className="brand-a-mockup" style={{ scale: mockupScale, opacity: mockupOpacity }}>
