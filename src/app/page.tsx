@@ -12,6 +12,7 @@ import Header_v1 from './components/header/header_v1';
 import ToolsCloud from './components/portfolio-sections/ToolsCloud';
 import ProcessSection from './components/portfolio-sections/ProcessSection';
 import SelectedWork from './components/portfolio-sections/SelectedWork';
+import SelectedWorkA from './components/portfolio-sections/SelectedWorkA';
 import BrandShowcaseA from './components/portfolio-sections/BrandShowcaseA';
 import BrandShowcaseB from './components/portfolio-sections/BrandShowcaseB';
 import BrandShowcaseC from './components/portfolio-sections/BrandShowcaseC';
@@ -39,6 +40,7 @@ const Home = () => {
       {/* <BrandShowcaseB />
       <BrandShowcaseC /> */}
       <SelectedWork />
+      <SelectedWorkA />
       {/* <FrontendProjects /> */}
       <ToolsCloud />
       <ProcessSection />

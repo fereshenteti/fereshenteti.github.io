@@ -13,8 +13,7 @@ const caseStudies = [
   {
     title: 'eMBS Website',
     category: 'Product Design / UX / Frontend',
-    summary: `eMBS (e-Mobility Business Solutions) helps companies and projects transition to electric mobility by combining strategy consulting, battery technology, and green energy solutions.
-    I collaborated closely with the client to understand their needs, gather insights, and clarify objectives through targeted questions. Based on the specifications and brainstorming sessions, I developed an initial prototype. After iterative refinements and approval, I built the website using Webflow, ensuring smooth transitions and a clean, polished aesthetic.
+    summary: `eMBS (e-Mobility Business Solutions) helps companies transition to electric mobility by combining strategy consulting, battery technology, and green energy solutions. I collaborated with the client to gather insights, built an initial prototype, then delivered the final site in Webflow with smooth transitions and a clean aesthetic.
     `,
     focusAreas: ['Webflow', 'Clean UX', 'Accessibility', 'UI friendly'],
     imagePlaceholder: 'assets/frontend_projects/embs 1.png',
@@ -33,7 +32,7 @@ const caseStudies = [
     title: 'Value Digital Services',
     category: 'UI Design / Admin Dashboard / Frontend',
     summary: 'Value Digital Services is a company that offers digital services for businesses, with which I worked on many projects, and designed and built its own website among other products.',
-    focusAreas: ['Clarity', 'UI smoothness', 'Trust', 'Business UI'],
+    focusAreas: ['Clarity', 'UI smoothness', 'Trust', 'Business UI', 'Mobile UI', 'Security'],
     imagePlaceholder: 'assets/frontend_projects/Value website 1.png',
     url: 'https://value.com.tn',
     layout: 'image-right',

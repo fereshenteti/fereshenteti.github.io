@@ -1,0 +1,184 @@
+// Selected Work A — Horizontal Scroll Track
+
+.selected-work-a-wrapper {
+    background: #111111;
+    color: #fff;
+}
+
+.sw-a-section-header {
+    padding: 6rem clamp(1.5rem, 6vw, 6rem) 4rem;
+    max-width: 800px;
+
+    .section-title {
+        color: #fff;
+        font-size: clamp(2.2rem, 5vw, 3.8rem);
+    }
+
+    .section-subtitle {
+        color: rgba(255, 255, 255, 0.6);
+    }
+}
+
+.selected-work-a-section {
+    width: 100%;
+    background: #111111;
+    color: #fff;
+    height: calc(100vh * 4);
+    position: relative;
+
+    .sw-a-sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .sw-a-track {
+        display: flex;
+        flex-direction: row;
+        width: calc(100vw * 4);
+        height: 100%;
+        will-change: transform;
+
+        @media (max-width: 768px) {
+            // 4 cards × 200vw each
+            width: calc(200vw * 4);
+        }
+    }
+
+    .sw-a-card {
+        width: 100vw;
+        height: 100vh;
+        flex-shrink: 0;
+        display: grid;
+        grid-template-columns: 0.5fr 1fr;
+        align-items: center;
+        padding: 0 clamp(3rem, 6vw, 7rem);
+        gap: 4rem;
+        border-left: 1px solid rgba(255,255,255,0.05);
+
+        @media (max-width: 768px) {
+            // Each card is 200vw: content 80vw | image 100vw
+            width: 200vw;
+            grid-template-columns: 80vw 100vw;
+            padding: 0;
+            gap: 0;
+            &:nth-last-of-type{
+                width: 180vw;
+            }
+        }
+    }
+
+    .sw-a-card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        overflow-y: auto;
+
+        @media (max-width: 768px) {
+            width: 80vw;
+            height: 100vh;
+            padding: 3rem 1.75rem 2rem;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+    }
+
+    .sw-a-num {
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        color: rgba(255,255,255,0.3);
+        font-weight: 600;
+    }
+
+    .sw-a-category {
+        display: block;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #FF791B;
+        font-weight: 600;
+    }
+
+    .sw-a-title {
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        font-weight: 700;
+        color: #fff;
+        margin: 0;
+        line-height: 1.15;
+    }
+
+    .sw-a-summary {
+        font-size: 1rem;
+        line-height: 1.65;
+        color: rgba(255,255,255,0.6);
+        margin: 0;
+    }
+
+    .sw-a-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .sw-a-tag {
+        font-size: 0.78rem;
+        color: rgba(255,255,255,0.55);
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 0.2rem 0.75rem;
+        border-radius: 100px;
+    }
+
+    .sw-a-card-visual {
+        height: 70vh;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            width: 100vw;
+            height: 100vh;
+        }
+    }
+
+    // Progress bar — bottom edge
+    .sw-a-progress-track {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: rgba(255,255,255,0.06);
+        z-index: 10;
+    }
+
+    .sw-a-progress-fill {
+        height: 100%;
+        background: #FF791B;
+    }
+
+    // Scroll hint
+    .sw-a-hint {
+        position: absolute;
+        bottom: 1.75rem;
+        right: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: rgba(255,255,255,0.4);
+        letter-spacing: 0.08em;
+        pointer-events: none;
+    }
+
+    .sw-a-hint-arrow {
+        font-size: 1rem;
+    }
+
+}

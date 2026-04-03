@@ -235,25 +235,4 @@
         }
     }
 
-    // Customize the button to fit the dark theme
-    .secondary-cta {
-        background: transparent !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-        color: white !important;
-
-        &::before {
-            display: none;
-        }
-
-        &:hover {
-            border-color: white !important;
-            background: rgba(255, 255, 255, 0.05) !important;
-        }
-
-        .custom-button-icon {
-            path {
-                stroke: white;
-            }
-        }
-    }
 }
