@@ -2,6 +2,7 @@
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useRef } from "react";
+import Script from 'next/script';
 import BentoBox from './components/bento-box';
 // import DetailedCategories from './components/detailed-categories';
 import Footer from './components/footer';
@@ -39,7 +40,7 @@ const Home = () => {
       <BrandShowcaseA />
       {/* <BrandShowcaseB />
       <BrandShowcaseC /> */}
-      <SelectedWork />
+      {/* <SelectedWork /> */}
       <SelectedWorkA />
       {/* <FrontendProjects /> */}
       <ToolsCloud />
@@ -62,6 +63,10 @@ const Home = () => {
       {/* <StatsSection /> */}
 
       {/* <DetailedCategories /> */}
+
+      {/* Calendly inline widget */}
+      <div className="calendly-inline-widget" data-url="https://calendly.com/fereshenteti/30min" style={{ minWidth: '320px', height: '700px' }} />
+      <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
 
       <Footer />
 

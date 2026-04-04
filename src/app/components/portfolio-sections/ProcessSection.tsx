@@ -1,5 +1,6 @@
 'use client';
 
+import SectionDotGrid from '../SectionDotGrid';
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
@@ -169,7 +170,8 @@ const ProcessStepItem = ({ step, idx, illustration }: {
 const ProcessSection = () => {
 
   return (
-    <section className="process-section">
+    <section className="process-section" style={{ position: 'relative' }}>
+      <SectionDotGrid />
       <div className="portfolio-container">
 
         <motion.div

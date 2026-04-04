@@ -1,5 +1,6 @@
 'use client';
 
+import SectionDotGrid from '../SectionDotGrid';
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
@@ -168,7 +169,8 @@ const BrandShowcaseA = () => {
   }
 
   return (
-    <section className="brand-showcase-a" ref={containerRef}>
+    <section className="brand-showcase-a" ref={containerRef} style={{ position: 'relative' }}>
+      <SectionDotGrid forceDark />
       <div className="brand-a-scroll-space">
         <div className="brand-a-sticky">
           <motion.div

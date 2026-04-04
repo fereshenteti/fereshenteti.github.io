@@ -1,5 +1,6 @@
 'use client';
 
+import SectionDotGrid from '../SectionDotGrid';
 import React, { useRef, useEffect, useState } from 'react';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
 import { useGSAP } from '@gsap/react';
@@ -112,7 +113,8 @@ const LogoShowcase = () => {
   }, { scope: sectionRef });
 
   return (
-    <section className="logo-showcase-section" ref={sectionRef}>
+    <section className="logo-showcase-section" ref={sectionRef} style={{ position: 'relative' }}>
+      <SectionDotGrid />
 
         <div className="section-header" ref={headerRef}>
           <div className="section-info">

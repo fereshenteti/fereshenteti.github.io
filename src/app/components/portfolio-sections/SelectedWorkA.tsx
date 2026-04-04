@@ -1,5 +1,6 @@
 'use client';
 
+import SectionDotGrid from '../SectionDotGrid';
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
@@ -77,6 +78,7 @@ const SelectedWorkA = () => {
       </div>
 
       <section className="selected-work-a-section" ref={containerRef}>
+        <SectionDotGrid forceDark />
         <div className="sw-a-sticky">
 
           <motion.div className="sw-a-track" style={{ x }}>

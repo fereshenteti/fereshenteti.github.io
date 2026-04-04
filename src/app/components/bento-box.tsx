@@ -1,5 +1,6 @@
 'use client';
 
+import SectionDotGrid from './SectionDotGrid';
 import gsap from 'gsap';
 import Lottie from 'lottie-react';
 import { useEffect, useRef } from 'react';
@@ -277,7 +278,8 @@ const BentoBox = () => {
     }
 
     return (
-        <section className="bento-section" ref={bentoSectionRef}>
+        <section className="bento-section" ref={bentoSectionRef} style={{ position: 'relative' }}>
+            <SectionDotGrid />
             <div className="bento-container">
                 <div className={"bento-grid " + ClashDisplay.className}>
 

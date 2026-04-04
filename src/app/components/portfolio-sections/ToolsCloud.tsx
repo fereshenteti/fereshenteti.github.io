@@ -1,5 +1,6 @@
 'use client';
 
+import SectionDotGrid from '../SectionDotGrid';
 import React, { useRef, useState } from 'react';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
 import { useGSAP } from '@gsap/react';
@@ -271,7 +272,8 @@ const ToolsCloud = () => {
   }, { dependencies: [isHovered], scope: sectionRef });
 
   return (
-    <section className="tools-cloud-section" ref={sectionRef}>
+    <section className="tools-cloud-section" ref={sectionRef} style={{ position: 'relative' }}>
+      <SectionDotGrid />
       <div className="portfolio-container">
 
         <div className="section-header">
