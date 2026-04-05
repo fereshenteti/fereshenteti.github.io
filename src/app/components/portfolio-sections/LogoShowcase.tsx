@@ -114,7 +114,7 @@ const LogoShowcase = () => {
 
   return (
     <section className="logo-showcase-section" ref={sectionRef} style={{ position: 'relative' }}>
-      <SectionDotGrid />
+      {/* <SectionDotGrid /> */}
 
         <div className="section-header" ref={headerRef}>
           <div className="section-info">

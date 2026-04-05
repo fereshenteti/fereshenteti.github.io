@@ -29,12 +29,16 @@ const Social = (props: {boxRef?: string}) => {
                 <img src="assets/icons/linkedin-logo.svg" className='social-icon'/>
             </a>
 
-            <a className={`socialBox ${boxRef}`} href='https://dribbble.com/fereshenteti/collections' target="blank">
-                <img src="assets/icons/dribble-logo.svg" className='social-icon'/>
-            </a>
-
             <a className={`socialBox ${boxRef}`} href='https://www.instagram.com/fereshenteti' target="blank">
                 <img src="assets/icons/instagram-logo.svg" className='social-icon'/>
+            </a>
+
+            <a className={`socialBox ${boxRef}`} href='https://www.threads.com/@fereshenteti' target="blank">
+                <img src="assets/icons/threads.svg" className='social-icon threads-icon'/>
+            </a>
+
+            <a className={`socialBox ${boxRef}`} href='https://dribbble.com/fereshenteti/collections' target="blank">
+                <img src="assets/icons/dribble-logo.svg" className='social-icon'/>
             </a>
 
             <a className={`socialBox ${boxRef}`} href='https://www.pinterest.com/hentetiferes/_created' target="blank">

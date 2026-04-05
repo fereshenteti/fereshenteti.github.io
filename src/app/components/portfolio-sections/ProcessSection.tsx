@@ -171,7 +171,7 @@ const ProcessSection = () => {
 
   return (
     <section className="process-section" style={{ position: 'relative' }}>
-      <SectionDotGrid />
+      {/* <SectionDotGrid /> */}
       <div className="portfolio-container">
 
         <motion.div

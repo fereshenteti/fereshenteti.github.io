@@ -51,10 +51,8 @@ const FinalCTA = () => {
             </p>
 
             <div className="cta-actions">
-                <MyCustomButton btnIcon="assets/icons/send.svg" btnText="Let's get in touch" className="primary-cta" />
-                <button className={`secondary-cta-link ${Satoshi.className}`}>
-                    View Resume
-                </button>
+                <MyCustomButton btnIcon="assets/icons/calendar.svg" btnText="Let's schedule a call" className="primary-cta" onClick={() => (window as any).Calendly?.initPopupWidget({ url: 'https://calendly.com/fereshenteti/30min' })} />
+                <MyCustomButton btnIcon="assets/icons/external-link.svg" btnText="View Resume" className="secondary-cta" onClick={() => window.open('/assets/my-cv/Fares Hentati Resume 2026 EN.pdf', '_blank')} />
             </div>
         </div>
 

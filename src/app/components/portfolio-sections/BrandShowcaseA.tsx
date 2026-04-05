@@ -16,6 +16,7 @@ const brands = [
     colors: ['#2F2F2F', '#F6CC82', '#003366'],
     typography: { Logo: 'Futura', Heading: 'Outfit bold', Body: 'Outfit light' },
     mockup: '/assets/brandbooks/Hellcap brandbook showcase.png',
+    background: '/assets/backgrounds/brand-showcase/Hellcap background.png',
   },
   {
     name: 'MioTocco',
@@ -25,6 +26,7 @@ const brands = [
     typography: { Font: 'Aclonica Regular' },
     mockup: '/assets/brandbooks/MioTocco brandbook showcase.png',
     url: 'https://www.instagram.com/mio_tocco/',
+    background: '/assets/backgrounds/brand-showcase/MioTocco background.png',
   },
   {
     name: 'ZenOAin',
@@ -33,6 +35,7 @@ const brands = [
     colors: ['#0D1B48', '#FFFFFF'],
     typography: { Logo: 'Ahsing', Text: 'Helvetica' },
     mockup: '/assets/brandbooks/ZenOAin brandbook showcase.png',
+    background: '/assets/backgrounds/brand-showcase/ZenOAin background.png',
   },
   {
     name: 'XDrivo',
@@ -42,6 +45,7 @@ const brands = [
     typography: { Logo: 'Audiowide', Text: 'Helvetica' },
     mockup: '/assets/brandbooks/XDrivo brandbook showcase.png',
     url: 'https://xdrivo.com/en-UK',
+    background: '/assets/backgrounds/brand-showcase/XDrivo background.png',
   },
 ];
 
@@ -170,9 +174,26 @@ const BrandShowcaseA = () => {
 
   return (
     <section className="brand-showcase-a" ref={containerRef} style={{ position: 'relative' }}>
-      <SectionDotGrid forceDark />
+      {/* <SectionDotGrid forceDark /> */}
       <div className="brand-a-scroll-space">
         <div className="brand-a-sticky">
+          {/* Cross-fading backgrounds */}
+          {brands.map((brand, idx) => {
+            const start = (idx + 1) / (brands.length + 1);
+            const end = (idx + 2) / (brands.length + 1);
+            const mid = (start + end) / 2;
+            return (
+              <BrandBackground
+                key={idx}
+                brand={brand}
+                scrollYProgress={scrollYProgress}
+                rangeIn={[start - 0.05, start + 0.05]}
+                rangeOut={[end - 0.05, end + 0.02]}
+                rangePeak={[start + 0.05, mid, end - 0.05]}
+              />
+            );
+          })}
+
           <motion.div
             className="brand-a-header"
             style={{
@@ -209,6 +230,57 @@ const BrandShowcaseA = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+const BrandBackground = ({
+  brand,
+  scrollYProgress,
+  rangeIn,
+  rangeOut,
+  rangePeak,
+}: {
+  brand: typeof brands[0];
+  scrollYProgress: any;
+  rangeIn: [number, number];
+  rangeOut: [number, number];
+  rangePeak: [number, number, number];
+}) => {
+  const opacity = useTransform(
+    scrollYProgress,
+    [rangeIn[0], rangeIn[1], rangePeak[2], rangeOut[1]],
+    [0, 1, 1, 0]
+  );
+  const scale = useTransform(
+    scrollYProgress,
+    [rangeIn[0], rangeIn[1]],
+    [1.06, 1]
+  );
+
+  return (
+    <motion.div
+      style={{ opacity, position: 'absolute', inset: 0, zIndex: 0 }}
+    >
+      <motion.img
+        src={brand.background}
+        alt=""
+        style={{
+          scale,
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+        }}
+      />
+      {/* Dark overlay so text stays readable */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'rgba(0,0,0,0.52)',
+      }} />
+    </motion.div>
   );
 };
 

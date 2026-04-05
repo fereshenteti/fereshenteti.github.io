@@ -1,3 +1,4 @@
+import { ClashDisplay } from "@/fonts/fonts";
 import ContactMe from "./contact-me";
 import Social from "./social";
 
@@ -7,7 +8,7 @@ const Footer = () => {
         <div className="footer">
 
             <div className="left-side">
-                <div className="footer-content">
+                <div className={`footer-content ` + ClashDisplay.className}>
                     <h1>Fares Hentati</h1>
                     <p>feres.henteti@gmail.com</p>
                     <div>

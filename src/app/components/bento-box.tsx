@@ -279,7 +279,7 @@ const BentoBox = () => {
 
     return (
         <section className="bento-section" ref={bentoSectionRef} style={{ position: 'relative' }}>
-            <SectionDotGrid />
+            {/* <SectionDotGrid /> */}
             <div className="bento-container">
                 <div className={"bento-grid " + ClashDisplay.className}>
 

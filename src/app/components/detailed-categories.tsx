@@ -88,7 +88,6 @@ const DetailedCategories = () => {
                                 <img src="assets/frontend_projects/embs 2.png" alt="eMBS" />
                             </div>
 
-                            {/* DUPLICATES JUST FOR ANIMATION */}
                             <div className="front-dev-image" aria-hidden={true}>
                                 <img src="assets/frontend_projects/sedeo 1.png" alt="Sedeo" />
                             </div>
@@ -111,7 +110,6 @@ const DetailedCategories = () => {
                         </div>
                     </div>
 
-                    {/* Second Scroller */}
                     <div className="front-dev-images-wrapper scroller_wrapper">
                         <div className="front-dev-images scroller_inner scroller_inner_2">
 
@@ -134,7 +132,6 @@ const DetailedCategories = () => {
                                 <img src="assets/frontend_projects/embs 3.png" alt="eMBS" />
                             </div>
 
-                            {/* DUPLICATES JUST FOR ANIMATION */}
                             <div className="front-dev-image" aria-hidden={true}>
                                 <img src="assets/frontend_projects/sedeo 2.png" alt="Sedeo" />
                             </div>
@@ -158,7 +155,7 @@ const DetailedCategories = () => {
                     </div>
                 </div>
 
-            </div>
+            </div> 
 
             {/* Logo creations */}
             <div id="logo-creations" className="section detailed-category logo-creations">
@@ -172,7 +169,7 @@ const DetailedCategories = () => {
             <div id="logo-animations" className="section detailed-category logo-animations">
                 <div className="section-info">
                     <h1>Logo <span>Animations</span></h1>
-                    {/* this is just for animating the word "animations" */}
+                    this is just for animating the word "animations"
                     <svg className="animation-filter" xmlns="http://www.w3.org/2000/svg" version="1.1">
                         <defs>
                             <filter id="squiggly-0">
@@ -200,10 +197,8 @@ const DetailedCategories = () => {
                         </defs>
                     </svg>
                 </div>
-                {/* <img src="assets/animations/my-logo-animations.avif" className="my-logo-animations"/> */}
                 <video autoPlay playsInline loop muted>
                     <source src="assets/animations/my logo animations.mp4" type="video/mp4" />
-                    {/* <source src="assets/animations/my logo animations.ogg" type="video/ogg"/> */}
                 </video>
             </div>
 
@@ -254,10 +249,10 @@ const DetailedCategories = () => {
                 </div>
             </div>
 
-            <div className="section-spacer"></div>
+            {/* <div className="section-spacer"></div> */}
 
             {/* Voice Over */}
-            {/* <div id="voiceover" className="section detailed-category voice-over">
+            <div id="voiceover" className="section detailed-category voice-over">
 
                 <img src="assets/backgrounds/MV7.webp" className="microphone-bg" />
 
@@ -300,7 +295,7 @@ const DetailedCategories = () => {
 
                 </div>
 
-            </div> */}
+            </div>
 
             {/* Get in touch animation */}
             <div className="section getintouch-container">

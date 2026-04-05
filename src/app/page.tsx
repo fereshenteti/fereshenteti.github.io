@@ -14,6 +14,7 @@ import ToolsCloud from './components/portfolio-sections/ToolsCloud';
 import ProcessSection from './components/portfolio-sections/ProcessSection';
 import SelectedWork from './components/portfolio-sections/SelectedWork';
 import SelectedWorkA from './components/portfolio-sections/SelectedWorkA';
+import SelectedWorkB from './components/portfolio-sections/SelectedWorkB';
 import BrandShowcaseA from './components/portfolio-sections/BrandShowcaseA';
 import BrandShowcaseB from './components/portfolio-sections/BrandShowcaseB';
 import BrandShowcaseC from './components/portfolio-sections/BrandShowcaseC';
@@ -21,6 +22,13 @@ import LogoShowcase from './components/portfolio-sections/LogoShowcase';
 // import FrontendProjects from './components/portfolio-sections/FrontendProjects';
 import TestimonialsSection from './components/portfolio-sections/Testimonials';
 import FinalCTA from './components/portfolio-sections/FinalCTA';
+import UIUXSection from './components/portfolio-sections/UIUXSection';
+import UIUXShowcaseA from './components/portfolio-sections/UIUXShowcaseA';
+import UIUXShowcaseB from './components/portfolio-sections/UIUXShowcaseB';
+import UIUXShowcaseC from './components/portfolio-sections/UIUXShowcaseC';
+import UIUXShowcaseD from './components/portfolio-sections/UIUXShowcaseD';
+import IllustrationsSection from './components/portfolio-sections/IllustrationsSection';
+import DetailedCategories from './components/detailed-categories';
 
 gsap.registerPlugin(useGSAP);
 
@@ -41,11 +49,21 @@ const Home = () => {
       {/* <BrandShowcaseB />
       <BrandShowcaseC /> */}
       {/* <SelectedWork /> */}
-      <SelectedWorkA />
-      {/* <FrontendProjects /> */}
+      {/* <SelectedWorkA /> */}
+      <SelectedWorkB />
+
+      {/* UI/UX Before & After — compare all 4 variants */}
+      {/* <UIUXShowcaseA /> */}
+      {/* <UIUXShowcaseB /> */}
+      <UIUXShowcaseC />
+      {/* <UIUXShowcaseD /> */}
+
       <ToolsCloud />
+      {/* <UIUXSection /> */}
+      {/* <FrontendProjects /> */}
+      {/* <IllustrationsSection /> */}
       <ProcessSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <FinalCTA />
 
       {/* <HeroSection/> */}
@@ -65,7 +83,11 @@ const Home = () => {
       {/* <DetailedCategories /> */}
 
       {/* Calendly inline widget */}
-      <div className="calendly-inline-widget" data-url="https://calendly.com/fereshenteti/30min" style={{ minWidth: '320px', height: '700px' }} />
+      {/* <div className="calendly-inline-widget" data-url="https://calendly.com/fereshenteti/30min" style={{ minWidth: '320px', height: '700px' }} />
+      <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" /> */}
+
+      {/* Calendly popup */}
+      <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
       <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
 
       <Footer />

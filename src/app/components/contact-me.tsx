@@ -5,12 +5,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import emailjs from '@emailjs/browser';
 import CircularProgress from '@mui/material/CircularProgress';
-import { Player } from '@lottiefiles/react-lottie-player';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const SERVICE_ID = "service_qvbog4w";
 const TEMPLATE_ID = "template_9e0b50x";
-const PUBLIC_KEY = "rcn90UAeivk5_64XM";
+const PUBLIC_KEY = "fr5nOeOrK9Tj5Tc-A";
 
 const ContactMe = (props: {boxRef?: string}) => {
 

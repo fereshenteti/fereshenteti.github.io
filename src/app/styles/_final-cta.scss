@@ -71,6 +71,34 @@
         justify-content: center;
         gap: 2rem;
 
+        // Section is always dark — both buttons use dark-context styling
+        .primary-cta.my-custom-button {
+            background-color: #FF791B !important;
+            border: 1px solid #FF791B !important;
+            color: #ffffff !important;
+            box-shadow: 7px 10px 0 0 rgba(255, 121, 27, 0.4) !important;
+
+            .custom-button-icon path { stroke: #ffffff; }
+
+            &:hover {
+                background-color: darken(#FF791B, 8%) !important;
+            }
+        }
+
+        .secondary-cta.my-custom-button {
+            background-color: transparent !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            color: #ffffff !important;
+            box-shadow: 7px 10px 0 0 #FF791B !important;
+
+            .custom-button-icon path { stroke: #ffffff; }
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.06) !important;
+                border-color: rgba(255, 255, 255, 0.6) !important;
+            }
+        }
+
         @media (max-width: 600px) {
             flex-direction: column;
             width: 100%;
@@ -78,33 +106,6 @@
             .primary-cta {
                 width: 100%;
                 justify-content: center;
-            }
-        }
-    }
-
-    .primary-cta {
-        &::before {
-            display: none;
-        }
-        background: #FF791B !important;
-        border: 1px solid #FF791B !important;
-        color: white !important;
-        border-radius: 12px !important;
-        font-size: 1.25rem !important;
-        padding: 1rem 2rem !important;
-        
-        &:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 121, 27, 0.3);
-        }
-
-        .custom-button-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            path {
-                stroke: white !important;
             }
         }
     }

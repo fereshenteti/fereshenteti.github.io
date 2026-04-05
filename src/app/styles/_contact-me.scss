@@ -94,3 +94,24 @@
         gap: 0;
     }
 }
+
+// ─── Dark Mode ────────────────────────────────────────────────────────────────
+[data-theme="dark"] {
+    .formLabel {
+        color: var(--color-text-secondary);
+    }
+
+    .form-control {
+        background-color: var(--color-bg-card);
+        border-color: var(--color-border-strong);
+        color: var(--color-text);
+
+        &::placeholder { color: var(--color-text-muted); }
+        &:focus {
+            background-color: var(--color-bg-card);
+            border-color: var(--color-accent);
+            color: var(--color-text);
+            box-shadow: 0 0 0 0.2rem rgba(255, 121, 27, 0.2);
+        }
+    }
+}
