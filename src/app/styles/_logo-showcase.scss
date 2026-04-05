@@ -61,20 +61,13 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 0;
 
-        @media screen and (max-width: 900px) {
+        @media screen and (max-width: 768px) {
             grid-template-columns: repeat(2, 1fr);
-        }
-
-        @media screen and (max-width: 600px) {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
         }
     }
 
     .logo-grid-item {
         background: #ffffff;
-        //border: 1px solid rgba(0, 0, 0, 0.04);
-        //border-radius: 20px;
         height: 330px;
         position: relative;
         overflow: hidden;
@@ -97,6 +90,10 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        @media screen and (max-width: 768px) {
+            height: 200px;
         }
     }
 

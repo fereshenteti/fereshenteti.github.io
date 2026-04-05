@@ -1,8 +1,8 @@
 // Selected Work B — BrandShowcase-style sticky scroll, image left / text right
 
 .selected-work-b-section {
-    background: #111111;
-    color: #fff;
+    background: var(--color-bg-alt);
+    color: var(--color-text);
     position: relative;
 
     .sw-b-scroll-space {
@@ -34,12 +34,12 @@
         pointer-events: none;
 
         .section-title {
-            color: #fff;
+            color: var(--color-text);
             font-size: clamp(2.2rem, 5vw, 3.8rem);
         }
 
         .section-subtitle {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--color-text-secondary);
             max-width: 580px;
         }
     }
@@ -100,7 +100,7 @@
         display: block;
         font-size: 0.7rem;
         letter-spacing: 0.14em;
-        color: rgba(255, 255, 255, 0.3);
+        color: var(--color-text-muted);
         font-weight: 600;
         margin-bottom: 0.25rem;
     }
@@ -118,7 +118,7 @@
     .sw-b-title {
         font-size: clamp(1.8rem, 3vw, 2.8rem);
         font-weight: 700;
-        color: #fff;
+        color: var(--color-text);
         margin: 0 0 0.75rem;
         line-height: 1.15;
     }
@@ -126,7 +126,7 @@
     .sw-b-summary {
         font-size: 1rem;
         line-height: 1.65;
-        color: rgba(255, 255, 255, 0.65);
+        color: var(--color-text-secondary);
         margin: 0;
     }
 
@@ -138,9 +138,9 @@
 
     .sw-b-tag {
         font-size: 0.78rem;
-        color: rgba(255, 255, 255, 0.55);
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--color-text-secondary);
+        background: var(--color-bg-card);
+        border: 1px solid var(--color-border-strong);
         padding: 0.2rem 0.75rem;
         border-radius: 100px;
     }

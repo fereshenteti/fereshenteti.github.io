@@ -64,10 +64,10 @@ const BeforeAfterSlider = ({ before, after }: Props) => {
       onPointerUp={onPointerUp}
       onPointerLeave={onPointerUp}
     >
-      {/* After — base layer */}
-      <img src={after} alt="After" className="ba-img" draggable={false} />
+      {/* After — in normal flow, sizes the container */}
+      <img src={after} alt="After" className="ba-img-flow" draggable={false} />
 
-      {/* Before — clipped */}
+      {/* Before — absolute overlay, clipped */}
       <div className="ba-before-wrap" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
         <img src={before} alt="Before" className="ba-img" draggable={false} />
         <span className={`ba-label ba-label-before ${Satoshi.className}`}>Before</span>

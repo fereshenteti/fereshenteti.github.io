@@ -5,6 +5,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
 import { MyCustomButton } from '../common-ui/custom-button';
+import { useTheme } from '../../context/ThemeContext';
 
 const openExternalLink = (url: string) => window.open(url, '_blank');
 
@@ -13,6 +14,7 @@ const brands = [
     name: 'Hellcap Hustle',
     tagline: 'Modern identity for a premium tech startup',
     logo: '/assets/brands-logos/Hellcap hustle logo - white.svg',
+    logoDark: '/assets/brands-logos/Hellcap hustle logo - dark.svg',
     colors: ['#2F2F2F', '#F6CC82', '#003366'],
     typography: { Logo: 'Futura', Heading: 'Outfit bold', Body: 'Outfit light' },
     mockup: '/assets/brandbooks/Hellcap brandbook showcase.png',
@@ -22,6 +24,7 @@ const brands = [
     name: 'MioTocco',
     tagline: 'It meals soo goood!',
     logo: '/assets/brands-logos/MioTocco logo - white.svg',
+    logoDark: '/assets/brands-logos/MioTocco logo - dark.svg',
     colors: ['#C51D1D', '#FFC300', '#1F1F1F', '#EFEFEF'],
     typography: { Font: 'Aclonica Regular' },
     mockup: '/assets/brandbooks/MioTocco brandbook showcase.png',
@@ -32,6 +35,7 @@ const brands = [
     name: 'ZenOAin',
     tagline: 'Your next level barbershop',
     logo: '/assets/brands-logos/ZenOAin logo - white.svg',
+    logoDark: '/assets/brands-logos/ZenOAin logo - dark.svg',
     colors: ['#0D1B48', '#FFFFFF'],
     typography: { Logo: 'Ahsing', Text: 'Helvetica' },
     mockup: '/assets/brandbooks/ZenOAin brandbook showcase.png',
@@ -41,6 +45,7 @@ const brands = [
     name: 'XDrivo',
     tagline: 'The ultimate cabbing experience',
     logo: '/assets/brands-logos/XDrivo logo - white.svg',
+    logoDark: '/assets/brands-logos/XDrivo logo - dark.svg',
     colors: ['#002B4A', '#00B07A', '#555555', '#E3E3E3'],
     typography: { Logo: 'Audiowide', Text: 'Helvetica' },
     mockup: '/assets/brandbooks/XDrivo brandbook showcase.png',
@@ -64,12 +69,13 @@ const ScrollFade = ({ children, className }: { children: React.ReactNode; classN
   );
 };
 
-const MobileCard = ({ brand }: { brand: typeof brands[0] }) => {
+const MobileCard = ({ brand, theme }: { brand: typeof brands[0]; theme: string }) => {
+  const logoSrc = theme === 'dark' ? brand.logo : (brand.logoDark ?? brand.logo);
   return (
     <div className="brand-a-mobile-card">
       <div className="brand-a-mobile-info">
         <ScrollFade className="logo-placeholder">
-          <img src={brand.logo} alt={`${brand.name} logo`} className="brand-logo-img" />
+          <img src={logoSrc} alt={`${brand.name} logo`} className="brand-logo-img" />
         </ScrollFade>
 
         <ScrollFade>
@@ -127,6 +133,7 @@ const MobileCard = ({ brand }: { brand: typeof brands[0] }) => {
 const BrandShowcaseA = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
@@ -165,7 +172,7 @@ const BrandShowcaseA = () => {
           </motion.div>
 
           {brands.map((brand, idx) => (
-            <MobileCard key={idx} brand={brand} />
+            <MobileCard key={idx} brand={brand} theme={theme} />
           ))}
         </div>
       </section>
@@ -224,6 +231,7 @@ const BrandShowcaseA = () => {
                 rangeIn={[start - 0.05, start + 0.05]}
                 rangeOut={[end - 0.05, end + 0.02]}
                 rangePeak={[start + 0.05, mid, end - 0.05]}
+                theme={theme}
               />
             );
           })}
@@ -274,12 +282,6 @@ const BrandBackground = ({
           objectPosition: 'center',
         }}
       />
-      {/* Dark overlay so text stays readable */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        background: 'rgba(0,0,0,0.52)',
-      }} />
     </motion.div>
   );
 };
@@ -291,6 +293,7 @@ const BrandSlideA = ({
   rangeIn,
   rangeOut,
   rangePeak,
+  theme,
 }: {
   brand: typeof brands[0];
   index: number;
@@ -298,7 +301,9 @@ const BrandSlideA = ({
   rangeIn: [number, number];
   rangeOut: [number, number];
   rangePeak: [number, number, number];
+  theme: string;
 }) => {
+  const logoSrc = theme === 'dark' ? brand.logo : (brand.logoDark ?? brand.logo);
   const opacity = useTransform(
     scrollYProgress,
     [rangeIn[0], rangeIn[1], rangePeak[2], rangeOut[1]],
@@ -324,7 +329,7 @@ const BrandSlideA = ({
         <div className="brand-a-info">
           <motion.div className="brand-a-logo" style={{ opacity: logoOpacity }}>
             <div className="logo-placeholder">
-              <img src={brand.logo} alt={`${brand.name} logo`} className="brand-logo-img" />
+              <img src={logoSrc} alt={`${brand.name} logo`} className="brand-logo-img" />
             </div>
             <span className={`brand-a-label ${Satoshi.className}`}>{brand.name}</span>
             <p className={`brand-a-tagline ${Satoshi.className}`}>{brand.tagline}</p>

@@ -148,6 +148,11 @@ html {
     }
   }
 }
+
+.calendly-overlay .calendly-popup{
+  bottom: 50px !important;
+}
+
 // ─── Dark Mode — global text overrides for light sections ────────────────────
 [data-theme="dark"] {
     .section-title    { color: var(--color-text) !important; }

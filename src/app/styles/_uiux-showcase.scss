@@ -3,13 +3,20 @@
 .ba-slider {
     position: relative;
     width: 100%;
-    height: 100%;
     overflow: hidden;
-    // border-radius: 16px;
     cursor: col-resize;
     user-select: none;
     touch-action: pan-y;
 
+    // After image — sits in normal flow, sizes the container to match the image ratio
+    .ba-img-flow {
+        display: block;
+        width: 100%;
+        height: auto;
+        pointer-events: none;
+    }
+
+    // Before image — absolute overlay on top
     .ba-img {
         position: absolute;
         inset: 0;
@@ -240,8 +247,8 @@
         text-align: center;
         padding: 8rem clamp(1.5rem, 5vw, 5rem) 4rem;
 
-        .section-title    { color: var(--color-text); }
-        .section-subtitle { color: var(--color-text-secondary); max-width: 500px; }
+        .section-title    { color: var(--color-text); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; line-height: 1.1; margin: 0 0 1.5rem; }
+        .section-subtitle { color: var(--color-text-secondary); max-width: 500px; font-size: clamp(1.1rem, 2vw, 1.4rem); line-height: 1.6; }
     }
 
     .uiux-c-slide {
@@ -275,17 +282,15 @@
         .uiux-c-info        { order: 1; }
 
         @media (max-width: 768px) {
-            .uiux-c-slider-wrap, .uiux-c-info { order: unset; }
+            grid-template-columns: 1fr;
+            .uiux-c-slider-wrap { order: 1; }
+            .uiux-c-info        { order: 2; }
         }
     }
 
     .uiux-c-slider-wrap {
         width: 100%;
-        height: clamp(280px, 65vh, 520px);
-        // border-radius: 16px;
         overflow: hidden;
-
-        @media (max-width: 768px) { height: 240px; }
     }
 
     .uiux-c-info { display: flex; flex-direction: column; gap: 0.75rem; }

@@ -27,6 +27,7 @@ import UIUXShowcaseA from './components/portfolio-sections/UIUXShowcaseA';
 import UIUXShowcaseB from './components/portfolio-sections/UIUXShowcaseB';
 import UIUXShowcaseC from './components/portfolio-sections/UIUXShowcaseC';
 import UIUXShowcaseD from './components/portfolio-sections/UIUXShowcaseD';
+import FigmaShowcase from './components/portfolio-sections/FigmaShowcase';
 import IllustrationsSection from './components/portfolio-sections/IllustrationsSection';
 import DetailedCategories from './components/detailed-categories';
 
@@ -57,6 +58,7 @@ const Home = () => {
       {/* <UIUXShowcaseB /> */}
       <UIUXShowcaseC />
       {/* <UIUXShowcaseD /> */}
+      <FigmaShowcase />
 
       <ToolsCloud />
       {/* <UIUXSection /> */}

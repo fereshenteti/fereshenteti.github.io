@@ -2,8 +2,8 @@
 
 .brand-showcase-a {
     position: relative;
-    background: #0a0a0a;
-    color: #fff;
+    background: var(--color-bg);
+    color: var(--color-text);
 
     .brand-a-scroll-space {
         // Each brand gets ~100vh of scroll + intro
@@ -33,12 +33,12 @@
         z-index: 2;
 
         .section-title {
-            color: #fff;
+            color: var(--color-text);
             font-size: clamp(2.5rem, 5vw, 4rem);
         }
 
         .section-subtitle {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--color-text-secondary);
             max-width: 600px;
         }
     }
@@ -79,7 +79,7 @@
     .brand-a-info {
         display: flex;
         flex-direction: column;
-        gap: 2.5rem;
+        gap: 1rem;
 
         @media (max-width: 768px) {
             gap: 1rem;
@@ -89,15 +89,18 @@
     .brand-a-logo {
         .logo-placeholder {
             width: 100%;
+            height: fit-content;
             max-width: 260px;
-            height: 200px;
+            max-height: 200px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
 
             .brand-logo-img {
                 max-width: 100%;
-                max-height: 100%;
+                max-height: 200px;
+                width: 100%;
+                height: 100%;
                 object-fit: contain;
             }
 
@@ -119,7 +122,7 @@
 
     .brand-a-tagline {
         font-size: 1.1rem;
-        color: rgba(255, 255, 255, 0.6);
+        color: var(--color-text-secondary);
 
         @media (max-width: 768px) {
             font-size: 0.9rem;
@@ -156,7 +159,7 @@
         height: 56px;
         border-radius: 12px;
         position: relative;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--color-border);
         transition: transform 0.3s ease;
 
         &:hover {
@@ -167,7 +170,7 @@
     .swatch-label {
         transform: translateX(-50%) translateY(4px);
         font-size: 0.8rem;
-        color: white;
+        color: var(--color-text);
         white-space: nowrap;
         transition: all 0.2s ease;
     }
@@ -192,14 +195,14 @@
     .type-role {
         font-size: 0.7rem;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.4);
+        color: var(--color-text-muted);
         letter-spacing: 0.08em;
     }
 
     .type-name {
         font-size: 1.2rem;
         font-weight: 600;
-        color: #fff;
+        color: var(--color-text);
 
         @media (max-width: 768px) {
             font-size: 0.95rem;
@@ -243,8 +246,9 @@
     .brand-a-mobile-card {
         display: flex;
         flex-direction: column;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-top: 1px solid var(--color-border);
         padding-bottom: 0;
+        margin: 2rem;
     }
 
     .brand-a-mobile-info {
@@ -252,6 +256,10 @@
         flex-direction: column;
         gap: 1.5rem;
         padding: 2rem 1.25rem;
+        .brand-logo-img {
+            margin: auto;
+            max-width: 200px;
+        }
     }
 
     .brand-a-mobile-image {

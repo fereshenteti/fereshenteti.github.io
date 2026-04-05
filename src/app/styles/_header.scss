@@ -129,8 +129,11 @@
   background: #666666;
 }
 
-.show-header-content {
+#contactUs.show-header-content {
   display: block !important;
+}
+#social-media-container.show-header-content {
+  display: flex !important;
 }
 
 // ─── Dark Mode ───────────────────────────────────────────────────────────────
