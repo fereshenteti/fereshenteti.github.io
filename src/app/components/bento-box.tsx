@@ -300,7 +300,7 @@ const BentoBox = () => {
                             onMouseLeave={handleAvatarMouseLeave}
                         >
                             <img src="/assets/images/my_avatar_sketch.png" alt="My Avatar Sketch" className="bento-image avatar-back" />
-                            <img src="/assets/images/my_Apple_avatar.PNG" alt="My Avatar" className="bento-image avatar-front" />
+                            <img src="/assets/images/my_Apple_avatar.png" alt="My Avatar" className="bento-image avatar-front" />
                         </div>
                     </CustomBentoCard>
 
