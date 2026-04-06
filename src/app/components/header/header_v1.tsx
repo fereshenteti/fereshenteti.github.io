@@ -83,7 +83,7 @@ const Header_v1 = () => {
 
             <div className='header-main'>
                 <div className='left'>
-                <img src="./assets/me-v3.png" alt='avatar' className='my-avatar' />
+                <img src="./assets/me-v4.png" alt='avatar' className='my-avatar' />
                 </div>
                 <div className='right'>
 
