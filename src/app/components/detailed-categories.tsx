@@ -166,10 +166,10 @@ const DetailedCategories = () => {
             </div> */}
 
             {/* Logo animations */}
-            {/* <div id="logo-animations" className="section detailed-category logo-animations">
+            <div id="logo-animations" className="section detailed-category logo-animations">
                 <div className="section-info">
                     <h1>Logo <span>Animations</span></h1>
-                    this is just for animating the word "animations"
+                    {/* this is just for animating the word "animations" */}
                     <svg className="animation-filter" xmlns="http://www.w3.org/2000/svg" version="1.1">
                         <defs>
                             <filter id="squiggly-0">
@@ -200,7 +200,7 @@ const DetailedCategories = () => {
                 <video autoPlay playsInline loop muted>
                     <source src="assets/animations/my logo animations.mp4" type="video/mp4" />
                 </video>
-            </div> */}
+            </div>
 
             {/* <div className="section-spacer"></div> */}
 
@@ -208,7 +208,7 @@ const DetailedCategories = () => {
             {/* <AboutMyWork boxRef="topMenuBoxRef" /> */}
 
             {/* Illustrations */}
-            <div id="illustration" className="section detailed-category illustrations">
+            {/* <div id="illustration" className="section detailed-category illustrations">
 
                 <div id="background-wrap">
                     <div className="x1">
@@ -247,12 +247,12 @@ const DetailedCategories = () => {
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* <div className="section-spacer"></div> */}
 
             {/* Voice Over */}
-            <div id="voiceover" className="section detailed-category voice-over">
+            {/* <div id="voiceover" className="section detailed-category voice-over">
 
                 <img src="assets/backgrounds/MV7.webp" className="microphone-bg" />
 
@@ -295,7 +295,7 @@ const DetailedCategories = () => {
 
                 </div>
 
-            </div>
+            </div> */}
 
             {/* Get in touch animation */}
             {/* <div className="section getintouch-container">

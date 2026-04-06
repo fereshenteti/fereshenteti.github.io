@@ -29,6 +29,7 @@ import UIUXShowcaseC from './components/portfolio-sections/UIUXShowcaseC';
 import UIUXShowcaseD from './components/portfolio-sections/UIUXShowcaseD';
 import FigmaShowcase from './components/portfolio-sections/FigmaShowcase';
 import ImageSequenceSection from './components/portfolio-sections/ImageSequenceSection';
+import LogoAnimationsSection from './components/portfolio-sections/LogoAnimationsSection';
 import IllustrationsSection from './components/portfolio-sections/IllustrationsSection';
 import DetailedCategories from './components/detailed-categories';
 
@@ -47,6 +48,7 @@ const Home = () => {
 
       {/* Narrative Portfolio Expansion sequence starts here */}
       <LogoShowcase />
+      <LogoAnimationsSection />
       <BrandShowcaseA />
       {/* <BrandShowcaseB />
       <BrandShowcaseC /> */}
@@ -67,6 +69,7 @@ const Home = () => {
       {/* <IllustrationsSection /> */}
       <ProcessSection />
       {/* <TestimonialsSection /> */}
+      
       <ImageSequenceSection />
       <FinalCTA />
 
