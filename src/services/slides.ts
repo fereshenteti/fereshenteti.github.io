@@ -4,6 +4,7 @@ import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 export type SlideData = {
     src: string;
     link: string | null;
+    label: string | null;
 };
 
 export const fetchSlides = async (): Promise<SlideData[]> => {
@@ -23,7 +24,8 @@ export const fetchSlides = async (): Promise<SlideData[]> => {
 
             return {
                 src: src,
-                link: docData.link || null
+                link: docData.link || null,
+                label: docData.label || null
             };
         });
     } catch (error) {

@@ -1,217 +1,101 @@
 "use client";
 import { useGSAP } from '@gsap/react';
-import { Player } from '@lottiefiles/react-lottie-player';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import gsap from 'gsap';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import MyCategories from "./components/categories";
-import ContactMe from "./components/contact-me";
-import Social from "./components/social";
-import DetailedCategories from './components/detailed-categories';
+import { useRef } from "react";
+import Script from 'next/script';
+import BentoBox from './components/bento-box';
+// import DetailedCategories from './components/detailed-categories';
 import Footer from './components/footer';
+import Header_v1 from './components/header/header_v1';
+// import HeroSection from './components/hero-section';
+
+// New Portfolio Narrative Sections
+import ToolsCloud from './components/portfolio-sections/ToolsCloud';
+import ProcessSection from './components/portfolio-sections/ProcessSection';
+import SelectedWork from './components/portfolio-sections/SelectedWork';
+import SelectedWorkA from './components/portfolio-sections/SelectedWorkA';
+import SelectedWorkB from './components/portfolio-sections/SelectedWorkB';
+import BrandShowcaseA from './components/portfolio-sections/BrandShowcaseA';
+import BrandShowcaseB from './components/portfolio-sections/BrandShowcaseB';
+import BrandShowcaseC from './components/portfolio-sections/BrandShowcaseC';
+import LogoShowcase from './components/portfolio-sections/LogoShowcase';
+// import FrontendProjects from './components/portfolio-sections/FrontendProjects';
+import TestimonialsSection from './components/portfolio-sections/Testimonials';
+import FinalCTA from './components/portfolio-sections/FinalCTA';
+import UIUXSection from './components/portfolio-sections/UIUXSection';
+import UIUXShowcaseA from './components/portfolio-sections/UIUXShowcaseA';
+import UIUXShowcaseB from './components/portfolio-sections/UIUXShowcaseB';
+import UIUXShowcaseC from './components/portfolio-sections/UIUXShowcaseC';
+import UIUXShowcaseD from './components/portfolio-sections/UIUXShowcaseD';
+import FigmaShowcase from './components/portfolio-sections/FigmaShowcase';
+import ImageSequenceSection from './components/portfolio-sections/ImageSequenceSection';
+import LogoAnimationsSection from './components/portfolio-sections/LogoAnimationsSection';
+import IllustrationsSection from './components/portfolio-sections/IllustrationsSection';
+import DetailedCategories from './components/detailed-categories';
 
 gsap.registerPlugin(useGSAP);
 
 const Home = () => {
 
-  const [selectedMenuItem, setSelectedMenuItem] = useState([false, false, false]);
   const imageSequenceContainerRef = useRef(null);
-  const islandRef = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-  }, [])
-
-  useEffect(() => {
-    const boxes: any[] = gsap.utils.toArray('.boxRef');
-
-    boxes.forEach((box, i) => {
-      const anim = gsap.fromTo(box, { autoAlpha: 0, y: 50 }, { duration: 0.5, delay: i / 10, autoAlpha: 1, y: 0 });
-      ScrollTrigger.create({
-        trigger: box,
-        animation: anim,
-        toggleActions: 'play none none none',
-        once: true,
-      });
-    });
-  }, []);
-
-  const selectMenuItem = (menuItemIndex: number) => {
-    let selected = selectedMenuItem;
-    if (!selectedMenuItem[menuItemIndex]) {
-      selected.forEach((menuItem, index) => {
-        if (menuItem === true) selected[index] = false
-      })
-      selected[menuItemIndex] = true;
-
-      let dynamicIsland = document.getElementById('dynamic-island');
-
-      if (menuItemIndex === 1) {
-        if (dynamicIsland) {
-          dynamicIsland.classList.add('show-contactUs');
-          dynamicIsland.classList.remove('show-social');
-        }
-      }
-      else if (menuItemIndex === 2) {
-        if (dynamicIsland) {
-          dynamicIsland.classList.add('show-social');
-          dynamicIsland.classList.remove('show-contactUs');
-        }
-      }
-      else {
-        if (dynamicIsland) {
-          dynamicIsland.classList.remove('show-social');
-          dynamicIsland.classList.remove('show-contactUs');
-        }
-      }
-
-    }
-    else {
-      selected[menuItemIndex] = false;
-      if (menuItemIndex === 1) {
-        let dynamicIsland = document.getElementById('dynamic-island');
-        if (dynamicIsland) dynamicIsland.classList.remove('show-contactUs');
-      }
-      if (menuItemIndex === 2) {
-        let dynamicIsland = document.getElementById('dynamic-island');
-        if (dynamicIsland) dynamicIsland.classList.remove('show-social');
-      }
-    }
-    setSelectedMenuItem([...selected]);
-  }
 
   return (
     <div className="App" id="home">
 
-      <div className='header for-borders'>
-        <div id='dynamic-island' ref={islandRef} className='dynamic-island'>
+      <Header_v1 />
 
-          <div className='liquid-glass-effect'>
-            <svg id='liquid-glass-svg'>
-              <filter id="glass-distortion">
-                <feTurbulence
-                  type="fractalNoise"
-                  baseFrequency="0.002"
-                  numOctaves="3"
-                  seed="5"
-                  result="turb"
-                />
-                <feGaussianBlur in="noise"
-                  stdDeviation="20" result="softMap" />
-                <feDisplacementMap in="SourceGraphic"
-                  in2="turb"
-                  scale="60"
-                  xChannelSelector="R"
-                  yChannelSelector="G" />
-              </filter>
-            </svg>
-          </div>
+      <BentoBox />
 
-          <div className='header-main'>
-            <div className='left'>
-              <img src="./assets/me.png" alt='avatar' className='my-avatar' />
-            </div>
-            <div className='right'>
+      {/* Narrative Portfolio Expansion sequence starts here */}
+      <LogoShowcase />
+      <LogoAnimationsSection />
+      <BrandShowcaseA />
+      {/* <BrandShowcaseB />
+      <BrandShowcaseC /> */}
+      {/* <SelectedWork /> */}
+      {/* <SelectedWorkA /> */}
+      <SelectedWorkB />
 
-              <a className={'menu-item menu-item-home ' + (selectedMenuItem[0] ? 'selected' : '')} href='#home' onClick={(e) => selectMenuItem(0)} >
-                Home
-              </a>
+      {/* UI/UX Before & After — compare all 4 variants */}
+      {/* <UIUXShowcaseA /> */}
+      {/* <UIUXShowcaseB /> */}
+      <UIUXShowcaseC />
+      {/* <UIUXShowcaseD /> */}
+      <FigmaShowcase />
 
-              <div className={'menu-item ' + (selectedMenuItem[1] ? 'selected' : '')} onClick={(e) => selectMenuItem(1)}>
-                Contact Me
-                <div className='menu-item-icon'>
-                  <ArrowDownwardIcon className={selectedMenuItem[1] ? 'rotate-180' : ''} />
-                </div>
-              </div>
+      <ToolsCloud />
+      {/* <UIUXSection /> */}
+      {/* <FrontendProjects /> */}
+      {/* <IllustrationsSection /> */}
+      <ProcessSection />
+      {/* <TestimonialsSection /> */}
+      
+      <ImageSequenceSection />
+      <FinalCTA />
 
-              <div className={'menu-item ' + (selectedMenuItem[2] ? 'selected' : '')} onClick={(e) => selectMenuItem(2)}>
-                Social
-                <div className='menu-item-icon'>
-                  <ArrowDownwardIcon className={selectedMenuItem[2] ? 'rotate-180' : ''} />
-                </div>
-              </div>
-            </div>
-          </div>
+      {/* <HeroSection/> */}
 
-          <div id='contactUs' className={selectedMenuItem[1] ? 'show-header-content' : ''}>
-            {selectedMenuItem[1] && <ContactMe boxRef="topMenuBoxRef" />}
-          </div>
-
-          <div id='social-media-container' className={selectedMenuItem[2] ? 'show-header-content' : ''}>
-            {selectedMenuItem[2] && <Social boxRef="topMenuBoxRef" />}
-          </div>
-
-        </div>
-      </div>
-
-      <div className='intro'>
-
-        <section className="container">
-          <div className="section-content">
-            <h1>Hi! I'm</h1>
-            <h1 className='my-name'>Fares Hentati</h1>
-            <p>Welcome to my portfolio!</p>
-            <div className='learn-more'>
-              <div>Scroll to learn more about me</div>
-              <Player
-                src='https://assets9.lottiefiles.com/packages/lf20_p4eki2q3.json'
-                className="lottie-player"
-                loop
-                autoplay
-              />
-            </div>
-          </div>
-        </section>
-
-        <section className="container">
-          <div className="section-content">
-            <h1>I'm a</h1>
-            <h1 className='highlighted'>Web development</h1>
-            <h1>Engineer</h1>
-            <p>6+ years of expertise in Front-end technologies</p>
-          </div>
-        </section>
-
-        <section className="container">
-          <div className="section-content">
-            <h1>& I'm also a</h1>
-            <h1 className='highlighted'>UI / UX / Graphic</h1>
-            <h1>Designer</h1>
-            <p>I adore tasty designs and turn them into code!</p>
-          </div>
-        </section>
-
-        <section className="container">
-          <div className="section-content">
-            <h1>Aaaand I'm a</h1>
-            <h1 className='highlighted'>Voice Over</h1>
-            <h1>artist too!</h1>
-            <p>I might be one person, but I have many voices :D</p>
-          </div>
-        </section>
-
-        <section className="container">
-          <div className="section-content">
-            <h1>In the next sections<br /> you will discover</h1>
-            <h1 className='highlighted'>my creations!</h1>
-            <p>Enjoying it? keep scrolling</p>
-          </div>
-        </section>
-
-      </div>
-
-      <div className="my-img-bg">
+      {/* <div className="my-img-bg">
         <img className='bg-me' src="assets/backgrounds/me-black.png" />
-      </div>
+      </div> */}
 
-      <div id="v0" ref={imageSequenceContainerRef}>
+      {/* <div id="v0" ref={imageSequenceContainerRef}>
         <canvas id='images'></canvas>
-      </div>
+      </div> */}
 
-      <MyCategories />
+      {/* <MyCategories /> */}
 
-      <DetailedCategories />
+      {/* <StatsSection /> */}
+
+      {/* <DetailedCategories /> */}
+
+      {/* Calendly inline widget */}
+      {/* <div className="calendly-inline-widget" data-url="https://calendly.com/fereshenteti/30min" style={{ minWidth: '320px', height: '700px' }} />
+      <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" /> */}
+
+      {/* Calendly popup */}
+      <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+      <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
 
       <Footer />
 

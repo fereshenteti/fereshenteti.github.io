@@ -1,0 +1,147 @@
+// Selected Work B — BrandShowcase-style sticky scroll, image left / text right
+
+.selected-work-b-section {
+    background: var(--color-bg-alt);
+    color: var(--color-text);
+    position: relative;
+
+    .sw-b-scroll-space {
+        height: calc(100vh * 5); // intro + 4 slides
+        position: relative;
+    }
+
+    .sw-b-sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    // ─── Section header ───────────────────────────────────────────────────────
+    .sw-b-header {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 clamp(1.5rem, 6vw, 6rem);
+        z-index: 2;
+        pointer-events: none;
+
+        .section-title {
+            color: var(--color-text);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+        }
+
+        .section-subtitle {
+            color: var(--color-text-secondary);
+            max-width: 580px;
+        }
+    }
+
+    // ─── Slides ───────────────────────────────────────────────────────────────
+    .sw-b-slide {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 clamp(1.5rem, 4vw, 4rem);
+        z-index: 3;
+    }
+
+    .sw-b-slide-inner {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: clamp(2rem, 4vw, 5rem);
+        align-items: center;
+        max-width: 1200px;
+        width: 100%;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+
+    // ─── Image (left) ─────────────────────────────────────────────────────────
+    .sw-b-image {
+        width: 100%;
+        height: clamp(320px, 55vh, 580px);
+        border-radius: 20px;
+        overflow: hidden;
+
+        img, video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            height: 240px;
+            border-radius: 14px;
+        }
+    }
+
+    // ─── Text (right) ─────────────────────────────────────────────────────────
+    .sw-b-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .sw-b-num {
+        display: block;
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        color: var(--color-text-muted);
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .sw-b-category {
+        display: block;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #FF791B;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .sw-b-title {
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        font-weight: 700;
+        color: var(--color-text);
+        margin: 0 0 0.75rem;
+        line-height: 1.15;
+    }
+
+    .sw-b-summary {
+        font-size: 1rem;
+        line-height: 1.65;
+        color: var(--color-text-secondary);
+        margin: 0;
+    }
+
+    .sw-b-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .sw-b-tag {
+        font-size: 0.78rem;
+        color: var(--color-text-secondary);
+        background: var(--color-bg-card);
+        border: 1px solid var(--color-border-strong);
+        padding: 0.2rem 0.75rem;
+        border-radius: 100px;
+    }
+}

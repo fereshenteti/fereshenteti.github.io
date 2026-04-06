@@ -1,0 +1,407 @@
+// Bento Box Section - Apple-inspired Grid Layout
+
+.bento-section {
+    width: 100%;
+    min-height: 100vh;
+    background: white;
+    padding: 6rem 0;
+    position: relative;
+    z-index: 10;
+
+    .bento-container {
+        height: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 clamp(1rem, 3vw, 2rem);
+    }
+
+    .bento-grid {
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(180px, 1fr));
+        gap: 12px;
+    }
+
+    .bento-card {
+        background: #f5f5f7;
+        border-radius: 18px;
+        min-height: 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        // cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+        &:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 0, 0, 0.08);
+
+            .bento-icon {
+                transform: scale(1.1) translateY(-2px);
+            }
+        }
+
+        .bento-card-inner {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            // gap: clamp(0.8rem, 2vw, 1.2rem);
+            position: relative;
+            z-index: 1;
+            .animated-gradient-text {
+                font-size: 3rem;
+                font-weight: 700;
+            }
+        }
+
+        .bento-icon {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            line-height: 1;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .bento-title {
+            font-size: clamp(1rem, 1.8vw, 1.2rem);
+            font-weight: 600;
+            color: #000;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .bento-description {
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .custom-spotlight-card {
+            padding: 2rem 1.25rem;
+        }
+
+        .count-up-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #FF791B;
+        }
+    }
+
+    #my-avatar-card {
+        .custom-spotlight-card {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .avatar-reveal-container {
+            --cursor-x: -200px;
+            --cursor-y: -200px;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // cursor: url("/assets/icons/magic-wand.svg") 16 16, auto;
+            cursor: none;
+        }
+
+        .avatar-back,
+        .avatar-front {
+            max-width: 330px;
+        }
+
+        .avatar-back {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .avatar-front {
+            position: relative;
+            z-index: 1;
+            -webkit-mask-image: radial-gradient(
+                circle 130px at var(--cursor-x) var(--cursor-y),
+                transparent 80%,
+                black 100%
+            );
+            mask-image: radial-gradient(
+                circle 130px at var(--cursor-x) var(--cursor-y),
+                transparent 80%,
+                black 100%
+            );
+        }
+    }
+
+    #my-name-card {
+        .bento-title {
+            font-size: 3rem;
+        }
+        .bento-description {
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .wave-lottie {
+            width: 2rem;
+            height: 2rem;
+            display: inline-flex;
+        }
+    }
+
+    #my-experience-card .custom-spotlight-card{
+        padding: 1.5rem 1rem;
+        .bento-description{
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+    
+    #ui-ux-card, #frontend-card {
+        .bento-title {
+            font-size: 1.6rem;
+            margin-top: 1rem;
+            line-height: 1.2;
+        }
+    }
+
+    #happy-clients-card, #projects-delivered-card {
+        text-align: center;
+        .custom-spotlight-card{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            .animated-gradient-text {
+                margin-top: -12px;
+            }
+        }
+        .bento-title {
+            font-size: 3.4rem;
+        }
+        .bento-description {
+            font-size: 20px;
+            line-height: 1.2;
+        }
+    }
+
+    #years-of-experience-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: clamp(1rem, 2vw, 2rem);
+        .custom-spotlight-card{
+            padding: 2rem 1rem 2rem 2rem;
+        }
+
+        .bento-card-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .left-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .right-side {
+            flex: 1;
+        }
+
+        .bento-title {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .bento-description {
+            font-size: 1.2rem;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .chart-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            .experience-chart {
+                width: 100%;
+                height: auto;
+                filter: drop-shadow(0 2px 12px rgba(102, 126, 234, 0.2));
+            }
+        }
+    }
+
+    #contact-cta-bento-card{
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        // Allow box-shadow and absolute button to overflow the card layers
+        overflow: visible;
+        // Prevent hover transform — would make position:fixed children non-viewport-relative
+        &:hover { transform: none; }
+
+        .card-spotlight,
+        .bento-card-inner {
+            overflow: visible;
+        }
+
+        .magnet-container{
+            width: 100%;
+            height: 100%;
+            >div{
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .my-custom-button{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+
+            &:hover{
+                padding-right: 16px !important;
+                .custom-button-text{
+                    margin-left: 0;
+                }
+            }
+        }
+        .my-custom-button.is-circle {
+            padding-right: 0 !important;
+            padding: 0 !important;
+        }
+    }
+
+    .contact-button-card{
+        text-align: center;
+        font-weight: 600;
+        // background: linear-gradient(to right, #FF791B, #e18071) border-box;
+        border-radius: 14px;
+        border: 2px solid #FF791B;
+        color: #FF791B;
+        background-color: white;
+        cursor: pointer;
+        .custom-button-icon {
+            svg {
+                transform: rotate(45deg) scale(1);
+                transition: all 0.2s ease-in-out;
+            }
+            path{
+                stroke: #FF791B;
+            }
+        }
+        &:hover {
+            .custom-button-icon svg {
+                transform: rotate(90deg) scale(1.4);
+            }
+        }
+        .custom-button-text {
+            font-size: 22px;
+        }
+    }
+}
+
+// Responsive adjustments
+@media only screen and (max-width: 1024px) {
+    .bento-section {
+        .bento-grid {
+            grid-template-columns: repeat(4, minmax(170px, 1fr));
+            .bento-card .custom-spotlight-card {
+                padding: 1rem;
+            }
+        }
+
+        #my-name-card .bento-title {
+            font-size: 2.6rem;
+        }
+
+        #ui-ux-card .bento-title, #frontend-card .bento-title {
+            font-size: 1.4rem;
+            margin-top: 0.5rem;
+        }
+
+        #years-of-experience-card .custom-spotlight-card {
+            padding: 1rem;
+            .bento-card-inner {
+                .left-side {
+                    justify-content: center;
+                    text-align: center;
+                }
+            }
+        }
+
+        .bento-card .count-up-number {
+            line-height: 1.2;
+        }
+
+        .contact-button-card .custom-button-text {
+            font-size: 1rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .bento-section {
+        .bento-grid {
+            grid-template-columns: repeat(3, minmax(140px, 1fr));
+            .bento-card .custom-spotlight-card {
+                padding: 1rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .bento-section {
+        .bento-grid {
+            grid-template-columns: repeat(2, minmax(140px, 1fr));
+            .bento-card .custom-spotlight-card {
+                padding: 1rem;
+            }
+        }
+    }
+}
+
+// ─── Dark Mode ───────────────────────────────────────────────────────────────
+[data-theme="dark"] {
+    .bento-section {
+        background: var(--color-bg);
+
+        .bento-card {
+            background: var(--color-bg-card);
+            border-color: var(--color-border);
+            box-shadow: var(--color-shadow-sm);
+
+            &:hover {
+                border-color: var(--color-border-strong);
+                box-shadow: var(--color-shadow-md);
+            }
+
+            .bento-title { color: var(--color-text); }
+            .bento-description { color: var(--color-text-secondary); }
+        }
+
+        .contact-button-card {
+            background-color: var(--color-bg-card);
+        }
+    }
+}

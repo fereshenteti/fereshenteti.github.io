@@ -1,3 +1,10 @@
+.my-custom-button.is-circle {
+    padding: 0 !important;
+    min-width: 0 !important;
+    width: 56px !important;
+    height: 56px !important;
+}
+
 .my-custom-button{
     width: fit-content;
     gap: 8px;
@@ -7,6 +14,9 @@
     font-size: 18px !important;
     line-height: 1.4 !important;
     transition: all 0.2s $FLUID;
+    background-color: white;
+    position: relative;
+    box-shadow: 7px 10px 0 0 #FF791B;
     .custom-button-icon{
         max-width: 25px;
         max-height: 25px;
@@ -32,5 +42,35 @@
         .custom-button-text{
             margin-left: 1rem;
         }
+    }
+}
+
+// ─── Secondary CTA — light mode: orange text + orange border + orange shadow ──
+.secondary-cta.my-custom-button {
+    background-color: #ffffff !important;
+    border: 1px solid #FF791B !important;
+    color: #FF791B !important;
+    box-shadow: 7px 10px 0 0 #FF791B !important;
+
+    .custom-button-icon path { stroke: #FF791B; }
+
+    &:hover {
+        background-color: #fff8f4 !important;
+        border-color: darken(#FF791B, 10%) !important;
+    }
+}
+
+// ─── Secondary CTA — dark mode: white text + white border + orange shadow ─────
+[data-theme="dark"] .secondary-cta.my-custom-button {
+    background-color: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #ffffff !important;
+    box-shadow: 7px 10px 0 0 #FF791B !important;
+
+    .custom-button-icon path { stroke: #ffffff; }
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.06) !important;
+        border-color: rgba(255, 255, 255, 0.6) !important;
     }
 }

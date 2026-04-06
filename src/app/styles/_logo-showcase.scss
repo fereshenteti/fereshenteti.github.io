@@ -1,0 +1,167 @@
+// Logo Showcase Section
+
+.logo-showcase-section {
+    width: 100%;
+    padding: 8rem 0;
+    background-color: #fafafa;
+    position: relative;
+
+    .portfolio-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 clamp(1rem, 4vw, 3rem);
+    }
+
+    .section-header {
+        max-width: 800px;
+        margin-bottom: 5rem;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .section-subtitle {
+            text-align: center;
+        }
+
+        .logo-word-wrapper {
+            display: inline-flex;
+            align-items: center;
+            width: 200px;
+        }
+
+        .logo-word-svg {
+            width: 100%;
+            height: auto;
+            margin-right: 1rem;
+            overflow: visible;
+        }
+
+        h1 {
+            position: relative;
+            display: flex;
+            align-items: center;
+            font-size: 3.4rem;
+
+            &::before {
+                content: "Some of my";
+                position: absolute;
+                top: -2rem;
+                left: 0;
+                font-size: 20px;
+                font-weight: 300;
+            }
+        }
+    }
+
+    .logo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+
+        @media screen and (max-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .logo-grid-item {
+        background: #ffffff;
+        height: 330px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+
+        &:hover {
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+            border-color: rgba(0, 0, 0, 0.08);
+
+            .logo-placeholder {
+                transform: scale(1.1);
+            }
+
+            .logo-hover-label {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            height: 200px;
+        }
+    }
+
+    .logo-hover-label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2rem 1.2rem 1.2rem;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, transparent 100%);
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 0.35s ease, transform 0.35s ease;
+        pointer-events: none;
+
+        span {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+    }
+
+    .logo-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+
+        img {
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .logo-grid-link {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+}
+// ─── Dark Mode ───────────────────────────────────────────────────────────────
+[data-theme="dark"] {
+    .logo-showcase-section {
+        background-color: var(--color-bg-alt);
+
+        .section-header h1 {
+            color: var(--color-text);
+            &::before { color: var(--color-text-secondary); }
+        }
+
+        .section-subtitle { color: var(--color-text-secondary); }
+
+        .logo-grid-item {
+            background: var(--color-bg-card);
+            box-shadow: var(--color-shadow-sm);
+
+            &:hover {
+                box-shadow: var(--color-shadow-md);
+                border-color: var(--color-border-strong);
+            }
+        }
+    }
+}

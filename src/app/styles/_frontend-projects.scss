@@ -1,0 +1,206 @@
+// Frontend Projects Section
+
+.frontend-projects-section {
+    width: 100%;
+    padding: 8rem 0;
+    background-color: #ffffff;
+    position: relative;
+
+    .portfolio-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 clamp(1rem, 4vw, 3rem);
+    }
+
+    .section-header {
+        max-width: 800px;
+        margin-bottom: 5rem;
+    }
+
+    .fe-projects-list {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .fe-project-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        background: #fafafa;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: 24px;
+        padding: 4rem;
+        transition: all 0.4s ease;
+
+        &:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+            transform: translateY(-4px);
+            border-color: rgba(0,0,0,0.08);
+
+            .code-visual-placeholder {
+                transform: scale(1.02);
+            }
+        }
+
+        @media (max-width: 992px) {
+            grid-template-columns: 1fr;
+            padding: 2.5rem;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 600px) {
+            padding: 1.5rem;
+        }
+    }
+
+    .fe-project-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .fe-title {
+        font-size: 2.2rem;
+        font-weight: 600;
+        margin: 0 0 1.5rem 0;
+        color: #111111;
+    }
+
+    .fe-stack-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+
+        .tech-chip {
+            background: rgba(255, 121, 27, 0.1);
+            color: #FF791B;
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+    }
+
+    .fe-summary {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #555555;
+        margin-bottom: 1.5rem;
+    }
+
+    .fe-highlights {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+
+        li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: #333333;
+            font-size: 1rem;
+
+            &::before {
+                content: '→';
+                position: absolute;
+                left: 0;
+                color: #FF791B;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .fe-btn-secondary {
+        background: transparent;
+        color: #111111;
+        border: 1px solid #e0e0e0;
+        padding: 0 1.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+
+        &:hover {
+            border-color: #111111;
+            background: #111111;
+            color: #ffffff;
+        }
+    }
+
+    .fe-btn-primary {
+        &::before {
+            display: none;
+        }
+        background: #111111 !important;
+        border: 1px solid #111111 !important;
+        color: white !important;
+        border-radius: 12px !important;
+        
+        &:hover {
+            opacity: 0.9;
+        }
+
+        .custom-button-icon path {
+            stroke: white !important;
+        }
+    }
+
+    .fe-project-visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        min-height: 350px;
+    }
+
+    .code-visual-placeholder {
+        width: 100%;
+        height: 100%;
+        background: #282c34;
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        display: flex;
+        flex-direction: column;
+
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 2rem;
+
+            span {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: #4c515a;
+
+                &:nth-child(1) { background: #ff5f56; }
+                &:nth-child(2) { background: #ffbd2e; }
+                &:nth-child(3) { background: #27c93f; }
+            }
+        }
+
+        .mock-code-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            .line {
+                height: 12px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 4px;
+
+                &.indent { margin-left: 2rem; }
+                &.w-3\/4 { width: 75%; }
+                &.w-1\/2 { width: 50%; }
+                &.w-5\/6 { width: 83%; }
+                &.w-1\/4 { width: 25%; }
+            }
+        }
+    }
+}

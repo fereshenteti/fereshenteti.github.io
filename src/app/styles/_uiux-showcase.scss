@@ -1,0 +1,365 @@
+// ─── Shared Before/After Slider ───────────────────────────────────────────────
+
+.ba-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    cursor: col-resize;
+    user-select: none;
+    touch-action: pan-y;
+
+    // After image — sits in normal flow, sizes the container to match the image ratio
+    .ba-img-flow {
+        display: block;
+        width: 100%;
+        height: auto;
+        pointer-events: none;
+    }
+
+    // Before image — absolute overlay on top
+    .ba-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        pointer-events: none;
+    }
+
+    .ba-before-wrap {
+        position: absolute;
+        inset: 0;
+    }
+
+    .ba-handle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        transform: translateX(-50%);
+        z-index: 10;
+        pointer-events: none;
+
+        .ba-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .ba-knob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #FF791B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.3);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+    }
+
+    &:active .ba-knob {
+        transform: translate(-50%, -50%) scale(1.12) !important;
+        box-shadow: 0 6px 28px rgba(0, 0, 0, 0.5), 0 0 0 4px rgba(255, 255, 255, 0.45) !important;
+    }
+
+    .ba-label {
+        position: absolute;
+        bottom: 1rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(6px);
+        padding: 0.28rem 0.75rem;
+        border-radius: 100px;
+        z-index: 5;
+        pointer-events: none;
+
+        &.ba-label-before { left: 1rem; }
+        &.ba-label-after  { right: 1rem; }
+    }
+}
+
+// ─── Variant A — Sticky scroll ────────────────────────────────────────────────
+
+.uiux-a-section {
+    background: #0a0a0a;
+    color: #fff;
+    position: relative;
+
+    .uiux-a-scroll-space {
+        height: calc(100vh * 3);
+        position: relative;
+    }
+
+    .uiux-a-sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .uiux-a-header {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 clamp(1.5rem, 6vw, 6rem);
+        z-index: 2;
+        pointer-events: none;
+
+        .section-title   { color: #fff; font-size: clamp(2.2rem, 5vw, 3.8rem); }
+        .section-subtitle { color: rgba(255, 255, 255, 0.6); max-width: 480px; }
+    }
+
+    .uiux-a-slide {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 clamp(1.5rem, 4vw, 4rem);
+        z-index: 3;
+    }
+
+    .uiux-a-slide-inner {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: clamp(2rem, 4vw, 5rem);
+        align-items: center;
+        max-width: 1200px;
+        width: 100%;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+    }
+
+    .uiux-a-slider-wrap {
+        width: 100%;
+        height: clamp(300px, 50vh, 540px);
+        border-radius: 16px;
+        overflow: hidden;
+
+        @media (max-width: 768px) { height: 260px; }
+    }
+
+    .uiux-a-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+// ─── Variant B — Side-by-side grid ───────────────────────────────────────────
+
+.uiux-b-section {
+    background: var(--color-bg);
+    padding: 8rem 0;
+
+    .portfolio-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 clamp(1rem, 4vw, 3rem);
+    }
+
+    .uiux-b-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-top: 4rem;
+
+        @media (max-width: 900px) {
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+    }
+
+    .uiux-b-card {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .uiux-b-slider-wrap {
+        width: 100%;
+        height: clamp(240px, 40vh, 480px);
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .uiux-b-info {
+        .uiux-b-category {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #FF791B;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        .uiux-b-title {
+            font-size: clamp(1.4rem, 2.5vw, 2rem);
+            font-weight: 700;
+            color: var(--color-text);
+            margin: 0 0 0.5rem;
+        }
+        .uiux-b-desc {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+    }
+}
+
+// ─── Variant C — Vertical scroll, alternating layout ─────────────────────────
+
+.uiux-c-section {
+    background: var(--color-bg);
+
+    .uiux-c-intro {
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 8rem clamp(1.5rem, 5vw, 5rem) 4rem;
+
+        .section-title    { color: var(--color-text); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; line-height: 1.1; margin: 0 0 1.5rem; }
+        .section-subtitle { color: var(--color-text-secondary); max-width: 500px; font-size: clamp(1.1rem, 2vw, 1.4rem); line-height: 1.6; }
+    }
+
+    .uiux-c-slide {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6rem clamp(1.5rem, 5vw, 5rem);
+
+        &:nth-child(even) { background: var(--color-bg-card); }
+    }
+
+    .uiux-c-slide-inner {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: clamp(2rem, 5vw, 6rem);
+        align-items: center;
+        max-width: 1200px;
+        width: 100%;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+
+    // Alternate image side
+    .uiux-c-slide.is-reversed .uiux-c-slide-inner {
+        grid-template-columns: 1fr 2fr;
+        .uiux-c-slider-wrap { order: 2; }
+        .uiux-c-info        { order: 1; }
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            .uiux-c-slider-wrap { order: 1; }
+            .uiux-c-info        { order: 2; }
+        }
+    }
+
+    .uiux-c-slider-wrap {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .uiux-c-info { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .uiux-c-num      { font-size: 0.7rem; letter-spacing: 0.14em; color: var(--color-text-muted); font-weight: 600; }
+    .uiux-c-category { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: #FF791B; font-weight: 600; }
+    .uiux-c-title    { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700; color: var(--color-text); margin: 0; line-height: 1.15; }
+    .uiux-c-desc     { font-size: 1rem; line-height: 1.65; color: var(--color-text-secondary); margin: 0; }
+}
+
+// ─── Variant D — Horizontal drag carousel ─────────────────────────────────────
+
+.uiux-d-section {
+    background: var(--color-bg);
+    padding: 8rem 0 6rem;
+    overflow: hidden;
+
+    .uiux-d-header {
+        padding: 0 clamp(1.5rem, 5vw, 5rem);
+        margin-bottom: 3rem;
+
+        .section-title    { color: var(--color-text); }
+        .section-subtitle { color: var(--color-text-secondary); }
+    }
+
+    .uiux-d-track-wrap {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        display: flex;
+        gap: 2rem;
+        padding: 0.5rem clamp(1.5rem, 5vw, 5rem) 1.5rem;
+        cursor: grab;
+
+        scrollbar-width: none;
+        &::-webkit-scrollbar { display: none; }
+    }
+
+    .uiux-d-card {
+        flex: 0 0 min(80vw, 700px);
+        scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        @media (max-width: 600px) { flex: 0 0 90vw; }
+    }
+
+    .uiux-d-slider-wrap {
+        width: 100%;
+        height: clamp(260px, 45vh, 480px);
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .uiux-d-info { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .uiux-d-num      { font-size: 0.7rem; letter-spacing: 0.14em; color: var(--color-text-muted); font-weight: 600; }
+    .uiux-d-category { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: #FF791B; font-weight: 600; }
+    .uiux-d-title    { font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 700; color: var(--color-text); margin: 0.25rem 0 0.25rem; }
+    .uiux-d-desc     { font-size: 0.95rem; line-height: 1.65; color: var(--color-text-secondary); margin: 0; }
+
+    .uiux-d-scroll-hint {
+        padding: 0 clamp(1.5rem, 5vw, 5rem);
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: var(--color-text-muted);
+    }
+}

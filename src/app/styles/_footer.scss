@@ -2,7 +2,9 @@
     min-height: 50vh;
     display: flex;
     flex-wrap: wrap;
-    background-color: white;
+    background-color: var(--color-bg);
+    transition: background-color 0.3s ease, color 0.3s ease;
+
     .left-side, .right-side{
         flex: 1;
         padding: 4rem;
@@ -31,17 +33,31 @@
         h1{
             font-size: 80px;
             margin-bottom: -10px;
+            color: var(--color-text);
         }
         p{
             font-size: 25px;
             font-weight: 200;
+            color: var(--color-text-secondary);
+        }
+        h4 {
+            color: var(--color-text);
         }
         .social-container{
             margin: 0;
             flex-direction: row;
             .socialBox{
-                color: black;
+                color: var(--color-text);
             }
+            .social-icon {
+                fill: var(--color-text);
+            }
+        }
+    }
+
+    .right-side {
+        h3 {
+            color: var(--color-text);
         }
     }
 }

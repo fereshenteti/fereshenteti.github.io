@@ -1,139 +1,9 @@
+@theme {
+  --breakpoint-xs: 30rem;
+}
+
 html {
   scroll-behavior: smooth;
-}
-
-.header {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 100vw;
-  z-index: 9999;
-}
-
-.dynamic-island {
-  background: transparent;
-  color: white;
-  width: 500px;
-  max-width: 90%;
-  height: 50px;
-  margin-top: 1rem;
-  border-radius: 50px;
-  position: relative;
-  -webkit-transition: width 0.5s cubic-bezier(.42, .42, 0, 1),
-    height 0.5s cubic-bezier(.42, .42, 0, 1),
-    border-radius 0.5s cubic-bezier(0, .82, .78, .78);
-  -moz-transition: width 0.5s cubic-bezier(.42, .42, 0, 1),
-    height 0.5s cubic-bezier(.42, .42, 0, 1),
-    border-radius 0.5s cubic-bezier(0, .82, .78, .78);
-  -o-transition: width 0.5s cubic-bezier(.42, .42, 0, 1),
-    height 0.5s cubic-bezier(.42, .42, 0, 1),
-    border-radius 0.5s cubic-bezier(0, .82, .78, .78);
-  transition: width 0.5s cubic-bezier(.42, .42, 0, 1),
-    height 0.5s cubic-bezier(.42, .42, 0, 1),
-    border-radius 0.5s cubic-bezier(0, .82, .78, .78);
-}
-
-.liquid-glass-effect {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  border-radius: 50px;
-  z-index: -1;
-}
-
-.liquid-glass-effect::before {
-  content: '';
-  position: absolute;
-  inset: -20px;
-  backdrop-filter: blur(4px) saturate(180%);
-  -webkit-backdrop-filter: blur(6px) saturate(180%);
-  filter: url(#glass-distortion);
-  z-index: -1;
-}
-
-.liquid-glass-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#liquid-glass-svg {
-  width: 0;
-  height: 0;
-}
-
-.header-main {
-  height: 50px;
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-.dynamic-island:hover {
-  width: 550px;
-}
-
-.left {
-  width: 50px;
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.my-avatar {
-  height: 70%;
-  border-radius: 50%;
-  margin-left: -0.5rem;
-}
-
-.right {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-.menu-item {
-  display: flex;
-  padding: 8px;
-  margin: 0 4px;
-  border-radius: 50px;
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-  transition: background 0.5s cubic-bezier(.42, .42, 0, 1);
-}
-
-.menu-item:hover {
-  background: #464646;
-}
-
-.menu-item-icon {
-  display: flex;
-  align-items: center;
-  margin: 0 4px;
-}
-
-.menu-item-icon>svg {
-  transition: transform 0.5s cubic-bezier(.42, .42, 0, 1);
-}
-
-.rotate-180 {
-  transform: rotate(180deg);
-}
-
-.selected {
-  background: #666666;
-}
-
-.show-header-content {
-  display: block !important;
 }
 
 .intro {
@@ -257,6 +127,9 @@ html {
   aspect-ratio: auto;
 }
 
+.section-eyebrow {
+  color: #FF791B;
+}
 
 @media only screen and (max-width: 600px) {
   .header {
@@ -274,4 +147,14 @@ html {
       }
     }
   }
+}
+
+.calendly-overlay .calendly-popup{
+  bottom: 50px !important;
+}
+
+// ─── Dark Mode — global text overrides for light sections ────────────────────
+[data-theme="dark"] {
+    .section-title    { color: var(--color-text) !important; }
+    .section-subtitle { color: var(--color-text-secondary) !important; }
 }
