@@ -44,5 +44,9 @@
     color: #ffffff;
     line-height: 1.05;
     text-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
-    white-space: nowrap;
+    @media (max-width: 480px) {
+        font-size: 4rem;
+        display: flex;
+        flex-direction: column;
+    }
 }

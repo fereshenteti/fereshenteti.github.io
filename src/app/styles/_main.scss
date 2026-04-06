@@ -6,6 +6,10 @@ html {
   scroll-behavior: smooth;
 }
 
+#home {
+  overflow-x: clip;
+}
+
 .intro {
 
   position: absolute;

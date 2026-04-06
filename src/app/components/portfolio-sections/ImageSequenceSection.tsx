@@ -93,7 +93,7 @@ const ImageSequenceSection = () => {
           className={`image-seq-text ${ClashDisplay.className}`}
           style={{ opacity: textOpacity, y: textY }}
         >
-          Let's get creative!
+          <span>Let's</span> <span>get</span> <span>creative!</span>
         </motion.div>
       </div>
     </section>

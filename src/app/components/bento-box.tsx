@@ -305,9 +305,9 @@ const BentoBox = () => {
                     </CustomBentoCard>
 
                     <CustomBentoCard id="my-experience-card" customClasses="lg:order-[3] md:order-[5] order-[5] row-span-2 xs:col-span-3 lg:col-span-1 md:col-span-2 col-span-2">
-                        <p className={"bento-description " + Satoshi.className}>I design modern, intuitive, and user-centered interfaces, combining technical excellence  with high aesthetic standards.</p>
-                        <br />
-                        <p className={"bento-description " + Satoshi.className}><strong>My goal</strong>: to transform complex business needs into seamless, high-performing, and accessible digital experiences.</p>
+                        <p className={"bento-description " + Satoshi.className}>
+                            From UI/UX and branding to pixel-perfect code and graphic design — I cover the full creative spectrum. I love turning bold ideas into polished digital products, with an obsessive attention to detail and a deep passion for craft.
+                        </p>
                     </CustomBentoCard>
 
                     <CustomBentoCard id="ui-ux-card" customClasses="lg:order-[4] xs:order-[2] order-[3]">

@@ -75,18 +75,24 @@
   padding: 0 1rem;
   display: flex;
   justify-content: space-between;
+
+  .left {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  @media (max-width: 480px) {
+    .left {
+      width: 32px;
+    }
+  }
 }
 
 .dynamic-island:hover {
   width: 550px;
-}
-
-.left {
-  width: 50px;
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
 }
 
 .my-avatar {
