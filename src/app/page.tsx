@@ -28,6 +28,7 @@ import UIUXShowcaseB from './components/portfolio-sections/UIUXShowcaseB';
 import UIUXShowcaseC from './components/portfolio-sections/UIUXShowcaseC';
 import UIUXShowcaseD from './components/portfolio-sections/UIUXShowcaseD';
 import FigmaShowcase from './components/portfolio-sections/FigmaShowcase';
+import ImageSequenceSection from './components/portfolio-sections/ImageSequenceSection';
 import IllustrationsSection from './components/portfolio-sections/IllustrationsSection';
 import DetailedCategories from './components/detailed-categories';
 
@@ -66,6 +67,7 @@ const Home = () => {
       {/* <IllustrationsSection /> */}
       <ProcessSection />
       {/* <TestimonialsSection /> */}
+      <ImageSequenceSection />
       <FinalCTA />
 
       {/* <HeroSection/> */}

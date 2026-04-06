@@ -28,6 +28,11 @@
   transition: width 0.5s cubic-bezier(.42, .42, 0, 1),
     height 0.5s cubic-bezier(.42, .42, 0, 1),
     border-radius 0.5s cubic-bezier(0, .82, .78, .78);
+
+  @media (max-width: 768px) {
+    max-width: 80%;
+    margin-right: 8%;
+  }
 }
 
 .liquid-glass-effect {

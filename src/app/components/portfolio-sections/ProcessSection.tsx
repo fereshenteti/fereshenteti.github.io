@@ -1,105 +1,174 @@
 'use client';
 
-import SectionDotGrid from '../SectionDotGrid';
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
 
 // Abstract SVG illustrations for each step
+
+// 01 — Discovery & Brief: speech bubble + target
 const DiscoveryIllustration = () => (
   <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="step-illustration">
-    <circle className="illust-ring" cx="52" cy="52" r="32" stroke="#FF791B" strokeWidth="2.5" strokeDasharray="6 4" />
-    <circle className="illust-dot" cx="52" cy="52" r="6" fill="#FF791B" opacity="0.3" />
-    <line className="illust-line" x1="76" y1="76" x2="100" y2="100" stroke="#FF791B" strokeWidth="3" strokeLinecap="round" />
-    <circle className="illust-pulse" cx="52" cy="52" r="20" stroke="#FF791B" strokeWidth="1" opacity="0.15" />
-    <circle className="illust-pulse-2" cx="52" cy="52" r="44" stroke="#FF791B" strokeWidth="0.5" opacity="0.1" />
+    {/* Speech bubble */}
+    <rect className="illust-bubble" x="12" y="18" width="62" height="44" rx="10" stroke="#FF791B" strokeWidth="2" fill="#FF791B" fillOpacity="0.06" />
+    <line x1="28" y1="35" x2="58" y2="35" stroke="#FF791B" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
+    <line x1="28" y1="45" x2="50" y2="45" stroke="#FF791B" strokeWidth="2" strokeLinecap="round" opacity="0.3" />
+    <path d="M24 62 L20 74 L34 66" stroke="#FF791B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.6" />
+    {/* Target / brief icon */}
+    <circle className="illust-ring" cx="88" cy="82" r="22" stroke="#FF791B" strokeWidth="1.5" opacity="0.2" />
+    <circle cx="88" cy="82" r="13" stroke="#FF791B" strokeWidth="1.5" opacity="0.4" />
+    <circle cx="88" cy="82" r="5" fill="#FF791B" opacity="0.7" />
+    <line x1="88" y1="55" x2="88" y2="60" stroke="#FF791B" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
+    <line x1="88" y1="104" x2="88" y2="109" stroke="#FF791B" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
+    <line x1="61" y1="82" x2="66" y2="82" stroke="#FF791B" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
+    <line x1="110" y1="82" x2="115" y2="82" stroke="#FF791B" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
   </svg>
 );
 
+// 02 — Research & Moodboard: images grid + magnifier
 const ResearchIllustration = () => (
   <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="step-illustration">
-    <rect className="illust-bar-1" x="16" y="70" width="14" height="30" rx="3" fill="#FF791B" opacity="0.2" />
-    <rect className="illust-bar-2" x="36" y="50" width="14" height="50" rx="3" fill="#FF791B" opacity="0.35" />
-    <rect className="illust-bar-3" x="56" y="35" width="14" height="65" rx="3" fill="#FF791B" opacity="0.5" />
-    <rect className="illust-bar-4" x="76" y="55" width="14" height="45" rx="3" fill="#FF791B" opacity="0.4" />
-    <rect className="illust-bar-5" x="96" y="25" width="14" height="75" rx="3" fill="#FF791B" opacity="0.6" />
-    <path className="illust-trend" d="M23 65 L43 45 L63 30 L83 50 L103 20" stroke="#FF791B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    {/* Moodboard grid */}
+    <rect className="illust-block-1" x="10" y="10" width="38" height="28" rx="4" fill="#FF791B" opacity="0.15" stroke="#FF791B" strokeWidth="1" />
+    <rect className="illust-block-2" x="54" y="10" width="56" height="28" rx="4" fill="#FF791B" opacity="0.25" stroke="#FF791B" strokeWidth="1" />
+    <rect className="illust-block-3" x="10" y="44" width="56" height="28" rx="4" fill="#FF791B" opacity="0.2" stroke="#FF791B" strokeWidth="1" />
+    <rect className="illust-block-4" x="72" y="44" width="38" height="28" rx="4" fill="#FF791B" opacity="0.1" stroke="#FF791B" strokeWidth="1" />
+    {/* Magnifier */}
+    <circle className="illust-ring" cx="42" cy="88" r="18" stroke="#FF791B" strokeWidth="2.5" fill="none" />
+    <line x1="54" y1="100" x2="68" y2="114" stroke="#FF791B" strokeWidth="3" strokeLinecap="round" />
+    <line x1="36" y1="82" x2="48" y2="94" stroke="#FF791B" strokeWidth="1" strokeLinecap="round" opacity="0.2" />
   </svg>
 );
 
-const FlowIllustration = () => (
+// 03 — Concept & Direction: three style cards fanning out
+const ConceptIllustration = () => (
   <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="step-illustration">
-    <circle className="illust-node-1" cx="30" cy="30" r="10" stroke="#FF791B" strokeWidth="2" fill="none" />
-    <circle className="illust-node-2" cx="90" cy="30" r="10" stroke="#FF791B" strokeWidth="2" fill="none" />
-    <circle className="illust-node-3" cx="60" cy="65" r="12" stroke="#FF791B" strokeWidth="2.5" fill="#FF791B" fillOpacity="0.15" />
-    <circle className="illust-node-4" cx="30" cy="100" r="8" stroke="#FF791B" strokeWidth="1.5" fill="none" />
-    <circle className="illust-node-5" cx="90" cy="100" r="8" stroke="#FF791B" strokeWidth="1.5" fill="none" />
-    <line className="illust-conn-1" x1="37" y1="37" x2="53" y2="58" stroke="#FF791B" strokeWidth="1.5" opacity="0.4" />
-    <line className="illust-conn-2" x1="83" y1="37" x2="67" y2="58" stroke="#FF791B" strokeWidth="1.5" opacity="0.4" />
-    <line className="illust-conn-3" x1="53" y1="72" x2="37" y2="93" stroke="#FF791B" strokeWidth="1.5" opacity="0.4" />
-    <line className="illust-conn-4" x1="67" y1="72" x2="83" y2="93" stroke="#FF791B" strokeWidth="1.5" opacity="0.4" />
+    {/* Card left (tilted) */}
+    <g className="illust-card-l" transform="rotate(-12 40 70)">
+      <rect x="12" y="28" width="56" height="72" rx="6" fill="#FF791B" fillOpacity="0.08" stroke="#FF791B" strokeWidth="1.5" />
+      <rect x="20" y="38" width="40" height="6" rx="2" fill="#FF791B" opacity="0.2" />
+      <rect x="20" y="50" width="28" height="4" rx="2" fill="#FF791B" opacity="0.15" />
+    </g>
+    {/* Card right (tilted) */}
+    <g className="illust-card-r" transform="rotate(12 80 70)">
+      <rect x="52" y="28" width="56" height="72" rx="6" fill="#FF791B" fillOpacity="0.08" stroke="#FF791B" strokeWidth="1.5" />
+      <rect x="60" y="38" width="40" height="6" rx="2" fill="#FF791B" opacity="0.2" />
+      <rect x="60" y="50" width="28" height="4" rx="2" fill="#FF791B" opacity="0.15" />
+    </g>
+    {/* Center card (chosen) */}
+    <rect className="illust-frame" x="28" y="18" width="64" height="84" rx="8" fill="#FF791B" fillOpacity="0.12" stroke="#FF791B" strokeWidth="2" />
+    <rect x="36" y="28" width="48" height="8" rx="3" fill="#FF791B" opacity="0.4" />
+    <rect x="36" y="42" width="32" height="5" rx="2" fill="#FF791B" opacity="0.25" />
+    <rect x="36" y="52" width="40" height="5" rx="2" fill="#FF791B" opacity="0.2" />
+    {/* Checkmark */}
+    <circle cx="60" cy="86" r="10" fill="#FF791B" opacity="0.15" stroke="#FF791B" strokeWidth="1.5" />
+    <path d="M54 86 L58 90 L66 82" stroke="#FF791B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
-const WireframeIllustration = () => (
+// 04 — Design & Execution: pencil + layered screens
+const DesignIllustration = () => (
   <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="step-illustration">
-    <rect className="illust-frame" x="15" y="15" width="90" height="90" rx="8" stroke="#FF791B" strokeWidth="2" fill="none" />
-    <rect className="illust-block-1" x="22" y="22" width="76" height="14" rx="3" fill="#FF791B" opacity="0.15" />
-    <rect className="illust-block-2" x="22" y="42" width="34" height="28" rx="3" fill="#FF791B" opacity="0.25" />
-    <rect className="illust-block-3" x="62" y="42" width="36" height="12" rx="3" fill="#FF791B" opacity="0.2" />
-    <rect className="illust-block-4" x="62" y="58" width="36" height="12" rx="3" fill="#FF791B" opacity="0.15" />
-    <rect className="illust-block-5" x="22" y="78" width="76" height="20" rx="3" fill="#FF791B" opacity="0.1" />
-    <circle className="illust-accent" cx="98" cy="22" r="4" fill="#FF791B" opacity="0.6" />
+    {/* Back screen */}
+    <rect className="illust-block-2" x="20" y="30" width="70" height="52" rx="6" fill="#FF791B" fillOpacity="0.08" stroke="#FF791B" strokeWidth="1.2" opacity="0.5" />
+    {/* Front screen */}
+    <rect className="illust-frame" x="10" y="20" width="70" height="52" rx="6" fill="#FF791B" fillOpacity="0.1" stroke="#FF791B" strokeWidth="2" />
+    <rect x="18" y="28" width="54" height="8" rx="3" fill="#FF791B" opacity="0.25" />
+    <rect x="18" y="42" width="30" height="5" rx="2" fill="#FF791B" opacity="0.2" />
+    <rect x="18" y="52" width="42" height="5" rx="2" fill="#FF791B" opacity="0.15" />
+    {/* Pencil */}
+    <g className="illust-pencil" transform="rotate(-35 90 80)">
+      <rect x="82" y="55" width="10" height="38" rx="2" fill="#FF791B" opacity="0.5" />
+      <polygon points="82,93 87,106 92,93" fill="#FF791B" opacity="0.7" />
+      <rect x="82" y="55" width="10" height="7" rx="1" fill="#FF791B" opacity="0.3" />
+    </g>
   </svg>
 );
 
-const PrototypeIllustration = () => (
+// 05 — Delivery & Handoff: folder with arrow out + checkmarks
+const DeliveryIllustration = () => (
   <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="step-illustration">
-    <rect className="illust-device" x="25" y="10" width="50" height="80" rx="8" stroke="#FF791B" strokeWidth="2" fill="none" />
-    <polygon className="illust-play" points="43,40 43,60 58,50" fill="#FF791B" opacity="0.5" />
-    <line className="illust-arrow-1" x1="80" y1="35" x2="105" y2="35" stroke="#FF791B" strokeWidth="1.5" strokeLinecap="round" opacity="0.4" />
-    <line className="illust-arrow-2" x1="80" y1="50" x2="110" y2="50" stroke="#FF791B" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
-    <line className="illust-arrow-3" x1="80" y1="65" x2="100" y2="65" stroke="#FF791B" strokeWidth="1.5" strokeLinecap="round" opacity="0.2" />
-    <polygon className="illust-arrowhead-1" points="105,31 105,39 112,35" fill="#FF791B" opacity="0.4" />
-    <polygon className="illust-arrowhead-2" points="110,46 110,54 117,50" fill="#FF791B" opacity="0.3" />
-    <circle className="illust-check" cx="50" cy="100" r="6" stroke="#FF791B" strokeWidth="1.5" fill="#FF791B" fillOpacity="0.2" />
-    <path className="illust-checkmark" d="M46 100 L49 103 L54 97" stroke="#FF791B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    {/* Folder */}
+    <path className="illust-frame" d="M10 42 C10 38 13 35 17 35 L44 35 L50 28 L103 28 C107 28 110 31 110 35 L110 88 C110 92 107 95 103 95 L17 95 C13 95 10 92 10 88 Z" fill="#FF791B" fillOpacity="0.1" stroke="#FF791B" strokeWidth="2" />
+    {/* Arrow up-right (export) */}
+    <line className="illust-line" x1="60" y1="75" x2="60" y2="50" stroke="#FF791B" strokeWidth="2.5" strokeLinecap="round" />
+    <polyline points="50,60 60,50 70,60" stroke="#FF791B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    {/* Checklist lines */}
+    <circle cx="28" cy="58" r="4" stroke="#FF791B" strokeWidth="1.5" fill="#FF791B" fillOpacity="0.2" />
+    <path d="M26 58 L28 60 L31 56" stroke="#FF791B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <line x1="36" y1="58" x2="52" y2="58" stroke="#FF791B" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
+    <circle cx="28" cy="72" r="4" stroke="#FF791B" strokeWidth="1.5" fill="#FF791B" fillOpacity="0.2" />
+    <path d="M26 72 L28 74 L31 70" stroke="#FF791B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <line x1="36" y1="72" x2="48" y2="72" stroke="#FF791B" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
+  </svg>
+);
+
+// Bonus — Logo Animation + Voice Over: spinning circles with centered play, mic + waves
+const BonusIllustration = () => (
+  <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="step-illustration bonus-illustration">
+    {/* Outer dashed ring — spins via CSS .illust-ring (origin set in SCSS) */}
+    <circle className="illust-ring" cx="58" cy="42" r="30" stroke="#FF791B" strokeWidth="2" strokeDasharray="5 3" opacity="0.35" />
+    {/* Inner ring — counter-spins via .illust-pulse */}
+    <circle className="illust-pulse" cx="58" cy="42" r="19" fill="#FF791B" fillOpacity="0.08" stroke="#FF791B" strokeWidth="1.5" opacity="0.6" />
+    {/* Play button — centered at 58, 42 */}
+    <polygon className="illust-play" points="51,32 51,52 69,42" fill="#FF791B" opacity="0.75" />
+
+    {/* Mic — pill body + arc stand + vertical stem */}
+    <rect x="18" y="78" width="12" height="22" rx="6" stroke="#FF791B" strokeWidth="1.8" fill="#FF791B" fillOpacity="0.12" />
+    <path d="M12 92 Q12 106 24 106 Q36 106 36 92" stroke="#FF791B" strokeWidth="1.8" strokeLinecap="round" fill="none" opacity="0.6" />
+    <line x1="24" y1="106" x2="24" y2="114" stroke="#FF791B" strokeWidth="1.8" strokeLinecap="round" opacity="0.4" />
+    <line x1="18" y1="114" x2="30" y2="114" stroke="#FF791B" strokeWidth="1.8" strokeLinecap="round" opacity="0.3" />
+
+    {/* Sound waves — to the RIGHT of the mic, separated */}
+    <path className="illust-wave-1" d="M42 84 Q48 89 42 94" stroke="#FF791B" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.55" />
+    <path className="illust-wave-2" d="M48 80 Q58 89 48 98" stroke="#FF791B" strokeWidth="1.8" strokeLinecap="round" fill="none" opacity="0.35" />
+    <path d="M54 76 Q68 89 54 102" stroke="#FF791B" strokeWidth="1.6" strokeLinecap="round" fill="none" opacity="0.18" />
+
+    {/* Bonus star badge */}
+    <circle cx="100" cy="20" r="13" fill="#FF791B" opacity="0.15" stroke="#FF791B" strokeWidth="1.5" />
+    <text x="100" y="25" textAnchor="middle" fontSize="12" fill="#FF791B" fontWeight="bold" opacity="0.8">★</text>
   </svg>
 );
 
 const illustrations = [
   <DiscoveryIllustration key="discovery" />,
   <ResearchIllustration key="research" />,
-  <FlowIllustration key="flow" />,
-  <WireframeIllustration key="wireframe" />,
-  <PrototypeIllustration key="prototype" />,
+  <ConceptIllustration key="concept" />,
+  <DesignIllustration key="design" />,
+  <DeliveryIllustration key="delivery" />,
+  <BonusIllustration key="bonus" />,
 ];
 
 const processSteps = [
   {
     number: '01',
-    title: 'Discovery',
-    desc: 'I start with a short discovery phase where I discuss the project with the client. I try to understand the product goals, the target users, and the main problem the product should solve. This helps me clarify the scope and direction of the design.',
+    title: 'Discovery & Brief',
+    desc: 'Understand the project scope, client goals, target audience, and key constraints. Whether it\'s a logo, a brandbook, or a full product — this is where I define what success looks like.',
   },
   {
     number: '02',
-    title: 'Research',
-    desc: 'I briefly analyze competitors and similar products to understand common UX patterns and user expectations. This step helps me gather ideas and identify opportunities to improve the experience.',
+    title: 'Research & Moodboard',
+    desc: 'Competitor analysis, visual references, and trend exploration. I build a moodboard to align on visual direction before touching any design tool.',
   },
   {
     number: '03',
-    title: 'User Flow & Structure',
-    desc: 'I define the main user flows and organize the structure of the product. This allows me to map how users move between screens and complete key tasks before designing the interface.',
+    title: 'Concept & Direction',
+    desc: 'I present one or more creative directions — a style, a system, a layout approach. The client chooses and we lock in the direction before going deeper.',
   },
   {
     number: '04',
-    title: 'Wireframing & UI Design',
-    desc: 'I start with wireframes to define layouts and content hierarchy. Then I design the final UI by applying visual design elements such as colors, typography, and reusable components.',
+    title: 'Design & Execution',
+    desc: 'The main creative phase. Depending on the project: logo exploration, brand system, UI screens, wireframes, mockups, or coded components — iterative with feedback rounds.',
   },
   {
     number: '05',
-    title: 'Prototyping & Handoff',
-    desc: 'I create a clickable prototype to simulate the product experience and collect feedback. After validation, I organize the design files and prepare everything for the developer handoff.',
+    title: 'Delivery & Handoff',
+    desc: 'Final files delivered in the right formats — brand guidelines, Figma handoff, exported assets, or deployed code. Everything organized and ready to use.',
+  },
+  {
+    number: '✦',
+    title: 'Bonus — Logo Animation & Voice Over',
+    desc: 'For bigger projects, I offer an animated logo reveal paired with a custom tagline voice over. A cinematic touch that brings the brand to life and makes a lasting first impression.',
   },
 ];
 

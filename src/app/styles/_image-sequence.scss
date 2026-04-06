@@ -1,0 +1,48 @@
+// ─── Image Sequence Section ───────────────────────────────────────────────────
+
+.image-seq-section {
+    position: relative;
+    height: 600vh;
+}
+
+.image-seq-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden; // clips both bg and canvas — nothing bleeds outside
+    z-index: 1;
+}
+
+// Background — absolutely inside the sticky container, never leaves it
+.image-seq-bg {
+    position: absolute;
+    inset: 0;
+    background: url('/assets/backgrounds/bg-me.png') center center / cover no-repeat;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.image-seq-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: block;
+    background: transparent;
+    mix-blend-mode: lighten;
+}
+
+.image-seq-text {
+    position: absolute;
+    bottom: 8vh;
+    left: clamp(1.5rem, 5vw, 5rem);
+    z-index: 3;
+    pointer-events: none;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.05;
+    text-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
+    white-space: nowrap;
+}

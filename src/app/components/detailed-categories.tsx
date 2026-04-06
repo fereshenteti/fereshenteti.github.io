@@ -23,7 +23,7 @@ const DetailedCategories = () => {
         <section className="detailed-categories">
 
             {/* UI / UX */}
-            <div id="uiux" className="section detailed-category uiux">
+            {/* <div id="uiux" className="section detailed-category uiux">
                 <div className="left-side">
                     <div className="section-info">
                         <h1>UI / UX Design</h1>
@@ -49,10 +49,10 @@ const DetailedCategories = () => {
                     </div>
                 </div>
 
-            </div>
+            </div> */}
 
             {/* Frontend */}
-            <div id="frontend" className="section detailed-category frontend">
+            {/* <div id="frontend" className="section detailed-category frontend">
 
                 <div className="left-side">
                     <div className="section-info">
@@ -155,18 +155,18 @@ const DetailedCategories = () => {
                     </div>
                 </div>
 
-            </div> 
+            </div>  */}
 
             {/* Logo creations */}
-            <div id="logo-creations" className="section detailed-category logo-creations">
+            {/* <div id="logo-creations" className="section detailed-category logo-creations">
                 <div className="section-info">
                     <h1><img src="assets/Logo word.svg" className='logo-word-svg' /><span>creations</span></h1>
                 </div>
                 {slides.length > 0 && <EmblaCarousel slides={slides} options={OPTIONS} />}
-            </div>
+            </div> */}
 
             {/* Logo animations */}
-            <div id="logo-animations" className="section detailed-category logo-animations">
+            {/* <div id="logo-animations" className="section detailed-category logo-animations">
                 <div className="section-info">
                     <h1>Logo <span>Animations</span></h1>
                     this is just for animating the word "animations"
@@ -200,9 +200,9 @@ const DetailedCategories = () => {
                 <video autoPlay playsInline loop muted>
                     <source src="assets/animations/my logo animations.mp4" type="video/mp4" />
                 </video>
-            </div>
+            </div> */}
 
-            <div className="section-spacer"></div>
+            {/* <div className="section-spacer"></div> */}
 
             {/* About My Work Section */}
             {/* <AboutMyWork boxRef="topMenuBoxRef" /> */}
@@ -298,7 +298,7 @@ const DetailedCategories = () => {
             </div>
 
             {/* Get in touch animation */}
-            <div className="section getintouch-container">
+            {/* <div className="section getintouch-container">
                 <div className="marquee">
                     <ul>
                         <li><span className="text">Get in touch</span></li>
@@ -310,7 +310,7 @@ const DetailedCategories = () => {
                     </ul>
 
                 </div>
-            </div>
+            </div> */}
 
         </section>
     )

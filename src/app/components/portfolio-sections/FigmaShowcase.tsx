@@ -15,8 +15,9 @@ const FigmaCursor = ({ x, y }: { x: number; y: number }) => (
 
 const FigmaShowcase = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const frameRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-10%' });
+  const isInView = useInView(frameRef, { once: false, amount: 0.3 });
 
   const [cursor, setCursor] = useState<{ x: number; y: number } | null>(null);
 
@@ -28,24 +29,26 @@ const FigmaShowcase = () => {
 
   const onCanvasMouseLeave = useCallback(() => setCursor(null), []);
 
+  const ease = [0.25, 0.46, 0.45, 0.94] as [number, number, number, number];
+
   const panelVariant = (direction: 'left' | 'right') => ({
     hidden: { x: direction === 'left' ? -60 : 60, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 } },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.7, ease, delay: 0.2 } },
   });
 
   const topVariant = {
     hidden: { y: -40, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 } },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease, delay: 0.1 } },
   };
 
   const centerVariant = {
     hidden: { scale: 0.97, opacity: 0 },
-    visible: { scale: 1, opacity: 1, transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.35 } },
+    visible: { scale: 1, opacity: 1, transition: { duration: 0.8, ease, delay: 0.35 } },
   };
 
   const bottomVariant = {
     hidden: { y: 30, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.45 } },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease, delay: 0.45 } },
   };
 
   return (
@@ -66,7 +69,7 @@ const FigmaShowcase = () => {
         </motion.div>
 
         {/* Figma editor frame */}
-        <div className="figma-frame">
+        <div className="figma-frame" ref={frameRef}>
           {/* Top toolbar */}
           <motion.div
             className="figma-top"

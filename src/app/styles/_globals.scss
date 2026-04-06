@@ -57,7 +57,7 @@ $FLUID: cubic-bezier(.42,.42,0,1);
 
 .theme-toggle-btn {
   position: fixed;
-  top: 1rem;
+  top: 1.4rem;
   right: 1.25rem;
   z-index: 10000;
   width: 40px;
@@ -89,10 +89,7 @@ $FLUID: cubic-bezier(.42,.42,0,1);
   }
 
   @media (max-width: 768px) {
-    top: 0.75rem;
     right: 0.75rem;
-    width: 36px;
-    height: 36px;
   }
 }
 
