@@ -59,7 +59,7 @@
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            background: #FF791B;
+            background: var(--color-accent);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -80,8 +80,8 @@
         font-weight: 700;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: white;
-        background: rgba(0, 0, 0, 0.5);
+        color: var(--color-text-on-dark);
+        background: var(--color-overlay);
         backdrop-filter: blur(6px);
         padding: 0.28rem 0.75rem;
         border-radius: 100px;
@@ -96,8 +96,8 @@
 // ─── Variant A — Sticky scroll ────────────────────────────────────────────────
 
 .uiux-a-section {
-    background: #0a0a0a;
-    color: #fff;
+    background: var(--color-bg-dark);
+    color: var(--color-text-on-dark);
     position: relative;
 
     .uiux-a-scroll-space {
@@ -127,8 +127,8 @@
         z-index: 2;
         pointer-events: none;
 
-        .section-title   { color: #fff; font-size: clamp(2.2rem, 5vw, 3.8rem); }
-        .section-subtitle { color: rgba(255, 255, 255, 0.6); max-width: 480px; }
+        .section-title   { color: var(--color-text-on-dark); font-size: clamp(2.2rem, 5vw, 3.8rem); }
+        .section-subtitle { color: var(--color-text-on-dark-secondary); max-width: 480px; }
     }
 
     .uiux-a-slide {
@@ -213,7 +213,7 @@
             font-size: 0.78rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: #FF791B;
+            color: var(--color-accent);
             font-weight: 600;
             display: block;
             margin-bottom: 0.4rem;
@@ -296,7 +296,7 @@
     .uiux-c-info { display: flex; flex-direction: column; gap: 0.75rem; }
 
     .uiux-c-num      { font-size: 0.7rem; letter-spacing: 0.14em; color: var(--color-text-muted); font-weight: 600; }
-    .uiux-c-category { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: #FF791B; font-weight: 600; }
+    .uiux-c-category { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); font-weight: 600; }
     .uiux-c-title    { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700; color: var(--color-text); margin: 0; line-height: 1.15; }
     .uiux-c-desc     { font-size: 1rem; line-height: 1.65; color: var(--color-text-secondary); margin: 0; }
 }
@@ -349,7 +349,7 @@
     .uiux-d-info { display: flex; flex-direction: column; gap: 0.4rem; }
 
     .uiux-d-num      { font-size: 0.7rem; letter-spacing: 0.14em; color: var(--color-text-muted); font-weight: 600; }
-    .uiux-d-category { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: #FF791B; font-weight: 600; }
+    .uiux-d-category { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); font-weight: 600; }
     .uiux-d-title    { font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 700; color: var(--color-text); margin: 0.25rem 0 0.25rem; }
     .uiux-d-desc     { font-size: 0.95rem; line-height: 1.65; color: var(--color-text-secondary); margin: 0; }
 

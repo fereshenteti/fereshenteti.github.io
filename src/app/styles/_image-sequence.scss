@@ -41,7 +41,7 @@
     pointer-events: none;
     font-size: clamp(2.8rem, 7vw, 6rem);
     font-weight: 700;
-    color: #ffffff;
+    color: var(--color-text-on-dark);
     line-height: 1.05;
     text-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
     @media (max-width: 480px) {

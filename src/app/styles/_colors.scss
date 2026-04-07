@@ -1,0 +1,115 @@
+// ─── Color Token System ────────────────────────────────────────────────────────
+//
+//  Usage:
+//    Always use these CSS variables instead of hardcoded values.
+//    Invariant tokens (marked ✦) stay the same in both light and dark mode.
+//    Adaptive tokens automatically switch via [data-theme="dark"].
+//
+// ─────────────────────────────────────────────────────────────────────────────
+
+:root {
+
+  // ── Accent / Brand ──────────────────────────────────────────────────────────
+  --color-accent:       #FF791B;          // ✦ primary brand orange
+  --color-accent-hover: #e86910;          // ✦ darker on hover
+  --color-accent-bg:    #fff8f4;          // ✦ light orange bg (button hover, light mode)
+  --color-accent-soft:  rgba(255, 121, 27, 0.05);  // ✦ subtle bg tint (glow effects)
+  --color-accent-ring:  rgba(255, 121, 27, 0.20);  // ✦ focus rings
+  --color-accent-glow:  rgba(255, 121, 27, 0.40);  // ✦ button glows / shadows
+
+  // ── Backgrounds (adaptive) ──────────────────────────────────────────────────
+  --color-bg:           #ffffff;          // page base
+  --color-bg-alt:       #fafafa;          // subtle alt (process, logo sections)
+  --color-bg-card:      #f5f5f7;          // card surfaces
+  --color-bg-elevated:  #ffffff;          // elevated layers (modals, dropdowns)
+
+  // ── Backgrounds (invariant — always dark) ───────────────────────────────────
+  --color-bg-dark:      #0a0a0a;          // ✦ forced-dark sections (e.g. UIUX A)
+  --color-bg-figma:     #1e1e1e;          // ✦ Figma editor frame simulation
+
+  // ── Text (adaptive) ─────────────────────────────────────────────────────────
+  --color-text:           #1a1a1a;        // primary body text
+  --color-text-secondary: #666666;        // supporting text
+  --color-text-muted:     #999999;        // placeholders, captions
+
+  // ── Text (invariant — for use on always-dark surfaces) ──────────────────────
+  --color-text-on-dark:           #ffffff;               // ✦ text on dark sections
+  --color-text-on-dark-secondary: rgba(255, 255, 255, 0.60); // ✦ dimmed text on dark
+
+  // ── Borders (adaptive) ──────────────────────────────────────────────────────
+  --color-border-subtle: rgba(0, 0, 0, 0.03);   // barely-there dividers
+  --color-border:        rgba(0, 0, 0, 0.06);   // standard card borders
+  --color-border-medium: rgba(0, 0, 0, 0.08);   // hover states, logo grids
+  --color-border-strong: rgba(0, 0, 0, 0.10);   // stronger separators
+
+  // ── Shadows (adaptive) ──────────────────────────────────────────────────────
+  --color-shadow-sm: 0 2px  8px rgba(0, 0, 0, 0.04);
+  --color-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --color-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+
+  // ── Overlay (invariant — always semi-transparent dark) ──────────────────────
+  --color-overlay:        rgba(0, 0, 0, 0.50);  // ✦ standard overlay
+  --color-overlay-strong: rgba(0, 0, 0, 0.70);  // ✦ heavy overlay (carousel)
+
+  // ── Glass / Blur effects (adaptive) ─────────────────────────────────────────
+  --color-glass-bg:     rgba(0, 0, 0, 0.30);        // header liquid glass fill
+  --color-glass-border: rgba(255, 255, 255, 0.10);  // glass edge highlight
+
+  // ── Tooltip (adaptive) ──────────────────────────────────────────────────────
+  --color-tooltip-bg:   rgba(17, 17, 17, 0.95);  // tooltip background
+  --color-tooltip-text: #ffffff;                  // tooltip text
+
+  // ── Status (invariant) ──────────────────────────────────────────────────────
+  --color-success:    #30a67b;  // ✦ success border / icon
+  --color-success-bg: #6faa94;  // ✦ success message fill
+  --color-error:      rgba(204, 66, 66, 1);          // ✦ error border / text
+
+  // ── Chart / Data-viz (invariant) ────────────────────────────────────────────
+  --color-chart-primary:   #667eea;  // ✦ blue-purple gradient start
+  --color-chart-secondary: #764ba2;  // ✦ blue-purple gradient end
+
+  // ── Theme Toggle ────────────────────────────────────────────────────────────
+  --toggle-bg:       rgba(0, 0, 0, 0.08);
+  --toggle-bg-hover: rgba(0, 0, 0, 0.14);
+  --toggle-color:    #1a1a1a;
+}
+
+// ─── Dark Mode Overrides ──────────────────────────────────────────────────────
+
+[data-theme="dark"] {
+
+  // ── Backgrounds ─────────────────────────────────────────────────────────────
+  --color-bg:           #0f0f0f;
+  --color-bg-alt:       #141414;
+  --color-bg-card:      #1c1c1e;
+  --color-bg-elevated:  #2c2c2e;
+
+  // ── Text ────────────────────────────────────────────────────────────────────
+  --color-text:           #f5f5f7;
+  --color-text-secondary: #98989e;
+  --color-text-muted:     #636366;
+
+  // ── Borders ─────────────────────────────────────────────────────────────────
+  --color-border-subtle: rgba(255, 255, 255, 0.04);
+  --color-border:        rgba(255, 255, 255, 0.08);
+  --color-border-medium: rgba(255, 255, 255, 0.10);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+
+  // ── Shadows ─────────────────────────────────────────────────────────────────
+  --color-shadow-sm: 0 2px  8px rgba(0, 0, 0, 0.35);
+  --color-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.55);
+  --color-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.75);
+
+  // ── Glass ───────────────────────────────────────────────────────────────────
+  --color-glass-bg:     rgba(28, 28, 30, 0.75);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+
+  // ── Tooltip ─────────────────────────────────────────────────────────────────
+  --color-tooltip-bg:   rgba(240, 240, 240, 0.95);
+  --color-tooltip-text: #111111;
+
+  // ── Theme Toggle ────────────────────────────────────────────────────────────
+  --toggle-bg:       rgba(255, 255, 255, 0.10);
+  --toggle-bg-hover: rgba(255, 255, 255, 0.16);
+  --toggle-color:    #f5f5f7;
+}

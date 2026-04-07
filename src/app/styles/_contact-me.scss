@@ -25,8 +25,6 @@
     width: 200px;
     background-color: #a920ff;
     border-color: #a920ff;
-    /* background-color: #01FF40;
-    border-color: #01FF40; */
 }
 
 .form-buttons button:hover{
@@ -63,11 +61,10 @@
 .contact-success{
     padding: 1rem;
     border-radius: 12px;
-    border: 1px solid #30a67b;
-    background-color: #6faa94;
-    color: white;
+    border: 1px solid var(--color-success);
+    background-color: var(--color-success-bg);
+    color: var(--color-text-on-dark);
     display: flex;
-    //align-items: center;
     p{
         margin: 0;
         margin-left: 8px;
@@ -76,12 +73,12 @@
 
 .input-error{
     input, textarea{
-        border-color: rgb(204, 66, 66);
+        border-color: var(--color-error);
     }
 }
 .input-error-message{
     font-size: 12px;
-    color: rgb(204, 66, 66);
+    color: var(--color-error);
 }
 
 
@@ -111,7 +108,7 @@
             background-color: var(--color-bg-card);
             border-color: var(--color-accent);
             color: var(--color-text);
-            box-shadow: 0 0 0 0.2rem rgba(255, 121, 27, 0.2);
+            box-shadow: 0 0 0 0.2rem var(--color-accent-ring);
         }
     }
 }
