@@ -91,7 +91,7 @@ html {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: black;
+  background-color: var(--color-bg-dark);
   z-index: -1;
 
   .bg-me {
@@ -132,7 +132,7 @@ html {
 }
 
 .section-eyebrow {
-  color: #FF791B;
+  color: var(--color-accent);
 }
 
 @media only screen and (max-width: 600px) {

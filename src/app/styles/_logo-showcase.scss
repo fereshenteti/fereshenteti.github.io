@@ -3,7 +3,7 @@
 .logo-showcase-section {
     width: 100%;
     padding: 8rem 0;
-    background-color: #fafafa;
+    background-color: var(--color-bg-alt);
     position: relative;
 
     .portfolio-container {
@@ -67,7 +67,7 @@
     }
 
     .logo-grid-item {
-        background: #ffffff;
+        background: var(--color-bg);
         height: 330px;
         position: relative;
         overflow: hidden;
@@ -80,7 +80,7 @@
 
         &:hover {
             box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
-            border-color: rgba(0, 0, 0, 0.08);
+            border-color: var(--color-border-medium);
 
             .logo-placeholder {
                 transform: scale(1.1);
@@ -110,7 +110,7 @@
         pointer-events: none;
 
         span {
-            color: #ffffff;
+            color: var(--color-text-on-dark);
             font-size: 0.95rem;
             font-weight: 500;
             letter-spacing: 0.01em;

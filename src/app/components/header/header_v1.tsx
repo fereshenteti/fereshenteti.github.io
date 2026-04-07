@@ -48,6 +48,14 @@ const Header_v1 = () => {
     }
 
     useEffect(() => {
+        // Fragment-based SVG filter URLs (url(#id)) break on GitHub Pages because
+        // the production base URL confuses the browser's URL resolver.
+        // Fix: inject the full absolute URL at runtime via a CSS custom property.
+        const url = `url(${window.location.href.split('#')[0]}#glass-distortion)`;
+        document.documentElement.style.setProperty('--glass-filter-url', url);
+    }, []);
+
+    useEffect(() => {
         const handleOpenContact = () => {
             selectMenuItem(1);
         };

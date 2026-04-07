@@ -39,7 +39,7 @@
 // ─── Figma editor frame ───────────────────────────────────────────────────────
 
 .figma-frame {
-    background: #1e1e1e;
+    background: var(--color-bg-figma);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -136,7 +136,6 @@
     position: absolute;
     pointer-events: none;
     z-index: 100;
-    // transform: translate(2px, 2px);
     display: flex;
     align-items: center;
     gap: 4px;
@@ -148,8 +147,8 @@
 }
 
 .figma-cursor-label {
-    background: #FF791B;
-    color: white;
+    background: var(--color-accent);
+    color: var(--color-text-on-dark);
     height: 24px;
     display: flex;
     align-items: center;
