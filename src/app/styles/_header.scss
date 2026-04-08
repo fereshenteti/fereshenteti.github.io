@@ -46,13 +46,12 @@
   z-index: -1;
 }
 
-.liquid-glass-effect::before {
-  content: '';
+.liquid-glass-blur {
   position: absolute;
   inset: -20px;
   backdrop-filter: blur(4px) saturate(180%);
   -webkit-backdrop-filter: blur(6px) saturate(180%);
-  filter: var(--glass-filter-url, url(#glass-distortion));
+  // filter is set inline by JS to avoid GitHub Pages static export URL resolution bug
   z-index: -1;
 }
 
