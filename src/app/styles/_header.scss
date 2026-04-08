@@ -15,23 +15,13 @@
   margin-top: 1rem;
   border-radius: 50px;
   position: relative;
-  background: var(--color-glass-bg);
   border: 1px solid var(--color-glass-border);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  -webkit-transition: width 0.5s cubic-bezier(.42, .42, 0, 1),
-    height 0.5s cubic-bezier(.42, .42, 0, 1),
-    border-radius 0.5s cubic-bezier(0, .82, .78, .78);
-  -moz-transition: width 0.5s cubic-bezier(.42, .42, 0, 1),
-    height 0.5s cubic-bezier(.42, .42, 0, 1),
-    border-radius 0.5s cubic-bezier(0, .82, .78, .78);
-  -o-transition: width 0.5s cubic-bezier(.42, .42, 0, 1),
-    height 0.5s cubic-bezier(.42, .42, 0, 1),
-    border-radius 0.5s cubic-bezier(0, .82, .78, .78);
   transition: width 0.5s cubic-bezier(.42, .42, 0, 1),
     height 0.5s cubic-bezier(.42, .42, 0, 1),
     border-radius 0.5s cubic-bezier(0, .82, .78, .78);
+
+  &:hover { width: 550px; }
 
   @media (max-width: 768px) {
     max-width: 80%;
@@ -39,46 +29,42 @@
   }
 }
 
-.liquid-glass-effect {
-  display: none;
+// GlassSurface is the background-only layer — positioned absolute to fill the island.
+// Background is always dark so white menu labels stay readable over light page sections.
+.dynamic-island-glass {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 0;
+  pointer-events: none;
+
+  // Override light-dark() from GlassSurface — always dark, always readable
+  &.glass-surface--svg,
+  &.glass-surface--fallback {
+    background: rgba(0, 0, 0, 0.55) !important;
+  }
 }
 
-.liquid-glass-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#liquid-glass-svg {
-  width: 0;
-  height: 0;
-}
-
+// Content sits above the glass background
 .header-main {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 50px;
   padding: 0 1rem;
   display: flex;
   justify-content: space-between;
+
   .left {
     width: 50px;
     height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-  }
 
-  @media (max-width: 480px) {
-    .left {
-      width: 32px;
-    }
+    @media (max-width: 480px) { width: 32px; }
   }
-}
-
-.dynamic-island:hover {
-  width: 550px;
 }
 
 .my-avatar {
@@ -102,33 +88,21 @@
   color: var(--color-text-on-dark);
   cursor: pointer;
   transition: background 0.5s cubic-bezier(.42, .42, 0, 1);
-}
 
-.menu-item:hover {
-  background: #464646;
+  &:hover { background: #464646; }
 }
 
 .menu-item-icon {
   display: flex;
   align-items: center;
   margin: 0 4px;
+
+  > svg { transition: transform 0.5s cubic-bezier(.42, .42, 0, 1); }
 }
 
-.menu-item-icon>svg {
-  transition: transform 0.5s cubic-bezier(.42, .42, 0, 1);
-}
+.rotate-180 { transform: rotate(180deg); }
 
-.rotate-180 {
-  transform: rotate(180deg);
-}
+.selected { background: #666666; }
 
-.selected {
-  background: #666666;
-}
-
-#contactUs.show-header-content {
-  display: block !important;
-}
-#social-media-container.show-header-content {
-  display: flex !important;
-}
+#contactUs.show-header-content { display: block !important; }
+#social-media-container.show-header-content { display: flex !important; }
