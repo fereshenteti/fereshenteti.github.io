@@ -17,7 +17,7 @@ const Header_v1 = () => {
 
             let dynamicIsland = document.getElementById('dynamic-island');
 
-            if (dynamicIsland) { 
+            if (dynamicIsland) {
                 if (menuItemIndex === 1) {
                     dynamicIsland.classList.add('show-contactUs');
                     dynamicIsland.classList.remove('show-social');
@@ -43,21 +43,9 @@ const Header_v1 = () => {
                 if (dynamicIsland) dynamicIsland.classList.remove('show-social');
             }
         }
-        
+
         setSelectedMenuItem([...selected]);
     }
-
-    const glassBlurRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        // CSS filter: url(#id) breaks on GitHub Pages static exports because
-        // the fragment URL can't be resolved against the static base path.
-        // Fix: set the filter inline on a real DOM element using the full absolute URL.
-        if (glassBlurRef.current) {
-            const url = `url(${window.location.href.split('#')[0]}#glass-distortion)`;
-            glassBlurRef.current.style.filter = url;
-        }
-    }, []);
 
     useEffect(() => {
         const handleOpenContact = () => {
@@ -72,27 +60,7 @@ const Header_v1 = () => {
         <div className='header for-borders'>
             <div id='dynamic-island' ref={islandRef} className='dynamic-island'>
 
-            <div className='liquid-glass-effect'>
-                <div className='liquid-glass-blur' ref={glassBlurRef} />
-                <svg id='liquid-glass-svg'>
-                <filter id="glass-distortion">
-                    <feTurbulence
-                    type="fractalNoise"
-                    baseFrequency="0.002"
-                    numOctaves="3"
-                    seed="5"
-                    result="turb"
-                    />
-                    <feGaussianBlur in="noise"
-                    stdDeviation="20" result="softMap" />
-                    <feDisplacementMap in="SourceGraphic"
-                    in2="turb"
-                    scale="60"
-                    xChannelSelector="R"
-                    yChannelSelector="G" />
-                </filter>
-                </svg>
-            </div>
+            <div className='liquid-glass-effect' />
 
             <div className='header-main'>
                 <div className='left'>
@@ -100,18 +68,18 @@ const Header_v1 = () => {
                 </div>
                 <div className='right'>
 
-                <a className={'menu-item menu-item-home ' + (selectedMenuItem[0] ? 'selected' : '')} href='#home' onClick={(e) => selectMenuItem(0)} >
+                <a className={'menu-item menu-item-home ' + (selectedMenuItem[0] ? 'selected' : '')} href='#home' onClick={() => selectMenuItem(0)} >
                     Home
                 </a>
 
-                <div className={'menu-item ' + (selectedMenuItem[1] ? 'selected' : '')} onClick={(e) => selectMenuItem(1)}>
+                <div className={'menu-item ' + (selectedMenuItem[1] ? 'selected' : '')} onClick={() => selectMenuItem(1)}>
                     Contact Me
                     <div className='menu-item-icon'>
                     <ArrowDownwardIcon className={selectedMenuItem[1] ? 'rotate-180' : ''} />
                     </div>
                 </div>
 
-                <div className={'menu-item ' + (selectedMenuItem[2] ? 'selected' : '')} onClick={(e) => selectMenuItem(2)}>
+                <div className={'menu-item ' + (selectedMenuItem[2] ? 'selected' : '')} onClick={() => selectMenuItem(2)}>
                     Social
                     <div className='menu-item-icon'>
                     <ArrowDownwardIcon className={selectedMenuItem[2] ? 'rotate-180' : ''} />
