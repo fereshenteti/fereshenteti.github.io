@@ -8,7 +8,6 @@
 }
 
 .dynamic-island {
-  background: transparent;
   color: var(--color-text-on-dark);
   width: 500px;
   max-width: 90%;
@@ -16,6 +15,11 @@
   margin-top: 1rem;
   border-radius: 50px;
   position: relative;
+  background: var(--color-glass-bg);
+  border: 1px solid var(--color-glass-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
   -webkit-transition: width 0.5s cubic-bezier(.42, .42, 0, 1),
     height 0.5s cubic-bezier(.42, .42, 0, 1),
     border-radius 0.5s cubic-bezier(0, .82, .78, .78);
@@ -36,16 +40,7 @@
 }
 
 .liquid-glass-effect {
-  position: absolute;
-  inset: 0;
-  background: var(--color-glass-bg);
-  border: 1px solid var(--color-glass-border);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  border-radius: 50px;
-  z-index: 0;
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  display: none;
 }
 
 .liquid-glass-content {
@@ -67,9 +62,6 @@
   padding: 0 1rem;
   display: flex;
   justify-content: space-between;
-  position: relative;
-  z-index: 1;
-
   .left {
     width: 50px;
     height: 100%;
