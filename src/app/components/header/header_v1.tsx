@@ -47,12 +47,16 @@ const Header_v1 = () => {
         setSelectedMenuItem([...selected]);
     }
 
+    const glassBlurRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
-        // Fragment-based SVG filter URLs (url(#id)) break on GitHub Pages because
-        // the production base URL confuses the browser's URL resolver.
-        // Fix: inject the full absolute URL at runtime via a CSS custom property.
-        const url = `url(${window.location.href.split('#')[0]}#glass-distortion)`;
-        document.documentElement.style.setProperty('--glass-filter-url', url);
+        // CSS filter: url(#id) breaks on GitHub Pages static exports because
+        // the fragment URL can't be resolved against the static base path.
+        // Fix: set the filter inline on a real DOM element using the full absolute URL.
+        if (glassBlurRef.current) {
+            const url = `url(${window.location.href.split('#')[0]}#glass-distortion)`;
+            glassBlurRef.current.style.filter = url;
+        }
     }, []);
 
     useEffect(() => {
@@ -69,6 +73,7 @@ const Header_v1 = () => {
             <div id='dynamic-island' ref={islandRef} className='dynamic-island'>
 
             <div className='liquid-glass-effect'>
+                <div className='liquid-glass-blur' ref={glassBlurRef} />
                 <svg id='liquid-glass-svg'>
                 <filter id="glass-distortion">
                     <feTurbulence
