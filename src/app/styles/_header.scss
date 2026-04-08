@@ -43,10 +43,7 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   border-radius: 50px;
-  z-index: -1;
-}
-
-.liquid-glass-effect {
+  z-index: 0;
   backdrop-filter: blur(12px) saturate(180%);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
 }
@@ -70,6 +67,8 @@
   padding: 0 1rem;
   display: flex;
   justify-content: space-between;
+  position: relative;
+  z-index: 1;
 
   .left {
     width: 50px;
