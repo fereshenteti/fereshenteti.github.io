@@ -13,7 +13,7 @@ const LogoAnimationsSection = () => {
           className="logo-animations-header"
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
           <h1 className={`section-title ${ClashDisplay.className}`}>Logo <span>Animations</span></h1>
@@ -53,7 +53,7 @@ const LogoAnimationsSection = () => {
           className="logo-animations-video-wrap"
           initial={{ opacity: 0, scale: 0.97 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
         >
           <video autoPlay playsInline loop muted>

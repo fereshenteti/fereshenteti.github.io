@@ -17,7 +17,7 @@ const FigmaShowcase = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(frameRef, { once: false, amount: 0.3 });
+  const isInView = useInView(frameRef, { once: true, amount: 0.3 });
 
   const [cursor, setCursor] = useState<{ x: number; y: number } | null>(null);
 

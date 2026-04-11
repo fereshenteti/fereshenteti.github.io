@@ -14,7 +14,7 @@ const BeforeAfterSlider = ({ before, after }: Props) => {
   const [pos, setPos] = useState(80);
   const isDragging = useRef(false);
   const animControls = useRef<any>(null);
-  const isInView = useInView(containerRef, { once: false, margin: '-10%' });
+  const isInView = useInView(containerRef, { once: true, margin: '-10%' });
 
   useEffect(() => {
     if (isInView) {
