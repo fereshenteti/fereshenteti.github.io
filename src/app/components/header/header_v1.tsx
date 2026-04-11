@@ -102,9 +102,9 @@ const Header_v1 = () => {
                 id='dynamic-island'
                 className='dynamic-island'
                 refraction={{
-                    radius: 50,
+                    radius: 25,
                     blur: isOpen ? 14 : 6,
-                    bezelWidth: 36,
+                    bezelWidth: 24,
                     glassThickness: 120,
                     refractiveIndex: 3,
                     specularOpacity: 0.4,

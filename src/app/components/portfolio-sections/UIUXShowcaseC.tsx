@@ -51,7 +51,7 @@ const UIUXShowcaseC = () => {
               className="uiux-c-slider-wrap"
               initial={{ x: idx % 2 === 0 ? -60 : 60, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
             >
               <BeforeAfterSlider before={project.before} after={project.after} />
@@ -61,7 +61,7 @@ const UIUXShowcaseC = () => {
               className="uiux-c-info"
               initial={{ x: idx % 2 === 0 ? 60 : -60, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
             >
               <span className={`uiux-c-num ${Satoshi.className}`}>0{idx + 1} / 0{projects.length}</span>
