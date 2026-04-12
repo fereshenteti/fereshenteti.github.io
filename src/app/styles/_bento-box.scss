@@ -300,6 +300,7 @@
         color: var(--color-accent);
         background-color: var(--color-bg);
         cursor: pointer;
+        z-index: 10000;
         .custom-button-icon {
             svg {
                 transform: rotate(45deg) scale(1);

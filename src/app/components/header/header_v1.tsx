@@ -6,7 +6,6 @@ import ContactMe from '@/app/components/contact-me';
 import Social from '@/app/components/social';
 
 // refractive uses ImageData (browser-only API) — must never run on the server
-// backdrop-filter: url() is only supported on desktop Chrome/Firefox
 const RefractiveIsland = dynamic(
     () => import('@hashintel/refractive').then(m => {
         const { refractive } = m;
@@ -23,12 +22,7 @@ const RefractiveIsland = dynamic(
 
 const Header_v1 = () => {
     const [selectedMenuItem, setSelectedMenuItem] = useState([false, false, false]);
-    const [isTouchDevice, setIsTouchDevice] = useState(false);
     const isOpen = selectedMenuItem[1] || selectedMenuItem[2];
-
-    useEffect(() => {
-        setIsTouchDevice(window.matchMedia('(pointer: coarse)').matches);
-    }, []);
 
     const selectMenuItem = (menuItemIndex: number) => {
         let selected = [...selectedMenuItem];
@@ -39,21 +33,21 @@ const Header_v1 = () => {
             const dynamicIsland = document.getElementById('dynamic-island');
             if (dynamicIsland) {
                 if (menuItemIndex === 1) {
-                    dynamicIsland.classList.add('show-contactUs');
+                    dynamicIsland.classList.add('show-contactUs', 'is-open');
                     dynamicIsland.classList.remove('show-social');
                 } else if (menuItemIndex === 2) {
-                    dynamicIsland.classList.add('show-social');
+                    dynamicIsland.classList.add('show-social', 'is-open');
                     dynamicIsland.classList.remove('show-contactUs');
                 } else {
-                    dynamicIsland.classList.remove('show-social', 'show-contactUs');
+                    dynamicIsland.classList.remove('show-social', 'show-contactUs', 'is-open');
                 }
             }
         } else {
             selected[menuItemIndex] = false;
             const dynamicIsland = document.getElementById('dynamic-island');
             if (dynamicIsland) {
-                if (menuItemIndex === 1) dynamicIsland.classList.remove('show-contactUs');
-                if (menuItemIndex === 2) dynamicIsland.classList.remove('show-social');
+                if (menuItemIndex === 1) dynamicIsland.classList.remove('show-contactUs', 'is-open');
+                if (menuItemIndex === 2) dynamicIsland.classList.remove('show-social', 'is-open');
             }
         }
         setSelectedMenuItem([...selected]);
@@ -102,28 +96,22 @@ const Header_v1 = () => {
     );
 
     return (
-        <div className='header for-borders'>
-            {isTouchDevice ? (
-                <div id='dynamic-island' className={`dynamic-island dynamic-island--mobile${isOpen ? ' is-open' : ''}`}>
-                    {islandContent}
-                </div>
-            ) : (
-                <RefractiveIsland
-                    id='dynamic-island'
-                    className='dynamic-island'
-                    refraction={{
-                        radius: 25,
-                        blur: isOpen ? 14 : 6,
-                        bezelWidth: 24,
-                        glassThickness: 120,
-                        refractiveIndex: 3,
-                        specularOpacity: 0.4,
-                        specularAngle: 45,
-                    }}
-                >
-                    {islandContent}
-                </RefractiveIsland>
-            )}
+        <div className='header'>
+            <RefractiveIsland
+                id='dynamic-island'
+                className='dynamic-island'
+                refraction={{
+                    radius: 25,
+                    blur: isOpen ? 14 : 6,
+                    bezelWidth: 24,
+                    glassThickness: 120,
+                    refractiveIndex: 3,
+                    specularOpacity: 0.4,
+                    specularAngle: 45,
+                }}
+            >
+                {islandContent}
+            </RefractiveIsland>
         </div>
     );
 };

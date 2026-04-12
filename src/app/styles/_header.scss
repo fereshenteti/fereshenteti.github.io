@@ -26,9 +26,9 @@
 
   &:hover { width: 550px; }
 
-  &--mobile {
-    backdrop-filter: blur(6px);
-    &.is-open { backdrop-filter: blur(14px); }
+  @media (pointer: coarse) {
+    backdrop-filter: blur(6px) !important;
+    &.is-open { backdrop-filter: blur(14px) !important; }
   }
 
   @media (max-width: 768px) {
