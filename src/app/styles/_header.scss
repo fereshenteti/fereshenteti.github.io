@@ -26,6 +26,11 @@
 
   &:hover { width: 550px; }
 
+  &--mobile {
+    backdrop-filter: blur(6px);
+    &.is-open { backdrop-filter: blur(14px); }
+  }
+
   @media (max-width: 768px) {
     max-width: 80%;
     margin-right: 8%;
