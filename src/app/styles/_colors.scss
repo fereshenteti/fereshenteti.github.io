@@ -37,6 +37,7 @@
   --color-text-on-dark-secondary: rgba(255, 255, 255, 0.60); // ✦ dimmed text on dark
 
   // ── Borders (adaptive) ──────────────────────────────────────────────────────
+  --color-border-on-dark: rgba(255, 255, 255, 0.3);
   --color-border-subtle: rgba(0, 0, 0, 0.03);   // barely-there dividers
   --color-border:        rgba(0, 0, 0, 0.06);   // standard card borders
   --color-border-medium: rgba(0, 0, 0, 0.08);   // hover states, logo grids

@@ -46,6 +46,10 @@ body{
     margin: 0;
 }
 
+button, a, [role="button"] {
+    cursor: pointer !important;
+}
+
 
 // @media (prefers-color-scheme: dark) {
 //   html {

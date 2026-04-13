@@ -10,7 +10,6 @@ const Footer = () => {
             <div className="left-side">
                 <div className={`footer-content ` + ClashDisplay.className}>
                     <h1>Fares Hentati</h1>
-                    <p>feres.henteti@gmail.com</p>
                     <div>
                         <h4>Connect with me!</h4>
                         <Social/>

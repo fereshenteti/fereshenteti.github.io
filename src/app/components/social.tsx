@@ -1,6 +1,7 @@
 import { gsap } from "gsap";
 import { useEffect } from 'react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ClashDisplay } from "@/fonts/fonts";
 
 const Social = (props: {boxRef?: string}) => {
 
@@ -23,36 +24,39 @@ const Social = (props: {boxRef?: string}) => {
     }, []);
 
     return (
-        <div className='social-container'>
+        <div className="social-contact">
+            <div className='social-container'>
 
-            <a className={`socialBox ${boxRef}`} href='https://www.linkedin.com/in/fareshentati/' target="blank">
-                <img src="assets/icons/linkedin-logo.svg" className='social-icon'/>
-            </a>
+                <a className={`socialBox ${boxRef}`} href='https://www.linkedin.com/in/fareshentati/' target="blank">
+                    <img src="assets/icons/linkedin-logo.svg" className='social-icon'/>
+                </a>
 
-            <a className={`socialBox ${boxRef}`} href='https://www.instagram.com/fereshenteti' target="blank">
-                <img src="assets/icons/instagram-logo.svg" className='social-icon'/>
-            </a>
+                <a className={`socialBox ${boxRef}`} href='https://www.instagram.com/fereshenteti' target="blank">
+                    <img src="assets/icons/instagram-logo.svg" className='social-icon'/>
+                </a>
 
-            <a className={`socialBox ${boxRef}`} href='https://www.threads.com/@fereshenteti' target="blank">
-                <img src="assets/icons/threads.svg" className='social-icon threads-icon'/>
-            </a>
+                <a className={`socialBox ${boxRef}`} href='https://www.threads.com/@fereshenteti' target="blank">
+                    <img src="assets/icons/threads.svg" className='social-icon threads-icon'/>
+                </a>
 
-            <a className={`socialBox ${boxRef}`} href='https://dribbble.com/fereshenteti/collections' target="blank">
-                <img src="assets/icons/dribble-logo.svg" className='social-icon'/>
-            </a>
+                <a className={`socialBox ${boxRef}`} href='https://dribbble.com/fereshenteti/collections' target="blank">
+                    <img src="assets/icons/dribble-logo.svg" className='social-icon'/>
+                </a>
 
-            <a className={`socialBox ${boxRef}`} href='https://www.pinterest.com/hentetiferes/_created' target="blank">
-                <img src="assets/icons/pinterest-logo.svg" className='social-icon'/>
-            </a>
+                <a className={`socialBox ${boxRef}`} href='https://www.pinterest.com/hentetiferes/_created' target="blank">
+                    <img src="assets/icons/pinterest-logo.svg" className='social-icon'/>
+                </a>
 
-            <a className={`socialBox ${boxRef}`} href='https://www.tiktok.com/@fereshenteti' target="blank">
-                <img src="assets/icons/tiktok-logo.svg" className='social-icon'/>
-            </a>
+                <a className={`socialBox ${boxRef}`} href='https://www.tiktok.com/@fereshenteti' target="blank">
+                    <img src="assets/icons/tiktok-logo.svg" className='social-icon'/>
+                </a>
 
-            <a className={`socialBox ${boxRef}`} href='https://www.youtube.com/@FeresVocalArts' target="blank">
-                <img src="assets/icons/youtube-logo.svg" className='social-icon'/>
-            </a>
+                <a className={`socialBox ${boxRef}`} href='https://www.youtube.com/@FeresVocalArts' target="blank">
+                    <img src="assets/icons/youtube-logo.svg" className='social-icon'/>
+                </a>
 
+            </div>
+            <p className={boxRef}>or email me at <strong className="my-email">feres.henteti@gmail.com</strong></p>    
         </div>
     );
 }
