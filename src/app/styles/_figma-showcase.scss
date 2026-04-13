@@ -95,9 +95,10 @@
     line-height: 0;
     overflow: hidden;
     position: relative;
-    cursor: none;
+    cursor: none !important;
 
     > img {
+        cursor: none !important;
         width: 100%;
         height: 100%;
         object-fit: cover;

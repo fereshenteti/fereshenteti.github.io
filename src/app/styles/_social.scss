@@ -17,8 +17,35 @@
 }
 
 .social-container{
-    // margin: 2rem 0 0 2rem;
+    margin-bottom: 1rem;
     display: flex;
+}
+
+.social-contact {
+    p {
+        color: var(--color-text-on-dark);
+    }
+    .my-email {
+        color: var(--color-text-on-dark);
+    }
+}
+
+.footer .social-contact {
+    p {
+        color: var(--color-text-secondary);
+    }
+    .my-email {
+        color: var(--color-text);
+    }
+}
+
+[data-theme="dark"] .footer .social-contact {
+    p {
+        color: var(--color-text-secondary);
+    }
+    .my-email {
+        color: var(--color-text);
+    }
 }
 
 .socialBox{

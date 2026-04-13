@@ -21,16 +21,6 @@
     justify-content: flex-end;
 }
 
-.form-buttons button{
-    width: 200px;
-    background-color: #a920ff;
-    border-color: #a920ff;
-}
-
-.form-buttons button:hover{
-    background-color: #830fcc;
-    border-color: #830fcc;
-}
 
 .name-email-wrapper{
     display: flex;
@@ -43,19 +33,45 @@
     }
 }
 
-.button-loading-circle{
+.submit-button {
+    border: 1px solid rgba(255, 121, 27, 0.3) !important;
+    color: var(--color-accent) !important;
+    background-color: var(--color-bg) !important;
+    box-shadow: 7px 10px 0 0 var(--color-accent) !important;
+    cursor: pointer;
+    .custom-button-icon {
+        svg {
+            transform: rotate(45deg) scale(1);
+            transition: all 0.2s ease-in-out;
+        }
+        path{
+            stroke: var(--color-accent);
+        }
+    }
+    &:hover {
+        .custom-button-icon svg {
+            transform: rotate(90deg) scale(1.4);
+        }
+    }
+    &.is-disabled {
+        opacity: 0.45;
+        pointer-events: none;
+        box-shadow: none !important;
+    }
+}
+
+.form-buttons {
+    position: relative;
+    align-items: center;
+}
+
+.submit-spinner {
     width: 20px !important;
     height: 20px !important;
-    vertical-align: middle;
-}
-.submit-button{
-    width: 200px;
-    transition: width 0.6s ease-in-out;
-    &:disabled{
-        background-color: lightgray !important;
-        border-color: lightgray !important;
-        color: gray !important;
-    }
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
 }
 
 .contact-success{
@@ -92,8 +108,27 @@
     }
 }
 
+
+.form-control:focus {
+    border-color: var(--color-accent) !important;
+    box-shadow: 0 0 0 0.2rem var(--color-accent-ring) !important;
+}
+
 // ─── Dark Mode ────────────────────────────────────────────────────────────────
 [data-theme="dark"] {
+    .submit-button {
+        border-color: var(--color-border-on-dark) !important;
+        color: var(--color-text-on-dark) !important;
+        background-color: transparent !important;
+
+        .custom-button-icon path { stroke: var(--color-text-on-dark); }
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.06) !important;
+            border-color: rgba(255, 255, 255, 0.6) !important;
+        }
+    }
+
     .formLabel {
         color: var(--color-text-secondary);
     }

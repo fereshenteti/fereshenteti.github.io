@@ -1,8 +1,8 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { MyCustomButton } from '@/app/components/common-ui/custom-button';
 import emailjs from '@emailjs/browser';
 import CircularProgress from '@mui/material/CircularProgress';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
@@ -129,9 +129,13 @@ const ContactMe = (props: {boxRef?: string}) => {
             </Form.Group>
 
             <div className={`form-buttons ${boxRef}`}>
-                <Button className="submit-button" variant="primary" onClick={sendEmail} disabled={isButtonDisabled}>
-                    {isSending ? <CircularProgress className="button-loading-circle"/> : "Send the raven"}
-                </Button>
+                <MyCustomButton
+                    btnIcon="assets/icons/send.svg"
+                    btnText={isSending ? '' : 'Send the raven'}
+                    className={`submit-button${isButtonDisabled ? ' is-disabled' : ''}`}
+                    onClick={() => sendEmail({ preventDefault: () => {} })}
+                />
+                {isSending && <CircularProgress className="button-loading-circle submit-spinner"/>}
             </div>
 
         </Form>
