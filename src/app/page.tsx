@@ -14,6 +14,8 @@ import UIUXShowcaseC from './components/portfolio-sections/UIUXShowcaseC';
 import FigmaShowcase from './components/portfolio-sections/FigmaShowcase';
 import ImageSequenceSection from './components/portfolio-sections/ImageSequenceSection';
 import LogoAnimationsSection from './components/portfolio-sections/LogoAnimationsSection';
+import TestimonialsSection from './components/portfolio-sections/TestimonialsSection';
+import AboutSection from './components/portfolio-sections/AboutSection';
 
 const Home = () => {
   return (
@@ -21,6 +23,7 @@ const Home = () => {
 
       <Header_v1 />
       <BentoBox />
+      <AboutSection />
 
       <LogoShowcase />
       <LogoAnimationsSection />
@@ -34,6 +37,7 @@ const Home = () => {
       <ProcessSection />
 
       <ImageSequenceSection />
+      <TestimonialsSection />
       <FinalCTA />
 
       {/* Calendly popup */}

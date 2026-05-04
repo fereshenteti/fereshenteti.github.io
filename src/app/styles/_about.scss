@@ -1,0 +1,106 @@
+// ─── About Section ────────────────────────────────────────────────────────────
+
+.about-section {
+    background: var(--color-bg);
+    padding: 8rem 0;
+}
+
+.about-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 4vw, 3rem);
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(3rem, 6vw, 7rem);
+
+    @media (max-width: 900px) {
+        flex-direction: column;
+        gap: 3rem;
+    }
+}
+
+// ─── Left ─────────────────────────────────────────────────────────────────────
+
+.about-left {
+    flex: 1.4;
+    min-width: 0;
+}
+
+.about-eyebrow {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1.25rem;
+}
+
+.about-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.15;
+    margin: 0 0 2.5rem 0;
+}
+
+.about-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    p {
+        font-size: clamp(1rem, 1.5vw, 1.1rem);
+        line-height: 1.8;
+        color: var(--color-text-secondary);
+        margin: 0;
+    }
+}
+
+// ─── Right ────────────────────────────────────────────────────────────────────
+
+.about-right {
+    flex: 0.8;
+    min-width: 0;
+    padding-top: 5rem;
+
+    @media (max-width: 900px) {
+        padding-top: 0;
+        width: 100%;
+    }
+}
+
+.about-facts-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 18px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    box-shadow: var(--color-shadow-sm);
+}
+
+.about-fact-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+
+    &:first-child { padding-top: 0; }
+    &:last-child  { padding-bottom: 0; border-bottom: none; }
+}
+
+.about-fact-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+}
+
+.about-fact-value {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    line-height: 1.5;
+}

@@ -47,7 +47,7 @@ const FinalCTA = () => {
             </h2>
             
             <p className={`cta-subtitle ${Satoshi.className}`}>
-                I'm always open to new opportunities — whether it's a full product design, a frontend build, or a creative collaboration.
+                I take on a small number of freelance projects alongside my full-time work — startups, agencies, and brands who need sharp design, clean code, or both. If that sounds like your project, let's talk.
             </p>
 
             <div className="cta-actions">

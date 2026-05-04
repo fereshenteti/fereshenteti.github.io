@@ -3,7 +3,7 @@
 import SectionDotGrid from './SectionDotGrid';
 import gsap from 'gsap';
 import Lottie from 'lottie-react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ClashDisplay, Satoshi } from '../../fonts/fonts';
 import waveAnimation from '../../../public/assets/animations/wave-hi-animation.json';
 import CountUp from '../animations/CountUp/CountUp';
@@ -140,8 +140,17 @@ const ExperienceChart = () => {
     );
 };
 
+const cyclingStats = [
+    { prefix: '+', number: 17,  decimals: 0, suffix: '%', label: 'Conversion lift',  project: 'Sedeo Marketplace' },
+    { prefix: '',  number: 3.4, decimals: 1, suffix: '×', label: 'Faster load time', project: 'Sedeo Marketplace' },
+];
+
 const BentoBox = () => {
     const bentoSectionRef = useRef<HTMLElement>(null);
+    const [statIndex, setStatIndex] = useState(0);
+    const [displayNum, setDisplayNum] = useState(cyclingStats[0].number);
+    const animFrameRef = useRef<number>(0);
+    const isFirstStatRender = useRef(true);
     const avatarRevealRef = useRef<HTMLDivElement>(null);
     const floatingBtnRef = useRef<HTMLButtonElement | null>(null);
 
@@ -273,6 +282,31 @@ const BentoBox = () => {
         return () => { gsap.ticker.remove(onTick); tl?.kill(); };
     }, []);
 
+    useEffect(() => {
+        const id = setInterval(() => {
+            setStatIndex(i => (i + 1) % cyclingStats.length);
+        }, 3000);
+        return () => clearInterval(id);
+    }, []);
+
+    useEffect(() => {
+        if (isFirstStatRender.current) { isFirstStatRender.current = false; return; }
+        const fromNum = cyclingStats[(statIndex - 1 + cyclingStats.length) % cyclingStats.length].number;
+        const toNum   = cyclingStats[statIndex].number;
+        const duration = 900;
+        const startTime = performance.now();
+        const animate = (now: number) => {
+            const t = Math.min((now - startTime) / duration, 1);
+            // ease-in-out cubic — matches cubic-bezier(0.42, 0.42, 0, 1) feel
+            const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+            setDisplayNum(fromNum + (toNum - fromNum) * eased);
+            if (t < 1) animFrameRef.current = requestAnimationFrame(animate);
+        };
+        cancelAnimationFrame(animFrameRef.current);
+        animFrameRef.current = requestAnimationFrame(animate);
+        return () => cancelAnimationFrame(animFrameRef.current);
+    }, [statIndex]);
+
     const toggleContactForm = () => {
         window.dispatchEvent(new CustomEvent('toggleContactMenu'));
     }
@@ -287,9 +321,15 @@ const BentoBox = () => {
                         <div className="bento-description">
                             Hi <Lottie animationData={waveAnimation} loop={true} className="wave-lottie" /> I'm
                         </div>
-                        <h3 className={'bento-title '}>
-                            Fares Hentati
-                        </h3>
+                        <div>
+                            <h3 className={'bento-title '}>
+                                Fares Hentati
+                            </h3>
+                            <div className={"availability-badge " + Satoshi.className}>
+                                <span className="availability-dot"></span>
+                                Available for freelance
+                            </div>
+                        </div>
                     </CustomBentoCard>
 
                     <CustomBentoCard id="my-avatar-card" customClasses="md:order-[2] col-span-2 row-span-2 xs:order-[6]">
@@ -306,7 +346,7 @@ const BentoBox = () => {
 
                     <CustomBentoCard id="my-experience-card" customClasses="lg:order-[3] md:order-[5] order-[5] row-span-2 xs:col-span-3 lg:col-span-1 md:col-span-2 col-span-2">
                         <p className={"bento-description " + Satoshi.className}>
-                            From UI/UX and branding to pixel-perfect code and graphic design — I cover the full creative spectrum. I love turning bold ideas into polished digital products, with an obsessive attention to detail and a deep passion for craft.
+                            I design brands and build digital products — from logo to live platform. I take startup identities from concept to launch, redesign UIs that convert, and build frontends that perform. Available for focused freelance projects.
                         </p>
                     </CustomBentoCard>
 
@@ -342,17 +382,29 @@ const BentoBox = () => {
                     </CustomBentoCard>
 
                     <CustomBentoCard id="happy-clients-card" customClasses="order-[7]">
-                        <span className='count-up-number'>
-                            <CountUp
-                                from={0}
-                                to={12}
-                                direction="up"
-                                duration={1}
-                                className="count-up-text"
-                            />
-                            +
-                        </span>
-                        <p className="bento-description">Happy clients</p>
+                        <div className="cycling-stat-wrapper">
+                            <span className="count-up-number cycling-number-row">
+                                <span
+                                    className="cycling-prefix"
+                                    style={{ opacity: cyclingStats[statIndex].prefix ? 1 : 0 }}
+                                >+</span>
+                                <span className="cycling-number">
+                                    {cyclingStats[statIndex].decimals > 0
+                                        ? displayNum.toFixed(1)
+                                        : Math.round(displayNum).toString()}
+                                </span>
+                                <span className="cycling-suffix-wrap">
+                                    <span className="cycling-suffix cycling-suffix-flow" style={{ opacity: cyclingStats[statIndex].suffix === '%' ? 1 : 0 }}>%</span>
+                                    <span className="cycling-suffix cycling-suffix-abs"  style={{ opacity: cyclingStats[statIndex].suffix === '×' ? 1 : 0 }}>×</span>
+                                </span>
+                            </span>
+                            <p key={statIndex} className={"bento-description cycling-label"}>
+                                {cyclingStats[statIndex].label}
+                            </p>
+                            <span className={"cycling-stat-project " + Satoshi.className}>
+                                {cyclingStats[0].project}
+                            </span>
+                        </div>
                     </CustomBentoCard>
 
                     <CustomBentoCard id="projects-delivered-card" customClasses="order-[8]">
