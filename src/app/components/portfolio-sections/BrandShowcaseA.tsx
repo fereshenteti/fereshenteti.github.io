@@ -310,7 +310,7 @@ const BrandShowcaseA = () => {
       </div>
 
       {activeBrand && (
-        <BrandModal brand={activeBrand} theme={theme} onClose={() => setActiveBrand(null)} />
+        <BrandModal brand={activeBrand} onClose={() => setActiveBrand(null)} />
       )}
 
     </section>
