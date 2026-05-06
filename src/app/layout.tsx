@@ -8,6 +8,7 @@ import ThemeToggle from './components/ThemeToggle';
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://fereshenteti.github.io'),
   title: "Feres Henteti - Portfolio",
   description: "Portfolio of Feres Henteti, showcasing projects and designs.",
   openGraph: {

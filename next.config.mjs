@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'export',
+    images: { unoptimized: true },
+    sassOptions: {
+        silenceDeprecations: ['import'],
+    },
 
     // Turbopack — SVG as React components via @svgr/webpack compatibility layer
     turbopack: {
