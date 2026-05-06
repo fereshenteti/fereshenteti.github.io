@@ -1,6 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
+import BadgeImg from '../../assets/icons/certifications/google-ai-professional-certificate.png';
 
 const facts = [
   { label: 'Location',   value: 'Paris, France' },
@@ -50,6 +52,20 @@ const AboutSection = () => {
               </div>
             ))}
           </div>
+
+          <a
+            href="https://www.credly.com/badges/25f8cd56-7cd1-4932-842f-dc1ad648ee46"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`about-badge ${Satoshi.className}`}
+          >
+            <Image src={BadgeImg} alt="Google AI Essentials Certificate" className="about-badge-img" />
+            <div className="about-badge-info">
+              <span className="about-badge-issuer">Google Certified</span>
+              <span className="about-badge-name">Google AI Professional</span>
+            </div>
+            <span className="about-badge-arrow">↗</span>
+          </a>
         </div>
 
       </div>

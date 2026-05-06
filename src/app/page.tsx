@@ -7,6 +7,7 @@ import Header_v1 from './components/header/header_v1';
 import ToolsCloud from './components/portfolio-sections/ToolsCloud';
 import ProcessSection from './components/portfolio-sections/ProcessSection';
 import SelectedWorkB from './components/portfolio-sections/SelectedWorkB';
+import UXProjectsShowcase from './components/portfolio-sections/UXProjectsShowcase';
 import BrandShowcaseA from './components/portfolio-sections/BrandShowcaseA';
 import LogoShowcase from './components/portfolio-sections/LogoShowcase';
 import FinalCTA from './components/portfolio-sections/FinalCTA';
@@ -29,6 +30,7 @@ const Home = () => {
       <LogoAnimationsSection />
       <BrandShowcaseA />
       <SelectedWorkB />
+      <UXProjectsShowcase />
 
       <UIUXShowcaseC />
       <FigmaShowcase />
