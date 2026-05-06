@@ -272,11 +272,10 @@
 
 .uiux-c-slider-wrap {
     width: 100%;
+    aspect-ratio: 1512 / 982;
     border-radius: 16px;
     overflow: hidden;
-}
 
-.uiux-c-slider-wrap-cropped {
     .ba-slider { height: 100%; }
 
     .ba-img-flow {
@@ -290,6 +289,8 @@
         object-position: top;
     }
 }
+
+.uiux-c-slider-wrap-cropped { /* aspect-ratio and object-fit inherited from parent */ }
 
 .uiux-c-info {
     display: flex;

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 type UXProject = {
   title: string;
@@ -44,19 +45,19 @@ const uiuxProjects: UXProject[] = [
 
 const EventizerShowcase = ({ images, alt }: { images: string[]; alt: string }) => (
   <div className="uiux-p-layered">
-    <img src={images[0]} alt={`${alt} – home`}     className="uiux-p-eventizer-layer uiux-p-eventizer-layer--1" />
-    <img src={images[1]} alt={`${alt} – detail`}   className="uiux-p-eventizer-layer uiux-p-eventizer-layer--2" />
-    <img src={images[2]} alt={`${alt} – schedule`} className="uiux-p-eventizer-layer uiux-p-eventizer-layer--3" />
+    <Image src={images[0]} alt={`${alt} – home`}     width={390} height={844} className="uiux-p-eventizer-layer uiux-p-eventizer-layer--1" />
+    <Image src={images[1]} alt={`${alt} – detail`}   width={390} height={844} className="uiux-p-eventizer-layer uiux-p-eventizer-layer--2" />
+    <Image src={images[2]} alt={`${alt} – schedule`} width={390} height={844} className="uiux-p-eventizer-layer uiux-p-eventizer-layer--3" />
   </div>
 );
 
 const GuidoShowcase = ({ images, alt }: { images: string[]; alt: string }) => (
   <div className="uiux-p-layered">
-    <img src={images[0]} alt={`${alt} – watch left`}   className="uiux-p-guido-layer uiux-p-guido-layer--1" />
-    <img src={images[1]} alt={`${alt} – phone left`}   className="uiux-p-guido-layer uiux-p-guido-layer--2" />
-    <img src={images[2]} alt={`${alt} – phone center`} className="uiux-p-guido-layer uiux-p-guido-layer--3" />
-    <img src={images[3]} alt={`${alt} – phone right`}  className="uiux-p-guido-layer uiux-p-guido-layer--4" />
-    <img src={images[4]} alt={`${alt} – watch right`}  className="uiux-p-guido-layer uiux-p-guido-layer--5" />
+    <Image src={images[0]} alt={`${alt} – watch left`}   width={400} height={480} className="uiux-p-guido-layer uiux-p-guido-layer--1" />
+    <Image src={images[1]} alt={`${alt} – phone left`}   width={390} height={844} className="uiux-p-guido-layer uiux-p-guido-layer--2" />
+    <Image src={images[2]} alt={`${alt} – phone center`} width={390} height={844} className="uiux-p-guido-layer uiux-p-guido-layer--3" />
+    <Image src={images[3]} alt={`${alt} – phone right`}  width={390} height={844} className="uiux-p-guido-layer uiux-p-guido-layer--4" />
+    <Image src={images[4]} alt={`${alt} – watch right`}  width={400} height={480} className="uiux-p-guido-layer uiux-p-guido-layer--5" />
   </div>
 );
 
@@ -226,7 +227,7 @@ const UXProjectsShowcase = () => {
 
             <div className={`uiux-p-modal-gallery uiux-p-modal-gallery--${selected.layout}`}>
               {selected.images.map((img, i) => (
-                <img key={i} src={img} alt={`${selected.title} – screen ${i + 1}`} className="uiux-p-modal-gallery-img" />
+                <Image key={i} src={img} alt={`${selected.title} – screen ${i + 1}`} width={800} height={600} className="uiux-p-modal-gallery-img" />
               ))}
             </div>
 

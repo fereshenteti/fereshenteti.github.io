@@ -209,6 +209,7 @@
 .uiux-p-eventizer-layer {
     position: absolute;
     display: block;
+    width: auto !important;
     height: auto !important;
     border-radius: 8px;
 
@@ -265,6 +266,7 @@
 .uiux-p-guido-layer {
     position: absolute;
     display: block;
+    width: auto !important;
     height: auto !important;
     border-radius: 6px;
 

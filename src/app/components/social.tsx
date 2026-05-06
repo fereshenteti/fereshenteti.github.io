@@ -1,62 +1,63 @@
-import { gsap } from "gsap";
-import { useEffect } from 'react';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ClashDisplay } from "@/fonts/fonts";
+import { motion, type Variants } from 'framer-motion';
+import Image from 'next/image';
 
-const Social = (props: {boxRef?: string}) => {
+const containerVariants: Variants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.07 } },
+};
 
-    const {boxRef} = props;
+const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] } },
+};
 
-    useEffect(() => {
-        if(boxRef){
-            const boxes: any[] = gsap.utils.toArray(`.${boxRef}`);
-    
-            boxes.forEach((box, i) => {
-                const anim = gsap.fromTo(box, {autoAlpha: 0, y: 50}, {duration: 0.5, delay: i/10, autoAlpha: 1, y: 0});
-                ScrollTrigger.create({
-                  trigger: box,
-                  animation: anim,
-                  toggleActions: 'play none none none',
-                  once: true,
-                });
-            });
-        }
-    }, []);
-
+const Social = () => {
     return (
         <div className="social-contact">
-            <div className='social-container'>
+            <motion.div
+                className='social-container'
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+            >
+                <motion.a variants={itemVariants} className="socialBox" href='https://www.linkedin.com/in/fareshentati/' target="blank">
+                    <Image src="/assets/icons/linkedin-logo.svg" alt="LinkedIn" width={30} height={30} className='social-icon'/>
+                </motion.a>
 
-                <a className={`socialBox ${boxRef}`} href='https://www.linkedin.com/in/fareshentati/' target="blank">
-                    <img src="assets/icons/linkedin-logo.svg" className='social-icon'/>
-                </a>
+                <motion.a variants={itemVariants} className="socialBox" href='https://www.instagram.com/fereshenteti' target="blank">
+                    <Image src="/assets/icons/instagram-logo.svg" alt="Instagram" width={30} height={30} className='social-icon'/>
+                </motion.a>
 
-                <a className={`socialBox ${boxRef}`} href='https://www.instagram.com/fereshenteti' target="blank">
-                    <img src="assets/icons/instagram-logo.svg" className='social-icon'/>
-                </a>
+                <motion.a variants={itemVariants} className="socialBox" href='https://www.threads.com/@fereshenteti' target="blank">
+                    <Image src="/assets/icons/threads.svg" alt="Threads" width={30} height={30} className='social-icon threads-icon'/>
+                </motion.a>
 
-                <a className={`socialBox ${boxRef}`} href='https://www.threads.com/@fereshenteti' target="blank">
-                    <img src="assets/icons/threads.svg" className='social-icon threads-icon'/>
-                </a>
+                <motion.a variants={itemVariants} className="socialBox" href='https://dribbble.com/fereshenteti/collections' target="blank">
+                    <Image src="/assets/icons/dribble-logo.svg" alt="Dribbble" width={30} height={30} className='social-icon'/>
+                </motion.a>
 
-                <a className={`socialBox ${boxRef}`} href='https://dribbble.com/fereshenteti/collections' target="blank">
-                    <img src="assets/icons/dribble-logo.svg" className='social-icon'/>
-                </a>
+                <motion.a variants={itemVariants} className="socialBox" href='https://www.pinterest.com/hentetiferes/_created' target="blank">
+                    <Image src="/assets/icons/pinterest-logo.svg" alt="Pinterest" width={30} height={30} className='social-icon'/>
+                </motion.a>
 
-                <a className={`socialBox ${boxRef}`} href='https://www.pinterest.com/hentetiferes/_created' target="blank">
-                    <img src="assets/icons/pinterest-logo.svg" className='social-icon'/>
-                </a>
+                <motion.a variants={itemVariants} className="socialBox" href='https://www.tiktok.com/@fereshenteti' target="blank">
+                    <Image src="/assets/icons/tiktok-logo.svg" alt="TikTok" width={30} height={30} className='social-icon'/>
+                </motion.a>
 
-                <a className={`socialBox ${boxRef}`} href='https://www.tiktok.com/@fereshenteti' target="blank">
-                    <img src="assets/icons/tiktok-logo.svg" className='social-icon'/>
-                </a>
+                <motion.a variants={itemVariants} className="socialBox" href='https://www.youtube.com/@FeresVocalArts' target="blank">
+                    <Image src="/assets/icons/youtube-logo.svg" alt="YouTube" width={30} height={30} className='social-icon'/>
+                </motion.a>
+            </motion.div>
 
-                <a className={`socialBox ${boxRef}`} href='https://www.youtube.com/@FeresVocalArts' target="blank">
-                    <img src="assets/icons/youtube-logo.svg" className='social-icon'/>
-                </a>
-
-            </div>
-            <p className={boxRef}>or email me at <strong className="my-email">feres.henteti@gmail.com</strong></p>    
+            <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+                or email me at <strong className="my-email">feres.henteti@gmail.com</strong>
+            </motion.p>
         </div>
     );
 }

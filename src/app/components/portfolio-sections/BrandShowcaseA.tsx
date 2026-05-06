@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
+import Image from 'next/image';
 import { MyCustomButton } from '../common-ui/custom-button';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -154,8 +155,8 @@ const BrandCard = ({ brand, theme, onClick }: { brand: Brand; theme: string; onC
     <div className="brand-a-card" onClick={onClick} role="button" tabIndex={0}
       onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') onClick(); }}>
       <div className="brand-a-card-hero">
-        <img src={brand.background} alt="" className="brand-a-card-bg" aria-hidden />
-        <img src={brand.mockup} alt={`${brand.name} brandbook`} className="brand-a-card-mockup" />
+        <Image src={brand.background} alt="" width={800} height={500} className="brand-a-card-bg" aria-hidden />
+        <Image src={brand.mockup} alt={`${brand.name} brandbook`} width={800} height={500} className="brand-a-card-mockup" />
         <div className="brand-a-card-zoom-hint">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -165,7 +166,7 @@ const BrandCard = ({ brand, theme, onClick }: { brand: Brand; theme: string; onC
 
       <div className={`brand-a-card-body ${Satoshi.className}`}>
         <div className="brand-a-card-identity">
-          <img src={logoSrc} alt={`${brand.name} logo`} className="brand-a-card-logo" />
+          <Image src={logoSrc} alt={`${brand.name} logo`} width={180} height={44} className="brand-a-card-logo" />
           <div>
             <span className="brand-a-card-name">{brand.name}</span>
             <p className="brand-a-card-tagline">{brand.tagline}</p>

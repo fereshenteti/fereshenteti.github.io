@@ -4,7 +4,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import Script from "next/script";
 import Providers from './components/Providers';
 import ThemeToggle from './components/ThemeToggle';
-
+import { Analytics } from "@vercel/analytics/next";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -42,6 +42,7 @@ export default function RootLayout({
         <Script src="/theme-init.js" strategy="beforeInteractive" id="theme-init" />
         <AppRouterCacheProvider>
           <Providers>
+            <Analytics/>
             <ThemeToggle />
             {children}
           </Providers>

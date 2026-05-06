@@ -4,9 +4,9 @@ import SectionDotGrid from '../SectionDotGrid';
 import React, { useRef, useEffect, useState } from 'react';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
 import { useGSAP } from '@gsap/react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { animate } from 'animejs';
 import LogoWordSvg from '../../assets/icons/logo-word.svg';
 import { fetchSlides, SlideData } from '@/services/slides';
 
@@ -59,11 +59,7 @@ const LogoShowcase = () => {
           triggered = true;
           observer.disconnect();
 
-          animate(clipRect, {
-            width: vbWidth,
-            ease: 'inOutQuart',
-            duration: 900,
-          });
+          gsap.fromTo(clipRect, { attr: { width: 0 } }, { attr: { width: vbWidth }, ease: 'power2.inOut', duration: 0.9 });
         }
       },
       { threshold: 0.4 }
@@ -135,7 +131,7 @@ const LogoShowcase = () => {
             const content = (
               <>
                 <div className="logo-placeholder">
-                  <img src={slide.src} alt={slide.label ?? `Logo ${idx + 1}`} />
+                  <Image src={slide.src} alt={slide.label ?? `Logo ${idx + 1}`} width={200} height={100} />
                 </div>
                 {slide.label && (
                   <div className="logo-hover-label">

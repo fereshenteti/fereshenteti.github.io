@@ -23,6 +23,7 @@
     "@mui/material": "^7.3.4",
     "@mui/material-nextjs": "^7.3.3",
     "@tailwindcss/postcss": "^4.2.4",
+    "@vercel/analytics": "^2.0.1",
     "animejs": "^4.4.1",
     "bootstrap": "^5.3.8",
     "class-variance-authority": "^0.7.1",

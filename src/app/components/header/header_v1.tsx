@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ContactMe from '@/app/components/contact-me';
 import Social from '@/app/components/social';
+import Image from 'next/image';
 
 // refractive uses ImageData (browser-only API) — must never run on the server
 const RefractiveIsland = dynamic(
@@ -64,7 +65,7 @@ const Header_v1 = () => {
         <>
             <div className='header-main'>
                 <div className='left'>
-                    <img src="./assets/me-v4.png" alt='avatar' className='my-avatar' />
+                    <Image src="/assets/me-v4.png" alt="Feres Henteti" width={70} height={70} className='my-avatar' priority />
                 </div>
                 <div className='right'>
                     <a className={'menu-item menu-item-home ' + (selectedMenuItem[0] ? 'selected' : '')} href='#home' onClick={() => selectMenuItem(0)}>
@@ -86,11 +87,11 @@ const Header_v1 = () => {
             </div>
 
             <div id='contactUs' className={selectedMenuItem[1] ? 'show-header-content' : ''}>
-                {selectedMenuItem[1] && <ContactMe boxRef="topMenuBoxRef" />}
+                {selectedMenuItem[1] && <ContactMe />}
             </div>
 
             <div id='social-media-container' className={selectedMenuItem[2] ? 'show-header-content' : ''}>
-                {selectedMenuItem[2] && <Social boxRef="topMenuBoxRef" />}
+                {selectedMenuItem[2] && <Social />}
             </div>
         </>
     );
