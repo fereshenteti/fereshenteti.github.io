@@ -1,8 +1,8 @@
 'use client';
 
-import SectionDotGrid from '../SectionDotGrid';
-import React, { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { motion } from 'framer-motion';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
 import { MyCustomButton } from '../common-ui/custom-button';
 import { useTheme } from '../../context/ThemeContext';
@@ -13,6 +13,7 @@ const brands = [
   {
     name: 'Hellcap Hustle',
     tagline: 'Modern identity for a premium tech startup',
+    description: 'Full brand identity for a premium tech startup — logo, type system, color palette, and brand assets, balancing ambition with a sharp, modern edge.',
     logo: '/assets/brands-logos/Hellcap hustle logo - white.svg',
     logoDark: '/assets/brands-logos/Hellcap hustle logo - dark.svg',
     colors: ['#2F2F2F', '#F6CC82', '#003366'],
@@ -23,6 +24,7 @@ const brands = [
   {
     name: 'MioTocco',
     tagline: 'It meals soo goood!',
+    description: 'I built the entire brand from scratch: logo, brandbook, product photography, and all marketing and communication materials.',
     logo: '/assets/brands-logos/MioTocco logo - white.svg',
     logoDark: '/assets/brands-logos/MioTocco logo - dark.svg',
     colors: ['#C51D1D', '#FFC300', '#1F1F1F', '#EFEFEF'],
@@ -34,6 +36,7 @@ const brands = [
   {
     name: 'ZenOAin',
     tagline: 'Your next level barbershop',
+    description: 'Complete identity for a high-end barbershop — a clean, confident system built on navy and white, projecting precision and quiet authority.',
     logo: '/assets/brands-logos/ZenOAin logo - white.svg',
     logoDark: '/assets/brands-logos/ZenOAin logo - dark.svg',
     colors: ['#0D1B48', '#FFFFFF'],
@@ -44,6 +47,7 @@ const brands = [
   {
     name: 'XDrivo',
     tagline: 'The ultimate cabbing experience',
+    description: 'Full visual identity for a ride-hailing platform — a tech-forward brand built for clarity and trust, from logo mark to motion-ready assets.',
     logo: '/assets/brands-logos/XDrivo logo - white.svg',
     logoDark: '/assets/brands-logos/XDrivo logo - dark.svg',
     colors: ['#002B4A', '#00B07A', '#555555', '#E3E3E3'],
@@ -54,329 +58,262 @@ const brands = [
   },
 ];
 
-const ScrollFade = ({ children, className }: { children: React.ReactNode; className?: string }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start 95%', 'start 25%'],
-  });
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const y = useTransform(scrollYProgress, [0, 1], [48, 0]);
-  return (
-    <motion.div ref={ref} style={{ opacity, y }} className={className}>
-      {children}
-    </motion.div>
+type Brand = typeof brands[0];
+
+const CloseIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
+
+const BrandModal = ({ brand, onClose }: { brand: Brand; onClose: () => void }) => {
+  const [scale, setScale] = useState(1);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [isPanning, setIsPanning] = useState(false);
+  const dragOrigin = useRef({ mx: 0, my: 0, ox: 0, oy: 0 });
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [onClose]);
+
+  const resetZoom = () => { setScale(1); setOffset({ x: 0, y: 0 }); };
+
+  const handleClick = () => {
+    if (scale > 1) { resetZoom(); } else { setScale(2); }
+  };
+
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    setScale(s => {
+      const next = Math.min(4, Math.max(1, s - e.deltaY * 0.005));
+      if (next === 1) setOffset({ x: 0, y: 0 });
+      return next;
+    });
+  };
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    if (scale <= 1) return;
+    setIsPanning(true);
+    dragOrigin.current = { mx: e.clientX, my: e.clientY, ox: offset.x, oy: offset.y };
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isPanning) return;
+    setOffset({
+      x: dragOrigin.current.ox + e.clientX - dragOrigin.current.mx,
+      y: dragOrigin.current.oy + e.clientY - dragOrigin.current.my,
+    });
+  };
+
+  const onMouseUp = () => setIsPanning(false);
+
+  const cursor = isPanning ? 'grabbing' : scale > 1 ? 'grab' : 'zoom-in';
+
+  return createPortal(
+    <div className="brand-a-backdrop" onClick={onClose}>
+      <button className="brand-a-modal-close" onClick={onClose} aria-label="Close">
+        <CloseIcon />
+      </button>
+      <div
+        className="brand-a-modal-lightbox"
+        onClick={e => e.stopPropagation()}
+        onWheel={handleWheel}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+        onMouseLeave={onMouseUp}
+        style={{ cursor }}
+      >
+        <img
+          src={brand.mockup}
+          alt={`${brand.name} brandbook`}
+          className="brand-a-modal-img"
+          onClick={handleClick}
+          style={{
+            transform: `scale(${scale}) translate(${offset.x / scale}px, ${offset.y / scale}px)`,
+            transition: isPanning ? 'none' : 'transform 0.3s ease',
+          }}
+          draggable={false}
+        />
+      </div>
+    </div>,
+    document.body
   );
 };
 
-const MobileCard = ({ brand, theme }: { brand: typeof brands[0]; theme: string }) => {
+const BrandCard = ({ brand, theme, onClick }: { brand: Brand; theme: string; onClick: () => void }) => {
   const logoSrc = theme === 'dark' ? brand.logo : (brand.logoDark ?? brand.logo);
+
   return (
-    <div className="brand-a-mobile-card">
-      <div className="brand-a-mobile-info">
-        <ScrollFade className="logo-placeholder">
-          <img src={logoSrc} alt={`${brand.name} logo`} className="brand-logo-img" />
-        </ScrollFade>
+    <div className="brand-a-card" onClick={onClick} role="button" tabIndex={0}
+      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') onClick(); }}>
+      <div className="brand-a-card-hero">
+        <img src={brand.background} alt="" className="brand-a-card-bg" aria-hidden />
+        <img src={brand.mockup} alt={`${brand.name} brandbook`} className="brand-a-card-mockup" />
+        <div className="brand-a-card-zoom-hint">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      </div>
 
-        <ScrollFade>
-          <span className={`brand-a-label ${Satoshi.className}`}>{brand.name}</span>
-          <p className={`brand-a-tagline ${Satoshi.className}`}>{brand.tagline}</p>
-        </ScrollFade>
-
-        <ScrollFade>
-          <div className="brand-a-colors">
-            <span className={`brand-a-label ${Satoshi.className}`}>Color Palette</span>
-            <div className="color-swatches">
-              {brand.colors.map((color, i) => (
-                <div key={i}>
-                  <div className="color-swatch" style={{ backgroundColor: color }} />
-                  <span className="swatch-label">{color}</span>
-                </div>
-              ))}
-            </div>
+      <div className={`brand-a-card-body ${Satoshi.className}`}>
+        <div className="brand-a-card-identity">
+          <img src={logoSrc} alt={`${brand.name} logo`} className="brand-a-card-logo" />
+          <div>
+            <span className="brand-a-card-name">{brand.name}</span>
+            <p className="brand-a-card-tagline">{brand.tagline}</p>
+            {brand.description && (
+              <p className="brand-a-card-description">{brand.description}</p>
+            )}
           </div>
-        </ScrollFade>
-
-        <ScrollFade>
-          <div className="brand-a-typography">
-            <span className={`brand-a-label ${Satoshi.className}`}>Typography</span>
-            <div className="type-samples">
-              {Object.entries(brand.typography).map(([role, font]) => (
-                <div key={role} className="type-sample">
-                  <span className="type-role">{role}</span>
-                  <span className={`type-name ${Satoshi.className}`}>{font}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </ScrollFade>
+        </div>
 
         {brand.url && (
-          <ScrollFade>
+          <div onClick={e => e.stopPropagation()} style={{ alignSelf: 'flex-end' }}>
             <MyCustomButton
               btnIcon="assets/icons/external-link.svg"
               btnText="Visit website"
               className="secondary-cta"
               onClick={() => openExternalLink(brand.url!)}
             />
-          </ScrollFade>
+          </div>
         )}
-      </div>
 
-      <ScrollFade>
-        <img src={brand.mockup} alt={`${brand.name} mockup`} className="brand-a-mobile-image" />
-      </ScrollFade>
+      </div>
     </div>
   );
 };
 
+const ChevronIcon = ({ dir }: { dir: 'left' | 'right' }) => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    {dir === 'left'
+      ? <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      : <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    }
+  </svg>
+);
+
 const BrandShowcaseA = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
+  const [activeBrand, setActiveBrand] = useState<Brand | null>(null);
 
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 768);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
+  const didDrag = useRef(false);
+  const snapTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
+  const scroll = (dir: 'left' | 'right') => {
+    trackRef.current?.scrollBy({ left: dir === 'right' ? 432 : -432, behavior: 'smooth' });
+  };
 
-  // Must be declared before any conditional return (rules of hooks)
-  const headerOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
-  const headerY = useTransform(scrollYProgress, [0, 0.08], [0, -40]);
+  const onMouseDown = (e: React.MouseEvent) => {
+    if (!trackRef.current) return;
+    e.preventDefault();
 
-  if (isMobile) {
-    return (
-      <section className="brand-showcase-a">
-        <div className="brand-a-mobile-list">
-          <motion.div
-            className="brand-a-header brand-a-header--mobile"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <span className={`section-eyebrow ${Satoshi.className}`}>Brand Identity</span>
-            <h2 className={`section-title ${ClashDisplay.className}`}>
-              Crafting memorable brand identities
-            </h2>
-            <p className={`section-subtitle ${Satoshi.className}`}>
-              From logo to full visual systems — here are some of the brands I've designed from the ground up.
-            </p>
-          </motion.div>
+    // Cancel any in-flight snap restoration from a previous drag
+    if (snapTimer.current) clearTimeout(snapTimer.current);
 
-          {brands.map((brand, idx) => (
-            <MobileCard key={idx} brand={brand} theme={theme} />
-          ))}
-        </div>
-      </section>
-    );
-  }
+    didDrag.current = false;
+    const startX = e.clientX;
+    const scrollStart = trackRef.current.scrollLeft;
+    trackRef.current.style.cursor = 'grabbing';
+    trackRef.current.style.scrollSnapType = 'none';
 
-  return (
-    <section className="brand-showcase-a" ref={containerRef} style={{ position: 'relative' }}>
-      {/* <SectionDotGrid forceDark /> */}
-      <div className="brand-a-scroll-space">
-        <div className="brand-a-sticky">
-          {/* Cross-fading backgrounds */}
-          {brands.map((brand, idx) => {
-            const start = (idx + 1) / (brands.length + 1);
-            const end = (idx + 2) / (brands.length + 1);
-            const mid = (start + end) / 2;
-            return (
-              <BrandBackground
-                key={idx}
-                brand={brand}
-                scrollYProgress={scrollYProgress}
-                rangeIn={[start - 0.05, start + 0.05]}
-                rangeOut={[end - 0.05, end + 0.02]}
-                rangePeak={[start + 0.05, mid, end - 0.05]}
-              />
-            );
-          })}
+    const onMove = (ev: MouseEvent) => {
+      const walk = ev.clientX - startX;
+      if (Math.abs(walk) > 4) didDrag.current = true;
+      trackRef.current!.scrollLeft = scrollStart - walk;
+    };
 
-          <motion.div
-            className="brand-a-header"
-            style={{
-              opacity: headerOpacity,
-              y: headerY,
-            }}
-          >
-            <span className={`section-eyebrow ${Satoshi.className}`}>Brand Identity</span>
-            <h2 className={`section-title ${ClashDisplay.className}`}>
-              Crafting memorable brand identities
-            </h2>
-            <p className={`section-subtitle ${Satoshi.className}`}>
-              From logo to full visual systems — here are some of the brands I've designed from the ground up.
-            </p>
-          </motion.div>
+    const onUp = () => {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+      if (!trackRef.current) return;
+      const track = trackRef.current;
+      track.style.cursor = 'grab';
 
-          {brands.map((brand, idx) => {
-            const start = (idx + 1) / (brands.length + 1);
-            const end = (idx + 2) / (brands.length + 1);
-            const mid = (start + end) / 2;
+      const cards = Array.from(track.children) as HTMLElement[];
+      const firstOffset = cards[0]?.offsetLeft ?? 0;
+      const current = track.scrollLeft;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      let target = 0;
+      let minDist = Infinity;
+      for (const card of cards) {
+        const snapPos = Math.min(card.offsetLeft - firstOffset, maxScroll);
+        const dist = Math.abs(snapPos - current);
+        if (dist < minDist) { minDist = dist; target = snapPos; }
+      }
+      track.scrollTo({ left: target, behavior: 'smooth' });
 
-            return (
-              <BrandSlideA
-                key={idx}
-                brand={brand}
-                index={idx}
-                scrollYProgress={scrollYProgress}
-                rangeIn={[start - 0.05, start + 0.05]}
-                rangeOut={[end - 0.05, end + 0.02]}
-                rangePeak={[start + 0.05, mid, end - 0.05]}
-                theme={theme}
-              />
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-};
+      snapTimer.current = setTimeout(() => {
+        if (trackRef.current) trackRef.current.style.scrollSnapType = '';
+        snapTimer.current = null;
+      }, 700);
+    };
 
-const BrandBackground = ({
-  brand,
-  scrollYProgress,
-  rangeIn,
-  rangeOut,
-  rangePeak,
-}: {
-  brand: typeof brands[0];
-  scrollYProgress: any;
-  rangeIn: [number, number];
-  rangeOut: [number, number];
-  rangePeak: [number, number, number];
-}) => {
-  const opacity = useTransform(
-    scrollYProgress,
-    [rangeIn[0], rangeIn[1], rangePeak[2], rangeOut[1]],
-    [0, 1, 1, 0]
-  );
-  const scale = useTransform(
-    scrollYProgress,
-    [rangeIn[0], rangeIn[1]],
-    [1.06, 1]
-  );
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+  };
+
+  const handleCardClick = (brand: Brand) => {
+    if (!didDrag.current) setActiveBrand(brand);
+  };
 
   return (
-    <motion.div
-      style={{ opacity, position: 'absolute', inset: 0, zIndex: 0 }}
-    >
-      <motion.img
-        src={brand.background}
-        alt=""
-        style={{
-          scale,
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          opacity: 0.3,
-          objectPosition: 'center',
-        }}
-      />
-    </motion.div>
-  );
-};
+    <section className="brand-showcase-a">
 
-const BrandSlideA = ({
-  brand,
-  index,
-  scrollYProgress,
-  rangeIn,
-  rangeOut,
-  rangePeak,
-  theme,
-}: {
-  brand: typeof brands[0];
-  index: number;
-  scrollYProgress: any;
-  rangeIn: [number, number];
-  rangeOut: [number, number];
-  rangePeak: [number, number, number];
-  theme: string;
-}) => {
-  const logoSrc = theme === 'dark' ? brand.logo : (brand.logoDark ?? brand.logo);
-  const opacity = useTransform(
-    scrollYProgress,
-    [rangeIn[0], rangeIn[1], rangePeak[2], rangeOut[1]],
-    [0, 1, 1, 0]
-  );
-  const pointerEvents = useTransform(opacity, (o) => (o > 0.1 ? 'auto' : 'none'));
-  const y = useTransform(
-    scrollYProgress,
-    [rangeIn[0], rangeIn[1], rangePeak[2], rangeOut[1]],
-    [60, 0, 0, -40]
-  );
-
-  const logoOpacity = useTransform(scrollYProgress, [rangeIn[0], rangeIn[1]], [0, 1]);
-  const colorsOpacity = useTransform(scrollYProgress, [rangeIn[0] + 0.02, rangeIn[1] + 0.02], [0, 1]);
-  const colorsX = useTransform(scrollYProgress, [rangeIn[0] + 0.02, rangeIn[1] + 0.02], [30, 0]);
-  const typeOpacity = useTransform(scrollYProgress, [rangeIn[0] + 0.04, rangeIn[1] + 0.04], [0, 1]);
-  const mockupScale = useTransform(scrollYProgress, [rangeIn[0] + 0.03, rangeIn[1] + 0.05], [0.85, 1]);
-  const mockupOpacity = useTransform(scrollYProgress, [rangeIn[0] + 0.03, rangeIn[1] + 0.05], [0, 1]);
-
-  return (
-    <motion.div className="brand-a-slide" style={{ opacity, y, pointerEvents }}>
-      <div className="brand-a-slide-inner">
-        <div className="brand-a-info">
-          <motion.div className="brand-a-logo" style={{ opacity: logoOpacity }}>
-            <div className="logo-placeholder">
-              <img src={logoSrc} alt={`${brand.name} logo`} className="brand-logo-img" />
-            </div>
-            <span className={`brand-a-label ${Satoshi.className}`}>{brand.name}</span>
-            <p className={`brand-a-tagline ${Satoshi.className}`}>{brand.tagline}</p>
-          </motion.div>
-
-          <motion.div className="brand-a-colors" style={{ opacity: colorsOpacity, x: colorsX }}>
-            <span className={`brand-a-label ${Satoshi.className}`}>Color Palette</span>
-            <div className="color-swatches">
-              {brand.colors.map((color, i) => (
-                <div key={i}>
-                  <div className="color-swatch" style={{ backgroundColor: color }} />
-                  <span className="swatch-label">{color}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div className="brand-a-typography" style={{ opacity: typeOpacity }}>
-            <span className={`brand-a-label ${Satoshi.className}`}>Typography</span>
-            <div className="type-samples">
-              {Object.entries(brand.typography).map(([role, font]) => (
-                <div key={role} className="type-sample">
-                  <span className="type-role">{role}</span>
-                  <span className={`type-name ${Satoshi.className}`}>{font}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {brand.url && (
-            <motion.div style={{ opacity: typeOpacity }}>
-              <MyCustomButton
-                btnIcon="assets/icons/external-link.svg"
-                btnText="Visit website"
-                className="secondary-cta"
-                onClick={() => openExternalLink(brand.url!)}
-              />
-            </motion.div>
-          )}
-        </div>
-
-        <motion.div className="brand-a-mockup" style={{ scale: mockupScale, opacity: mockupOpacity }}>
-          <img src={brand.mockup} alt={`${brand.name} mockup`} className="mockup-image" />
+      <div className="brand-a-container">
+        <motion.div
+          className="brand-a-header"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          <span className={`section-eyebrow ${Satoshi.className}`}>Brand Identity</span>
+          <h2 className={`section-title ${ClashDisplay.className}`}>
+            Crafting memorable brand identities
+          </h2>
+          <p className={`section-subtitle ${Satoshi.className}`}>
+            From logo to full visual systems — here are some of the brands I've designed from the ground up.
+          </p>
         </motion.div>
       </div>
-    </motion.div>
+
+      <div className="brand-a-carousel-outer">
+
+        <div className="brand-a-nav-group">
+          <button className="brand-a-nav" onClick={() => scroll('left')} aria-label="Previous brand">
+            <ChevronIcon dir="left" />
+          </button>
+          <button className="brand-a-nav" onClick={() => scroll('right')} aria-label="Next brand">
+            <ChevronIcon dir="right" />
+          </button>
+        </div>
+
+        <div
+          className="brand-a-track"
+          ref={trackRef}
+          onMouseDown={onMouseDown}
+        >
+          {brands.map((brand, i) => (
+            <BrandCard key={i} brand={brand} theme={theme} onClick={() => handleCardClick(brand)} />
+          ))}
+        </div>
+
+      </div>
+
+      {activeBrand && (
+        <BrandModal brand={activeBrand} theme={theme} onClose={() => setActiveBrand(null)} />
+      )}
+
+    </section>
   );
 };
 

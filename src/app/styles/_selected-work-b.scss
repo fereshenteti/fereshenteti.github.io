@@ -1,147 +1,395 @@
-// Selected Work B — BrandShowcase-style sticky scroll, image left / text right
+// ─── Selected Work B — Card grid + modal ─────────────────────────────────────
 
 .selected-work-b-section {
     background: var(--color-bg-alt);
-    color: var(--color-text);
+    padding: 8rem 0;
+    overflow: hidden;
+}
+
+.sw-b-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 4vw, 3rem);
+}
+
+// ─── Header ───────────────────────────────────────────────────────────────────
+
+.sw-b-header {
+    margin-bottom: 4rem;
+
+    .section-title   { color: var(--color-text); font-size: clamp(2.2rem, 5vw, 3.8rem); }
+    .section-subtitle { color: var(--color-text-secondary); max-width: 580px; }
+}
+
+// ─── Carousel wrapper ─────────────────────────────────────────────────────────
+
+.sw-b-carousel-outer {
     position: relative;
+}
 
-    .sw-b-scroll-space {
-        height: calc(100vh * 5); // intro + 4 slides
-        position: relative;
+// ─── Nav group ────────────────────────────────────────────────────────────────
+
+.sw-b-nav-group {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    padding-right: clamp(1rem, 4vw, 3rem);
+    margin-bottom: 1.25rem;
+
+    @media (min-width: 1364px) {
+        padding-right: calc((100vw - 1300px) / 2 + 3rem);
     }
 
-    .sw-b-sticky {
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    @media (max-width: 768px) { display: none; }
+}
 
-    // ─── Section header ───────────────────────────────────────────────────────
-    .sw-b-header {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 0 clamp(1.5rem, 6vw, 6rem);
-        z-index: 2;
-        pointer-events: none;
+.sw-b-nav {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border-medium);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s $FLUID, color 0.2s $FLUID, border-color 0.2s $FLUID, transform 0.2s $FLUID;
+    box-shadow: var(--color-shadow-sm);
 
-        .section-title {
-            color: var(--color-text);
-            font-size: clamp(2.2rem, 5vw, 3.8rem);
-        }
-
-        .section-subtitle {
-            color: var(--color-text-secondary);
-            max-width: 580px;
-        }
-    }
-
-    // ─── Slides ───────────────────────────────────────────────────────────────
-    .sw-b-slide {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 clamp(1.5rem, 4vw, 4rem);
-        z-index: 3;
-    }
-
-    .sw-b-slide-inner {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: clamp(2rem, 4vw, 5rem);
-        align-items: center;
-        max-width: 1200px;
-        width: 100%;
-
-        @media (max-width: 768px) {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-    }
-
-    // ─── Image (left) ─────────────────────────────────────────────────────────
-    .sw-b-image {
-        width: 100%;
-        height: clamp(320px, 55vh, 580px);
-        border-radius: 20px;
-        overflow: hidden;
-
-        img, video {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
-        @media (max-width: 768px) {
-            height: 240px;
-            border-radius: 14px;
-        }
-    }
-
-    // ─── Text (right) ─────────────────────────────────────────────────────────
-    .sw-b-info {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .sw-b-num {
-        display: block;
-        font-size: 0.7rem;
-        letter-spacing: 0.14em;
-        color: var(--color-text-muted);
-        font-weight: 600;
-        margin-bottom: 0.25rem;
-    }
-
-    .sw-b-category {
-        display: block;
-        font-size: 0.78rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--color-accent);
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-    }
-
-    .sw-b-title {
-        font-size: clamp(1.8rem, 3vw, 2.8rem);
-        font-weight: 700;
-        color: var(--color-text);
-        margin: 0 0 0.75rem;
-        line-height: 1.15;
-    }
-
-    .sw-b-summary {
-        font-size: 1rem;
-        line-height: 1.65;
-        color: var(--color-text-secondary);
-        margin: 0;
-    }
-
-    .sw-b-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-    }
-
-    .sw-b-tag {
-        font-size: 0.78rem;
-        color: var(--color-text-secondary);
+    &:hover {
         background: var(--color-bg-card);
-        border: 1px solid var(--color-border-strong);
-        padding: 0.2rem 0.75rem;
-        border-radius: 100px;
+        color: var(--color-text);
+        border-color: var(--color-border-strong);
+        transform: scale(1.08);
     }
+}
+
+// ─── Scrollable track ─────────────────────────────────────────────────────────
+
+.sw-b-track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+    padding-left: clamp(1rem, 4vw, 3rem);
+    scroll-padding-left: clamp(1rem, 4vw, 3rem);
+    padding-bottom: 0.5rem;
+
+    @media (min-width: 1364px) {
+        padding-left: calc((100vw - 1300px) / 2 + 3rem);
+        scroll-padding-left: calc((100vw - 1300px) / 2 + 3rem);
+    }
+
+    > :last-child {
+        margin-right: clamp(1rem, 4vw, 3rem);
+        scroll-snap-align: end;
+
+        @media (min-width: 1364px) {
+            margin-right: calc((100vw - 1300px) / 2 + 3rem);
+        }
+    }
+
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+}
+
+// ─── Card ─────────────────────────────────────────────────────────────────────
+
+.sw-b-card {
+    flex: 0 0 460px;
+    scroll-snap-align: start;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--color-shadow-sm);
+    transition: box-shadow 0.35s $FLUID, border-color 0.35s $FLUID;
+
+    &:hover {
+        box-shadow: var(--color-shadow-md);
+        border-color: var(--color-border-strong);
+
+        .sw-b-card-media img,
+        .sw-b-card-media video {
+            transform: scale(1.03);
+        }
+    }
+
+    @media (max-width: 600px) {
+        flex: 0 0 85vw;
+    }
+}
+
+.sw-b-card-media {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background: var(--color-bg);
+    flex-shrink: 0;
+
+    img, video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        transition: transform 0.5s $FLUID;
+    }
+
+    @media (max-width: 600px) {
+        height: 200px;
+    }
+}
+
+.sw-b-card-info {
+    padding: 1.25rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+// ─── Shared text styles ───────────────────────────────────────────────────────
+
+.sw-b-category {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+.sw-b-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.25;
+}
+
+.sw-b-summary {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.sw-b-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+}
+
+.sw-b-tag {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border-strong);
+    padding: 0.2rem 0.7rem;
+    border-radius: 100px;
+}
+
+// ─── Modal backdrop ───────────────────────────────────────────────────────────
+
+.sw-b-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: sw-b-backdrop-in 0.3s $FLUID both;
+}
+
+// ─── Modal panel ──────────────────────────────────────────────────────────────
+
+.sw-b-modal {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 20px;
+    width: min(90vw, 920px);
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    animation: sw-b-modal-in 0.35s $FLUID both;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.35);
+
+    @media (max-width: 700px) {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+    }
+}
+
+.sw-b-modal-media {
+    overflow: hidden;
+    border-radius: 20px 0 0 20px;
+    background: var(--color-bg-card);
+
+    img, video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        min-height: 300px;
+    }
+
+    @media (max-width: 700px) {
+        border-radius: 20px 20px 0 0;
+
+        img, video { min-height: 220px; max-height: 260px; }
+    }
+}
+
+.sw-b-modal-body {
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    overflow-y: auto;
+
+    @media (max-width: 700px) {
+        padding: 1.75rem 1.5rem;
+    }
+}
+
+.sw-b-modal-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.sw-b-modal-tags {
+    margin-top: 0;
+}
+
+// ─── Close button ─────────────────────────────────────────────────────────────
+
+.sw-b-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border-medium);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s $FLUID, color 0.2s $FLUID, border-color 0.2s $FLUID;
+
+    &:hover {
+        background: var(--color-bg-card);
+        color: var(--color-text);
+        border-color: var(--color-border-strong);
+    }
+}
+
+// ─── Layered showcase (InstaClear / multi-image) ──────────────────────────────
+
+// Dark background card variant
+.sw-b-card-media--layered {
+    background: #0d1b42;
+}
+
+.sw-b-modal-media--layered {
+    background: #0d1b42;
+    min-height: 340px;
+}
+
+// Container — fills the media slot, clips overflowing layers
+.sw-b-layered {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+// Each screenshot is absolutely positioned to build the composition
+.sw-b-layer {
+    position: absolute;
+    display: block;
+    border-radius: 5px;
+
+    // Layer 1 — main dashboard, fills background
+    &--1 {
+        width: 86% !important;
+        height: auto !important;
+        top: 10%;
+        left: 7%;
+        z-index: 1;
+        animation: sw-b-layer1 4s $FLUID infinite;
+    }
+
+    // Layer 2 — secondary view, bottom-right
+    &--2 {
+        width: 55% !important;
+        height: auto !important;
+        bottom: 1%;
+        right: 1%;
+        z-index: 2;
+        animation: sw-b-layer2 4s $FLUID infinite;
+    }
+
+    // Layer 3 — transactions panel, bottom-left foreground
+    &--3 {
+        width: 50% !important;
+        height: auto !important;
+        bottom: 6%;
+        left: 4%;
+        z-index: 3;
+        animation: sw-b-layer3 4s $FLUID infinite;
+    }
+}
+
+// ─── Animations ───────────────────────────────────────────────────────────────
+
+// Layer 1 — shallowest parallax (moves least, arrives first)
+@keyframes sw-b-layer1 {
+    0%           { transform: translateX(-160%) translateY(32px);  opacity: 0; }
+    15%, 72%     { transform: translateX(-160%) translateY(0);      opacity: 1; }
+    88%, 100%    { transform: translateX(-160%) translateY(32px);  opacity: 0; }
+}
+
+// Layer 2 — mid parallax
+@keyframes sw-b-layer2 {
+    0%, 8%       { transform: translateX(-50%) translateY(50px);  opacity: 0; }
+    24%, 72%     { transform: translateX(-50%) translateY(0);      opacity: 1; }
+    88%, 100%    { transform: translateX(-50%) translateY(50px);  opacity: 0; }
+}
+
+// Layer 3 — deepest parallax (moves most, arrives last)
+@keyframes sw-b-layer3 {
+    0%, 15%      { transform: translateX(60%) translateY(68px);  opacity: 0; }
+    32%, 72%     { transform: translateX(60%) translateY(0);      opacity: 1; }
+    88%, 100%    { transform: translateX(60%) translateY(68px);  opacity: 0; }
+}
+
+@keyframes sw-b-backdrop-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes sw-b-modal-in {
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0)    scale(1); }
 }

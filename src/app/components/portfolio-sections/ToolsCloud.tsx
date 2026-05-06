@@ -34,6 +34,13 @@ import IconClaude from '../../assets/icons/tools/claude.svg';
 import IconChatGPT from '../../assets/icons/tools/chatGPT.svg';
 import IconNotion from '../../assets/icons/tools/notion.svg';
 import IconDocker from '../../assets/icons/tools/docker.svg';
+import IconNestjs from '../../assets/icons/tools/nestjs.svg';
+import IconAmplitude from '../../assets/icons/tools/amplitude.svg';
+import IconJira from '../../assets/icons/tools/jira.svg';
+import IconLinear from '../../assets/icons/tools/linear.svg';
+import IconPostman from '../../assets/icons/tools/postman.svg';
+import IconSentry from '../../assets/icons/tools/sentry.svg';
+import IconWebflow from '../../assets/icons/tools/webflow.svg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,11 +63,20 @@ const toolsData = [
       { name: 'TypeScript', icon: <IconTs /> },
       { name: 'React', icon: <IconReact /> },
       { name: 'Vue', icon: <IconVue /> },
+      { name: 'Webflow', icon: <IconWebflow /> },
       { name: 'Next.js', icon: <IconNextjs />, invertDark: true },
       { name: 'Nodejs', icon: <IconNodejs /> },
       { name: 'Angular', icon: <IconAngular /> },
       { name: 'Tailwind CSS', icon: <IconTailwind /> },
       { name: 'Framer Motion', icon: <IconFramer /> },
+    ],
+  },
+  {
+    category: 'Backend',
+    items: [
+      { name: 'Nodejs', icon: <IconNodejs /> },
+      { name: 'NestJS', icon: <IconNestjs /> },
+      { name: 'Postman', icon: <IconPostman /> },
     ],
   },
   {
@@ -71,6 +87,10 @@ const toolsData = [
       { name: 'Git / Bitbucket', icon: <IconBitbucket /> },
       { name: 'Storybook', icon: <IconStorybook /> },
       { name: 'Vercel', icon: <IconVercel />, invertDark: true },
+      { name: 'Amplitude', icon: <IconAmplitude /> },
+      { name: 'Sentry', icon: <IconSentry /> },
+      { name: 'Jira', icon: <IconJira /> },
+      { name: 'Linear', icon: <IconLinear />, invertDark: true },
       { name: 'Claude AI', icon: <IconClaude /> },
       { name: 'ChatGPT', icon: <IconChatGPT />, invertDark: true },
       { name: 'Notion', icon: <IconNotion />, invertDark: true },
@@ -202,7 +222,7 @@ const ToolsCloud = () => {
         q += dirs[side].dq * step;
         r_coord += dirs[side].dr * step;
 
-        const D = 92; // Constant spacing across all screens
+        const D = 68; // Constant spacing across all screens
         const x = D * (q + r_coord / 2);
         const y = D * (Math.sqrt(3) / 2) * r_coord;
 
@@ -300,7 +320,13 @@ const ToolsCloud = () => {
               <div className="tools-list">
                 {group.items.map((tool, toolIdx) => (
                   <div key={toolIdx} className="tool-item">
-                    <span className={`tool-icon${tool.invertDark ? ' tool-icon--invert-dark' : ''}`}>{tool.icon}</span>
+                    <span
+                      className={`tool-icon${tool.invertDark ? ' tool-icon--invert-dark' : ''}`}
+                      role="img"
+                      aria-label={tool.name}
+                    >
+                      {tool.icon}
+                    </span>
                     <span className={`tool-tooltip ${Satoshi.className}`}>{tool.name}</span>
                   </div>
                 ))}

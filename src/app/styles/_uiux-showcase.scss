@@ -233,73 +233,73 @@
     }
 }
 
-// ─── Variant C — Vertical scroll, alternating layout ─────────────────────────
+// ─── Variant C — Side-by-side grid ───────────────────────────────────────────
 
 .uiux-c-section {
     background: var(--color-bg);
-
-    .uiux-c-intro {
-        min-height: 50vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 8rem clamp(1.5rem, 5vw, 5rem) 4rem;
-
-        .section-title    { color: var(--color-text); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; line-height: 1.1; margin: 0 0 1.5rem; }
-        .section-subtitle { color: var(--color-text-secondary); max-width: 500px; font-size: clamp(1.1rem, 2vw, 1.4rem); line-height: 1.6; }
-    }
-
-    .uiux-c-slide {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 6rem clamp(1.5rem, 5vw, 5rem);
-
-        &:nth-child(even) { background: var(--color-bg-card); }
-    }
-
-    .uiux-c-slide-inner {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: clamp(2rem, 5vw, 6rem);
-        align-items: center;
-        max-width: 1200px;
-        width: 100%;
-
-        @media (max-width: 768px) {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-    }
-
-    // Alternate image side
-    .uiux-c-slide.is-reversed .uiux-c-slide-inner {
-        grid-template-columns: 1fr 2fr;
-        .uiux-c-slider-wrap { order: 2; }
-        .uiux-c-info        { order: 1; }
-
-        @media (max-width: 768px) {
-            grid-template-columns: 1fr;
-            .uiux-c-slider-wrap { order: 1; }
-            .uiux-c-info        { order: 2; }
-        }
-    }
-
-    .uiux-c-slider-wrap {
-        width: 100%;
-        overflow: hidden;
-    }
-
-    .uiux-c-info { display: flex; flex-direction: column; gap: 0.75rem; }
-
-    .uiux-c-num      { font-size: 0.7rem; letter-spacing: 0.14em; color: var(--color-text-muted); font-weight: 600; }
-    .uiux-c-category { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); font-weight: 600; }
-    .uiux-c-title    { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700; color: var(--color-text); margin: 0; line-height: 1.15; }
-    .uiux-c-desc     { font-size: 1rem; line-height: 1.65; color: var(--color-text-secondary); margin: 0; }
+    padding: 8rem 0;
 }
+
+.uiux-c-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 4vw, 3rem);
+}
+
+.uiux-c-intro {
+    margin-bottom: 4rem;
+
+    .section-title    { color: var(--color-text); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; line-height: 1.1; margin: 0 0 1rem; }
+    .section-subtitle { color: var(--color-text-secondary); max-width: 500px; font-size: clamp(1rem, 2vw, 1.2rem); line-height: 1.6; }
+}
+
+.uiux-c-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+
+    @media (max-width: 900px) {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+}
+
+.uiux-c-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.uiux-c-slider-wrap {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.uiux-c-slider-wrap-cropped {
+    .ba-slider { height: 100%; }
+
+    .ba-img-flow {
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    .ba-img {
+        object-fit: cover;
+        object-position: top;
+    }
+}
+
+.uiux-c-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.uiux-c-category { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); font-weight: 600; display: block; }
+.uiux-c-title    { font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 700; color: var(--color-text); margin: 0; line-height: 1.2; }
+.uiux-c-desc     { font-size: 0.95rem; line-height: 1.65; color: var(--color-text-secondary); margin: 0; }
 
 // ─── Variant D — Horizontal drag carousel ─────────────────────────────────────
 

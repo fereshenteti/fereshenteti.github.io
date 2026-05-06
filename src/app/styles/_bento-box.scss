@@ -91,6 +91,59 @@
             font-weight: 700;
             color: var(--color-accent);
         }
+
+    }
+
+    .cycling-stat-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cycling-number-row {
+        display: inline-flex !important;
+        align-items: baseline;
+    }
+
+    .cycling-prefix {
+        display: inline-block;
+        transition: opacity 0.8s $FLUID;
+    }
+
+    .cycling-suffix-wrap {
+        position: relative;
+        display: inline-block;
+
+        .cycling-suffix { transition: opacity 0.8s $FLUID; }
+        .cycling-suffix-abs {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+
+    .cycling-label {
+        animation: cycling-label-fade 0.7s $FLUID both;
+    }
+
+    .cycling-stat-project {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: var(--color-text-secondary);
+        background: var(--color-bg-card);
+        border: 1px solid var(--color-border-medium);
+        border-radius: 50px;
+        padding: 3px 10px;
+        margin-top: 0.5rem;
+        letter-spacing: 0.02em;
+    }
+
+    @keyframes cycling-label-fade {
+        from { opacity: 0; transform: translateY(5px); }
+        to   { opacity: 1; transform: translateY(0); }
     }
 
     #my-avatar-card {
@@ -157,6 +210,40 @@
             height: 2rem;
             display: inline-flex;
         }
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: #22c55e;
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            border-radius: 50px;
+            padding: 4px 10px 4px 8px;
+            margin-top: 0.6rem;
+        }
+        .availability-dot {
+            position: relative;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            flex-shrink: 0;
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: 50%;
+                background: #22c55e;
+                animation: availability-pulse 1.8s ease-out infinite;
+            }
+        }
+    }
+
+    @keyframes availability-pulse {
+        0%   { transform: scale(1);   opacity: 0.6; }
+        100% { transform: scale(2.8); opacity: 0; }
     }
 
     #my-experience-card .custom-spotlight-card{

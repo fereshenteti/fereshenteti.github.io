@@ -1,0 +1,140 @@
+// ─── Testimonials Section ─────────────────────────────────────────────────────
+
+.testimonials-section {
+    background: var(--color-bg-alt);
+    padding: 8rem 0;
+}
+
+.testimonials-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 4vw, 3rem);
+}
+
+.testimonials-header {
+    margin-bottom: 4rem;
+
+    .section-title    { color: var(--color-text); }
+    .section-subtitle { color: var(--color-text-secondary); max-width: 420px; }
+}
+
+// ─── Grid ─────────────────────────────────────────────────────────────────────
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: 900px) {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+    }
+}
+
+// ─── Card ─────────────────────────────────────────────────────────────────────
+
+.testimonial-card {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-medium);
+    box-shadow: var(--color-shadow-sm);
+}
+
+.testimonial-inner {
+    padding: 2rem;
+    filter: blur(4px);
+    user-select: none;
+    pointer-events: none;
+
+
+}
+
+// ─── Card content ─────────────────────────────────────────────────────────────
+
+.testimonial-stars {
+    color: var(--color-accent);
+    font-size: 0.95rem;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+}
+
+.testimonial-quote {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--color-text);
+    margin: 0 0 1.5rem 0;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.testimonial-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-accent-soft);
+    border: 1px solid var(--color-accent-ring);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    flex-shrink: 0;
+}
+
+.testimonial-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.testimonial-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.testimonial-role {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+}
+
+// ─── Coming soon overlay ──────────────────────────────────────────────────────
+
+.testimonial-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: var(--color-bg-card);
+        opacity: 0.65;
+    }
+}
+
+.coming-soon-badge {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 50px;
+    padding: 5px 14px;
+    letter-spacing: 0.03em;
+    box-shadow: var(--color-shadow-sm);
+}
