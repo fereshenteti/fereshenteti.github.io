@@ -19,7 +19,7 @@ export const fetchSlides = async (): Promise<SlideData[]> => {
             
             // If it's just a filename (doesn't start with http), assume it's in the local assets folder
             if (src && !src.startsWith('http')) {
-                src = `assets/logos_photos/${src}`;
+                src = `assets/logos_photos/${src.replace(/\.png$/i, '.webp')}`;
             }
 
             return {

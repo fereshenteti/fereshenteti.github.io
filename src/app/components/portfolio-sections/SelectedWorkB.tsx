@@ -31,7 +31,7 @@ const caseStudies: Study[] = [
     category: 'UI Design / UX / Frontend',
     summary: `Sedeo is a marketplace for event equipment rentals. As the near-solo frontend engineer, I owned the full frontend — from design to production. I used Amplitude to trace real user behavior, identified the friction points blocking conversion, and redesigned those flows. Result: load time dropped from 1.9s to 0.56s, zero layout shifts, and a 17% lift in conversion rate.`,
     focusAreas: ['Next.js', 'UI UX', 'Performance', 'Amplitude', 'Accessibility', 'Conversion'],
-    image: 'assets/frontend_projects/sedeo.png',
+    image: 'assets/frontend_projects/sedeo.webp',
   },
   {
     title: 'InstaClear',
@@ -39,9 +39,9 @@ const caseStudies: Study[] = [
     summary: `InstaClear is an international real-time banking transaction platform built for the Central Bank of Tunisia, powered by MNBC — Monnaie Numérique de la Banque Centrale — a sovereign digital currency built on Blockchain. I contributed to the frontend of the platform that processed the first-ever MNBC transaction between Tunisia and France.`,
     focusAreas: ['React', 'Financial UI', 'SWIFT', 'Blockchain', 'Real-time', 'Enterprise'],
     images: [
-      'assets/frontend_projects/instaclear 1.png',
-      'assets/frontend_projects/instaclear 2.png',
-      'assets/frontend_projects/instaclear 3.png',
+      'assets/frontend_projects/instaclear 1.webp',
+      'assets/frontend_projects/instaclear 2.webp',
+      'assets/frontend_projects/instaclear 3.webp',
     ],
   },
   {
@@ -49,7 +49,7 @@ const caseStudies: Study[] = [
     category: 'UI Design / Dashboard / Frontend',
     summary: `Digital services company — designed and built its website and contributed to multiple internal products.`,
     focusAreas: ['Clarity', 'UI smoothness', 'Trust', 'Business UI', 'Mobile UI', 'Security'],
-    image: 'assets/frontend_projects/Value website 1.png',
+    image: 'assets/frontend_projects/Value website 1.webp',
     url: 'https://value.com.tn',
   },
   {

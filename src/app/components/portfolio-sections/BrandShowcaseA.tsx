@@ -19,8 +19,8 @@ const brands = [
     logoDark: '/assets/brands-logos/Hellcap hustle logo - dark.svg',
     colors: ['#2F2F2F', '#F6CC82', '#003366'],
     typography: { Logo: 'Futura', Heading: 'Outfit bold', Body: 'Outfit light' },
-    mockup: '/assets/brandbooks/Hellcap brandbook showcase.png',
-    background: '/assets/backgrounds/brand-showcase/Hellcap background.png',
+    mockup: '/assets/brandbooks/Hellcap brandbook showcase.webp',
+    background: '/assets/backgrounds/brand-showcase/Hellcap background.webp',
   },
   {
     name: 'MioTocco',
@@ -30,9 +30,9 @@ const brands = [
     logoDark: '/assets/brands-logos/MioTocco logo - dark.svg',
     colors: ['#C51D1D', '#FFC300', '#1F1F1F', '#EFEFEF'],
     typography: { Font: 'Aclonica Regular' },
-    mockup: '/assets/brandbooks/MioTocco brandbook showcase.png',
+    mockup: '/assets/brandbooks/MioTocco brandbook showcase.webp',
     url: 'https://www.instagram.com/mio_tocco/',
-    background: '/assets/backgrounds/brand-showcase/MioTocco background.png',
+    background: '/assets/backgrounds/brand-showcase/MioTocco background.webp',
   },
   {
     name: 'ZenOAin',
@@ -42,8 +42,8 @@ const brands = [
     logoDark: '/assets/brands-logos/ZenOAin logo - dark.svg',
     colors: ['#0D1B48', '#FFFFFF'],
     typography: { Logo: 'Ahsing', Text: 'Helvetica' },
-    mockup: '/assets/brandbooks/ZenOAin brandbook showcase.png',
-    background: '/assets/backgrounds/brand-showcase/ZenOAin background.png',
+    mockup: '/assets/brandbooks/ZenOAin brandbook showcase.webp',
+    background: '/assets/backgrounds/brand-showcase/ZenOAin background.webp',
   },
   {
     name: 'XDrivo',
@@ -53,9 +53,9 @@ const brands = [
     logoDark: '/assets/brands-logos/XDrivo logo - dark.svg',
     colors: ['#002B4A', '#00B07A', '#555555', '#E3E3E3'],
     typography: { Logo: 'Audiowide', Text: 'Helvetica' },
-    mockup: '/assets/brandbooks/XDrivo brandbook showcase.png',
+    mockup: '/assets/brandbooks/XDrivo brandbook showcase.webp',
     url: 'https://xdrivo.com/en-UK',
-    background: '/assets/backgrounds/brand-showcase/XDrivo background.png',
+    background: '/assets/backgrounds/brand-showcase/XDrivo background.webp',
   },
 ];
 

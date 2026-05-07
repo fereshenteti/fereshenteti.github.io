@@ -78,7 +78,7 @@ const FigmaShowcase = () => {
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
           >
-            <Image src="/assets/uiux_design/figma/top toolbar.png" alt="Figma top toolbar" width={2936} height={76} draggable={false} />
+            <Image src="/assets/uiux_design/figma/top toolbar.webp" alt="Figma top toolbar" width={2936} height={76} draggable={false} />
           </motion.div>
 
           {/* Middle row: left panel + canvas + right panel */}
@@ -90,7 +90,7 @@ const FigmaShowcase = () => {
               initial="hidden"
               animate={isInView ? 'visible' : 'hidden'}
             >
-              <Image src="/assets/uiux_design/figma/left panel.png" alt="Figma layers panel" width={480} height={1638} draggable={false} />
+              <Image src="/assets/uiux_design/figma/left panel.webp" alt="Figma layers panel" width={480} height={1638} draggable={false} />
             </motion.div>
 
             <motion.div
@@ -102,7 +102,7 @@ const FigmaShowcase = () => {
               onMouseMove={onCanvasMouseMove}
               onMouseLeave={onCanvasMouseLeave}
             >
-              <Image src="/assets/uiux_design/figma/figma preview.png" alt="Figma canvas" width={2926} height={1392} draggable={false} />
+              <Image src="/assets/uiux_design/figma/figma preview.webp" alt="Figma canvas" width={2926} height={1392} draggable={false} />
 
               {/* Bottom toolbar — overlaid on the canvas */}
               <motion.div
@@ -111,7 +111,7 @@ const FigmaShowcase = () => {
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
               >
-                <Image src="/assets/uiux_design/figma/bottom toolbar.png" alt="Figma bottom toolbar" width={1004} height={92} draggable={false} />
+                <Image src="/assets/uiux_design/figma/bottom toolbar.webp" alt="Figma bottom toolbar" width={1004} height={92} draggable={false} />
               </motion.div>
 
               {/* Custom cursor — scoped to canvas */}
@@ -124,7 +124,7 @@ const FigmaShowcase = () => {
               initial="hidden"
               animate={isInView ? 'visible' : 'hidden'}
             >
-              <Image src="/assets/uiux_design/figma/right panel.png" alt="Figma properties panel" width={478} height={1636} draggable={false} />
+              <Image src="/assets/uiux_design/figma/right panel.webp" alt="Figma properties panel" width={478} height={1636} draggable={false} />
             </motion.div>
 
           </div>

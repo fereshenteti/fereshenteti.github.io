@@ -65,7 +65,7 @@ const Header_v1 = () => {
         <>
             <div className='header-main'>
                 <div className='left'>
-                    <Image src="/assets/me-v4.png" alt="Feres Henteti" width={70} height={70} className='my-avatar' priority />
+                    <Image src="/assets/me-v4.webp" alt="Feres Henteti" width={70} height={70} className='my-avatar' priority />
                 </div>
                 <div className='right'>
                     <a className={'menu-item menu-item-home ' + (selectedMenuItem[0] ? 'selected' : '')} href='#home' onClick={() => selectMenuItem(0)}>
