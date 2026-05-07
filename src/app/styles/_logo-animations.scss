@@ -2,7 +2,11 @@
 
 .logo-animations-section {
     background: var(--color-bg);
-    padding: 8rem 0;
+    padding: 6rem 0;
+
+    @media screen and (max-width: 768px) {
+        padding: 4rem 0;
+    }
 
     .portfolio-container {
         max-width: 1200px;

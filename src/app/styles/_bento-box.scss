@@ -5,6 +5,10 @@
     min-height: 100vh;
     background: var(--color-bg);
     padding: 6rem 0;
+
+    @media screen and (max-width: 768px) {
+        padding: 4rem 0;
+    }
     position: relative;
     z-index: 10;
 

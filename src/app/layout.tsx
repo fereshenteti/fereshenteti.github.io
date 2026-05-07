@@ -12,17 +12,19 @@ export const metadata: Metadata = {
   title: "Feres Henteti - Portfolio",
   description: "Portfolio of Feres Henteti, showcasing projects and designs.",
   openGraph: {
-    title: "Feres Henteti - Portfolio",
+    title: "Fares Hentati - Portfolio",
     description: "Check out my latest projects and designs.",
     url: "https://fereshenteti.github.io",
-    siteName: "Feres Henteti",
+    siteName: "Fares Hentati",
     locale: "en_US",
     type: "website",
+    images: [{ url: '/og-image.png', width: 2400, height: 1260, alt: 'Fares Hentati – UI/UX Designer & Frontend Engineer' }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Feres Henteti - Portfolio",
+    title: "Fares Hentati - Portfolio",
     description: "Check out my latest projects and designs.",
+    images: ['/og-image.png'],
   },
 };
 

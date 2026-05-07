@@ -2,8 +2,12 @@
 
 .brand-showcase-a {
     background: var(--color-bg);
-    padding: 8rem 0;
+    padding: 6rem 0;
     overflow: hidden;
+
+    @media screen and (max-width: 768px) {
+        padding: 4rem 0;
+    }
 }
 
 .brand-a-container {
