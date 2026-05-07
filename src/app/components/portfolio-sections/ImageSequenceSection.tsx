@@ -23,20 +23,6 @@ const ImageSequenceSection = () => {
   const textOpacity = useTransform(scrollYProgress, [0.7, 0.9], [0, 1]);
   const textY = useTransform(scrollYProgress, [0.7, 0.9], [40, 0]);
 
-  // Preload all frames
-  useEffect(() => {
-    const imgs: HTMLImageElement[] = [];
-    for (let i = 1; i <= FRAME_COUNT; i++) {
-      const img = new Image();
-      img.src = FRAME_PATH(i);
-      imgs.push(img);
-    }
-    imagesRef.current = imgs;
-
-    // Draw first frame once loaded
-    imgs[0].onload = () => drawFrame(0);
-  }, []);
-
   const drawFrame = useCallback((index: number) => {
     const canvas = canvasRef.current;
     const img = imagesRef.current[index];
@@ -56,6 +42,31 @@ const ImageSequenceSection = () => {
     ctx.clearRect(0, 0, width, height);
     ctx.drawImage(img, sx, sy, sw, sh);
   }, []);
+
+  // Preload all frames only when the section enters the viewport
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+
+        const imgs: HTMLImageElement[] = [];
+        for (let i = 1; i <= FRAME_COUNT; i++) {
+          const img = new Image();
+          img.src = FRAME_PATH(i);
+          imgs.push(img);
+        }
+        imagesRef.current = imgs;
+        imgs[0].onload = () => drawFrame(0);
+      },
+      { rootMargin: '200px' }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [drawFrame]);
 
   // Resize canvas to fill viewport
   useEffect(() => {

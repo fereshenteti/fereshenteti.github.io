@@ -3,6 +3,7 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { animate, useInView } from 'framer-motion';
 import { Satoshi } from '../../../fonts/fonts';
+import Image from 'next/image';
 
 interface Props {
   before: string;
@@ -65,11 +66,11 @@ const BeforeAfterSlider = ({ before, after }: Props) => {
       onPointerLeave={onPointerUp}
     >
       {/* After — in normal flow, sizes the container */}
-      <img src={after} alt="After" className="ba-img-flow" draggable={false} />
+      <Image src={after} alt="After" width={1512} height={982} className="ba-img-flow" draggable={false} />
 
       {/* Before — absolute overlay, clipped */}
       <div className="ba-before-wrap" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
-        <img src={before} alt="Before" className="ba-img" draggable={false} />
+        <Image src={before} alt="Before" width={1512} height={982} className="ba-img" draggable={false} />
         <span className={`ba-label ba-label-before ${Satoshi.className}`}>Before</span>
       </div>
 

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
 import { MyCustomButton } from '../common-ui/custom-button';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 type Study = {
   title: string;
@@ -30,7 +31,7 @@ const caseStudies: Study[] = [
     category: 'UI Design / UX / Frontend',
     summary: `Sedeo is a marketplace for event equipment rentals. As the near-solo frontend engineer, I owned the full frontend — from design to production. I used Amplitude to trace real user behavior, identified the friction points blocking conversion, and redesigned those flows. Result: load time dropped from 1.9s to 0.56s, zero layout shifts, and a 17% lift in conversion rate.`,
     focusAreas: ['Next.js', 'UI UX', 'Performance', 'Amplitude', 'Accessibility', 'Conversion'],
-    image: 'assets/frontend_projects/sedeo.png',
+    image: 'assets/frontend_projects/sedeo.webp',
   },
   {
     title: 'InstaClear',
@@ -38,9 +39,9 @@ const caseStudies: Study[] = [
     summary: `InstaClear is an international real-time banking transaction platform built for the Central Bank of Tunisia, powered by MNBC — Monnaie Numérique de la Banque Centrale — a sovereign digital currency built on Blockchain. I contributed to the frontend of the platform that processed the first-ever MNBC transaction between Tunisia and France.`,
     focusAreas: ['React', 'Financial UI', 'SWIFT', 'Blockchain', 'Real-time', 'Enterprise'],
     images: [
-      'assets/frontend_projects/instaclear 1.png',
-      'assets/frontend_projects/instaclear 2.png',
-      'assets/frontend_projects/instaclear 3.png',
+      'assets/frontend_projects/instaclear 1.webp',
+      'assets/frontend_projects/instaclear 2.webp',
+      'assets/frontend_projects/instaclear 3.webp',
     ],
   },
   {
@@ -48,7 +49,7 @@ const caseStudies: Study[] = [
     category: 'UI Design / Dashboard / Frontend',
     summary: `Digital services company — designed and built its website and contributed to multiple internal products.`,
     focusAreas: ['Clarity', 'UI smoothness', 'Trust', 'Business UI', 'Mobile UI', 'Security'],
-    image: 'assets/frontend_projects/Value website 1.png',
+    image: 'assets/frontend_projects/Value website 1.webp',
     url: 'https://value.com.tn',
   },
   {
@@ -65,9 +66,9 @@ const caseStudies: Study[] = [
 // Each layer rises from below at a different Y offset (parallax depth) and loops every 4 s.
 const LayeredShowcase = ({ images, alt }: { images: string[]; alt: string }) => (
   <div className="sw-b-layered">
-    <img src={images[0]} alt={`${alt} – overview`}     className="sw-b-layer sw-b-layer--1" />
-    <img src={images[1]} alt={`${alt} – detail`}       className="sw-b-layer sw-b-layer--2" />
-    <img src={images[2]} alt={`${alt} – transactions`} className="sw-b-layer sw-b-layer--3" />
+    <Image src={images[0]} alt={`${alt} – overview`}     width={800} height={600} className="sw-b-layer sw-b-layer--1" />
+    <Image src={images[1]} alt={`${alt} – detail`}       width={800} height={600} className="sw-b-layer sw-b-layer--2" />
+    <Image src={images[2]} alt={`${alt} – transactions`} width={800} height={600} className="sw-b-layer sw-b-layer--3" />
   </div>
 );
 
@@ -204,7 +205,7 @@ const SelectedWorkB = () => {
                   ? <video src={study.video} muted loop playsInline autoPlay />
                   : study.images
                     ? <LayeredShowcase images={study.images} alt={study.title} />
-                    : <img src={study.image} alt={study.title} />
+                    : <Image src={study.image!} alt={study.title} width={800} height={600} />
                 }
               </div>
               <div className="sw-b-card-info">
@@ -240,7 +241,7 @@ const SelectedWorkB = () => {
                 ? <video src={selected.video} muted loop playsInline autoPlay />
                 : selected.images
                   ? <LayeredShowcase images={selected.images} alt={selected.title} />
-                  : <img src={selected.image} alt={selected.title} />
+                  : <Image src={selected.image!} alt={selected.title} width={800} height={600} />
               }
             </div>
 

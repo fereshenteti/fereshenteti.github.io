@@ -10,15 +10,15 @@ const projects = [
     title: 'Digicap',
     category: 'UI Redesign',
     description: 'A complete visual overhaul of Digicap\'s interface — modernizing the layout and design system while preserving the product\'s core functionality and information architecture.',
-    before: 'assets/uiux_design/Digicap before.png',
-    after: 'assets/uiux_design/Digicap after.png',
+    before: 'assets/uiux_design/Digicap before.webp',
+    after: 'assets/uiux_design/Digicap after.webp',
   },
   {
     title: 'SISSPL – Essaha Aziza',
     category: 'UI Redesign',
     description: 'Redesigned the patient-facing interface for a healthcare platform, prioritizing clarity, accessibility, and a calmer visual tone that builds trust with users.',
-    before: 'assets/uiux_design/SISSPL - Essaha Aziza before.png',
-    after: 'assets/uiux_design/SISSPL - Essaha Aziza after.png',
+    before: 'assets/uiux_design/SISSPL - Essaha Aziza before.webp',
+    after: 'assets/uiux_design/SISSPL - Essaha Aziza after.webp',
   },
 ];
 

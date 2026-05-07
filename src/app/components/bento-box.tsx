@@ -2,13 +2,14 @@
 
 import SectionDotGrid from './SectionDotGrid';
 import gsap from 'gsap';
-import Lottie from 'lottie-react';
 import { useEffect, useRef, useState } from 'react';
 import { ClashDisplay, Satoshi } from '../../fonts/fonts';
-import waveAnimation from '../../../public/assets/animations/wave-hi-animation.json';
 import CountUp from '../animations/CountUp/CountUp';
 import { MyCustomButton } from './common-ui/custom-button';
 import CustomBentoCard from './custom-bento-card';
+import Image from 'next/image';
+import Lottie from 'lottie-react';
+import waveAnimation from '../../../public/assets/animations/wave-hi-animation.json';
 
 const ExperienceChart = () => {
     const polylineRef = useRef<SVGPolylineElement>(null);
@@ -239,35 +240,50 @@ const BentoBox = () => {
             tl?.kill();
             btn.classList.remove('is-circle');
 
-            // Snapshot current center (GSAP may have animated top/left)
-            const r   = btn.getBoundingClientRect();
-            const cx  = r.left + r.width  / 2;
-            const cy  = r.top  + r.height / 2;
+            // Snapshot where the button currently is
+            const r       = btn.getBoundingClientRect();
+            const startCx = r.left + r.width  / 2;
+            const startCy = r.top  + r.height / 2;
 
-            // Ensure fixed + top/left in center coords
             btn.style.position = 'fixed';
-            gsap.set(btn, { top: cy, left: cx, width: r.width, height: r.height });
+            gsap.set(btn, { top: startCy, left: startCx, width: r.width, height: r.height });
 
-            const { cx: targetCx, cy: targetCy } = getCardCenter();
+            // Animate position with a live-tracking ticker so the button always
+            // lands on the card even if the user is still scrolling during the animation.
+            const DURATION  = 0.45;
+            const easeFunc  = gsap.parseEase('power3.out');
+            const startTime = gsap.ticker.time;
+            const setTop    = gsap.quickSetter(btn, 'top',  'px') as (v: number) => void;
+            const setLeft   = gsap.quickSetter(btn, 'left', 'px') as (v: number) => void;
+
+            const trackPos = () => {
+                const progress = Math.min((gsap.ticker.time - startTime) / DURATION, 1);
+                const eased    = easeFunc(progress);
+                const { cx: tCx, cy: tCy } = getCardCenter();
+                setLeft(startCx + (tCx - startCx) * eased);
+                setTop (startCy + (tCy - startCy) * eased);
+                if (progress >= 1) gsap.ticker.remove(trackPos);
+            };
+            gsap.ticker.add(trackPos);
 
             tl = gsap.timeline({
                 onComplete: () => {
+                    gsap.ticker.remove(trackPos);
                     // Clear all inline overrides → CSS restores absolute + translate(-50%,-50%)
                     btn.style.cssText = '';
                     tl = null;
                 },
             });
             tl.to(iconEl,   { filter: 'none', duration: 0.2 }, 0);
-            tl.set(textSpan, { display: '' }, 0.1);           // restore layout before fade-in
+            tl.set(textSpan, { display: '' }, 0.1);
             tl.to(textSpan, { opacity: 1,    duration: 0.2 }, 0.1);
             tl.to(btn, {
-                top: targetCy, left: targetCx,
                 width: pillW,  height: pillH,
                 borderRadius: '60px',
                 backgroundColor: 'white',
                 borderColor: '#FF791B',
                 boxShadow: '7px 10px 0 0 #FF791B',
-                duration: 0.5, ease: 'power3.inOut',
+                duration: DURATION, ease: 'power3.out',
             }, 0);
         };
 
@@ -339,8 +355,8 @@ const BentoBox = () => {
                             onMouseMove={handleAvatarMouseMove}
                             onMouseLeave={handleAvatarMouseLeave}
                         >
-                            <img src="/assets/images/my_avatar_sketch.png" alt="My Avatar Sketch" className="bento-image avatar-back" />
-                            <img src="/assets/images/my_Apple_avatar.png" alt="My Avatar" className="bento-image avatar-front" />
+                            <Image src="/assets/images/my_avatar_sketch.webp" alt="My Avatar Sketch" width={330} height={330} className="bento-image avatar-back" priority />
+                            <Image src="/assets/images/my_Apple_avatar.webp" alt="My Avatar" width={330} height={330} className="bento-image avatar-front" priority />
                         </div>
                     </CustomBentoCard>
 
