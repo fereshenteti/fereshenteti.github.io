@@ -9,11 +9,11 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://fereshenteti.vercel.app'),
-  title: "Feres Henteti - Portfolio",
-  description: "Portfolio of Feres Henteti, showcasing projects and designs.",
+  title: "Fares Hentati – UI/UX Designer & Frontend Engineer",
+  description: "UI/UX designer and frontend engineer crafting intuitive digital experiences. Available for freelance projects in design and development.",
   openGraph: {
-    title: "Fares Hentati - Portfolio",
-    description: "Check out my latest projects and designs.",
+    title: "Fares Hentati – UI/UX Designer & Frontend Engineer",
+    description: "UI/UX designer and frontend engineer crafting intuitive digital experiences. Available for freelance projects in design and development.",
     url: "https://fereshenteti.vercel.app",
     siteName: "Fares Hentati",
     locale: "en_US",
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fares Hentati - Portfolio",
-    description: "Check out my latest projects and designs.",
+    title: "Fares Hentati – UI/UX Designer & Frontend Engineer",
+    description: "UI/UX designer and frontend engineer crafting intuitive digital experiences. Available for freelance projects in design and development.",
   },
 };
 
