@@ -1,6 +1,5 @@
 'use client';
 
-import SectionDotGrid from '../SectionDotGrid';
 import React, { useRef, useState, useEffect } from 'react';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
 import { useGSAP } from '@gsap/react';
@@ -54,8 +53,10 @@ type Category  = { label: string; tools: ToolItem[] };
 // Consistent slight rotations give the grid an organic feel (same as the Apple reference)
 const ROTATIONS = [-12, 8, -5, 14, -10, 6, -16, 11, -4, 13, -7, 5];
 
-// 2 columns for small categories (4 logos → 2×2), 4 for larger ones
-const getCols = (n: number) => (n <= 4 ? 2 : 4);
+// Desktop: 2 cols for small categories (2×2), 4 for larger
+const getCols   = (n: number) => (n <= 4 ? 2 : 4);
+// Tablet/mobile: cap large categories at 3 cols to fit narrower screens
+const getColsSm = (n: number) => (n <= 4 ? 2 : 3);
 
 const categories: Category[] = [
   {
@@ -159,7 +160,7 @@ const ToolsCloud = () => {
 
   return (
     <section className="tools-cloud-section" ref={sectionRef} style={{ position: 'relative' }}>
-      <SectionDotGrid />
+      {/* <SectionDotGrid /> */}
       <div className="portfolio-container">
         <div className="section-header">
           <div ref={titleRef}>
@@ -199,7 +200,10 @@ const ToolsCloud = () => {
               {/* Grid cluster — equal spacing, slight per-logo rotation */}
               <div
                 className="scatter-logo-cluster"
-                style={{ '--logo-cols': getCols(active.tools.length) } as React.CSSProperties}
+                style={{
+                  '--logo-cols':    getCols(active.tools.length),
+                  '--logo-cols-sm': getColsSm(active.tools.length),
+                } as React.CSSProperties}
               >
                 {active.tools.map((tool, i) => (
                   <motion.div

@@ -54,15 +54,20 @@
         background: #EFEFEF;
         border-radius: 24px;
         min-height: 500px;
-        width: 700px;
+        width: min(700px, 100%);
         margin: auto;
         margin-top: 3rem;
         overflow: hidden;
         cursor: default;
 
         @media screen and (max-width: 768px) {
-            min-height: 300px;
+            min-height: 420px;
             border-radius: 18px;
+        }
+
+        @media screen and (max-width: 480px) {
+            min-height: 380px;
+            border-radius: 14px;
         }
     }
 
@@ -83,6 +88,10 @@
         pointer-events: none;
         flex-shrink: 0;
         z-index: 2;
+
+        @media screen and (max-width: 480px) {
+            padding: 1.5rem 1rem 0;
+        }
     }
 
     .tools-card-eyebrow {
@@ -96,7 +105,7 @@
     }
 
     .tools-card-title {
-        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-size: clamp(1.6rem, 5vw, 3.2rem);
         font-weight: 700;
         color: #111;
         margin: 0;
@@ -114,6 +123,18 @@
         align-content: center;
         justify-content: center;
         padding: 1rem 2rem 3.5rem; // bottom padding clears the dot indicators
+
+        @media screen and (max-width: 768px) {
+            grid-template-columns: repeat(var(--logo-cols, 4), 52px);
+            gap: 20px;
+            padding: 0.75rem 1.5rem 3rem;
+        }
+
+        @media screen and (max-width: 480px) {
+            grid-template-columns: repeat(var(--logo-cols, 4), 44px);
+            gap: 14px;
+            padding: 0.5rem 1rem 2.75rem;
+        }
     }
 
     .scatter-logo {
@@ -154,8 +175,13 @@
         }
 
         @media screen and (max-width: 768px) {
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
+        }
+
+        @media screen and (max-width: 480px) {
+            width: 44px;
+            height: 44px;
         }
     }
 
@@ -261,12 +287,12 @@
             &:hover:not(.category-dot--active) { background: rgba(255, 255, 255, 0.4); }
         }
 
-        .tool-icon--invert-dark svg {
-            filter: invert(1) drop-shadow(0 6px 16px rgba(0, 0, 0, 0.3));
-        }
-
         .scatter-logo-icon svg {
             filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.3));
+        }
+
+        .scatter-logo-icon.tool-icon--invert-dark svg {
+            filter: invert(1) drop-shadow(0 6px 16px rgba(255, 255, 255, 0.08));
         }
     }
 }
