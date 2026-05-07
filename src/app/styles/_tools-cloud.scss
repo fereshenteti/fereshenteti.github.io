@@ -2,13 +2,13 @@
 
 .tools-cloud-section {
     width: 100%;
-    padding: 8rem 0 6rem;
+    padding: 6rem 0;
     background-color: var(--color-bg);
     position: relative;
     overflow: hidden;
 
     @media screen and (max-width: 768px) {
-        padding: 4rem 0 3rem;
+        padding: 4rem 0;
     }
 
     .portfolio-container {

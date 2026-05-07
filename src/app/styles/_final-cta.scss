@@ -2,7 +2,11 @@
 
 .final-cta-section {
     width: 100%;
-    padding: 10rem 0;
+    padding: 8rem 0;
+
+    @media screen and (max-width: 768px) {
+        padding: 5rem 0;
+    }
     background-color: var(--color-bg-alt);
     color: var(--color-text);
     position: relative;

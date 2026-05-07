@@ -2,8 +2,12 @@
 
 .selected-work-b-section {
     background: var(--color-bg-alt);
-    padding: 8rem 0;
+    padding: 6rem 0;
     overflow: hidden;
+
+    @media screen and (max-width: 768px) {
+        padding: 4rem 0;
+    }
 }
 
 .sw-b-container {

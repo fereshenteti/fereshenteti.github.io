@@ -175,7 +175,11 @@
 
 .uiux-b-section {
     background: var(--color-bg);
-    padding: 8rem 0;
+    padding: 6rem 0;
+
+    @media screen and (max-width: 768px) {
+        padding: 4rem 0;
+    }
 
     .portfolio-container {
         max-width: 1200px;
@@ -237,7 +241,11 @@
 
 .uiux-c-section {
     background: var(--color-bg);
-    padding: 8rem 0;
+    padding: 6rem 0;
+
+    @media screen and (max-width: 768px) {
+        padding: 4rem 0;
+    }
 }
 
 .uiux-c-container {
@@ -306,7 +314,11 @@
 
 .uiux-d-section {
     background: var(--color-bg);
-    padding: 8rem 0 6rem;
+    padding: 6rem 0;
+
+    @media screen and (max-width: 768px) {
+        padding: 4rem 0;
+    }
     overflow: hidden;
 
     .uiux-d-header {

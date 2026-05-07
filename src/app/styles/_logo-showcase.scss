@@ -2,7 +2,11 @@
 
 .logo-showcase-section {
     width: 100%;
-    padding: 8rem 0;
+    padding: 6rem 0;
+
+    @media screen and (max-width: 768px) {
+        padding: 4rem 0;
+    }
     background-color: var(--color-bg-alt);
     position: relative;
 
