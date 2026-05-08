@@ -5,10 +5,7 @@ import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
 import Image from 'next/image';
-import { MyCustomButton } from '../common-ui/custom-button';
 import { useTheme } from '../../context/ThemeContext';
-
-const openExternalLink = (url: string) => window.open(url, '_blank');
 
 const brands = [
   {
@@ -175,17 +172,6 @@ const BrandCard = ({ brand, theme, onClick }: { brand: Brand; theme: string; onC
             )}
           </div>
         </div>
-
-        {brand.url && (
-          <div onClick={e => e.stopPropagation()} style={{ alignSelf: 'flex-end' }}>
-            <MyCustomButton
-              btnIcon="assets/icons/external-link.svg"
-              btnText="Visit website"
-              className="secondary-cta"
-              onClick={() => openExternalLink(brand.url!)}
-            />
-          </div>
-        )}
 
       </div>
     </div>

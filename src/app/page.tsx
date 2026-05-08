@@ -1,5 +1,4 @@
 "use client";
-import Script from 'next/script';
 import BentoBox from './components/bento-box';
 import Footer from './components/footer';
 import Header_v1 from './components/header/header_v1';
@@ -38,13 +37,9 @@ const Home = () => {
       <ToolsCloud />
       <ProcessSection />
 
-      <ImageSequenceSection />
+      {/* <ImageSequenceSection /> */}
       <TestimonialsSection />
       <FinalCTA />
-
-      {/* Calendly popup */}
-      <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
-      <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
 
       <Footer />
 

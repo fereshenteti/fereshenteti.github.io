@@ -111,18 +111,12 @@
     position: relative;
     height: 350px;
     overflow: hidden;
-    background: #111;
+    background: var(--color-bg-card);
     flex-shrink: 0;
 }
 
 .brand-a-card-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.45;
-    pointer-events: none;
+    display: none;
 }
 
 .brand-a-card-mockup {
