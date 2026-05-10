@@ -2,7 +2,7 @@
 
 .image-seq-section {
     position: relative;
-    height: 600vh;
+    height: 280vh;
 }
 
 .image-seq-sticky {
@@ -13,15 +13,27 @@
     z-index: 1;
 }
 
-.image-seq-video {
+.image-seq-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/my_creative/me-creative-bg.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.image-seq-svg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 1;
-    pointer-events: none;
+    z-index: 2;
+
+    // Hide all mask stroke paths before JS sets the real dasharray/dashoffset
+    mask path {
+        stroke-dasharray: 10000;
+        stroke-dashoffset: 10000;
+    }
 }
 
 .image-seq-text {

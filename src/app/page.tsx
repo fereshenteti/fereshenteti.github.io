@@ -37,7 +37,7 @@ const Home = () => {
       <ToolsCloud />
       <ProcessSection />
 
-      {/* <ImageSequenceSection /> */}
+      <ImageSequenceSection />
       <TestimonialsSection />
       <FinalCTA />
 
