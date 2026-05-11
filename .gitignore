@@ -2,6 +2,29 @@
 .DS_Store
 **/.DS_Store
 
+# AI tools & instruction files
+.cursor/
+.cursorignore
+.cursorindexingignore
+.aider
+.aider*
+.continue/
+.copilot/
+.codeium/
+.windsurf/
+.github/copilot-instructions.md
+.github/claude-instructions.md
+CLAUDE.md
+AGENTS.md
+
+# Specifications & design docs
+specs/
+*.spec.md
+requirements/
+REQUIREMENTS.md
+SPEC.md
+BRIEF.md
+
 # Logs
 logs
 *.log
