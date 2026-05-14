@@ -6,7 +6,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "dev": "rm -rf .next && next dev --turbopack",
+    "dev": "rm -rf .next && next dev --turbopack --port 3001",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "next lint",
