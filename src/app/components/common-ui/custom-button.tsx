@@ -1,3 +1,4 @@
+'use client';
 import { Button } from "@mui/material";
 import { FC, RefObject } from "react";
 import { ReactSVG } from 'react-svg';

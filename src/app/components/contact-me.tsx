@@ -1,3 +1,4 @@
+'use client';
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import Form from 'react-bootstrap/Form';

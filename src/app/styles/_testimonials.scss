@@ -141,8 +141,8 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
     border-top: 1px solid var(--color-border-subtle);
 }
 
@@ -167,6 +167,12 @@
     gap: 2px;
 }
 
+.testimonial-name-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
 .testimonial-name {
     font-size: 0.875rem;
     font-weight: 600;
@@ -176,6 +182,11 @@
 .testimonial-role {
     font-size: 0.8rem;
     color: var(--color-text-secondary);
+}
+
+.testimonial-date {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
 }
 
 // ─── Coming soon overlay ──────────────────────────────────────────────────────

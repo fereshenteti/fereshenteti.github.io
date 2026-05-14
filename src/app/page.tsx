@@ -1,4 +1,3 @@
-"use client";
 import BentoBox from './components/bento-box';
 import Footer from './components/footer';
 import Header_v1 from './components/header/header_v1';

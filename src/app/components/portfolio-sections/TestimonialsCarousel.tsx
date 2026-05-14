@@ -167,9 +167,17 @@ export default function TestimonialsCarousel({ recommendations }: { recommendati
                       {isReal ? getInitials(r!.fullName) : p!.initials}
                     </div>
                     <div className="testimonial-info">
-                      <span className={`testimonial-name ${Satoshi.className}`}>
-                        {isReal ? r!.fullName : p!.name}
-                      </span>
+                      <div className="testimonial-name-row">
+                        <span className={`testimonial-name ${Satoshi.className}`}>
+                          {isReal ? r!.fullName : p!.name}
+                        </span>
+                        <span> • </span>
+                        {isReal && (
+                          <span className={`testimonial-date ${Satoshi.className}`}>
+                            {new Date(r!.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                          </span>
+                        )}
+                      </div>
                       <span className={`testimonial-role ${Satoshi.className}`}>
                         {isReal ? r!.company : p!.role}
                       </span>
