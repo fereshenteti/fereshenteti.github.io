@@ -7,18 +7,16 @@ import Social from '@/app/components/social';
 import Image from 'next/image';
 
 // refractive uses ImageData (browser-only API) — must never run on the server
-const RefractiveIsland = dynamic(
+// Rendered as background-only (no children) so content is always visible immediately
+const RefractiveGlass = dynamic(
     () => import('@hashintel/refractive').then(m => {
         const { refractive } = m;
-        const Island = ({ children, ...props }: React.ComponentProps<typeof refractive.div>) =>
-            <refractive.div {...props}>{children}</refractive.div>;
-        Island.displayName = 'RefractiveIsland';
-        return { default: Island };
+        const Glass = (props: React.ComponentProps<typeof refractive.div>) =>
+            <refractive.div {...props} />;
+        Glass.displayName = 'RefractiveGlass';
+        return { default: Glass };
     }),
-    {
-        ssr: false,
-        loading: () => <div id='dynamic-island' className='dynamic-island' />,
-    }
+    { ssr: false, loading: () => null }
 );
 
 const Header_v1 = () => {
@@ -61,58 +59,57 @@ const Header_v1 = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedMenuItem]);
 
-    const islandContent = (
-        <>
-            <div className='header-main'>
-                <div className='left'>
-                    <Image src="/assets/me-v4.webp" alt="Feres Henteti" width={70} height={70} className='my-avatar' priority />
-                </div>
-                <div className='right'>
-                    <a className={'menu-item menu-item-home ' + (selectedMenuItem[0] ? 'selected' : '')} href='#home' onClick={() => selectMenuItem(0)}>
-                        Home
-                    </a>
-                    <div className={'menu-item ' + (selectedMenuItem[1] ? 'selected' : '')} onClick={() => selectMenuItem(1)}>
-                        Contact Me
-                        <div className='menu-item-icon'>
-                            <ArrowDownwardIcon className={selectedMenuItem[1] ? 'rotate-180' : ''} />
-                        </div>
-                    </div>
-                    <div className={'menu-item ' + (selectedMenuItem[2] ? 'selected' : '')} onClick={() => selectMenuItem(2)}>
-                        Social
-                        <div className='menu-item-icon'>
-                            <ArrowDownwardIcon className={selectedMenuItem[2] ? 'rotate-180' : ''} />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id='contactUs' className={selectedMenuItem[1] ? 'show-header-content' : ''}>
-                {selectedMenuItem[1] && <ContactMe />}
-            </div>
-
-            <div id='social-media-container' className={selectedMenuItem[2] ? 'show-header-content' : ''}>
-                {selectedMenuItem[2] && <Social />}
-            </div>
-        </>
-    );
-
     return (
         <div className='header'>
-            <RefractiveIsland
-                id='dynamic-island'
-                className='dynamic-island'
-                refraction={{
-                    radius: 25,
-                    blur: isOpen ? 14 : 6,
-                    bezelWidth: 24,
-                    glassThickness: 120,
-                    refractiveIndex: 3,
-                    specularOpacity: 0.4,
-                    specularAngle: 45,
-                }}
-            >
-                {islandContent}
-            </RefractiveIsland>
+            <div id='dynamic-island' className='dynamic-island'>
+                {/* Glass effect loads async as a background — never wraps content */}
+                <RefractiveGlass
+                    className='dynamic-island-glass'
+                    refraction={{
+                        radius: 25,
+                        blur: isOpen ? 14 : 6,
+                        bezelWidth: 24,
+                        glassThickness: 120,
+                        refractiveIndex: 3,
+                        specularOpacity: 0.4,
+                        specularAngle: 45,
+                    }}
+                />
+
+                {/* Content always visible, sits above the glass */}
+                <div className='dynamic-island-content'>
+                    <div className='header-main'>
+                        <div className='left'>
+                            <Image src="/assets/me-v4.webp" alt="Feres Henteti" width={70} height={70} className='my-avatar' priority />
+                        </div>
+                        <div className='right'>
+                            <a className={'menu-item menu-item-home ' + (selectedMenuItem[0] ? 'selected' : '')} href='#home' onClick={() => selectMenuItem(0)}>
+                                Home
+                            </a>
+                            <div className={'menu-item ' + (selectedMenuItem[1] ? 'selected' : '')} onClick={() => selectMenuItem(1)}>
+                                Contact Me
+                                <div className='menu-item-icon'>
+                                    <ArrowDownwardIcon className={selectedMenuItem[1] ? 'rotate-180' : ''} />
+                                </div>
+                            </div>
+                            <div className={'menu-item ' + (selectedMenuItem[2] ? 'selected' : '')} onClick={() => selectMenuItem(2)}>
+                                Social
+                                <div className='menu-item-icon'>
+                                    <ArrowDownwardIcon className={selectedMenuItem[2] ? 'rotate-180' : ''} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id='contactUs' className={selectedMenuItem[1] ? 'show-header-content' : ''}>
+                        {selectedMenuItem[1] && <ContactMe />}
+                    </div>
+
+                    <div id='social-media-container' className={selectedMenuItem[2] ? 'show-header-content' : ''}>
+                        {selectedMenuItem[2] && <Social />}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

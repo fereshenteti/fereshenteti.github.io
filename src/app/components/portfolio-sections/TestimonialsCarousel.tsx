@@ -1,7 +1,8 @@
 'use client';
 
 import { useRef } from 'react';
-import { ClashDisplay, Satoshi } from '../../../fonts/fonts';
+import { ClashDisplay, Satoshi, Handwritten } from '../../../fonts/fonts';
+import ArrowHandwritten from '../../assets/arrow-handwritten.svg';
 import { motion } from 'framer-motion';
 
 const ChevronIcon = ({ dir }: { dir: 'left' | 'right' }) => (
@@ -144,6 +145,23 @@ export default function TestimonialsCarousel({ recommendations }: { recommendati
         </div>
 
         <div className="testimonials-track" ref={trackRef} onMouseDown={onMouseDown}>
+          <div className="testimonial-submit-cta-wrapper">
+            <p className={`testimonials-submit-cta-text ${Handwritten.className}`}>
+              These testimonials were gathered via Kindwo. Worked with me and have something to say?{' '}
+              <a
+                href="https://kindwo.vercel.app/submit/fares"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="testimonials-submit-cta-link"
+              >
+                You can do it here
+              </a>
+            </p>
+            <div className="testimonials-submit-cta-arrow-wrapper">
+              <ArrowHandwritten className="testimonials-submit-cta-arrow" aria-hidden="true" />
+            </div>
+          </div>
+
           {cards.map((item, i) => {
             const isReal = hasData;
             const r = isReal ? item as Recommendation : null;
@@ -194,6 +212,7 @@ export default function TestimonialsCarousel({ recommendations }: { recommendati
           })}
         </div>
       </div>
+
     </section>
   );
 }

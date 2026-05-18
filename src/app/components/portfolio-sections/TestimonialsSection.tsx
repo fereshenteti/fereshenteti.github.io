@@ -10,11 +10,11 @@ type Recommendation = {
 };
 
 async function fetchRecommendations(): Promise<Recommendation[]> {
-  const apiKey = process.env.FEEDSPOT_API_KEY;
+  const apiKey = process.env.KINDWO_API_KEY;
   if (!apiKey) return [];
 
   try {
-    const res = await fetch('https://feedspot-feres.vercel.app/api/recommendations/fares', {
+    const res = await fetch('https://kindwo.vercel.app/api/recommendations/fares', {
       headers: { Authorization: `Bearer ${apiKey}` },
       next: { revalidate: 3600 },
     });
