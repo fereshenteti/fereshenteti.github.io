@@ -149,7 +149,7 @@ export default function TestimonialsCarousel({ recommendations }: { recommendati
             <p className={`testimonials-submit-cta-text ${Handwritten.className}`}>
               These testimonials were gathered via Kindwo. Worked with me and have something to say?{' '}
               <a
-                href="https://kindwo.vercel.app/submit/fares"
+                href="https://kindwo.com/submit/fares"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="testimonials-submit-cta-link"

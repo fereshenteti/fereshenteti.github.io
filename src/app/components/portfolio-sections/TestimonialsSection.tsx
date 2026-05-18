@@ -14,13 +14,13 @@ async function fetchRecommendations(): Promise<Recommendation[]> {
   if (!apiKey) return [];
 
   try {
-    const res = await fetch('https://kindwo.vercel.app/api/recommendations/fares', {
+    const res = await fetch('https://kindwo.com/api/recommendations/fares', {
       headers: { Authorization: `Bearer ${apiKey}` },
       next: { revalidate: 3600 },
     });
     if (!res.ok) return [];
     const data = await res.json();
-    return Array.isArray(data) ? data : [];
+    return Array.isArray(data.approved) ? data.approved : [];
   } catch {
     return [];
   }
