@@ -4,8 +4,7 @@ import { ClashDisplay, Satoshi, Handwritten } from '../../../fonts/fonts';
 import ArrowHandwritten from '../../assets/arrow-handwritten.svg';
 import { motion } from 'framer-motion';
 
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
+declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
       'kindwo-widget': React.HTMLAttributes<HTMLElement> & {
