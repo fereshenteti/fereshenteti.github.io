@@ -4,21 +4,6 @@ import { ClashDisplay, Satoshi, Handwritten } from '../../../fonts/fonts';
 import ArrowHandwritten from '../../assets/arrow-handwritten.svg';
 import { motion } from 'framer-motion';
 
-declare module 'react' {
-  namespace JSX {
-    interface IntrinsicElements {
-      'kindwo-widget': React.HTMLAttributes<HTMLElement> & {
-        username?: string;
-        'widget-key'?: string;
-        'show-title'?: string;
-        'show-summary'?: string;
-        'show-controls'?: string;
-        language?: string;
-      };
-    }
-  }
-}
-
 const EMBED_SRC = process.env.NEXT_PUBLIC_KINDWO_EMBED_URL ?? 'https://kindwo.com/embed.js';
 const WIDGET_KEY = '4afdb2765b59170e745e5eda3ccbc2b93192b4c5020e916851e3c2f03aea6b9e';
 
@@ -56,8 +41,8 @@ export default function TestimonialsSection() {
         </motion.div>
       </div>
 
-      <kindwo-widget username="fares" widget-key={WIDGET_KEY} />
       <script src={EMBED_SRC} async />
+      <div data-kindwo data-username="fares" data-widget-key={WIDGET_KEY} />
 
     </section>
   );
